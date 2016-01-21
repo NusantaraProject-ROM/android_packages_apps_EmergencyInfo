@@ -50,8 +50,8 @@ public class EmergencyInfoFragment extends PreferenceFragment {
     /** Key for contact actions dialog */
     private static final String CONTACT_ACTIONS_DIALOG_KEY = "contact_actions";
 
-    /** Key for debug preference */
-    private static final String DEBUG_KEY = "debug";
+    /** Key for description preference */
+    private static final String DESCRIPTION_KEY = "description";
 
     /** Key for emergency contacts preference */
     private static final String EMERGENCY_CONTACTS_KEY = "emergency_contacts";
@@ -99,14 +99,13 @@ public class EmergencyInfoFragment extends PreferenceFragment {
             if (mReadOnly) {
                 preference.setEnabled(false);
                 preference.setShouldDisableView(false);
+                preference.setSelectable(false);
             }
         }
         populateEmergencyContacts();
         if (mReadOnly) {
-            // TODO: For supporting testing only. Remove this for launch.
-            PreferenceCategory debugPreferenceCategory =
-                    (PreferenceCategory) findPreference(DEBUG_KEY);
-            mPreferenceScreen.removePreference(debugPreferenceCategory);
+            Preference description = findPreference(DESCRIPTION_KEY);
+            mPreferenceScreen.removePreference(description);
         }
     }
 

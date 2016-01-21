@@ -22,12 +22,15 @@
 
     <string name="readonly_title">Lockscreen view</string>
 
+    <string name="emergency_contacts_title">Emergency contacts</string>
     <string name="add_emergency_contact">Add contact</string>
     <string-array name="contact_action_choices">
         <item>Delete emergency contact</item>
         <item>View details</item>
     </string-array>
-
     <string name="unknown_contact">Unknown Contact</string>
+
+    <string name="description">Emergency information is accessible from the lockscreen through
+        the emergency dialer.</string>
 
 </resources>

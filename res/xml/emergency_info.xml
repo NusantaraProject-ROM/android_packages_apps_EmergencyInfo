@@ -43,17 +43,18 @@
         android:selectAllOnFocus="true"
         android:singleLine="false"
         android:title="@string/medical_conditions" />
-    <PreferenceCategory android:key="emergency_contacts" android:title="Emergency contacts">
+
+    <PreferenceCategory
+        android:key="emergency_contacts"
+        android:title="@string/emergency_contacts_title">
     </PreferenceCategory>
 
-    <PreferenceCategory android:key="debug" android:title="Debug">
-        <Preference
-            android:title="@string/readonly_title"
-            android:key="readonly"
-            >
-            <intent android:action="android.telephony.action.EMERGENCY_ASSISTANCE" />
-        </Preference>
-    </PreferenceCategory>
-
+    <EditTextPreference
+        android:selectable="false"
+        android:clickable="false"
+        android:enabled="false"
+        android:shouldDisableView="false"
+        android:key="description"
+        android:summary="@string/description" />
 
 </PreferenceScreen>
