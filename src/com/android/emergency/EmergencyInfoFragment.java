@@ -36,6 +36,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
+
 import java.util.Collections;
 import java.util.Set;
 
@@ -150,6 +153,7 @@ public class EmergencyInfoFragment extends PreferenceFragment {
             newContacts.add(result.toString());
             setEmergencyContacts(newContacts);
 
+            MetricsLogger.action(getContext(), MetricsEvent.ACTION_ADD_EMERGENCY_CONTACT);
             populateEmergencyContacts();
         }
     }
@@ -171,7 +175,8 @@ public class EmergencyInfoFragment extends PreferenceFragment {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
             String stringValue = value.toString();
-
+            MetricsLogger.action(preference.getContext(),
+                    MetricsEvent.ACTION_EDIT_EMERGENCY_INFO_FIELD, preference.getKey());
             if (preference instanceof ListPreference) {
                 ListPreference listPreference = (ListPreference) preference;
                 int index = listPreference.findIndexOfValue(stringValue);
@@ -259,6 +264,8 @@ public class EmergencyInfoFragment extends PreferenceFragment {
                                     newContacts.addAll(oldContacts);
                                     newContacts.remove(contactUri.toString());
                                     setEmergencyContacts(newContacts);
+                                    MetricsLogger.action(getContext(),
+                                            MetricsEvent.ACTION_DELETE_EMERGENCY_CONTACT);
 
                                     populateEmergencyContacts();
                                 }

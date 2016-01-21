@@ -18,6 +18,9 @@ package com.android.emergency;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
+
 /**
  * Activity for viewing emergency information.
  */
@@ -37,5 +40,7 @@ public class ViewInfoActivity extends AppCompatPreferenceActivity {
         // Display the fragment as the main content.
         getFragmentManager().beginTransaction().replace(android.R.id.content,
                 emergencyInfoFragment).commit();
+
+        MetricsLogger.visible(this, MetricsEvent.ACTION_VIEW_EMERGENCY_INFO);
     }
 }

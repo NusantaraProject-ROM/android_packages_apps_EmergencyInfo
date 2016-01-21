@@ -22,7 +22,7 @@ support_library_root_dir := prebuilts/sdk/current/support
 endif
 
 LOCAL_MODULE_TAGS := eng
-
+LOCAL_JAVA_LIBRARIES := framework
 LOCAL_STATIC_JAVA_LIBRARIES := android-support-v14-preference \
                                android-support-v13 \
                                android-support-v7-appcompat \

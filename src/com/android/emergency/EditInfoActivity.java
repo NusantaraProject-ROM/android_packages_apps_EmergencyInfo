@@ -17,6 +17,8 @@ package com.android.emergency;
 
 import android.os.Bundle;
 
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 /**
  * Activity for editing emergency information.
  */
@@ -34,5 +36,7 @@ public class EditInfoActivity extends AppCompatPreferenceActivity {
         // Display the fragment as the main content.
         getFragmentManager().beginTransaction().replace(android.R.id.content,
                 emergencyInfoFragment).commit();
+
+        MetricsLogger.visible(this, MetricsEvent.ACTION_EDIT_EMERGENCY_INFO);
     }
 }
