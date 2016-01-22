@@ -1,5 +1,15 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- NOTE: EditTextPreference accepts EditText attributes. -->
+    <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
+    <com.android.emergency.DatePreference
+        android:key="date_of_birth"
+        android:selectAllOnFocus="true"
+        android:summary="@string/default_summary_not"
+        android:title="@string/date_of_birth"
+        android:persistent="true"
+        android:defaultValue=""/>
+
     <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
          dismiss it. -->
     <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
@@ -10,18 +20,16 @@
         android:key="blood_type"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
-        android:summary="@string/default_summary"
+        android:summary="@string/default_summary_none"
         android:title="@string/blood_type" />
 
-    <!-- NOTE: EditTextPreference accepts EditText attributes. -->
-    <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
     <EditTextPreference
         android:capitalize="sentences"
         android:inputType="textMultiLine"
         android:singleLine="false"
         android:key="allergies"
         android:selectAllOnFocus="true"
-        android:summary="@string/default_summary"
+        android:summary="@string/default_summary_none"
         android:title="@string/allergies" />
 
     <EditTextPreference
@@ -30,7 +38,7 @@
         android:singleLine="false"
         android:key="medications"
         android:selectAllOnFocus="true"
-        android:summary="@string/default_summary"
+        android:summary="@string/default_summary_none"
         android:title="@string/medications" />
 
     <EditTextPreference
@@ -39,6 +47,7 @@
         android:singleLine="false"
         android:key="medical_conditions"
         android:selectAllOnFocus="true"
+        android:summary="@string/default_summary_none"
         android:title="@string/medical_conditions" />
 
     <PreferenceCategory
