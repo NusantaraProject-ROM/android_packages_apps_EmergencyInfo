@@ -17,31 +17,28 @@
     <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
     <EditTextPreference
         android:capitalize="sentences"
-        android:inputType="textCapWords"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
         android:key="allergies"
-        android:maxLines="1"
         android:selectAllOnFocus="true"
-        android:singleLine="true"
         android:summary="@string/default_summary"
         android:title="@string/allergies" />
 
     <EditTextPreference
         android:capitalize="sentences"
-        android:inputType="textCapWords"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
         android:key="medications"
-        android:maxLines="1"
         android:selectAllOnFocus="true"
-        android:singleLine="true"
         android:summary="@string/default_summary"
         android:title="@string/medications" />
 
     <EditTextPreference
         android:capitalize="sentences"
-        android:inputType="textCapWords"
-        android:key="medical_conditions"
-        android:maxLines="1"
-        android:selectAllOnFocus="true"
+        android:inputType="textMultiLine"
         android:singleLine="false"
+        android:key="medical_conditions"
+        android:selectAllOnFocus="true"
         android:title="@string/medical_conditions" />
 
     <PreferenceCategory

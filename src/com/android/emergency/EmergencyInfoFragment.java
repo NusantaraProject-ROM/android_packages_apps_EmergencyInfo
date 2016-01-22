@@ -15,6 +15,7 @@
  */
 package com.android.emergency;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,9 +29,12 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.provider.ContactsContract;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
-import android.Manifest;
 import android.util.ArraySet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import java.util.Collections;
 import java.util.Set;
@@ -82,6 +86,30 @@ public class EmergencyInfoFragment extends PreferenceFragment {
         EmergencyInfoFragment emergencyInfoFragment = new EmergencyInfoFragment();
         emergencyInfoFragment.setArguments(emergencyInfoArgs);
         return emergencyInfoFragment;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.emergency_info_layout, container, false);
+        FloatingActionButton editInfoButton =
+                (FloatingActionButton) view.findViewById(R.id.fab);
+        // The button is the entry point from ViewInfoActivity to EditInfoActivity.
+        if (!mReadOnly) {
+            editInfoButton.setVisibility(View.GONE);
+        } else {
+            editInfoButton.setVisibility(View.VISIBLE);
+            editInfoButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // TODO: This actually then requires the user to unlock the phone (which is
+                    // desired), but in two steps. Explore the possibility of doing it in one step.
+                    Intent intent = new Intent(getActivity(), EditInfoActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
+        return view;
     }
 
     @Override
