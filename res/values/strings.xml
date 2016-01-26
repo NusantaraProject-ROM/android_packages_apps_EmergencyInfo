@@ -2,7 +2,11 @@
     <string name="app_name">Emergency Information</string>
 
     <string name="medical_category">Health</string>
-    <string name="blood_type">Blood Type</string>
+    <string name="date_of_birth">Date of birth</string>
+
+    <string name="blood_type">Blood type</string>
+
+
     <string-array name="blood_type_values">
         <item>O+</item>
         <item>O-</item>
@@ -12,10 +16,12 @@
         <item>B-</item>
         <item>AB+</item>
         <item>AB-</item>
+        <item>Not specified</item>
     </string-array>
 
     <string name="allergies">Allergies</string>
-    <string name="default_summary">None specified</string>
+    <string name="default_summary_none">None specified</string>
+    <string name="default_summary_not">Not specified</string>
 
     <string name="medications">Medications</string>
     <string name="medical_conditions">Medical conditions and notes</string>
@@ -28,7 +34,7 @@
         <item>Delete emergency contact</item>
         <item>View details</item>
     </string-array>
-    <string name="unknown_contact">Unknown Contact</string>
+    <string name="unknown_contact">Unknown contact</string>
 
     <string name="description">Emergency information is accessible from the lockscreen through
         the emergency dialer.</string>
