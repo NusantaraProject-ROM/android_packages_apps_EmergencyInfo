@@ -2,6 +2,24 @@
 
     <!-- NOTE: EditTextPreference accepts EditText attributes. -->
     <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
+    <EditTextPreference
+        android:capitalize="sentences"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
+        android:key="name"
+        android:selectAllOnFocus="true"
+        android:summary="@string/default_summary_not"
+        android:title="@string/name" />
+
+    <EditTextPreference
+        android:capitalize="sentences"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
+        android:key="address"
+        android:selectAllOnFocus="true"
+        android:summary="@string/default_summary_not"
+        android:title="@string/address" />
+
     <com.android.emergency.DatePreference
         android:key="date_of_birth"
         android:selectAllOnFocus="true"
@@ -49,6 +67,16 @@
         android:selectAllOnFocus="true"
         android:summary="@string/default_summary_none"
         android:title="@string/medical_conditions" />
+
+    <ListPreference
+        android:defaultValue="-1"
+        android:entries="@array/organ_donor_values"
+        android:entryValues="@array/organ_donor_values"
+        android:key="organ_donor"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:summary="@string/default_summary_not"
+        android:title="@string/organ_donor" />
 
     <PreferenceCategory
         android:key="emergency_contacts"

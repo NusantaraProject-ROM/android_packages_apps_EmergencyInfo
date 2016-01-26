@@ -67,8 +67,8 @@ public class EmergencyInfoFragment extends PreferenceFragment {
     private static final String READ_ONLY_KEY = "read_only";
 
     /** Keys for all editable preferences- used to set up bindings */
-    private static final String[] PREFERENCE_KEYS = {"blood_type", "allergies", "medications",
-            "medical_conditions"};
+    private static final String[] PREFERENCE_KEYS = {"name", "address", "blood_type", "allergies",
+            "medications", "medical_conditions", "organ_donor"};
 
     /** Whether or not this fragment should be read only */
     private boolean mReadOnly;
