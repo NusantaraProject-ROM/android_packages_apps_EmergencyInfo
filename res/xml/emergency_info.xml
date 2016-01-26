@@ -7,7 +7,7 @@
         android:singleLine="true"
         android:key="name"
         android:selectAllOnFocus="true"
-        android:summary="@string/default_summary_not"
+        android:summary="@string/default_summary_none"
         android:title="@string/name" />
 
     <EditTextPreference
@@ -15,13 +15,13 @@
         android:singleLine="false"
         android:key="address"
         android:selectAllOnFocus="true"
-        android:summary="@string/default_summary_not"
+        android:summary="@string/default_summary_none"
         android:title="@string/address" />
 
     <com.android.emergency.DatePreference
         android:key="date_of_birth"
         android:selectAllOnFocus="true"
-        android:summary="@string/default_summary_not"
+        android:summary="@string/default_summary_none"
         android:title="@string/date_of_birth"
         android:persistent="true"
         android:defaultValue=""/>
@@ -30,13 +30,13 @@
          dismiss it. -->
     <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
     <ListPreference
-        android:defaultValue="@string/default_summary_not"
+        android:defaultValue="@string/default_summary_none"
         android:entries="@array/blood_type_values"
         android:entryValues="@array/blood_type_values"
         android:key="blood_type"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
-        android:summary="@string/default_summary_not"
+        android:summary="@string/default_summary_none"
         android:title="@string/blood_type" />
 
     <EditTextPreference
@@ -67,13 +67,13 @@
         android:title="@string/medical_conditions" />
 
     <ListPreference
-        android:defaultValue="@string/default_summary_not"
+        android:defaultValue="@string/default_summary_none"
         android:entries="@array/organ_donor_values"
         android:entryValues="@array/organ_donor_values"
         android:key="organ_donor"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
-        android:summary="@string/default_summary_not"
+        android:summary="@string/default_summary_none"
         android:title="@string/organ_donor" />
 
     <PreferenceCategory

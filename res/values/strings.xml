@@ -15,12 +15,11 @@
         <item>B-</item>
         <item>AB+</item>
         <item>AB-</item>
-        <item>Not specified</item>
+        <item>@string/default_summary_none</item>
     </string-array>
 
     <string name="allergies">Allergies</string>
     <string name="default_summary_none">None specified</string>
-    <string name="default_summary_not">Not specified</string>
 
     <string name="medications">Medications</string>
     <string name="medical_conditions">Medical conditions and notes</string>
@@ -28,7 +27,7 @@
     <string-array name="organ_donor_values">
         <item>Yes</item>
         <item>No</item>
-        <item>Not specified</item>
+        <item>@string/default_summary_none</item>
     </string-array>
     <string name="readonly_title">Lockscreen view</string>
 

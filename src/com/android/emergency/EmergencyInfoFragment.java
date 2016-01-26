@@ -182,9 +182,13 @@ public class EmergencyInfoFragment extends PreferenceFragment {
             if (preference instanceof ListPreference) {
                 ListPreference listPreference = (ListPreference) preference;
                 int index = listPreference.findIndexOfValue(stringValue);
-                preference.setSummary(index >= 0 ? listPreference.getEntries()[index] : null);
+                if (index >= 0) {
+                    preference.setSummary(listPreference.getEntries()[index]);
+                }
             } else {
-                preference.setSummary(stringValue);
+                if (!stringValue.isEmpty()) {
+                    preference.setSummary(stringValue);
+                }
             }
             return true;
         }
