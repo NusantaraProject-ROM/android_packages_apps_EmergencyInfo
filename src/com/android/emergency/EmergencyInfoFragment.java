@@ -52,7 +52,7 @@ public class EmergencyInfoFragment extends PreferenceFragment {
     private static final int CONTACT_PICKER_RESULT = 1001;
 
     /** Request code for runtime contacts permission */
-    private static final int CONTACT_PERMISSION_REQUEST = 1002;
+    private static final int PERMISSION_REQUEST = 1002;
 
     /** Key for contact actions dialog */
     private static final String CONTACT_ACTIONS_DIALOG_KEY = "contact_actions";
@@ -143,6 +143,8 @@ public class EmergencyInfoFragment extends PreferenceFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CONTACT_PICKER_RESULT && resultCode == Activity.RESULT_OK) {
+            // TODO: If there are no phone numbers, prevent the user from adding the contact.
+            // TODO: If there are multiple phone numbers, ask the user to pick one.
             Uri result = data.getData();
             // Manipulate a copy of emergency contacts rather than editing directly- see
             // getEmergencyContacts for why this is necessary.
@@ -161,7 +163,7 @@ public class EmergencyInfoFragment extends PreferenceFragment {
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[],
                                            int[] grantResults) {
-        if (requestCode == CONTACT_PERMISSION_REQUEST) {
+        if (requestCode == PERMISSION_REQUEST) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 populateEmergencyContacts();
             } else {
@@ -212,10 +214,14 @@ public class EmergencyInfoFragment extends PreferenceFragment {
 
         if (!emergencyContacts.isEmpty()) {
             // Get permission if necessary, else populate emergency contacts list
-            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CONTACTS)
-                    != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{Manifest.permission.READ_CONTACTS},
-                        CONTACT_PERMISSION_REQUEST);
+            boolean hasContactsPermission = ContextCompat.checkSelfPermission(getActivity(),
+                    Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED;
+            boolean hasCallPermission = ContextCompat.checkSelfPermission(getActivity(),
+                    Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED;
+            if (!hasContactsPermission || !hasCallPermission) {
+                requestPermissions(new String[]{
+                                Manifest.permission.READ_CONTACTS,
+                                Manifest.permission.CALL_PHONE}, PERMISSION_REQUEST);
             } else {
                 for (String contactUri : emergencyContacts) {
                     final ContactPreference contactPreference =
@@ -244,8 +250,7 @@ public class EmergencyInfoFragment extends PreferenceFragment {
                 final Uri contactUri = contactPreference.getUri();
 
                 if (mReadOnly) {
-                    // TODO: Call the contact instead of displaying a card.
-                    contactPreference.displayContact();
+                    contactPreference.callContact();
                 } else {
                     ContactActionsDialogFragment contactActionsDialogFragment =
                             new ContactActionsDialogFragment();

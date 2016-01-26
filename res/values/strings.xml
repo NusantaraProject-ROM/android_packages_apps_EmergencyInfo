@@ -40,7 +40,8 @@
     </string-array>
     <string name="unknown_contact">Unknown contact</string>
 
-    <string name="description">Emergency information is accessible from the lockscreen through
+    <string name="description">Emergency information is accessible through the lock screen in
         the emergency dialer.</string>
+    <string name="phone_number_error">No phone number available for this contact</string>
 
 </resources>
