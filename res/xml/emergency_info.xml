@@ -3,17 +3,15 @@
     <!-- NOTE: EditTextPreference accepts EditText attributes. -->
     <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
     <EditTextPreference
-        android:capitalize="sentences"
-        android:inputType="textMultiLine"
-        android:singleLine="false"
+        android:inputType="textCapWords|textPersonName"
+        android:singleLine="true"
         android:key="name"
         android:selectAllOnFocus="true"
         android:summary="@string/default_summary_not"
         android:title="@string/name" />
 
     <EditTextPreference
-        android:capitalize="sentences"
-        android:inputType="textMultiLine"
+        android:inputType="textCapWords|textPostalAddress|textMultiLine"
         android:singleLine="false"
         android:key="address"
         android:selectAllOnFocus="true"
@@ -32,13 +30,13 @@
          dismiss it. -->
     <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
     <ListPreference
-        android:defaultValue="-1"
+        android:defaultValue="@string/default_summary_not"
         android:entries="@array/blood_type_values"
         android:entryValues="@array/blood_type_values"
         android:key="blood_type"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
-        android:summary="@string/default_summary_none"
+        android:summary="@string/default_summary_not"
         android:title="@string/blood_type" />
 
     <EditTextPreference
@@ -69,7 +67,7 @@
         android:title="@string/medical_conditions" />
 
     <ListPreference
-        android:defaultValue="-1"
+        android:defaultValue="@string/default_summary_not"
         android:entries="@array/organ_donor_values"
         android:entryValues="@array/organ_donor_values"
         android:key="organ_donor"
