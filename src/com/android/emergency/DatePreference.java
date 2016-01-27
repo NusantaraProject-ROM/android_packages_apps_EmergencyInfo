@@ -22,6 +22,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.DatePicker;
 
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
@@ -112,6 +115,8 @@ public class DatePreference extends DialogPreference {
             String date = serialize(year, month, day);
             persistString(date);
             notifyChanged();
+            MetricsLogger.action(getContext(),
+                    MetricsEvent.ACTION_EDIT_EMERGENCY_INFO_FIELD, getKey());
         }
     }
 
