@@ -66,9 +66,12 @@ public class EmergencyInfoFragment extends PreferenceFragment {
     /** Key to look up whether or not the fragment should be read only from the bundle */
     private static final String READ_ONLY_KEY = "read_only";
 
+    /** Key for date of birth preference */
+    private static final String DATE_OF_BIRTH_KEY = "date_of_birth";
+
     /** Keys for all editable preferences- used to set up bindings */
-    private static final String[] PREFERENCE_KEYS = {"name", "address", "blood_type", "allergies",
-            "medications", "medical_conditions", "organ_donor"};
+    private static final String[] PREFERENCE_KEYS = {"name", "address", DATE_OF_BIRTH_KEY,
+            "blood_type", "allergies", "medications", "medical_conditions", "organ_donor"};
 
     /** Whether or not this fragment should be read only */
     private boolean mReadOnly;
@@ -126,7 +129,9 @@ public class EmergencyInfoFragment extends PreferenceFragment {
 
         for (String preferenceKey : PREFERENCE_KEYS) {
             Preference preference = findPreference(preferenceKey);
-            bindPreferenceSummaryToValue(preference);
+            if (!preferenceKey.equals(DATE_OF_BIRTH_KEY)) {
+                bindPreferenceSummaryToValue(preference);
+            }
             if (mReadOnly) {
                 preference.setEnabled(false);
                 preference.setShouldDisableView(false);
