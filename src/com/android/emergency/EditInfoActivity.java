@@ -15,6 +15,8 @@
  */
 package com.android.emergency;
 
+import static android.view.WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD;
+
 import android.os.Bundle;
 
 import com.android.internal.logging.MetricsLogger;
@@ -27,6 +29,7 @@ public class EditInfoActivity extends AppCompatPreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(FLAG_DISMISS_KEYGUARD);
         setupActionBar();
 
         // Create the fragment with readOnly set to false
