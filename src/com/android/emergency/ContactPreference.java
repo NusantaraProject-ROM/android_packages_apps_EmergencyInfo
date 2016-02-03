@@ -101,14 +101,15 @@ public class ContactPreference extends Preference {
     }
 
     private Uri getNumber() {
+        // TODO: Investigate if this can be done in 1 query instead of 2.
         ContentResolver contentResolver = getContext().getContentResolver();
         Cursor contactCursor = contentResolver.query(getUri(), null, null, null, null);
         try {
             if (contactCursor != null && contactCursor.moveToFirst()) {
                 String id = contactCursor.getString(
                         contactCursor.getColumnIndex(ContactsContract.Contacts._ID));
-                if (Integer.parseInt(contactCursor.getString(contactCursor.getColumnIndex(
-                        ContactsContract.Contacts.HAS_PHONE_NUMBER))) > 0) {
+                if (contactCursor.getInt(contactCursor.getColumnIndex(
+                        ContactsContract.Contacts.HAS_PHONE_NUMBER)) != 0) {
                     Cursor phoneCursor = contentResolver.query(
                             ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
                             ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
