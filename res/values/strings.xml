@@ -40,8 +40,8 @@
     <string name="unknown_contact">Unknown contact</string>
 
     <string name="description">This information can help first responders in an emergency. It is
-        stored on your device only, but anyone can read it from the emergency dialer on the lock
-        screen without unlocking your phone.
+        stored on your device only, but anyone can read it from the emergency dialer without 
+        unlocking your phone.
     </string>
     <string name="phone_number_error">No phone number available for this contact</string>
 
