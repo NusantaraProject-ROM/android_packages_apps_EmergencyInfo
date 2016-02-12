@@ -16,19 +16,20 @@
 package com.android.emergency;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.preference.Preference;
 import android.provider.ContactsContract;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.view.View;
 import android.widget.Toast;
+
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -39,16 +40,54 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 public class ContactPreference extends Preference {
 
     private final Uri mUri;
+    private final DeleteContactListener mDeleteContactListener;
+
+    /**
+     * Listener for deleting a contact.
+     */
+    public interface DeleteContactListener {
+        /**
+         * Callback to delete a contact.
+         */
+        void onContactDelete(String contactUri);
+    }
 
     /**
      * Instantiates a ContactPreference that displays an emergency contact, taking in a Context and
      * the Uri of the contact as a String.
      */
-    public ContactPreference(Context context, String uriString) {
+    public ContactPreference(Context context, String uriString,
+                             DeleteContactListener deleteContactListener) {
         super(context);
         mUri = Uri.parse(uriString);
+        mDeleteContactListener = deleteContactListener;
         String name = getName();
         setTitle((name != null) ? name : getContext().getString(R.string.unknown_contact));
+        setWidgetLayoutResource(R.layout.preference_user_delete_widget);
+    }
+
+    @Override
+    protected void onBindView(View view) {
+        super.onBindView(view);
+        View deleteContactIcon = view.findViewById(R.id.delete_contact);
+        if (deleteContactIcon != null) {
+            deleteContactIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setMessage(String.format(getContext()
+                            .getString(R.string.remove_contact), getName()));
+                    builder.setPositiveButton(getContext().getString(R.string.remove),
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int which) {
+                                    mDeleteContactListener.onContactDelete(mUri.toString());
+                                }
+                            }).setNegativeButton(getContext().getString(R.string.cancel), null);
+                    builder.create().show();
+                }
+            });
+        }
     }
 
     /**
@@ -76,7 +115,7 @@ public class ContactPreference extends Preference {
      */
     public void displayContact() {
         Intent contactIntent = new Intent(Intent.ACTION_VIEW);
-        contactIntent.setData(getUri());
+        contactIntent.setData(mUri);
         getContext().startActivity(contactIntent);
     }
 

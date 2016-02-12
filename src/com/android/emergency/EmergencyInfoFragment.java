@@ -46,16 +46,14 @@ import java.util.Set;
  * Fragment that displays health information and emergency contacts.
  * Takes in boolean readOnly to determine whether or not to allow information to be edited.
  */
-public class EmergencyInfoFragment extends PreferenceFragment {
+public class EmergencyInfoFragment extends PreferenceFragment
+        implements ContactPreference.DeleteContactListener {
 
     /** Result code for contact picker */
     private static final int CONTACT_PICKER_RESULT = 1001;
 
     /** Request code for runtime contacts permission */
     private static final int PERMISSION_REQUEST = 1002;
-
-    /** Key for contact actions dialog */
-    private static final String CONTACT_ACTIONS_DIALOG_KEY = "contact_actions";
 
     /** Key for description preference */
     private static final String DESCRIPTION_KEY = "description";
@@ -108,8 +106,6 @@ public class EmergencyInfoFragment extends PreferenceFragment {
             editInfoButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // TODO: This actually then requires the user to unlock the phone (which is
-                    // desired), but in two steps. Explore the possibility of doing it in one step.
                     Intent intent = new Intent(getActivity(), EditInfoActivity.class);
                     startActivity(intent);
                 }
@@ -150,17 +146,8 @@ public class EmergencyInfoFragment extends PreferenceFragment {
         if (requestCode == CONTACT_PICKER_RESULT && resultCode == Activity.RESULT_OK) {
             // TODO: If there are no phone numbers, prevent the user from adding the contact.
             // TODO: If there are multiple phone numbers, ask the user to pick one.
-            Uri result = data.getData();
-            // Manipulate a copy of emergency contacts rather than editing directly- see
-            // getEmergencyContacts for why this is necessary.
-            Set<String> oldContacts = getEmergencyContacts();
-            ArraySet<String> newContacts = new ArraySet<String>(oldContacts.size() + 1);
-            newContacts.addAll(oldContacts);
-
-            newContacts.add(result.toString());
-            setEmergencyContacts(newContacts);
-
-            MetricsLogger.action(getContext(), MetricsEvent.ACTION_ADD_EMERGENCY_CONTACT);
+            Uri uri = data.getData();
+            addContact(uri.toString());
             populateEmergencyContacts();
         }
     }
@@ -175,6 +162,12 @@ public class EmergencyInfoFragment extends PreferenceFragment {
                 mPreferenceScreen.removePreference(findPreference(EMERGENCY_CONTACTS_KEY));
             }
         }
+    }
+
+    @Override
+    public void onContactDelete(String contactUri) {
+        deleteContact(contactUri);
+        populateEmergencyContacts();
     }
 
     private static final Preference.OnPreferenceChangeListener
@@ -234,7 +227,7 @@ public class EmergencyInfoFragment extends PreferenceFragment {
             } else {
                 for (String contactUri : emergencyContacts) {
                     final ContactPreference contactPreference =
-                            new ContactPreference(getContext(), contactUri);
+                            new ContactPreference(getContext(), contactUri, this);
                     contactPreference.setOnPreferenceClickListener(
                             createContactPreferenceClickListener(contactPreference));
                     emergencyContactsCategory.addPreference(contactPreference);
@@ -251,51 +244,48 @@ public class EmergencyInfoFragment extends PreferenceFragment {
         }
     }
 
+    private void addContact(String contactUri) {
+        Set<String> oldContacts = getEmergencyContacts();
+        if (!oldContacts.contains(contactUri)) {
+            // Manipulate a copy of emergency contacts rather than editing directly- see
+            // getEmergencyContacts for why this is necessary.
+            ArraySet<String> newContacts = new ArraySet<String>(oldContacts.size() + 1);
+            newContacts.addAll(oldContacts);
+            newContacts.add(contactUri);
+            setEmergencyContacts(newContacts);
+            MetricsLogger.action(getContext(), MetricsEvent.ACTION_ADD_EMERGENCY_CONTACT);
+        }
+    }
+
+    private void deleteContact(String contactUri) {
+        Set<String> oldContacts = getEmergencyContacts();
+        if (oldContacts.contains(contactUri)) {
+            // Manipulate a copy of emergency contacts rather than editing directly- see
+            // getEmergencyContacts for why this is necessary.
+            ArraySet<String> newContacts = new ArraySet<String>(oldContacts.size());
+            newContacts.addAll(oldContacts);
+            newContacts.remove(contactUri);
+            setEmergencyContacts(newContacts);
+            MetricsLogger.action(getContext(),
+                    MetricsEvent.ACTION_DELETE_EMERGENCY_CONTACT);
+        }
+    }
+
     private Preference.OnPreferenceClickListener createContactPreferenceClickListener(
             final ContactPreference contactPreference) {
         return new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                final Uri contactUri = contactPreference.getUri();
-
                 if (mReadOnly) {
                     contactPreference.callContact();
                 } else {
-                    ContactActionsDialogFragment contactActionsDialogFragment =
-                            new ContactActionsDialogFragment();
-                    contactActionsDialogFragment.setTitle(contactPreference.getTitle());
-                    contactActionsDialogFragment.setDialogActionCallback(
-                            new ContactActionsDialogFragment.DialogActionCallback() {
-                                @Override
-                                public void onContactDelete() {
-                                    // Manipulate a copy of emergency contacts rather than
-                                    // editing directly- see getEmergencyContacts for why
-                                    // this is necessary.
-                                    Set<String> oldContacts = getEmergencyContacts();
-                                    ArraySet<String> newContacts = new ArraySet<String>(
-                                            oldContacts.size());
-
-                                    newContacts.addAll(oldContacts);
-                                    newContacts.remove(contactUri.toString());
-                                    setEmergencyContacts(newContacts);
-                                    MetricsLogger.action(getContext(),
-                                            MetricsEvent.ACTION_DELETE_EMERGENCY_CONTACT);
-
-                                    populateEmergencyContacts();
-                                }
-
-                                @Override
-                                public void onContactDisplay() {
-                                    contactPreference.displayContact();
-                                }
-                            });
-                    contactActionsDialogFragment.show(getFragmentManager(),
-                            CONTACT_ACTIONS_DIALOG_KEY);
+                    contactPreference.displayContact();
                 }
                 return true;
             }
         };
     }
+
 
     /** Generates an add contact button */
     private Preference createAddEmergencyContactPreference() {
