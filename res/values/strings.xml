@@ -49,10 +49,9 @@
 
     <string name="emergency_contacts_title">Emergency contacts</string>
     <string name="add_emergency_contact">Add contact</string>
-    <string-array name="contact_action_choices">
-        <item>Delete emergency contact</item>
-        <item>View details</item>
-    </string-array>
+    <string name="remove_contact">Remove %s from emergency contacts?</string>
+    <string name="remove">Remove</string>
+    <string name="cancel">Cancel</string>
     <string name="unknown_contact">Unknown contact</string>
 
     <string name="description">This information can help first responders in an emergency. It is
