@@ -301,6 +301,7 @@ public class EmergencyInfoFragment extends PreferenceFragment {
     private Preference createAddEmergencyContactPreference() {
         Preference addEmergencyContact = new Preference(getContext());
         addEmergencyContact.setTitle(getString(R.string.add_emergency_contact));
+        addEmergencyContact.setIcon(getResources().getDrawable(R.drawable.ic_menu_add_dark));
         addEmergencyContact.setOnPreferenceClickListener(new Preference
                 .OnPreferenceClickListener() {
             @Override
