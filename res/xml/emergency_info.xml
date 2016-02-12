@@ -43,53 +43,57 @@
 
     <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
          dismiss it. -->
-    <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
-    <ListPreference
-        android:defaultValue="@string/default_summary_none"
-        android:entries="@array/blood_type_values"
-        android:entryValues="@array/blood_type_values"
-        android:key="blood_type"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null"
-        android:summary="@string/default_summary_none"
-        android:title="@string/blood_type" />
+    <PreferenceCategory
+        android:key="medical_information"
+        android:title="@string/medical_information_title">
+        <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
+        <ListPreference
+            android:defaultValue="@string/default_summary_none"
+            android:entries="@array/blood_type_values"
+            android:entryValues="@array/blood_type_values"
+            android:key="blood_type"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:summary="@string/default_summary_none"
+            android:title="@string/blood_type" />
 
-    <EditTextPreference
-        android:capitalize="sentences"
-        android:inputType="textMultiLine"
-        android:singleLine="false"
-        android:key="allergies"
-        android:selectAllOnFocus="true"
-        android:summary="@string/default_summary_none"
-        android:title="@string/allergies" />
+        <EditTextPreference
+            android:capitalize="sentences"
+            android:inputType="textMultiLine"
+            android:key="allergies"
+            android:selectAllOnFocus="true"
+            android:singleLine="false"
+            android:summary="@string/default_summary_none"
+            android:title="@string/allergies" />
 
-    <EditTextPreference
-        android:capitalize="sentences"
-        android:inputType="textMultiLine"
-        android:singleLine="false"
-        android:key="medications"
-        android:selectAllOnFocus="true"
-        android:summary="@string/default_summary_none"
-        android:title="@string/medications" />
+        <EditTextPreference
+            android:capitalize="sentences"
+            android:inputType="textMultiLine"
+            android:key="medications"
+            android:selectAllOnFocus="true"
+            android:singleLine="false"
+            android:summary="@string/default_summary_none"
+            android:title="@string/medications" />
 
-    <EditTextPreference
-        android:capitalize="sentences"
-        android:inputType="textMultiLine"
-        android:singleLine="false"
-        android:key="medical_conditions"
-        android:selectAllOnFocus="true"
-        android:summary="@string/default_summary_none"
-        android:title="@string/medical_conditions" />
+        <EditTextPreference
+            android:capitalize="sentences"
+            android:inputType="textMultiLine"
+            android:key="medical_conditions"
+            android:selectAllOnFocus="true"
+            android:singleLine="false"
+            android:summary="@string/default_summary_none"
+            android:title="@string/medical_conditions" />
 
-    <ListPreference
-        android:defaultValue="@string/default_summary_none"
-        android:entries="@array/organ_donor_values"
-        android:entryValues="@array/organ_donor_values"
-        android:key="organ_donor"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null"
-        android:summary="@string/default_summary_none"
-        android:title="@string/organ_donor" />
+        <ListPreference
+            android:defaultValue="@string/default_summary_none"
+            android:entries="@array/organ_donor_values"
+            android:entryValues="@array/organ_donor_values"
+            android:key="organ_donor"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:summary="@string/default_summary_none"
+            android:title="@string/organ_donor" />
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="emergency_contacts"

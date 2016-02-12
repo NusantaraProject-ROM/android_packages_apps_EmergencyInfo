@@ -17,6 +17,7 @@
     <string name="app_name">Emergency Information</string>
 
     <string name="medical_category">Health</string>
+    <string name="medical_information_title">Medical information</string>
     <string name="name">Full name</string>
     <string name="address">Address</string>
     <string name="date_of_birth">Date of birth</string>
