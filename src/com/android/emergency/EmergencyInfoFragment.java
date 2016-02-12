@@ -186,6 +186,9 @@ public class EmergencyInfoFragment extends PreferenceFragment
             } else {
                 if (!stringValue.isEmpty()) {
                     preference.setSummary(stringValue);
+                } else {
+                    preference.setSummary(preference.getContext()
+                            .getResources().getString(R.string.default_summary_none));
                 }
             }
             return true;
