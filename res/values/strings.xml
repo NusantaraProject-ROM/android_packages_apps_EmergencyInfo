@@ -59,5 +59,6 @@
         unlocking your phone.
     </string>
     <string name="phone_number_error">No phone number available for this contact</string>
+    <string name="edit_emergency_info">Edit emergency information</string>
 
 </resources>
