@@ -25,6 +25,7 @@
         android:paddingStart="16dip"
         android:paddingEnd="16dip"
         android:src="@drawable/ic_clear_grey600_24dp"
+        android:contentDescription="@string/remove_contact_icon_text"
         android:layout_gravity="center"
         android:background="?android:attr/selectableItemBackground" />
 </LinearLayout>
