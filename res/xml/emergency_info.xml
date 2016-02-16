@@ -23,7 +23,8 @@
         android:key="name"
         android:selectAllOnFocus="true"
         android:summary="@string/default_summary_none"
-        android:title="@string/name" />
+        android:title="@string/name"
+        android:hint="@string/name_hint"/>
 
     <EditTextPreference
         android:inputType="textCapWords|textPostalAddress|textMultiLine"
@@ -31,7 +32,8 @@
         android:key="address"
         android:selectAllOnFocus="true"
         android:summary="@string/default_summary_none"
-        android:title="@string/address" />
+        android:title="@string/address"
+        android:hint="@string/address_hint"/>
 
     <com.android.emergency.DatePreference
         android:key="date_of_birth"
@@ -64,7 +66,8 @@
             android:selectAllOnFocus="true"
             android:singleLine="false"
             android:summary="@string/default_summary_none"
-            android:title="@string/allergies" />
+            android:title="@string/allergies"
+            android:hint="@string/allergies_hint"/>
 
         <EditTextPreference
             android:capitalize="sentences"
@@ -73,7 +76,8 @@
             android:selectAllOnFocus="true"
             android:singleLine="false"
             android:summary="@string/default_summary_none"
-            android:title="@string/medications" />
+            android:title="@string/medications"
+            android:hint="@string/medications_hint"/>
 
         <EditTextPreference
             android:capitalize="sentences"
@@ -82,7 +86,8 @@
             android:selectAllOnFocus="true"
             android:singleLine="false"
             android:summary="@string/default_summary_none"
-            android:title="@string/medical_conditions" />
+            android:title="@string/medical_conditions"
+            android:hint="@string/medical_conditions_hint"/>
 
         <ListPreference
             android:defaultValue="@string/default_summary_none"

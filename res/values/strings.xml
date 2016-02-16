@@ -19,7 +19,9 @@
     <string name="medical_category">Health</string>
     <string name="medical_information_title">Medical information</string>
     <string name="name">Full name</string>
+    <string name="name_hint">For example, John Doe</string>
     <string name="address">Address</string>
+    <string name="address_hint">For example, 1600 Amphitheatre Pkwy, Mountain View, CA 94043</string>
     <string name="date_of_birth">Date of birth</string>
     <string name="blood_type">Blood type</string>
     <string-array name="blood_type_values">
@@ -35,10 +37,13 @@
     </string-array>
 
     <string name="allergies">Allergies</string>
+    <string name="allergies_hint">For example, peanuts, pollen</string>
     <string name="default_summary_none">None specified</string>
 
     <string name="medications">Medications</string>
+    <string name="medications_hint">For example, lisinopril, aspirin</string>
     <string name="medical_conditions">Medical conditions and notes</string>
+    <string name="medical_conditions_hint">For example, asthma</string>
     <string name="organ_donor">Organ donor</string>
     <string-array name="organ_donor_values">
         <item>Yes</item>
