@@ -31,7 +31,6 @@ import android.preference.PreferenceScreen;
 import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
-import android.util.ArraySet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +38,6 @@ import android.view.ViewGroup;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
-import java.util.Collections;
 import java.util.Set;
 
 /**
@@ -76,6 +74,9 @@ public class EmergencyInfoFragment extends PreferenceFragment
 
     /** SharedPreferences- initialized in onCreate */
     private SharedPreferences mSharedPreferences = null;
+
+    /** Emergency contact manager that handles adding an removing emergency contacts. */
+    private EmergencyContactManager mEmergencyContactManager;
 
     /** Reference to the preferenceScreen controlled by this fragment */
     private PreferenceScreen mPreferenceScreen;
@@ -121,6 +122,8 @@ public class EmergencyInfoFragment extends PreferenceFragment
 
         mReadOnly = getArguments().getBoolean(READ_ONLY_KEY);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        mEmergencyContactManager = new EmergencyContactManager(getContext(), mSharedPreferences,
+                EMERGENCY_CONTACTS_KEY);
         mPreferenceScreen = getPreferenceScreen();
 
         for (String preferenceKey : PREFERENCE_KEYS) {
@@ -144,11 +147,14 @@ public class EmergencyInfoFragment extends PreferenceFragment
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CONTACT_PICKER_RESULT && resultCode == Activity.RESULT_OK) {
-            // TODO: If there are no phone numbers, prevent the user from adding the contact.
-            // TODO: If there are multiple phone numbers, ask the user to pick one.
             Uri uri = data.getData();
-            addContact(uri.toString());
+            mEmergencyContactManager.addContact(uri);
+            MetricsLogger.action(getContext(), MetricsEvent.ACTION_ADD_EMERGENCY_CONTACT);
             populateEmergencyContacts();
+            // TODO: If there are multiple phone numbers, ask the user to pick one.
+            if (EmergencyContactManager.getNumber(getContext(), uri) == null) {
+                // TODO: show warning dialog: no phone number
+            }
         }
     }
 
@@ -165,8 +171,9 @@ public class EmergencyInfoFragment extends PreferenceFragment
     }
 
     @Override
-    public void onContactDelete(String contactUri) {
-        deleteContact(contactUri);
+    public void onContactDelete(Uri contactUri) {
+        mEmergencyContactManager.removeContact(contactUri);
+        MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETE_EMERGENCY_CONTACT);
         populateEmergencyContacts();
     }
 
@@ -214,8 +221,9 @@ public class EmergencyInfoFragment extends PreferenceFragment
     private void populateEmergencyContacts() {
         PreferenceCategory emergencyContactsCategory =
                 (PreferenceCategory) findPreference(EMERGENCY_CONTACTS_KEY);
+        // TODO: Use a list adapter instead of removing all each time.
         emergencyContactsCategory.removeAll();
-        Set<String> emergencyContacts = getEmergencyContacts();
+        Set<Uri> emergencyContacts = mEmergencyContactManager.getEmergencyContacts();
 
         if (!emergencyContacts.isEmpty()) {
             // Get permission if necessary, else populate emergency contacts list
@@ -225,12 +233,15 @@ public class EmergencyInfoFragment extends PreferenceFragment
                     Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED;
             if (!hasContactsPermission || !hasCallPermission) {
                 requestPermissions(new String[]{
-                                Manifest.permission.READ_CONTACTS,
-                                Manifest.permission.CALL_PHONE}, PERMISSION_REQUEST);
+                        Manifest.permission.READ_CONTACTS,
+                        Manifest.permission.CALL_PHONE}, PERMISSION_REQUEST);
             } else {
-                for (String contactUri : emergencyContacts) {
+                for (Uri contactUri : emergencyContacts) {
                     final ContactPreference contactPreference =
-                            new ContactPreference(getContext(), contactUri, this);
+                            new ContactPreference(getContext(),
+                                    contactUri,
+                                    EmergencyContactManager.getName(getContext(), contactUri),
+                                    this);
                     contactPreference.setOnPreferenceClickListener(
                             createContactPreferenceClickListener(contactPreference));
                     emergencyContactsCategory.addPreference(contactPreference);
@@ -241,36 +252,9 @@ public class EmergencyInfoFragment extends PreferenceFragment
         if (!mReadOnly) {
             // If in edit mode, add a button to create a new emergency contact.
             emergencyContactsCategory.addPreference(createAddEmergencyContactPreference());
-        } else if (emergencyContacts.isEmpty()) {
+        } else if (emergencyContactsCategory.getPreferenceCount() == 0) {
             // If in view mode and there are no contacts, remove the section entirely.
             mPreferenceScreen.removePreference(emergencyContactsCategory);
-        }
-    }
-
-    private void addContact(String contactUri) {
-        Set<String> oldContacts = getEmergencyContacts();
-        if (!oldContacts.contains(contactUri)) {
-            // Manipulate a copy of emergency contacts rather than editing directly- see
-            // getEmergencyContacts for why this is necessary.
-            ArraySet<String> newContacts = new ArraySet<String>(oldContacts.size() + 1);
-            newContacts.addAll(oldContacts);
-            newContacts.add(contactUri);
-            setEmergencyContacts(newContacts);
-            MetricsLogger.action(getContext(), MetricsEvent.ACTION_ADD_EMERGENCY_CONTACT);
-        }
-    }
-
-    private void deleteContact(String contactUri) {
-        Set<String> oldContacts = getEmergencyContacts();
-        if (oldContacts.contains(contactUri)) {
-            // Manipulate a copy of emergency contacts rather than editing directly- see
-            // getEmergencyContacts for why this is necessary.
-            ArraySet<String> newContacts = new ArraySet<String>(oldContacts.size());
-            newContacts.addAll(oldContacts);
-            newContacts.remove(contactUri);
-            setEmergencyContacts(newContacts);
-            MetricsLogger.action(getContext(),
-                    MetricsEvent.ACTION_DELETE_EMERGENCY_CONTACT);
         }
     }
 
@@ -306,22 +290,5 @@ public class EmergencyInfoFragment extends PreferenceFragment
             }
         });
         return addEmergencyContact;
-    }
-
-
-    /**
-     * Returns a Set of stored emergency contacts. If editing, make a copy of the set as
-     * described by {@link SharedPreferences#getStringSet(String, Set<String>)}, then call
-     * {@link #setEmergencyContacts(Set)} to store the new contact information.
-     */
-    private Set<String> getEmergencyContacts() {
-        Set<String> emergencyContacts = mSharedPreferences
-                .getStringSet(EMERGENCY_CONTACTS_KEY, Collections.<String>emptySet());
-        return emergencyContacts;
-    }
-
-    private void setEmergencyContacts(Set<String> emergencyContacts) {
-        mSharedPreferences.edit().putStringSet(EMERGENCY_CONTACTS_KEY, emergencyContacts)
-                .commit();
     }
 }

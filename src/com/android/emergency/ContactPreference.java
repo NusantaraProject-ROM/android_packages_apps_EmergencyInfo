@@ -17,18 +17,15 @@ package com.android.emergency;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.net.Uri;
 import android.preference.Preference;
-import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.view.View;
-import android.widget.Toast;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -41,6 +38,7 @@ public class ContactPreference extends Preference {
 
     private final Uri mUri;
     private final DeleteContactListener mDeleteContactListener;
+    private final String mName;
 
     /**
      * Listener for deleting a contact.
@@ -49,20 +47,23 @@ public class ContactPreference extends Preference {
         /**
          * Callback to delete a contact.
          */
-        void onContactDelete(String contactUri);
+        void onContactDelete(Uri contactUri);
     }
 
     /**
      * Instantiates a ContactPreference that displays an emergency contact, taking in a Context and
-     * the Uri of the contact as a String.
+     * the Uri, name and phone number of the contact and a listener to be informed when clicking on
+     * the delete icon.
      */
-    public ContactPreference(Context context, String uriString,
-                             DeleteContactListener deleteContactListener) {
+    public ContactPreference(Context context,
+                             @NonNull Uri contactUri,
+                             @NonNull String contactName,
+                             @NonNull DeleteContactListener deleteContactListener) {
         super(context);
-        mUri = Uri.parse(uriString);
+        mUri = contactUri;
+        mName = contactName;
         mDeleteContactListener = deleteContactListener;
-        String name = getName();
-        setTitle((name != null) ? name : getContext().getString(R.string.unknown_contact));
+        setTitle(mName);
         setWidgetLayoutResource(R.layout.preference_user_delete_widget);
     }
 
@@ -76,12 +77,12 @@ public class ContactPreference extends Preference {
                 public void onClick(View view) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setMessage(String.format(getContext()
-                            .getString(R.string.remove_contact), getName()));
+                            .getString(R.string.remove_contact), mName));
                     builder.setPositiveButton(getContext().getString(R.string.remove),
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int which) {
-                                    mDeleteContactListener.onContactDelete(mUri.toString());
+                                    mDeleteContactListener.onContactDelete(mUri);
                                 }
                             }).setNegativeButton(getContext().getString(R.string.cancel), null);
                     builder.create().show();
@@ -94,19 +95,16 @@ public class ContactPreference extends Preference {
      * Calls the contact.
      */
     public void callContact() {
-        Uri number = getNumber();
-        if (number == null) {
-            String errorMessage = getContext().getString(R.string.phone_number_error);
-            Toast errorToast = Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT);
-            // TODO: Get toast to display over lock screen
-            errorToast.show();
-        } else {
-            Intent callIntent = new Intent(Intent.ACTION_CALL, number);
+        String phoneNumber = EmergencyContactManager.getNumber(getContext(), mUri);
+        if (phoneNumber != null) {
             if (ActivityCompat.checkSelfPermission(getContext(),
                     Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+                Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
                 MetricsLogger.action(getContext(), MetricsEvent.ACTION_CALL_EMERGENCY_CONTACT);
                 getContext().startActivity(callIntent);
             }
+        } else {
+            // TODO: Show dialog saying that there is no number.
         }
     }
 
@@ -117,56 +115,5 @@ public class ContactPreference extends Preference {
         Intent contactIntent = new Intent(Intent.ACTION_VIEW);
         contactIntent.setData(mUri);
         getContext().startActivity(contactIntent);
-    }
-
-    /**
-     * Returns the URI for the contact.
-     */
-    public Uri getUri() {
-        return mUri;
-    }
-
-    private String getName() {
-        Cursor cursor = getContext().getContentResolver().query(getUri(), null, null, null, null);
-        try {
-            if (cursor != null && cursor.moveToFirst()) {
-                return cursor.getString(cursor.getColumnIndex(
-                        ContactsContract.Contacts.DISPLAY_NAME));
-            }
-        } finally {
-            cursor.close();
-        }
-        return null;
-    }
-
-    private Uri getNumber() {
-        // TODO: Investigate if this can be done in 1 query instead of 2.
-        ContentResolver contentResolver = getContext().getContentResolver();
-        Cursor contactCursor = contentResolver.query(getUri(), null, null, null, null);
-        try {
-            if (contactCursor != null && contactCursor.moveToFirst()) {
-                String id = contactCursor.getString(
-                        contactCursor.getColumnIndex(ContactsContract.Contacts._ID));
-                if (contactCursor.getInt(contactCursor.getColumnIndex(
-                        ContactsContract.Contacts.HAS_PHONE_NUMBER)) != 0) {
-                    Cursor phoneCursor = contentResolver.query(
-                            ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
-                            ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
-                            new String[]{id}, null);
-                    try {
-                        if (phoneCursor != null && phoneCursor.moveToFirst()) {
-                            return Uri.parse("tel:" + phoneCursor.getString(
-                                    phoneCursor.getColumnIndex(
-                                            ContactsContract.CommonDataKinds.Phone.NUMBER)));
-                        }
-                    } finally {
-                        phoneCursor.close();
-                    }
-                }
-            }
-        } finally {
-            contactCursor.close();
-        }
-        return null;
     }
 }

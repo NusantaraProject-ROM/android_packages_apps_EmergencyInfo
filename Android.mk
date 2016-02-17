@@ -24,27 +24,27 @@ endif
 LOCAL_MODULE_TAGS := eng
 LOCAL_JAVA_LIBRARIES := framework
 LOCAL_STATIC_JAVA_LIBRARIES := android-support-v14-preference \
-                               android-support-v13 \
-                               android-support-v7-appcompat \
-			       android-support-v7-preference \
-			       android-support-v7-recyclerview \
-			       android-support-v4 \
-			       android-support-design
+    android-support-v13 \
+    android-support-v7-appcompat \
+	android-support-v7-preference \
+	android-support-v7-recyclerview \
+	android-support-v4 \
+	android-support-design
 
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 LOCAL_RESOURCE_DIR += $(LOCAL_PATH)/res \
-		      $(support_library_root_dir)/v7/appcompat/res \
-		      $(support_library_root_dir)/v7/preference/res \
-		      $(support_library_root_dir)/v7/recyclerview/res \
-		      $(support_library_root_dir)/v14/preference/res \
-                      $(support_library_root_dir)/design/res
+	$(support_library_root_dir)/v7/appcompat/res \
+	$(support_library_root_dir)/v7/preference/res \
+	$(support_library_root_dir)/v7/recyclerview/res \
+	$(support_library_root_dir)/v14/preference/res \
+    $(support_library_root_dir)/design/res
 
 LOCAL_AAPT_FLAGS := --auto-add-overlay \
-                    --extra-packages android.support.v7.preference \
-		    --extra-packages android.support.v14.preference \
-		    --extra-packages android.support.v7.appcompat \
-		    --extra-packages android.support.v7.recyclerview \
-		    --extra-packages android.support.design
+    --extra-packages android.support.v7.preference \
+	--extra-packages android.support.v14.preference \
+	--extra-packages android.support.v7.appcompat \
+	--extra-packages android.support.v7.recyclerview \
+	--extra-packages android.support.design
 
 LOCAL_SDK_VERSION := current
 LOCAL_PACKAGE_NAME := EmergencyInfo
