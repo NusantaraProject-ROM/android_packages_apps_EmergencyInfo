@@ -19,10 +19,13 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.util.ArraySet;
 
+import java.io.ByteArrayInputStream;
 import java.util.Collections;
 import java.util.Set;
 
@@ -142,6 +145,29 @@ public class EmergencyContactManager {
         }
         return null;
     }
+
+    /** Returns the Bitmap corresponding to the contact's photo. */
+    public static Bitmap getContactPhoto(Context context, Uri contactUri) {
+        Uri photoUri = Uri.withAppendedPath(contactUri,
+                ContactsContract.Contacts.Photo.CONTENT_DIRECTORY);
+        Cursor cursor = context.getContentResolver().query(photoUri,
+                new String[]{ContactsContract.Contacts.Photo.PHOTO}, null, null, null);
+        if (cursor == null) {
+            return null;
+        }
+        try {
+            if (cursor.moveToFirst()) {
+                byte[] data = cursor.getBlob(0);
+                if (data != null) {
+                    return BitmapFactory.decodeStream(new ByteArrayInputStream(data));
+                }
+            }
+        } finally {
+            cursor.close();
+        }
+        return null;
+    }
+
 
     /** Returns whether the contact uri is not null and corresponds to an existing contact. */
     private boolean isValidEmergencyContact(Uri contactUri) {
