@@ -17,31 +17,35 @@
 
     <!-- NOTE: EditTextPreference accepts EditText attributes. -->
     <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
-    <EditTextPreference
-        android:inputType="textCapWords|textPersonName"
-        android:singleLine="true"
-        android:key="name"
-        android:selectAllOnFocus="true"
-        android:summary="@string/default_summary_none"
-        android:title="@string/name"
-        android:hint="@string/name_hint"/>
+    <PreferenceCategory
+        android:key="personal_information"
+        android:title="@string/personal_information_title">
+        <EditTextPreference
+            android:inputType="textCapWords|textPersonName"
+            android:key="name"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="@string/default_summary_none"
+            android:title="@string/name"
+            android:hint="@string/name_hint"/>
 
-    <EditTextPreference
-        android:inputType="textCapWords|textPostalAddress|textMultiLine"
-        android:singleLine="false"
-        android:key="address"
-        android:selectAllOnFocus="true"
-        android:summary="@string/default_summary_none"
-        android:title="@string/address"
-        android:hint="@string/address_hint"/>
+        <EditTextPreference
+            android:inputType="textCapWords|textPostalAddress|textMultiLine"
+            android:key="address"
+            android:selectAllOnFocus="true"
+            android:singleLine="false"
+            android:summary="@string/default_summary_none"
+            android:title="@string/address"
+            android:hint="@string/address_hint"/>
 
-    <com.android.emergency.DatePreference
-        android:key="date_of_birth"
-        android:selectAllOnFocus="true"
-        android:summary="@string/default_summary_none"
-        android:title="@string/date_of_birth"
-        android:persistent="true"
-        android:defaultValue=""/>
+        <com.android.emergency.DatePreference
+            android:defaultValue=""
+            android:key="date_of_birth"
+            android:persistent="true"
+            android:selectAllOnFocus="true"
+            android:summary="@string/default_summary_none"
+            android:title="@string/date_of_birth" />
+    </PreferenceCategory>
 
     <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
          dismiss it. -->
