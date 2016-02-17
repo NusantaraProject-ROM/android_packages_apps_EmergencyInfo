@@ -55,6 +55,7 @@
     <string name="emergency_contacts_title">Emergency contacts</string>
     <string name="add_emergency_contact">Add contact</string>
     <string name="remove_contact">Remove %s from emergency contacts?</string>
+    <string name="remove_contact_icon_text">Remove contact</string>
     <string name="remove">Remove</string>
     <string name="cancel">Cancel</string>
     <string name="unknown_contact">Unknown contact</string>
