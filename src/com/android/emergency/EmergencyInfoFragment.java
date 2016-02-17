@@ -241,7 +241,7 @@ public class EmergencyInfoFragment extends PreferenceFragment
                             new ContactPreference(getContext(),
                                     contactUri,
                                     EmergencyContactManager.getName(getContext(), contactUri),
-                                    this);
+                                    mReadOnly ? null : this);
                     contactPreference.setOnPreferenceClickListener(
                             createContactPreferenceClickListener(contactPreference));
                     emergencyContactsCategory.addPreference(contactPreference);

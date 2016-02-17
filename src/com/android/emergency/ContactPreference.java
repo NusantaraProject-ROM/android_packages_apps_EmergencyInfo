@@ -24,6 +24,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.preference.Preference;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.view.View;
 
@@ -58,7 +59,7 @@ public class ContactPreference extends Preference {
     public ContactPreference(Context context,
                              @NonNull Uri contactUri,
                              @NonNull String contactName,
-                             @NonNull DeleteContactListener deleteContactListener) {
+                             @Nullable DeleteContactListener deleteContactListener) {
         super(context);
         mUri = contactUri;
         mName = contactName;
@@ -71,23 +72,28 @@ public class ContactPreference extends Preference {
     protected void onBindView(View view) {
         super.onBindView(view);
         View deleteContactIcon = view.findViewById(R.id.delete_contact);
-        if (deleteContactIcon != null) {
-            deleteContactIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                    builder.setMessage(String.format(getContext()
-                            .getString(R.string.remove_contact), mName));
-                    builder.setPositiveButton(getContext().getString(R.string.remove),
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int which) {
-                                    mDeleteContactListener.onContactDelete(mUri);
-                                }
-                            }).setNegativeButton(getContext().getString(R.string.cancel), null);
-                    builder.create().show();
-                }
-            });
+        if (mDeleteContactListener == null) {
+            deleteContactIcon.setVisibility(View.GONE);
+        } else {
+            if (deleteContactIcon != null) {
+                deleteContactIcon.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        builder.setMessage(String.format(getContext()
+                                .getString(R.string.remove_contact), mName));
+                        builder.setPositiveButton(getContext().getString(R.string.remove),
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface,
+                                                        int which) {
+                                        mDeleteContactListener.onContactDelete(mUri);
+                                    }
+                                }).setNegativeButton(getContext().getString(R.string.cancel), null);
+                        builder.create().show();
+                    }
+                });
+            }
         }
     }
 
