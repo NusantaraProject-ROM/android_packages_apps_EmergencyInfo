@@ -15,31 +15,38 @@
  */
 package com.android.emergency;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.view.WindowManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
-import com.android.internal.logging.MetricsLogger;
-import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 /**
- * Activity for viewing emergency information.
+ * Extends the {@link EditInfoActivity} with an extra navigation button to go to the next screen in
+ * the setup wizard.
  */
-public class ViewInfoActivity extends AppCompatPreferenceActivity {
-
+public class SetupWizardEditInfoActivity extends EditInfoActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
-
         super.onCreate(savedInstanceState);
+    }
 
-        // Create the fragment with readOnly set to true
-        EmergencyInfoFragment emergencyInfoFragment = EmergencyInfoFragment
-                .createEmergencyInfoFragment(true);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
 
-        // Display the fragment as the main content.
-        getFragmentManager().beginTransaction().replace(android.R.id.content,
-                emergencyInfoFragment).commit();
-
-        MetricsLogger.visible(this, MetricsEvent.ACTION_VIEW_EMERGENCY_INFO);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_next:
+                setResult(Activity.RESULT_OK);
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

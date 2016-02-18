@@ -30,7 +30,6 @@ public class EditInfoActivity extends AppCompatPreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(FLAG_DISMISS_KEYGUARD);
-        setupActionBar();
 
         // Create the fragment with readOnly set to false
         EmergencyInfoFragment emergencyInfoFragment = EmergencyInfoFragment
