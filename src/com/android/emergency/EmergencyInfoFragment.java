@@ -18,16 +18,12 @@ package com.android.emergency;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
-import android.preference.PreferenceScreen;
 import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
@@ -38,6 +34,8 @@ import android.view.ViewGroup;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -62,24 +60,18 @@ public class EmergencyInfoFragment extends PreferenceFragment
     /** Key to look up whether or not the fragment should be read only from the bundle */
     private static final String READ_ONLY_KEY = "read_only";
 
-    /** Key for date of birth preference */
-    private static final String DATE_OF_BIRTH_KEY = "date_of_birth";
-
     /** Keys for all editable preferences- used to set up bindings */
-    private static final String[] PREFERENCE_KEYS = {"name", "address", DATE_OF_BIRTH_KEY,
+    private static final String[] PREFERENCE_KEYS = {"name", "address", "date_of_birth",
             "blood_type", "allergies", "medications", "medical_conditions", "organ_donor"};
 
     /** Whether or not this fragment should be read only */
     private boolean mReadOnly;
 
-    /** SharedPreferences- initialized in onCreate */
-    private SharedPreferences mSharedPreferences = null;
-
     /** Emergency contact manager that handles adding an removing emergency contacts. */
     private EmergencyContactManager mEmergencyContactManager;
 
-    /** Reference to the preferenceScreen controlled by this fragment */
-    private PreferenceScreen mPreferenceScreen;
+    /** A list with all the preferences that are always present (in view and edit mode). */
+    private final List<Preference> mPreferences = new ArrayList<Preference>();
 
     /**
      * Creates a new EmergencyInfoFragment that can be used to edit user info if {@code readOnly}
@@ -118,30 +110,46 @@ public class EmergencyInfoFragment extends PreferenceFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.emergency_info);
 
+        addPreferencesFromResource(R.xml.emergency_info);
         mReadOnly = getArguments().getBoolean(READ_ONLY_KEY);
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        mEmergencyContactManager = new EmergencyContactManager(getContext(), mSharedPreferences,
+        mEmergencyContactManager = new EmergencyContactManager(getContext(),
+                getPreferenceScreen().getSharedPreferences(),
                 EMERGENCY_CONTACTS_KEY);
-        mPreferenceScreen = getPreferenceScreen();
+        if (mReadOnly) {
+            Preference description = findPreference(DESCRIPTION_KEY);
+            getPreferenceScreen().removePreference(description);
+        }
 
         for (String preferenceKey : PREFERENCE_KEYS) {
             Preference preference = findPreference(preferenceKey);
-            if (!preferenceKey.equals(DATE_OF_BIRTH_KEY)) {
-                bindPreferenceSummaryToValue(preference);
-            }
+            mPreferences.add(preference);
+            preference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object value) {
+                    MetricsLogger.action(preference.getContext(),
+                            MetricsEvent.ACTION_EDIT_EMERGENCY_INFO_FIELD, preference.getKey());
+                    return true;
+                }
+            });
+
             if (mReadOnly) {
                 preference.setEnabled(false);
                 preference.setShouldDisableView(false);
                 preference.setSelectable(false);
             }
         }
-        populateEmergencyContacts();
-        if (mReadOnly) {
-            Preference description = findPreference(DESCRIPTION_KEY);
-            mPreferenceScreen.removePreference(description);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        for (Preference preference: mPreferences) {
+            if (preference instanceof ReloadablePreferenceInterface) {
+                ((ReloadablePreferenceInterface) preference).reloadFromPreference();
+            }
         }
+        populateEmergencyContacts();
     }
 
     @Override
@@ -165,7 +173,7 @@ public class EmergencyInfoFragment extends PreferenceFragment
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 populateEmergencyContacts();
             } else {
-                mPreferenceScreen.removePreference(findPreference(EMERGENCY_CONTACTS_KEY));
+                getPreferenceScreen().removePreference(findPreference(EMERGENCY_CONTACTS_KEY));
             }
         }
     }
@@ -175,47 +183,6 @@ public class EmergencyInfoFragment extends PreferenceFragment
         mEmergencyContactManager.removeContact(contactUri);
         MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETE_EMERGENCY_CONTACT);
         populateEmergencyContacts();
-    }
-
-    private static final Preference.OnPreferenceChangeListener
-            sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
-        @Override
-        public boolean onPreferenceChange(Preference preference, Object value) {
-            String stringValue = value.toString();
-            MetricsLogger.action(preference.getContext(),
-                    MetricsEvent.ACTION_EDIT_EMERGENCY_INFO_FIELD, preference.getKey());
-            if (preference instanceof ListPreference) {
-                ListPreference listPreference = (ListPreference) preference;
-                int index = listPreference.findIndexOfValue(stringValue);
-                if (index >= 0) {
-                    preference.setSummary(listPreference.getEntries()[index]);
-                }
-            } else {
-                if (!stringValue.isEmpty()) {
-                    preference.setSummary(stringValue);
-                } else {
-                    preference.setSummary(preference.getContext()
-                            .getResources().getString(R.string.default_summary_none));
-                }
-            }
-            return true;
-        }
-    };
-
-    /**
-     * Binds a preference's summary to its value. More specifically, when the
-     * preference's value is changed, its summary (line of text below the
-     * preference title) is updated to reflect the value. The summary is also
-     * immediately updated upon calling this method. The exact display format is
-     * dependent on the type of preference.
-     *
-     * @see #sBindPreferenceSummaryToValueListener
-     */
-    private void bindPreferenceSummaryToValue(Preference preference) {
-        preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
-
-        sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
-                mSharedPreferences.getString(preference.getKey(), ""));
     }
 
     private void populateEmergencyContacts() {
@@ -252,9 +219,6 @@ public class EmergencyInfoFragment extends PreferenceFragment
         if (!mReadOnly) {
             // If in edit mode, add a button to create a new emergency contact.
             emergencyContactsCategory.addPreference(createAddEmergencyContactPreference());
-        } else if (emergencyContactsCategory.getPreferenceCount() == 0) {
-            // If in view mode and there are no contacts, remove the section entirely.
-            mPreferenceScreen.removePreference(emergencyContactsCategory);
         }
     }
 
