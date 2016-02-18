@@ -130,18 +130,36 @@ public class ContactPreference extends Preference {
     /**
      * Calls the contact.
      */
-    public void callContact() {
-        String phoneNumber = EmergencyContactManager.getNumber(getContext(), mUri);
-        if (phoneNumber != null) {
-            if (ActivityCompat.checkSelfPermission(getContext(),
-                    Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-                Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
-                MetricsLogger.action(getContext(), MetricsEvent.ACTION_CALL_EMERGENCY_CONTACT);
-                getContext().startActivity(callIntent);
-            }
-        } else {
-            // TODO: Show dialog saying that there is no number.
+    public void callContact(String phoneNumber) {
+        if (ActivityCompat.checkSelfPermission(getContext(),
+                Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+            Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
+            MetricsLogger.action(getContext(), MetricsEvent.ACTION_CALL_EMERGENCY_CONTACT);
+            getContext().startActivity(callIntent);
         }
+    }
+
+    /**
+     * Displays a dialog with the contact's name and phone numbers.
+     */
+    public void showCallContactDialog() {
+        AlertDialog.Builder builderSingle = new AlertDialog.Builder(getContext());
+        builderSingle.setTitle(mName);
+        final String[] phoneNumbers = EmergencyContactManager.getPhoneNumbers(getContext(), mUri);
+        //TODO: Discuss with UX the possibility of using a custom list adapter for the phone numbers
+        if (phoneNumbers != null && phoneNumbers.length > 0) {
+            builderSingle.setItems(phoneNumbers, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    callContact(phoneNumbers[i]);
+                }
+            });
+        } else {
+            builderSingle.setMessage(getContext().getResources()
+                    .getString(R.string.phone_number_error));
+            builderSingle.setPositiveButton(getContext().getString(R.string.ok), null);
+        }
+        builderSingle.show();
     }
 
     /**

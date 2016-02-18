@@ -97,7 +97,9 @@ public class EmergencyContactManager {
                         ContactsContract.Contacts.DISPLAY_NAME));
             }
         } finally {
-            cursor.close();
+            if (cursor != null) {
+                cursor.close();
+            }
         }
         return null;
     }
@@ -109,39 +111,60 @@ public class EmergencyContactManager {
                 return true;
             }
         } finally {
-            cursor.close();
+            if (cursor != null) {
+                cursor.close();
+            }
         }
         return false;
     }
 
+
     /** Returns the phone number of the contact. */
-    public static String getNumber(Context context, Uri contactUri) {
-        // TODO: Investigate if this can be done in 1 query instead of 2.
+    public static String[] getPhoneNumbers(Context context, Uri contactUri) {
+        // TODO: Investigate passing around CONTENT_LOOKUP_URI instead of content CONTENT_URI.
+        // The method to get the CONTENT_LOOKUP_URI when the user selects a contact is:
+        // ContactsContract.Contacts.getLookupUri(ContentResolver resolver, Uri contactUri)
+        // Then use ContactsContract.Contacts.lookupContact(ContentResolver resolver, Uri lookupUri)
+        // to get the CONTENT_URI
         ContentResolver contentResolver = context.getContentResolver();
         Cursor contactCursor = contentResolver.query(contactUri, null, null, null, null);
         try {
             if (contactCursor != null && contactCursor.moveToFirst()) {
-                String id = contactCursor.getString(
-                        contactCursor.getColumnIndex(ContactsContract.Contacts._ID));
                 if (contactCursor.getInt(contactCursor.getColumnIndex(
                         ContactsContract.Contacts.HAS_PHONE_NUMBER)) != 0) {
+                    String id = contactCursor.getString(
+                            contactCursor.getColumnIndex(ContactsContract.Contacts._ID));
                     Cursor phoneCursor = contentResolver.query(
-                            ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
-                            ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
-                            new String[]{id}, null);
+                            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                            null,
+                            ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id,
+                            null,
+                            null);
                     try {
                         if (phoneCursor != null && phoneCursor.moveToFirst()) {
-                            return phoneCursor.getString(
-                                    phoneCursor.getColumnIndex(
-                                            ContactsContract.CommonDataKinds.Phone.NUMBER));
+                            String[] phoneNumbers =
+                                    new String[phoneCursor.getCount()];
+                            for (int i = 0; i < phoneCursor.getCount(); i++) {
+                                String phoneNumber =
+                                        phoneCursor.getString(phoneCursor.getColumnIndex(
+                                                ContactsContract.CommonDataKinds.Phone.NUMBER));
+
+                                phoneNumbers[i] = phoneNumber;
+                                phoneCursor.moveToNext();
+                            }
+                            return phoneNumbers;
                         }
                     } finally {
-                        phoneCursor.close();
+                        if (phoneCursor != null) {
+                            phoneCursor.close();
+                        }
                     }
                 }
             }
         } finally {
-            contactCursor.close();
+            if (contactCursor != null) {
+                contactCursor.close();
+            }
         }
         return null;
     }

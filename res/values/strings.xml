@@ -58,6 +58,7 @@
     <string name="remove_contact_icon_text">Remove contact</string>
     <string name="remove">Remove</string>
     <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
 
     <string name="description">This information can help first responders in an emergency. It is
         stored on your device only, but anyone can read it from the emergency dialer without 

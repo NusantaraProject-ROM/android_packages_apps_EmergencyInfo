@@ -151,8 +151,7 @@ public class EmergencyInfoFragment extends PreferenceFragment
             mEmergencyContactManager.addContact(uri);
             MetricsLogger.action(getContext(), MetricsEvent.ACTION_ADD_EMERGENCY_CONTACT);
             populateEmergencyContacts();
-            // TODO: If there are multiple phone numbers, ask the user to pick one.
-            if (EmergencyContactManager.getNumber(getContext(), uri) == null) {
+            if (EmergencyContactManager.getPhoneNumbers(getContext(), uri) == null) {
                 // TODO: show warning dialog: no phone number
             }
         }
@@ -263,8 +262,8 @@ public class EmergencyInfoFragment extends PreferenceFragment
         return new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                if (mReadOnly) {
-                    contactPreference.callContact();
+                if(mReadOnly) {
+                    contactPreference.showCallContactDialog();
                 } else {
                     contactPreference.displayContact();
                 }
