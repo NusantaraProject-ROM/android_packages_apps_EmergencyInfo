@@ -14,8 +14,7 @@
      limitations under the License.
 -->
 <resources>
-    <string name="app_name">Emergency Info</string>
-
+    <string name="app_label">Emergency Info</string>
     <string name="personal_information_title">Personal</string>
     <string name="medical_information_title">Medical</string>
     <string name="name">Full name</string>

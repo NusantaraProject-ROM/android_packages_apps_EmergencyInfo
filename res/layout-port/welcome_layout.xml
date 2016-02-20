@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.android.emergency.WelcomeActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="4"
+        android:orientation="vertical">
+
+        <!--TODO change this image with the image provided by UX -->
+        <ImageView
+            android:id="@+id/welcome_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/in_case_of_emergency"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="30dp"
+            android:layout_marginBottom="31dp"
+            android:background="#000000"
+            android:minHeight="20dp"
+            android:src="@drawable/ic_menu_add_dark" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="7"
+        android:orientation="vertical"
+        android:clickable="false">
+
+        <TextView
+            android:id="@+id/in_case_of_emergency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="174dp"
+            android:text="@string/in_case_of_emergency"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="28dp" />
+
+        <TextView
+            android:id="@+id/provide_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/in_case_of_emergency"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="56dp"
+            android:gravity="center_horizontal"
+            android:text="@string/provide_info"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp" />
+
+        <Button
+            android:id="@+id/get_started_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/provide_info"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="34dp"
+            android:background="#888888"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:text="@string/get_started"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</LinearLayout>
