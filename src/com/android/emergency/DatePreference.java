@@ -19,9 +19,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.DatePicker;
 
 import com.android.internal.logging.MetricsLogger;
@@ -33,7 +31,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /** A base class for {@link Preference} to select a date upon it being clicked. */
-public class DatePreference extends Preference implements DatePickerDialog.OnDateSetListener{
+public class DatePreference extends Preference implements DatePickerDialog.OnDateSetListener,
+        ReloadablePreferenceInterface {
     private static final String SEPARATOR = "/";
     private static final int YEAR_INDEX = 0;
     private static final int MONTH_INDEX = 1;
@@ -57,7 +56,7 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH));
-        setOnPreferenceClickListener( new OnPreferenceClickListener() {
+        setOnPreferenceClickListener(new OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 showDatePickerDialog();
@@ -73,20 +72,14 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
         mDatePickerDialog.show();
     }
 
-
     @Override
     protected void onSetInitialValue(boolean restorePersistedValue, Object defaultValue) {
-        String date;
-        if (restorePersistedValue) {
-            date = getPersistedString("");
-        } else {
-            date = (String) defaultValue;
-        }
-        if (date != null && !date.isEmpty()) {
-            int[] yearMonthDay = deserialize(date, new int[3]);
-            setDate(yearMonthDay[YEAR_INDEX], yearMonthDay[MONTH_INDEX],
-                    yearMonthDay[DAY_INDEX]);
-        }
+        setDate(restorePersistedValue ? getPersistedString("") : (String) defaultValue);
+    }
+
+    @Override
+    public void reloadFromPreference() {
+        setDate(getPersistedString(""));
     }
 
     @Override
@@ -111,6 +104,16 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
         }
     }
 
+    private void setDate(String date) {
+        if (date != null && !date.isEmpty()) {
+            int[] yearMonthDay = deserialize(date, new int[3]);
+            setDate(yearMonthDay[YEAR_INDEX], yearMonthDay[MONTH_INDEX],
+                    yearMonthDay[DAY_INDEX]);
+        } else {
+            mDateExists = false;
+        }
+    }
+
     private void setDate(int year, int month, int day) {
         if (!mDateExists || year != mYear || month != mMonth || day != mDay) {
             mYear = year;
@@ -120,8 +123,6 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
             String date = serialize(year, month, day);
             persistString(date);
             notifyChanged();
-            MetricsLogger.action(getContext(),
-                    MetricsEvent.ACTION_EDIT_EMERGENCY_INFO_FIELD, getKey());
         }
     }
 

@@ -20,7 +20,7 @@
     <PreferenceCategory
         android:key="personal_information"
         android:title="@string/personal_information_title">
-        <EditTextPreference
+        <com.android.emergency.EmergencyEditTextPreference
             android:inputType="textCapWords|textPersonName"
             android:key="name"
             android:selectAllOnFocus="true"
@@ -29,7 +29,7 @@
             android:title="@string/name"
             android:hint="@string/name_hint"/>
 
-        <EditTextPreference
+        <com.android.emergency.EmergencyEditTextPreference
             android:inputType="textCapWords|textPostalAddress|textMultiLine"
             android:key="address"
             android:selectAllOnFocus="true"
@@ -53,7 +53,7 @@
         android:key="medical_information"
         android:title="@string/medical_information_title">
         <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
-        <ListPreference
+        <com.android.emergency.EmergencyListPreference
             android:defaultValue="@string/default_summary_none"
             android:entries="@array/blood_type_values"
             android:entryValues="@array/blood_type_values"
@@ -63,7 +63,7 @@
             android:summary="@string/default_summary_none"
             android:title="@string/blood_type" />
 
-        <EditTextPreference
+        <com.android.emergency.EmergencyEditTextPreference
             android:capitalize="sentences"
             android:inputType="textMultiLine"
             android:key="allergies"
@@ -73,7 +73,7 @@
             android:title="@string/allergies"
             android:hint="@string/allergies_hint"/>
 
-        <EditTextPreference
+        <com.android.emergency.EmergencyEditTextPreference
             android:capitalize="sentences"
             android:inputType="textMultiLine"
             android:key="medications"
@@ -83,7 +83,7 @@
             android:title="@string/medications"
             android:hint="@string/medications_hint"/>
 
-        <EditTextPreference
+        <com.android.emergency.EmergencyEditTextPreference
             android:capitalize="sentences"
             android:inputType="textMultiLine"
             android:key="medical_conditions"
@@ -93,7 +93,7 @@
             android:title="@string/medical_conditions"
             android:hint="@string/medical_conditions_hint"/>
 
-        <ListPreference
+        <com.android.emergency.EmergencyListPreference
             android:defaultValue="@string/default_summary_none"
             android:entries="@array/organ_donor_values"
             android:entryValues="@array/organ_donor_values"
@@ -109,7 +109,7 @@
         android:title="@string/emergency_contacts_title">
     </PreferenceCategory>
 
-    <EditTextPreference
+    <com.android.emergency.EmergencyEditTextPreference
         android:selectable="false"
         android:clickable="false"
         android:enabled="false"
