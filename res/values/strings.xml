@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 <resources>
-    <string name="app_name">Emergency Information</string>
+    <string name="app_name">Emergency Info</string>
 
     <string name="personal_information_title">Personal</string>
     <string name="medical_information_title">Medical</string>
@@ -65,5 +65,10 @@
     </string>
     <string name="phone_number_error">No phone number available for this contact</string>
     <string name="edit_emergency_info">Edit emergency information</string>
-
+    <string name="next">Next</string>
+    <string name="emergency_info_title">In case of emergency</string>
+    <string name="emergency_info_summary">Provide medical information and emergency contacts for first responders</string>
+    <string name="in_case_of_emergency">In case of emergency</string>
+    <string name="get_started">Get started</string>
+    <string name="provide_info">Provide medical information and emergency contacts for first responders</string>
 </resources>
