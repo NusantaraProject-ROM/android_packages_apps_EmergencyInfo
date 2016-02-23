@@ -25,11 +25,7 @@ import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.provider.ContactsContract;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -83,28 +79,6 @@ public class EmergencyInfoFragment extends PreferenceFragment
         EmergencyInfoFragment emergencyInfoFragment = new EmergencyInfoFragment();
         emergencyInfoFragment.setArguments(emergencyInfoArgs);
         return emergencyInfoFragment;
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.emergency_info_layout, container, false);
-        FloatingActionButton editInfoButton =
-                (FloatingActionButton) view.findViewById(R.id.fab);
-        // The button is the entry point from ViewInfoActivity to EditInfoActivity.
-        if (!mReadOnly) {
-            editInfoButton.setVisibility(View.GONE);
-        } else {
-            editInfoButton.setVisibility(View.VISIBLE);
-            editInfoButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getActivity(), EditInfoActivity.class);
-                    startActivity(intent);
-                }
-            });
-        }
-        return view;
     }
 
     @Override
