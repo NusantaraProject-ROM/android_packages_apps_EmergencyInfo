@@ -41,7 +41,6 @@
         <com.android.emergency.DatePreference
             android:defaultValue=""
             android:key="date_of_birth"
-            android:persistent="true"
             android:selectAllOnFocus="true"
             android:summary="@string/default_summary_none"
             android:title="@string/date_of_birth" />
@@ -104,17 +103,21 @@
             android:title="@string/organ_donor" />
     </PreferenceCategory>
 
-    <PreferenceCategory
+    <com.android.emergency.EmergencyContactsPreference
         android:key="emergency_contacts"
-        android:title="@string/emergency_contacts_title">
-    </PreferenceCategory>
+        android:title="@string/emergency_contacts_title"/>
+    <Preference
+        android:icon="@drawable/ic_menu_add_dark"
+        android:key="add_contact"
+        android:persistent="false"
+        android:title="@string/add_emergency_contact" />
 
-    <com.android.emergency.EmergencyEditTextPreference
+    <Preference
         android:selectable="false"
         android:clickable="false"
         android:enabled="false"
         android:shouldDisableView="false"
         android:key="description"
+        android:persistent="false"
         android:summary="@string/description" />
-
 </PreferenceScreen>

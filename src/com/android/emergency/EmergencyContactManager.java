@@ -17,76 +17,18 @@ package com.android.emergency;
 
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.ContactsContract;
-import android.util.ArraySet;
 
 import java.io.ByteArrayInputStream;
-import java.util.Collections;
-import java.util.Set;
 
 /**
- * Manages emergency contacts of the user.
+ * Provides methods to read name, phone number, photo, etc. from contacts.
  */
 public class EmergencyContactManager {
-    private final SharedPreferences mSharedPreferences;
-    private final String mKey;
-    private final Context mContext;
-
-    /**
-     * Creates a new instance initialized with context and the shared preferences used to store the
-     * emergency contacts under the specified key.
-     */
-    public EmergencyContactManager(Context context, SharedPreferences sharedPreferences,
-                                   String key) {
-        mContext = context;
-        mSharedPreferences = sharedPreferences;
-        mKey = key;
-    }
-
-    /**
-     * Adds a new contact to the emergency contacts. */
-    public void addContact(Uri contactUri) {
-        // TODO: Consider refactoring this to use always setContacts() rather than
-        // addContact()/removeContact()
-        Set<Uri> emergencyContacts = getEmergencyContacts();
-        if (emergencyContacts.add(contactUri)) {
-            setEmergencyContacts(emergencyContacts);
-        }
-    }
-
-    /** Removes the specified contact from the list of emergency contacts. */
-    public void removeContact(Uri contactUri) {
-        // TODO: Consider refactoring this to use always setContacts() rather than
-        // addContact()/removeContact()
-        Set<Uri> emergencyContacts = getEmergencyContacts();
-        if (emergencyContacts.remove(contactUri)) {
-            setEmergencyContacts(emergencyContacts);
-        }
-    }
-
-    public Set<Uri> getEmergencyContacts() {
-        Set<String> emergencyContactStrings = mSharedPreferences.getStringSet(mKey,
-                Collections.<String>emptySet());
-        Set<Uri> emergencyContacts = new ArraySet<Uri>(emergencyContactStrings.size());
-        for (String emergencyContact : emergencyContactStrings) {
-            Uri contactUri = Uri.parse(emergencyContact);
-            if (isValidEmergencyContact(contactUri)) {
-                emergencyContacts.add(contactUri);
-            }
-        }
-        // If not all contacts were added, then we need to overwrite the emergency contacts stored
-        // in shared preferences. This deals with emergency contacts being deleted from contacts:
-        // currently we have no way to being notified when this happens.
-        if (emergencyContacts.size() != emergencyContactStrings.size()) {
-            setEmergencyContacts(emergencyContacts);
-        }
-        return emergencyContacts;
-    }
 
     /** Returns the display name of the contact. */
     public static String getName(Context context, Uri contactUri) {
@@ -193,15 +135,7 @@ public class EmergencyContactManager {
 
 
     /** Returns whether the contact uri is not null and corresponds to an existing contact. */
-    private boolean isValidEmergencyContact(Uri contactUri) {
-        return contactUri != null && contactExists(mContext, contactUri);
-    }
-
-    private void setEmergencyContacts(Set<Uri> emergencyContacts) {
-        Set<String> emergencyContactStrings = new ArraySet<String>(emergencyContacts.size());
-        for (Uri contactUri : emergencyContacts) {
-            emergencyContactStrings.add(contactUri.toString());
-        }
-        mSharedPreferences.edit().putStringSet(mKey, emergencyContactStrings).commit();
+    public static boolean isValidEmergencyContact(Context context, Uri contactUri) {
+        return contactUri != null && contactExists(context, contactUri);
     }
 }

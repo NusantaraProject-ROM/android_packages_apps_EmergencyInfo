@@ -15,14 +15,12 @@
  */
 package com.android.emergency;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.provider.ContactsContract;
 import android.support.v4.content.ContextCompat;
@@ -32,14 +30,12 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Fragment that displays health information and emergency contacts.
  * Takes in boolean readOnly to determine whether or not to allow information to be edited.
  */
-public class EmergencyInfoFragment extends PreferenceFragment
-        implements ContactPreference.DeleteContactListener {
+public class EmergencyInfoFragment extends PreferenceFragment {
 
     /** Result code for contact picker */
     private static final int CONTACT_PICKER_RESULT = 1001;
@@ -48,13 +44,16 @@ public class EmergencyInfoFragment extends PreferenceFragment
     private static final int PERMISSION_REQUEST = 1002;
 
     /** Key for description preference */
-    private static final String DESCRIPTION_KEY = "description";
+    private static final String KEY_DESCRIPTION = "description";
 
     /** Key for emergency contacts preference */
-    private static final String EMERGENCY_CONTACTS_KEY = "emergency_contacts";
+    private static final String KEY_EMERGENCY_CONTACTS = "emergency_contacts";
+
+    /** Key for the add contact preference */
+    private static final String KEY_ADD_CONTACT = "add_contact";
 
     /** Key to look up whether or not the fragment should be read only from the bundle */
-    private static final String READ_ONLY_KEY = "read_only";
+    private static final String KEY_READ_ONLY = "read_only";
 
     /** Keys for all editable preferences- used to set up bindings */
     private static final String[] PREFERENCE_KEYS = {"name", "address", "date_of_birth",
@@ -63,11 +62,11 @@ public class EmergencyInfoFragment extends PreferenceFragment
     /** Whether or not this fragment should be read only */
     private boolean mReadOnly;
 
-    /** Emergency contact manager that handles adding an removing emergency contacts. */
-    private EmergencyContactManager mEmergencyContactManager;
-
     /** A list with all the preferences that are always present (in view and edit mode). */
     private final List<Preference> mPreferences = new ArrayList<Preference>();
+
+    /** The category that holds the emergency contacts. */
+    private EmergencyContactsPreference mEmergencyContactsPreferenceCategory;
 
     /**
      * Creates a new EmergencyInfoFragment that can be used to edit user info if {@code readOnly}
@@ -75,7 +74,7 @@ public class EmergencyInfoFragment extends PreferenceFragment
      */
     public static EmergencyInfoFragment createEmergencyInfoFragment(boolean readOnly) {
         Bundle emergencyInfoArgs = new Bundle();
-        emergencyInfoArgs.putBoolean(READ_ONLY_KEY, readOnly);
+        emergencyInfoArgs.putBoolean(KEY_READ_ONLY, readOnly);
         EmergencyInfoFragment emergencyInfoFragment = new EmergencyInfoFragment();
         emergencyInfoFragment.setArguments(emergencyInfoArgs);
         return emergencyInfoFragment;
@@ -86,14 +85,17 @@ public class EmergencyInfoFragment extends PreferenceFragment
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.emergency_info);
-        mReadOnly = getArguments().getBoolean(READ_ONLY_KEY);
-        mEmergencyContactManager = new EmergencyContactManager(getContext(),
-                getPreferenceScreen().getSharedPreferences(),
-                EMERGENCY_CONTACTS_KEY);
+        mReadOnly = getArguments().getBoolean(KEY_READ_ONLY);
         if (mReadOnly) {
-            Preference description = findPreference(DESCRIPTION_KEY);
+            Preference description = findPreference(KEY_DESCRIPTION);
             getPreferenceScreen().removePreference(description);
         }
+
+        mEmergencyContactsPreferenceCategory = (EmergencyContactsPreference)
+                findPreference(KEY_EMERGENCY_CONTACTS);
+        mEmergencyContactsPreferenceCategory.setReadOnly(mReadOnly);
+
+        checkAndMaybeRequestPermissions();
 
         for (String preferenceKey : PREFERENCE_KEYS) {
             Preference preference = findPreference(preferenceKey);
@@ -113,29 +115,40 @@ public class EmergencyInfoFragment extends PreferenceFragment
                 preference.setSelectable(false);
             }
         }
+
+        Preference addEmergencyContact = findPreference(KEY_ADD_CONTACT);
+        if (mReadOnly) {
+            getPreferenceScreen().removePreference(addEmergencyContact);
+        } else {
+            addEmergencyContact.setOnPreferenceClickListener(new Preference
+                    .OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Intent contactPickerIntent = new Intent(Intent.ACTION_PICK,
+                            ContactsContract.Contacts.CONTENT_URI);
+                    startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
+                    return true;
+                }
+            });
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        for (Preference preference: mPreferences) {
+        for (Preference preference : mPreferences) {
             if (preference instanceof ReloadablePreferenceInterface) {
                 ((ReloadablePreferenceInterface) preference).reloadFromPreference();
             }
         }
-        populateEmergencyContacts();
+        mEmergencyContactsPreferenceCategory.reloadFromPreference();
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CONTACT_PICKER_RESULT && resultCode == Activity.RESULT_OK) {
             Uri uri = data.getData();
-            mEmergencyContactManager.addContact(uri);
-            MetricsLogger.action(getContext(), MetricsEvent.ACTION_ADD_EMERGENCY_CONTACT);
-            populateEmergencyContacts();
-            if (EmergencyContactManager.getPhoneNumbers(getContext(), uri) == null) {
-                // TODO: show warning dialog: no phone number
-            }
+            mEmergencyContactsPreferenceCategory.addNewEmergencyContact(uri);
         }
     }
 
@@ -143,89 +156,24 @@ public class EmergencyInfoFragment extends PreferenceFragment
     public void onRequestPermissionsResult(int requestCode, String permissions[],
                                            int[] grantResults) {
         if (requestCode == PERMISSION_REQUEST) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateEmergencyContacts();
-            } else {
-                getPreferenceScreen().removePreference(findPreference(EMERGENCY_CONTACTS_KEY));
+            if (grantResults.length == 0 || grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                // TODO: Remove this when b/27142320 is addressed.
+                getPreferenceScreen()
+                        .removePreference(mEmergencyContactsPreferenceCategory);
             }
         }
     }
 
-    @Override
-    public void onContactDelete(Uri contactUri) {
-        mEmergencyContactManager.removeContact(contactUri);
-        MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETE_EMERGENCY_CONTACT);
-        populateEmergencyContacts();
-    }
-
-    private void populateEmergencyContacts() {
-        PreferenceCategory emergencyContactsCategory =
-                (PreferenceCategory) findPreference(EMERGENCY_CONTACTS_KEY);
-        // TODO: Use a list adapter instead of removing all each time.
-        emergencyContactsCategory.removeAll();
-        Set<Uri> emergencyContacts = mEmergencyContactManager.getEmergencyContacts();
-
-        if (!emergencyContacts.isEmpty()) {
-            // Get permission if necessary, else populate emergency contacts list
-            boolean hasContactsPermission = ContextCompat.checkSelfPermission(getActivity(),
-                    Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED;
-            boolean hasCallPermission = ContextCompat.checkSelfPermission(getActivity(),
-                    Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED;
-            if (!hasContactsPermission || !hasCallPermission) {
-                requestPermissions(new String[]{
-                        Manifest.permission.READ_CONTACTS,
-                        Manifest.permission.CALL_PHONE}, PERMISSION_REQUEST);
-            } else {
-                for (Uri contactUri : emergencyContacts) {
-                    final ContactPreference contactPreference =
-                            new ContactPreference(getContext(),
-                                    contactUri,
-                                    EmergencyContactManager.getName(getContext(), contactUri),
-                                    mReadOnly ? null : this);
-                    contactPreference.setOnPreferenceClickListener(
-                            createContactPreferenceClickListener(contactPreference));
-                    emergencyContactsCategory.addPreference(contactPreference);
-                }
-            }
+    private void checkAndMaybeRequestPermissions() {
+        // TODO: Remove this when b/27142320 is addressed.
+        boolean hasContactsPermission = ContextCompat.checkSelfPermission(getActivity(),
+                android.Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED;
+        boolean hasCallPermission = ContextCompat.checkSelfPermission(getActivity(),
+                android.Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED;
+        if (!hasContactsPermission || !hasCallPermission) {
+            requestPermissions(new String[]{
+                    android.Manifest.permission.READ_CONTACTS,
+                    android.Manifest.permission.CALL_PHONE}, PERMISSION_REQUEST);
         }
-
-        if (!mReadOnly) {
-            // If in edit mode, add a button to create a new emergency contact.
-            emergencyContactsCategory.addPreference(createAddEmergencyContactPreference());
-        }
-    }
-
-    private Preference.OnPreferenceClickListener createContactPreferenceClickListener(
-            final ContactPreference contactPreference) {
-        return new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                if(mReadOnly) {
-                    contactPreference.showCallContactDialog();
-                } else {
-                    contactPreference.displayContact();
-                }
-                return true;
-            }
-        };
-    }
-
-
-    /** Generates an add contact button */
-    private Preference createAddEmergencyContactPreference() {
-        Preference addEmergencyContact = new Preference(getContext());
-        addEmergencyContact.setTitle(getString(R.string.add_emergency_contact));
-        addEmergencyContact.setIcon(getResources().getDrawable(R.drawable.ic_menu_add_dark));
-        addEmergencyContact.setOnPreferenceClickListener(new Preference
-                .OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                Intent contactPickerIntent = new Intent(Intent.ACTION_PICK,
-                        ContactsContract.Contacts.CONTENT_URI);
-                startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
-                return true;
-            }
-        });
-        return addEmergencyContact;
     }
 }

@@ -42,17 +42,17 @@ import com.android.settingslib.drawable.CircleFramedDrawable;
 public class ContactPreference extends Preference {
 
     private final Uri mUri;
-    private final DeleteContactListener mDeleteContactListener;
     private final String mName;
+    @Nullable private RemoveContactPreferenceListener mRemoveContactPreferenceListener;
 
     /**
-     * Listener for deleting a contact.
+     * Listener for removing a contact.
      */
-    public interface DeleteContactListener {
+    public interface RemoveContactPreferenceListener {
         /**
-         * Callback to delete a contact.
+         * Callback to remove a contact preference.
          */
-        void onContactDelete(Uri contactUri);
+        void onRemoveContactPreference(ContactPreference preference);
     }
 
     /**
@@ -62,14 +62,14 @@ public class ContactPreference extends Preference {
      */
     public ContactPreference(Context context,
                              @NonNull Uri contactUri,
-                             @NonNull String contactName,
-                             @Nullable DeleteContactListener deleteContactListener) {
+                             @NonNull String contactName) {
         super(context);
+        setOrder(DEFAULT_ORDER);
         mUri = contactUri;
         mName = contactName;
-        mDeleteContactListener = deleteContactListener;
         setTitle(mName);
         setWidgetLayoutResource(R.layout.preference_user_delete_widget);
+        setPersistent(false);
 
         //TODO: Consider doing the following in a non-UI thread.
         Bitmap photo = EmergencyContactManager.getContactPhoto(context, mUri);
@@ -80,6 +80,12 @@ public class ContactPreference extends Preference {
         Drawable icon = new CircleFramedDrawable(photo,
                 (int) context.getResources().getDimension(R.dimen.circle_avatar_size));
         setIcon(icon);
+    }
+
+    /** Listener to be informed when a contact preference should be deleted. */
+    public void setRemoveContactPreferenceListener(
+            RemoveContactPreferenceListener removeContactListener) {
+        mRemoveContactPreferenceListener = removeContactListener;
     }
 
     /**
@@ -102,29 +108,35 @@ public class ContactPreference extends Preference {
     protected void onBindView(View view) {
         super.onBindView(view);
         View deleteContactIcon = view.findViewById(R.id.delete_contact);
-        if (mDeleteContactListener == null) {
+        if (mRemoveContactPreferenceListener == null) {
             deleteContactIcon.setVisibility(View.GONE);
         } else {
-            if (deleteContactIcon != null) {
-                deleteContactIcon.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setMessage(String.format(getContext()
-                                .getString(R.string.remove_contact), mName));
-                        builder.setPositiveButton(getContext().getString(R.string.remove),
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface,
-                                                        int which) {
-                                        mDeleteContactListener.onContactDelete(mUri);
+            deleteContactIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setMessage(String.format(getContext()
+                            .getString(R.string.remove_contact), mName));
+                    builder.setPositiveButton(getContext().getString(R.string.remove),
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface,
+                                                    int which) {
+                                    if (mRemoveContactPreferenceListener != null) {
+                                        mRemoveContactPreferenceListener
+                                                .onRemoveContactPreference(ContactPreference.this);
                                     }
-                                }).setNegativeButton(getContext().getString(R.string.cancel), null);
-                        builder.create().show();
-                    }
-                });
-            }
+                                }
+                            }).setNegativeButton(getContext().getString(R.string.cancel), null);
+                    builder.create().show();
+                }
+            });
+
         }
+    }
+
+    public Uri getContactUri() {
+        return mUri;
     }
 
     /**
