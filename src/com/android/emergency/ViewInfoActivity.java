@@ -15,7 +15,15 @@
  */
 package com.android.emergency;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.android.internal.logging.MetricsLogger;
@@ -41,5 +49,23 @@ public class ViewInfoActivity extends AppCompatPreferenceActivity {
                 emergencyInfoFragment).commit();
 
         MetricsLogger.visible(this, MetricsEvent.ACTION_VIEW_EMERGENCY_INFO);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_edit, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_edit:
+                Intent intent = new Intent(this, EditInfoActivity.class);
+                startActivity(intent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
