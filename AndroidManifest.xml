@@ -21,7 +21,8 @@
 
     <application
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:supportsRtl="true">
         <activity
             android:name=".ViewInfoActivity"
             android:showOnLockScreen="true">
