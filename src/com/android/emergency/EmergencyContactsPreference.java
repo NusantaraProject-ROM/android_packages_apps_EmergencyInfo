@@ -90,36 +90,6 @@ public class EmergencyContactsPreference extends PreferenceCategory
         }
     }
 
-    /**
-     * Exposed here because the Preference class hides this method, pending API approval b/27324328.
-     */
-    protected boolean persistStringSet(Set<String> values) {
-        if (shouldPersist()) {
-            // Shouldn't store null
-            if (values.equals(getPersistedStringSet(null))) {
-                // It's already there, so the same as persisting
-                return true;
-            }
-
-            SharedPreferences.Editor editor = getEditor();
-            editor.putStringSet(getKey(), values);
-            editor.commit();
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Exposed here because the Preference class hides this method, pending API approval b/27324328.
-     */
-    protected Set<String> getPersistedStringSet(Set<String> defaultReturnValue) {
-        if (!shouldPersist()) {
-            return defaultReturnValue;
-        }
-
-        return getSharedPreferences().getStringSet(getKey(), defaultReturnValue);
-    }
-
     private void setEmergencyContacts(Set<Uri> emergencyContacts) {
         mEmergencyContacts = emergencyContacts;
         persistEmergencyContacts(emergencyContacts);
