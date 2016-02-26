@@ -100,7 +100,9 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
         if (!mDateExists) {
             return super.getSummary();
         } else {
-            return convertToLocaleDate(mYear, mMonth, mDay);
+            return String.format(getContext()
+                    .getString(R.string.dob_and_age), convertToLocaleDate(mYear, mMonth, mDay),
+                    computeAge(mYear, mMonth, mDay));
         }
     }
 
@@ -143,5 +145,16 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
 
     private String convertToLocaleDate(int year, int month, int day) {
         return mDateFormat.format(new GregorianCalendar(year, month, day).getTime());
+    }
+
+    private int computeAge(int year, int month, int day) {
+        Calendar today = Calendar.getInstance();
+        int age = today.get(Calendar.YEAR) - year;
+        if (today.get(Calendar.MONTH) < month ||
+                (today.get(Calendar.MONTH) == month && today.get(Calendar.DAY_OF_MONTH) < day)) {
+            age--;
+        }
+        // Return 0 if the user specifies a date of birth in the future.
+        return Math.max(0, age);
     }
 }
