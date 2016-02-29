@@ -19,14 +19,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.provider.Contacts;
 import android.provider.ContactsContract;
-import android.support.v4.content.ContextCompat;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -42,9 +40,6 @@ public class EmergencyInfoFragment extends PreferenceFragment {
 
     /** Result code for contact picker */
     private static final int CONTACT_PICKER_RESULT = 1001;
-
-    /** Request code for runtime contacts permission */
-    private static final int PERMISSION_REQUEST = 1002;
 
     /** Key for description preference */
     private static final String KEY_DESCRIPTION = "description";
@@ -97,8 +92,6 @@ public class EmergencyInfoFragment extends PreferenceFragment {
         mEmergencyContactsPreferenceCategory = (EmergencyContactsPreference)
                 findPreference(KEY_EMERGENCY_CONTACTS);
         mEmergencyContactsPreferenceCategory.setReadOnly(mReadOnly);
-
-        checkAndMaybeRequestPermissions();
 
         for (String preferenceKey : PREFERENCE_KEYS) {
             Preference preference = findPreference(preferenceKey);
@@ -184,31 +177,6 @@ public class EmergencyInfoFragment extends PreferenceFragment {
         if (requestCode == CONTACT_PICKER_RESULT && resultCode == Activity.RESULT_OK) {
             Uri uri = data.getData();
             mEmergencyContactsPreferenceCategory.addNewEmergencyContact(uri);
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[],
-                                           int[] grantResults) {
-        if (requestCode == PERMISSION_REQUEST) {
-            if (grantResults.length == 0 || grantResults[0] == PackageManager.PERMISSION_DENIED) {
-                // TODO: Remove this when b/27142320 is addressed.
-                getPreferenceScreen()
-                        .removePreference(mEmergencyContactsPreferenceCategory);
-            }
-        }
-    }
-
-    private void checkAndMaybeRequestPermissions() {
-        // TODO: Remove this when b/27142320 is addressed.
-        boolean hasContactsPermission = ContextCompat.checkSelfPermission(getActivity(),
-                android.Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED;
-        boolean hasCallPermission = ContextCompat.checkSelfPermission(getActivity(),
-                android.Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED;
-        if (!hasContactsPermission || !hasCallPermission) {
-            requestPermissions(new String[]{
-                    android.Manifest.permission.READ_CONTACTS,
-                    android.Manifest.permission.CALL_PHONE}, PERMISSION_REQUEST);
         }
     }
 }
