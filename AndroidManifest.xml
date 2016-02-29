@@ -23,10 +23,13 @@
         android:label="@string/app_label"
         android:theme="@style/AppTheme"
         android:supportsRtl="true">
-        <!-- TODO: Add intent filter for launcher category. -->
         <activity
             android:name=".WelcomeActivity"
             android:icon="@drawable/ic_menu_add_dark">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ViewInfoActivity"
