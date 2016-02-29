@@ -53,7 +53,11 @@
     <string name="readonly_title">Lockscreen view</string>
 
     <string name="emergency_contacts_title">Emergency contacts</string>
-    <string name="add_emergency_contact">Add contact</string>
+    <string name="add_emergency_contact">Add emergency contact</string>
+    <string-array name="choose_create_contact_values">
+        <item>Choose existing contact</item>
+        <item>Create new contact</item>
+    </string-array>
     <string name="remove_contact">Remove %s from emergency contacts?</string>
     <string name="remove_contact_icon_text">Remove contact</string>
     <string name="remove">Remove</string>

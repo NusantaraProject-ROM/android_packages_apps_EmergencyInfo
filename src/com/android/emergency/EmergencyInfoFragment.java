@@ -16,12 +16,15 @@
 package com.android.emergency;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.provider.Contacts;
 import android.provider.ContactsContract;
 import android.support.v4.content.ContextCompat;
 
@@ -124,9 +127,41 @@ public class EmergencyInfoFragment extends PreferenceFragment {
                     .OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent contactPickerIntent = new Intent(Intent.ACTION_PICK,
-                            ContactsContract.Contacts.CONTENT_URI);
-                    startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
+                    AlertDialog.Builder chooseOrCreateDialog =
+                            new AlertDialog.Builder(getContext());
+                    chooseOrCreateDialog.setTitle(getContext()
+                            .getString(R.string.add_emergency_contact));
+                    String[] chooseOrCreate =
+                            getContext().getResources()
+                                    .getStringArray(R.array.choose_create_contact_values);
+                    chooseOrCreateDialog.setItems(chooseOrCreate,
+                            new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            switch (i) {
+                                case 0:
+                                    // Choose an existing contact
+                                    Intent contactPickerIntent = new Intent(Intent.ACTION_PICK,
+                                            ContactsContract.Contacts.CONTENT_URI);
+                                    startActivityForResult(contactPickerIntent,
+                                            CONTACT_PICKER_RESULT);
+                                    break;
+                                case 1:
+                                    // Create a new contact
+                                    Intent createContactIntent = new Intent(Intent.ACTION_INSERT);
+                                    createContactIntent
+                                            .setType(ContactsContract.Contacts.CONTENT_TYPE);
+                                    // Fix for 4.0.3 +
+                                    createContactIntent
+                                            .putExtra("finishActivityOnSaveCompleted", true);
+                                    startActivityForResult(createContactIntent,
+                                            CONTACT_PICKER_RESULT);
+                                    break;
+                            }
+                        }
+                    });
+
+                    chooseOrCreateDialog.show();
                     return true;
                 }
             });
