@@ -74,7 +74,4 @@
     <string name="next">Next</string>
     <string name="emergency_info_title">In case of emergency</string>
     <string name="emergency_info_summary">Emergency information for first responders</string>
-    <string name="in_case_of_emergency">In case of emergency</string>
-    <string name="get_started">Get started</string>
-    <string name="provide_info">Provide medical information and emergency contacts for first responders</string>
 </resources>
