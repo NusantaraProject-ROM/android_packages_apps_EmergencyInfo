@@ -63,11 +63,6 @@ public class EmergencyContactManager {
 
     /** Returns the phone number of the contact. */
     public static String[] getPhoneNumbers(Context context, Uri contactUri) {
-        // TODO: Investigate passing around CONTENT_LOOKUP_URI instead of content CONTENT_URI.
-        // The method to get the CONTENT_LOOKUP_URI when the user selects a contact is:
-        // ContactsContract.Contacts.getLookupUri(ContentResolver resolver, Uri contactUri)
-        // Then use ContactsContract.Contacts.lookupContact(ContentResolver resolver, Uri lookupUri)
-        // to get the CONTENT_URI
         ContentResolver contentResolver = context.getContentResolver();
         Cursor contactCursor = contentResolver.query(contactUri, null, null, null, null);
         try {

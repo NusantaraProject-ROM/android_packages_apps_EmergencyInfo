@@ -16,23 +16,23 @@
 package com.android.emergency;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
+import android.provider.ContactsContract;
 import android.util.ArraySet;
 import android.util.AttributeSet;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 
 /**
  * Custom {@link PreferenceCategory} that deals with contacts being deleted from the contacts app.
+ *
+ * <p>Contacts are stored internally using their CONTENT_LOOKUP_URI.
  */
 public class EmergencyContactsPreference extends PreferenceCategory
         implements ReloadablePreferenceInterface,
@@ -40,6 +40,7 @@ public class EmergencyContactsPreference extends PreferenceCategory
 
     private boolean mReadOnly = false;
 
+    /** Stores the emergency contacts CONTENT_LOOKUP_URI */
     private Set<Uri> mEmergencyContacts = new ArraySet<Uri>();
 
     public EmergencyContactsPreference(Context context, AttributeSet attrs) {
@@ -75,14 +76,20 @@ public class EmergencyContactsPreference extends PreferenceCategory
         }
     }
 
-    /** Adds a new emergency contact. */
+    /**
+     * Adds a new emergency contact. The {@code contactUri} is the CONTENT_URI corresponding to the
+     * contact.
+     */
     public void addNewEmergencyContact(Uri contactUri) {
-        if (EmergencyContactManager.getPhoneNumbers(getContext(), contactUri) == null) {
+        final Uri contactLookupUri =
+                ContactsContract.Contacts.getLookupUri(getContext().getContentResolver(),
+                        contactUri);
+        if (EmergencyContactManager.getPhoneNumbers(getContext(), contactLookupUri) == null) {
             // TODO: show warning dialog: no phone number: then keep/discard
         } else {
-            if (!mEmergencyContacts.contains(contactUri)) {
+            if (!mEmergencyContacts.contains(contactLookupUri)) {
                 Set<Uri> updatedContacts = new ArraySet<Uri>((ArraySet<Uri>) mEmergencyContacts);
-                if (updatedContacts.add(contactUri) && callChangeListener(updatedContacts)) {
+                if (updatedContacts.add(contactLookupUri) && callChangeListener(updatedContacts)) {
                     MetricsLogger.action(getContext(), MetricsEvent.ACTION_ADD_EMERGENCY_CONTACT);
                     setEmergencyContacts(updatedContacts);
                 }
@@ -96,16 +103,16 @@ public class EmergencyContactsPreference extends PreferenceCategory
         notifyChanged();
         removeAll();
 
-        for (Uri contactUri : emergencyContacts) {
-            addContactPreference(contactUri);
+        for (Uri contactLookupUri : emergencyContacts) {
+            addContactPreference(contactLookupUri);
         }
     }
 
-    private void addContactPreference(Uri contactUri) {
+    private void addContactPreference(Uri contactLookupUri) {
         final ContactPreference contactPreference =
                 new ContactPreference(getContext(),
-                        contactUri,
-                        EmergencyContactManager.getName(getContext(), contactUri));
+                        contactLookupUri,
+                        EmergencyContactManager.getName(getContext(), contactLookupUri));
         contactPreference
                 .setOnPreferenceClickListener(
                         new Preference.OnPreferenceClickListener() {
@@ -135,9 +142,9 @@ public class EmergencyContactsPreference extends PreferenceCategory
     private Set<Uri> deserializeAndFilterExisting(Set<String> emergencyContactStrings) {
         Set<Uri> emergencyContacts = new ArraySet<Uri>(emergencyContactStrings.size());
         for (String emergencyContact : emergencyContactStrings) {
-            Uri contactUri = Uri.parse(emergencyContact);
-            if (EmergencyContactManager.isValidEmergencyContact(getContext(), contactUri)) {
-                emergencyContacts.add(contactUri);
+            Uri contactLookupUri = Uri.parse(emergencyContact);
+            if (EmergencyContactManager.isValidEmergencyContact(getContext(), contactLookupUri)) {
+                emergencyContacts.add(contactLookupUri);
             }
         }
 
@@ -159,8 +166,8 @@ public class EmergencyContactsPreference extends PreferenceCategory
     /** Converts the Uris to their string representation. */
     private Set<String> serialize(Set<Uri> emergencyContacts) {
         Set<String> emergencyContactStrings = new ArraySet<String>(emergencyContacts.size());
-        for (Uri uri : emergencyContacts) {
-            emergencyContactStrings.add(uri.toString());
+        for (Uri contactLookupUri : emergencyContacts) {
+            emergencyContactStrings.add(contactLookupUri.toString());
         }
         return emergencyContactStrings;
     }

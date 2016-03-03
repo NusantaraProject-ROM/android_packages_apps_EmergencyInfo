@@ -23,7 +23,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
-import android.provider.Contacts;
 import android.provider.ContactsContract;
 
 import com.android.internal.logging.MetricsLogger;
