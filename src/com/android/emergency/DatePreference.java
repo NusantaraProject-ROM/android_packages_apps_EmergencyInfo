@@ -18,12 +18,12 @@ package com.android.emergency;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.preference.Preference;
 import android.util.AttributeSet;
 import android.widget.DatePicker;
-
-import com.android.internal.logging.MetricsLogger;
-import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -59,13 +59,16 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
         setOnPreferenceClickListener(new OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                showDatePickerDialog();
+                showDatePickerDialog(null);
                 return true;
             }
         });
     }
 
-    private void showDatePickerDialog() {
+    private void showDatePickerDialog(Bundle state) {
+        if (state != null) {
+            mDatePickerDialog.onRestoreInstanceState(state);
+        }
         if (mDateExists) {
             mDatePickerDialog.updateDate(mYear, mMonth, mDay);
         }
@@ -156,5 +159,66 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
         }
         // Return 0 if the user specifies a date of birth in the future.
         return Math.max(0, age);
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        final Parcelable superState = super.onSaveInstanceState();
+        if (mDatePickerDialog == null || !mDatePickerDialog.isShowing()) {
+            return superState;
+        }
+
+        final SavedState myState = new SavedState(superState);
+        myState.isDialogShowing = true;
+        myState.dialogBundle = mDatePickerDialog.onSaveInstanceState();
+        return myState;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        if (state == null || !state.getClass().equals(SavedState.class)) {
+            // Didn't save state for us in onSaveInstanceState
+            super.onRestoreInstanceState(state);
+            return;
+        }
+
+        SavedState myState = (SavedState) state;
+        super.onRestoreInstanceState(myState.getSuperState());
+        if (myState.isDialogShowing) {
+            showDatePickerDialog(myState.dialogBundle);
+        }
+    }
+
+    private static class SavedState extends BaseSavedState {
+        boolean isDialogShowing;
+        Bundle dialogBundle;
+
+        public SavedState(Parcel source) {
+            super(source);
+            isDialogShowing = source.readInt() == 1;
+            dialogBundle = source.readBundle();
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            super.writeToParcel(dest, flags);
+            dest.writeInt(isDialogShowing ? 1 : 0);
+            dest.writeBundle(dialogBundle);
+        }
+
+        public SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        public static final Parcelable.Creator<SavedState> CREATOR =
+                new Parcelable.Creator<SavedState>() {
+                    public SavedState createFromParcel(Parcel in) {
+                        return new SavedState(in);
+                    }
+
+                    public SavedState[] newArray(int size) {
+                        return new SavedState[size];
+                    }
+                };
     }
 }

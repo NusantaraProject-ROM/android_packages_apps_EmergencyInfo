@@ -34,19 +34,23 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
  */
 public class ViewInfoActivity extends AppCompatPreferenceActivity {
 
+    private static final String FRAGMENT_TAG = "view_info_fragment";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
-
         super.onCreate(savedInstanceState);
+        EmergencyInfoFragment emergencyInfoFragment =
+                (EmergencyInfoFragment) getFragmentManager().findFragmentByTag(FRAGMENT_TAG);
+        if (emergencyInfoFragment == null) {
+            // Create the fragment with readOnly set to true
+            emergencyInfoFragment = EmergencyInfoFragment
+                    .createEmergencyInfoFragment(true);
 
-        // Create the fragment with readOnly set to true
-        EmergencyInfoFragment emergencyInfoFragment = EmergencyInfoFragment
-                .createEmergencyInfoFragment(true);
-
-        // Display the fragment as the main content.
-        getFragmentManager().beginTransaction().replace(android.R.id.content,
-                emergencyInfoFragment).commit();
+            // Display the fragment as the main content.
+            getFragmentManager().beginTransaction().replace(android.R.id.content,
+                    emergencyInfoFragment, FRAGMENT_TAG).commit();
+        }
 
         MetricsLogger.visible(this, MetricsEvent.ACTION_VIEW_EMERGENCY_INFO);
     }
