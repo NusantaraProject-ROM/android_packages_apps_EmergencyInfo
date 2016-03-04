@@ -23,27 +23,30 @@
         <com.android.emergency.EmergencyEditTextPreference
             android:inputType="textCapWords|textPersonName"
             android:key="name"
+            android:icon="@drawable/ic_account_circle"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:summary="@string/default_summary_none"
             android:title="@string/name"
             android:hint="@string/name_hint"/>
 
+        <com.android.emergency.DatePreference
+            android:defaultValue=""
+            android:icon="@drawable/ic_cake_black_24dp"
+            android:key="date_of_birth"
+            android:selectAllOnFocus="true"
+            android:summary="@string/default_summary_none"
+            android:title="@string/date_of_birth" />
+
         <com.android.emergency.EmergencyEditTextPreference
             android:inputType="textCapWords|textPostalAddress|textMultiLine"
+            android:icon="@drawable/ic_address_black_24dp"
             android:key="address"
             android:selectAllOnFocus="true"
             android:singleLine="false"
             android:summary="@string/default_summary_none"
             android:title="@string/address"
             android:hint="@string/address_hint"/>
-
-        <com.android.emergency.DatePreference
-            android:defaultValue=""
-            android:key="date_of_birth"
-            android:selectAllOnFocus="true"
-            android:summary="@string/default_summary_none"
-            android:title="@string/date_of_birth" />
     </PreferenceCategory>
 
     <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
@@ -56,6 +59,7 @@
             android:defaultValue="@string/default_summary_none"
             android:entries="@array/blood_type_values"
             android:entryValues="@array/blood_type_values"
+            android:icon="@drawable/ic_bloodtype_black_24dp"
             android:key="blood_type"
             android:negativeButtonText="@null"
             android:positiveButtonText="@null"
@@ -65,6 +69,7 @@
         <com.android.emergency.EmergencyEditTextPreference
             android:capitalize="sentences"
             android:inputType="textMultiLine"
+            android:icon="@drawable/ic_allergies_black_24dp"
             android:key="allergies"
             android:selectAllOnFocus="true"
             android:singleLine="false"
@@ -75,6 +80,7 @@
         <com.android.emergency.EmergencyEditTextPreference
             android:capitalize="sentences"
             android:inputType="textMultiLine"
+            android:icon="@drawable/ic_medication_24dp"
             android:key="medications"
             android:selectAllOnFocus="true"
             android:singleLine="false"
@@ -82,25 +88,27 @@
             android:title="@string/medications"
             android:hint="@string/medications_hint"/>
 
-        <com.android.emergency.EmergencyEditTextPreference
-            android:capitalize="sentences"
-            android:inputType="textMultiLine"
-            android:key="medical_conditions"
-            android:selectAllOnFocus="true"
-            android:singleLine="false"
-            android:summary="@string/default_summary_none"
-            android:title="@string/medical_conditions"
-            android:hint="@string/medical_conditions_hint"/>
-
         <com.android.emergency.EmergencyListPreference
             android:defaultValue="@string/default_summary_none"
             android:entries="@array/organ_donor_values"
             android:entryValues="@array/organ_donor_values"
+            android:icon="@drawable/ic_heart_black_24dp"
             android:key="organ_donor"
             android:negativeButtonText="@null"
             android:positiveButtonText="@null"
             android:summary="@string/default_summary_none"
             android:title="@string/organ_donor" />
+
+        <com.android.emergency.EmergencyEditTextPreference
+            android:capitalize="sentences"
+            android:inputType="textMultiLine"
+            android:key="medical_conditions"
+            android:icon="@drawable/ic_notes_black_24dp"
+            android:selectAllOnFocus="true"
+            android:singleLine="false"
+            android:summary="@string/default_summary_none"
+            android:title="@string/medical_conditions"
+            android:hint="@string/medical_conditions_hint"/>
     </PreferenceCategory>
 
     <com.android.emergency.EmergencyContactsPreference

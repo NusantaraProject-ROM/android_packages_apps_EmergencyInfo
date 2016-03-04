@@ -33,7 +33,6 @@ import android.view.View;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
-import com.android.settingslib.drawable.CircleFramedDrawable;
 
 
 /**
@@ -73,12 +72,7 @@ public class ContactPreference extends Preference {
 
         //TODO: Consider doing the following in a non-UI thread.
         Bitmap photo = EmergencyContactManager.getContactPhoto(context, mUri);
-        if (photo == null) {
-            photo = convertToBitmap(context.getResources().getDrawable(
-                    R.drawable.ic_account_circle));
-        }
-        Drawable icon = new CircleFramedDrawable(photo,
-                (int) context.getResources().getDimension(R.dimen.circle_avatar_size));
+        Drawable icon = PhotoUtils.encircleUserPhoto(photo, getContext());
         setIcon(icon);
     }
 
@@ -86,22 +80,6 @@ public class ContactPreference extends Preference {
     public void setRemoveContactPreferenceListener(
             RemoveContactPreferenceListener removeContactListener) {
         mRemoveContactPreferenceListener = removeContactListener;
-    }
-
-    /**
-     * Converts a given drawable icon to a bitmap.
-     */
-    private static Bitmap convertToBitmap(Drawable icon) {
-        if (icon == null) {
-            return null;
-        }
-        int width = icon.getIntrinsicWidth();
-        int height = icon.getIntrinsicHeight();
-        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        icon.setBounds(0, 0, width, height);
-        icon.draw(canvas);
-        return bitmap;
     }
 
     @Override

@@ -17,7 +17,7 @@
     <string name="app_label">Emergency Info</string>
     <string name="personal_information_title">Personal</string>
     <string name="medical_information_title">Medical</string>
-    <string name="name">Full name</string>
+    <string name="name">Name</string>
     <string name="name_hint">For example, John Doe</string>
     <string name="address">Address</string>
     <string name="address_hint">For example, 1600 Amphitheatre Pkwy, Mountain View, CA 94043</string>
