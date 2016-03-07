@@ -25,19 +25,22 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
  * Activity for editing emergency information.
  */
 public class EditInfoActivity extends AppCompatPreferenceActivity {
-
+    private static final String FRAGMENT_TAG = "edit_info_fragment";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(FLAG_DISMISS_KEYGUARD);
+        EmergencyInfoFragment emergencyInfoFragment =
+                (EmergencyInfoFragment) getFragmentManager().findFragmentByTag(FRAGMENT_TAG);
+        if (emergencyInfoFragment == null) {
+            // Create the fragment with readOnly set to false
+            emergencyInfoFragment = EmergencyInfoFragment
+                    .createEmergencyInfoFragment(false);
 
-        // Create the fragment with readOnly set to false
-        EmergencyInfoFragment emergencyInfoFragment = EmergencyInfoFragment
-                .createEmergencyInfoFragment(false);
-
-        // Display the fragment as the main content.
-        getFragmentManager().beginTransaction().replace(android.R.id.content,
-                emergencyInfoFragment).commit();
+            // Display the fragment as the main content.
+            getFragmentManager().beginTransaction().replace(android.R.id.content,
+                    emergencyInfoFragment, FRAGMENT_TAG).commit();
+        }
 
         MetricsLogger.visible(this, MetricsEvent.ACTION_EDIT_EMERGENCY_INFO);
     }
