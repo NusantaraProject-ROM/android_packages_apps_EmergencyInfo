@@ -14,13 +14,8 @@
      limitations under the License.
 -->
 <resources>
-    <!-- Base settings theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-    </style>
-    <!-- Base emergency theme. -->
-    <style name="AppThemeEmergency" parent="AppTheme">
-        <item name="colorPrimaryDark">@color/emergency_primary_dark</item>
-        <item name="colorPrimary">@color/emergency_primary</item>
-        <item name="colorAccent">@color/emergency_accent</item>
-    </style>
+    <color name="emergency_primary_dark">#C62828</color>
+    <color name="emergency_primary">#E53935</color>
+    <!--TODO: change this color to yellow #FFFF00 once we introduce tabs and remove categories -->
+    <color name="emergency_accent">#E53935</color>
 </resources>

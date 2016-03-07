@@ -21,10 +21,10 @@
 
     <application
         android:label="@string/app_label"
-        android:theme="@style/AppTheme"
         android:supportsRtl="true">
         <activity
             android:name=".ViewInfoActivity"
+            android:theme="@style/AppThemeEmergency"
             android:showOnLockScreen="true">
             <intent-filter>
                 <action android:name="android.telephony.action.EMERGENCY_ASSISTANCE" />
@@ -33,7 +33,8 @@
         </activity>
 
         <activity
-            android:name=".EditInfoActivity">
+            android:name=".EditInfoActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.settings.EDIT_EMERGENGY_INFO" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -42,7 +43,8 @@
         <!-- TODO: Change the icon to the app's icon once ready -->
         <activity
             android:name=".SetupWizardEditInfoActivity"
-            android:icon="@drawable/ic_menu_add_dark">
+            android:icon="@drawable/ic_menu_add_dark"
+            android:theme="@style/AppTheme">
             <intent-filter android:priority="10">
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.android.settings.suggested.category.EMERGENCY_INFO" />
