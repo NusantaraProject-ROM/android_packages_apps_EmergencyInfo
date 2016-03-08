@@ -17,6 +17,8 @@ package com.android.emergency;
 
 import static android.view.WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.android.internal.logging.MetricsLogger;
@@ -24,24 +26,26 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 /**
  * Activity for editing emergency information.
  */
-public class EditInfoActivity extends AppCompatPreferenceActivity {
+public class EditInfoActivity extends EmergencyTabPreferenceActivity {
     private static final String FRAGMENT_TAG = "edit_info_fragment";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(FLAG_DISMISS_KEYGUARD);
-        EmergencyInfoFragment emergencyInfoFragment =
-                (EmergencyInfoFragment) getFragmentManager().findFragmentByTag(FRAGMENT_TAG);
-        if (emergencyInfoFragment == null) {
-            // Create the fragment with readOnly set to false
-            emergencyInfoFragment = EmergencyInfoFragment
-                    .createEmergencyInfoFragment(false);
-
-            // Display the fragment as the main content.
-            getFragmentManager().beginTransaction().replace(android.R.id.content,
-                    emergencyInfoFragment, FRAGMENT_TAG).commit();
-        }
-
         MetricsLogger.visible(this, MetricsEvent.ACTION_EDIT_EMERGENCY_INFO);
+    }
+
+    @Override
+    public boolean isInViewMode() {
+        return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        // If returning to the ViewInfoActivity, then the currently selected tab will be shown.
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra(EXTRA_SELECTED_TAB, getSelectedTabPosition());
+        setResult(Activity.RESULT_OK, resultIntent);
+        finish();
     }
 }

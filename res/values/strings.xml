@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2007 The Android Open Source Project
+<!-- Copyright (C) 2016 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
 -->
 <resources>
     <string name="app_label">Emergency Info</string>
-    <string name="personal_information_title">Personal</string>
-    <string name="medical_information_title">Medical</string>
+    <string name="tab_title_info">Info</string>
+    <string name="tab_title_contacts">Contacts</string>
     <string name="name">Name</string>
     <string name="name_hint">For example, John Doe</string>
     <string name="address">Address</string>

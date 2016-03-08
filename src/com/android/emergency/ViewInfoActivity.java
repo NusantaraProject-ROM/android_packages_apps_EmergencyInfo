@@ -18,12 +18,9 @@ package com.android.emergency;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.android.internal.logging.MetricsLogger;
@@ -32,26 +29,14 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 /**
  * Activity for viewing emergency information.
  */
-public class ViewInfoActivity extends AppCompatPreferenceActivity {
+public class ViewInfoActivity extends EmergencyTabPreferenceActivity {
 
-    private static final String FRAGMENT_TAG = "view_info_fragment";
+    private static final int EDIT_ACTIVITY_RESULT = 1001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
         super.onCreate(savedInstanceState);
-        EmergencyInfoFragment emergencyInfoFragment =
-                (EmergencyInfoFragment) getFragmentManager().findFragmentByTag(FRAGMENT_TAG);
-        if (emergencyInfoFragment == null) {
-            // Create the fragment with readOnly set to true
-            emergencyInfoFragment = EmergencyInfoFragment
-                    .createEmergencyInfoFragment(true);
-
-            // Display the fragment as the main content.
-            getFragmentManager().beginTransaction().replace(android.R.id.content,
-                    emergencyInfoFragment, FRAGMENT_TAG).commit();
-        }
-
         MetricsLogger.visible(this, MetricsEvent.ACTION_VIEW_EMERGENCY_INFO);
     }
 
@@ -67,9 +52,24 @@ public class ViewInfoActivity extends AppCompatPreferenceActivity {
         switch (item.getItemId()) {
             case R.id.action_edit:
                 Intent intent = new Intent(this, EditInfoActivity.class);
-                startActivity(intent);
+                intent.putExtra(EXTRA_SELECTED_TAB, getSelectedTabPosition());
+                startActivityForResult(intent, EDIT_ACTIVITY_RESULT);
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == EDIT_ACTIVITY_RESULT && resultCode == Activity.RESULT_OK) {
+            // Select the same tab that was last selected in the EditInfoActivity
+            selectTab(data.getIntExtra(EXTRA_SELECTED_TAB, getSelectedTabPosition()));
+        }
+    }
+
+    @Override
+    public boolean isInViewMode() {
+        return true;
     }
 }
