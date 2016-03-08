@@ -34,6 +34,7 @@
 
         <activity
             android:name=".EditInfoActivity"
+            android:label="@string/edit_emergency_info_label"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.settings.EDIT_EMERGENGY_INFO" />

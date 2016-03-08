@@ -22,7 +22,9 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.Preference;
+import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.DatePicker;
 
 import java.text.DateFormat;
@@ -64,6 +66,23 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
                 return true;
             }
         });
+        setWidgetLayoutResource(R.layout.preference_remove_dob_widget);
+    }
+
+    @Override
+    protected void onBindView(View view) {
+        super.onBindView(view);
+        View removeDateOfBirth = view.findViewById(R.id.remove_dob);
+        if (!isSelectable() || !mDateExists) {
+            removeDateOfBirth.setVisibility(View.GONE);
+        } else {
+            removeDateOfBirth.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    setDate("");
+                }
+            });
+        }
     }
 
     private void showDatePickerDialog(Bundle state) {
@@ -90,7 +109,7 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
     public void onDateSet(DatePicker view, int year, int month, int day) {
         String date = serialize(year, month, day);
         if (callChangeListener(date)) {
-            setDate(year, month, day);
+            setDate(true /* dateExists */, year, month, day);
         }
     }
 
@@ -112,22 +131,27 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
     }
 
     private void setDate(String date) {
-        if (date != null && !date.isEmpty()) {
+        if (!TextUtils.isEmpty(date)) {
             int[] yearMonthDay = deserialize(date, new int[3]);
-            setDate(yearMonthDay[YEAR_INDEX], yearMonthDay[MONTH_INDEX],
+            setDate(true /* dateExists */,
+                    yearMonthDay[YEAR_INDEX],
+                    yearMonthDay[MONTH_INDEX],
                     yearMonthDay[DAY_INDEX]);
         } else {
-            mDateExists = false;
+            setDate(false /* dateExists */,
+                    mYear,
+                    mMonth,
+                    mDay);
         }
     }
 
-    private void setDate(int year, int month, int day) {
-        if (!mDateExists || year != mYear || month != mMonth || day != mDay) {
+    private void setDate(boolean dateExists, int year, int month, int day) {
+        if (mDateExists != dateExists || year != mYear || month != mMonth || day != mDay) {
+            mDateExists = dateExists;
             mYear = year;
             mMonth = month;
             mDay = day;
-            mDateExists = true;
-            String date = serialize(year, month, day);
+            String date = mDateExists ? serialize(year, month, day) : "";
             persistString(date);
             notifyChanged();
         }

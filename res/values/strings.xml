@@ -15,6 +15,7 @@
 -->
 <resources>
     <string name="app_label">Emergency Info</string>
+    <string name="edit_emergency_info_label">Edit Emergency Info</string>
     <string name="tab_title_info">Info</string>
     <string name="tab_title_contacts">Contacts</string>
     <string name="name">Name</string>
@@ -23,6 +24,7 @@
     <string name="address_hint">For example, 1600 Amphitheatre Pkwy, Mountain View, CA 94043</string>
     <string name="date_of_birth">Date of birth</string>
     <string name="dob_and_age">Age: %1$d (%2$s)</string>
+    <string name="remove_dob_icon_text">Remove date of birth</string>
     <string name="blood_type">Blood type</string>
     <string-array name="blood_type_values">
         <item>O+</item>
