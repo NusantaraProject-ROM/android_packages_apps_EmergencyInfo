@@ -21,8 +21,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.preference.Preference;
@@ -36,12 +34,11 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 
 /**
- * A {@link Preference} to display a contact using the specified URI string.
+ * A {@link Preference} to display or call a contact using the specified URI string.
  */
 public class ContactPreference extends Preference {
 
-    private final Uri mUri;
-    private final String mName;
+    private final EmergencyContactManager.Contact mContact;
     @Nullable private RemoveContactPreferenceListener mRemoveContactPreferenceListener;
 
     /**
@@ -56,23 +53,22 @@ public class ContactPreference extends Preference {
 
     /**
      * Instantiates a ContactPreference that displays an emergency contact, taking in a Context and
-     * the Uri, name and phone number of the contact and a listener to be informed when clicking on
-     * the delete icon.
+     * the Uri.
      */
-    public ContactPreference(Context context,
-                             @NonNull Uri contactUri,
-                             @NonNull String contactName) {
+    public ContactPreference(Context context, @NonNull Uri contactUri) {
         super(context);
         setOrder(DEFAULT_ORDER);
-        mUri = contactUri;
-        mName = contactName;
-        setTitle(mName);
+        // This preference is reloaded each time onResume, so it is guaranteed to have a fresh
+        // representation of the contact each time we click on this preference to display or to call
+        // the contact.
+        mContact = EmergencyContactManager.getContact(context, contactUri);
+        setTitle(mContact.getName());
+        setSummary(mContact.getPhoneNumber());
         setWidgetLayoutResource(R.layout.preference_user_delete_widget);
         setPersistent(false);
 
         //TODO: Consider doing the following in a non-UI thread.
-        Bitmap photo = EmergencyContactManager.getContactPhoto(context, mUri);
-        Drawable icon = PhotoUtils.encircleUserPhoto(photo, getContext());
+        Drawable icon = PhotoUtils.encircleUserPhoto(mContact.getPhoto(), getContext());
         setIcon(icon);
     }
 
@@ -94,7 +90,8 @@ public class ContactPreference extends Preference {
                 public void onClick(View view) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setMessage(String.format(getContext()
-                            .getString(R.string.remove_contact), mName));
+                            .getString(R.string.remove_contact),
+                            mContact.getName()));
                     builder.setPositiveButton(getContext().getString(R.string.remove),
                             new DialogInterface.OnClickListener() {
                                 @Override
@@ -114,42 +111,17 @@ public class ContactPreference extends Preference {
     }
 
     public Uri getContactUri() {
-        return mUri;
+        return mContact.getContactUri();
     }
 
     /**
      * Calls the contact.
      */
-    public void callContact(String phoneNumber) {
-        if (ActivityCompat.checkSelfPermission(getContext(),
-                Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-            Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
-            MetricsLogger.action(getContext(), MetricsEvent.ACTION_CALL_EMERGENCY_CONTACT);
-            getContext().startActivity(callIntent);
-        }
-    }
-
-    /**
-     * Displays a dialog with the contact's name and phone numbers.
-     */
-    public void showCallContactDialog() {
-        AlertDialog.Builder builderSingle = new AlertDialog.Builder(getContext());
-        builderSingle.setTitle(mName);
-        final String[] phoneNumbers = EmergencyContactManager.getPhoneNumbers(getContext(), mUri);
-        //TODO: Discuss with UX the possibility of using a custom list adapter for the phone numbers
-        if (phoneNumbers != null && phoneNumbers.length > 0) {
-            builderSingle.setItems(phoneNumbers, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    callContact(phoneNumbers[i]);
-                }
-            });
-        } else {
-            builderSingle.setMessage(getContext().getResources()
-                    .getString(R.string.phone_number_error));
-            builderSingle.setPositiveButton(getContext().getString(R.string.ok), null);
-        }
-        builderSingle.show();
+    public void callContact() {
+        Intent callIntent =
+                new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + mContact.getPhoneNumber()));
+        MetricsLogger.action(getContext(), MetricsEvent.ACTION_CALL_EMERGENCY_CONTACT);
+        getContext().startActivity(callIntent);
     }
 
     /**
@@ -157,7 +129,7 @@ public class ContactPreference extends Preference {
      */
     public void displayContact() {
         Intent contactIntent = new Intent(Intent.ACTION_VIEW);
-        contactIntent.setData(mUri);
+        contactIntent.setData(mContact.getContactLookupUri());
         getContext().startActivity(contactIntent);
     }
 }

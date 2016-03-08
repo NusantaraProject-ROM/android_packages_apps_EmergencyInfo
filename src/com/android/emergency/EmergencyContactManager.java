@@ -15,7 +15,7 @@
  */
 package com.android.emergency;
 
-import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -30,20 +30,58 @@ import java.io.ByteArrayInputStream;
  */
 public class EmergencyContactManager {
 
-    /** Returns the display name of the contact. */
-    public static String getName(Context context, Uri contactUri) {
-        Cursor cursor = context.getContentResolver().query(contactUri, null, null, null, null);
+    /**
+     * Returns a {@link Contact} that contains all the relevant information of the contact indexed
+     * by {@code @contactUri}.
+     */
+    public static Contact getContact(Context context, Uri contactUri) {
+        String phoneNumber = null;
+        String name = null;
+        Bitmap photo = null;
+        final Uri contactLookupUri =
+                ContactsContract.Contacts.getLookupUri(context.getContentResolver(),
+                        contactUri);
+        Cursor cursor = context.getContentResolver().query(
+                contactUri,
+                new String[]{ContactsContract.Contacts.DISPLAY_NAME,
+                        ContactsContract.CommonDataKinds.Phone.NUMBER,
+                        ContactsContract.CommonDataKinds.Photo.PHOTO_ID},
+                null, null, null);
         try {
-            if (cursor != null && cursor.moveToFirst()) {
-                return cursor.getString(cursor.getColumnIndex(
-                        ContactsContract.Contacts.DISPLAY_NAME));
+            if (cursor.moveToNext()) {
+                name = cursor.getString(0);
+                phoneNumber = cursor.getString(1);
+                Long photoId = cursor.getLong(2);
+                if (photoId != null && photoId > 0) {
+                    Uri photoUri = ContentUris.withAppendedId(ContactsContract.Data.CONTENT_URI,
+                            photoId);
+                    Cursor cursor2 = context.getContentResolver().query(
+                            photoUri,
+                            new String[]{ContactsContract.Contacts.Photo.PHOTO},
+                            null, null, null);
+                    try {
+                        if (cursor2.moveToNext()) {
+                            byte[] data = cursor2.getBlob(0);
+                            photo = BitmapFactory.decodeStream(new ByteArrayInputStream(data));
+                        }
+                    } finally {
+                        if (cursor2 != null) {
+                            cursor2.close();
+                        }
+                    }
+                }
             }
         } finally {
             if (cursor != null) {
                 cursor.close();
             }
         }
-        return null;
+        return new Contact(contactLookupUri, contactUri, name, phoneNumber, photo);
+    }
+
+    /** Returns whether the contact uri is not null and corresponds to an existing contact. */
+    public static boolean isValidEmergencyContact(Context context, Uri contactUri) {
+        return contactUri != null && contactExists(context, contactUri);
     }
 
     private static boolean contactExists(Context context, Uri contactUri) {
@@ -60,77 +98,62 @@ public class EmergencyContactManager {
         return false;
     }
 
+    /** Wrapper for a contact with a phone number. */
+    public static class Contact {
+        /** The lookup uri is necessary to display the contact. */
+        private final Uri mContactLookupUri;
+        /**
+         * The contact uri is associated to a particular phone number and can be used to reload that
+         * number and keep the number displayed in the preferences fresh.
+         */
+        private final Uri mContactUri;
+        /** The display name of the contact. */
+        private final String mName;
+        /** The emergency contact's phone number selected by the user. */
+        private final String mPhoneNumber;
+        /** The contact's photo. */
+        private final Bitmap mPhoto;
 
-    /** Returns the phone number of the contact. */
-    public static String[] getPhoneNumbers(Context context, Uri contactUri) {
-        ContentResolver contentResolver = context.getContentResolver();
-        Cursor contactCursor = contentResolver.query(contactUri, null, null, null, null);
-        try {
-            if (contactCursor != null && contactCursor.moveToFirst()) {
-                if (contactCursor.getInt(contactCursor.getColumnIndex(
-                        ContactsContract.Contacts.HAS_PHONE_NUMBER)) != 0) {
-                    String id = contactCursor.getString(
-                            contactCursor.getColumnIndex(ContactsContract.Contacts._ID));
-                    Cursor phoneCursor = contentResolver.query(
-                            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                            null,
-                            ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id,
-                            null,
-                            null);
-                    try {
-                        if (phoneCursor != null && phoneCursor.moveToFirst()) {
-                            String[] phoneNumbers =
-                                    new String[phoneCursor.getCount()];
-                            for (int i = 0; i < phoneCursor.getCount(); i++) {
-                                String phoneNumber =
-                                        phoneCursor.getString(phoneCursor.getColumnIndex(
-                                                ContactsContract.CommonDataKinds.Phone.NUMBER));
-
-                                phoneNumbers[i] = phoneNumber;
-                                phoneCursor.moveToNext();
-                            }
-                            return phoneNumbers;
-                        }
-                    } finally {
-                        if (phoneCursor != null) {
-                            phoneCursor.close();
-                        }
-                    }
-                }
-            }
-        } finally {
-            if (contactCursor != null) {
-                contactCursor.close();
-            }
+        /** Constructs a new contact. */
+        public Contact(Uri contactLookupUri,
+                       Uri contactUri,
+                       String name,
+                       String phoneNumber,
+                       Bitmap photo) {
+            mContactLookupUri = contactLookupUri;
+            mContactUri = contactUri;
+            mName = name;
+            mPhoneNumber = phoneNumber;
+            mPhoto = photo;
         }
-        return null;
-    }
 
-    /** Returns the Bitmap corresponding to the contact's photo. */
-    public static Bitmap getContactPhoto(Context context, Uri contactUri) {
-        Uri photoUri = Uri.withAppendedPath(contactUri,
-                ContactsContract.Contacts.Photo.CONTENT_DIRECTORY);
-        Cursor cursor = context.getContentResolver().query(photoUri,
-                new String[]{ContactsContract.Contacts.Photo.PHOTO}, null, null, null);
-        if (cursor == null) {
-            return null;
+        /** Returns the contact's CONTENT_LOOKUP_URI. Use this to display the contact. */
+        public Uri getContactLookupUri() {
+            return mContactLookupUri;
         }
-        try {
-            if (cursor.moveToFirst()) {
-                byte[] data = cursor.getBlob(0);
-                if (data != null) {
-                    return BitmapFactory.decodeStream(new ByteArrayInputStream(data));
-                }
-            }
-        } finally {
-            cursor.close();
+
+        /**
+         * The contact uri as defined in ContactsContract.CommonDataKinds.Phone.CONTENT_URI. Use
+         * this to reload the contact. This links to a particular phone number of the emergency
+         * contact
+         */
+        public Uri getContactUri() {
+            return mContactUri;
         }
-        return null;
-    }
 
+        /** Returns the display name of the contact. */
+        public String getName() {
+            return mName;
+        }
 
-    /** Returns whether the contact uri is not null and corresponds to an existing contact. */
-    public static boolean isValidEmergencyContact(Context context, Uri contactUri) {
-        return contactUri != null && contactExists(context, contactUri);
+        /** Returns the phone number selected by the user. */
+        public String getPhoneNumber() {
+            return mPhoneNumber;
+        }
+
+        /** Returns the photo assigned to this contact. */
+        public Bitmap getPhoto() {
+            return mPhoto;
+        }
     }
 }
