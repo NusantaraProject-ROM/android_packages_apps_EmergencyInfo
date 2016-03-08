@@ -56,6 +56,7 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH));
+        mDatePickerDialog.setTitle(getTitle());
         setOnPreferenceClickListener(new OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -104,8 +105,9 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
             return super.getSummary();
         } else {
             return String.format(getContext()
-                    .getString(R.string.dob_and_age), convertToLocaleDate(mYear, mMonth, mDay),
-                    computeAge(mYear, mMonth, mDay));
+                    .getString(R.string.dob_and_age),
+                    computeAge(mYear, mMonth, mDay),
+                    convertToLocaleDate(mYear, mMonth, mDay));
         }
     }
 
