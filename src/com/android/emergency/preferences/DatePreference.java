@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.emergency;
+package com.android.emergency.preferences;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -22,10 +22,14 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.Preference;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.DatePicker;
+
+import com.android.emergency.R;
+import com.android.emergency.ReloadablePreferenceInterface;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -105,6 +109,23 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
         setDate(getPersistedString(""));
     }
 
+
+    @Override
+    public boolean isNotSet() {
+        return !mDateExists;
+    }
+
+    @Nullable
+    public Calendar getDate() {
+        if (mDateExists) {
+            Calendar date = Calendar.getInstance();
+            date.set(mYear, mMonth, mDay);
+            return date;
+        } else {
+            return null;
+        }
+    }
+
     @Override
     public void onDateSet(DatePicker view, int year, int month, int day) {
         String date = serialize(year, month, day);
@@ -123,10 +144,7 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
         if (!mDateExists) {
             return super.getSummary();
         } else {
-            return String.format(getContext()
-                    .getString(R.string.dob_and_age),
-                    computeAge(mYear, mMonth, mDay),
-                    convertToLocaleDate(mYear, mMonth, mDay));
+            return convertToLocaleDate(mYear, mMonth, mDay);
         }
     }
 
@@ -174,17 +192,6 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
 
     private String convertToLocaleDate(int year, int month, int day) {
         return mDateFormat.format(new GregorianCalendar(year, month, day).getTime());
-    }
-
-    private int computeAge(int year, int month, int day) {
-        Calendar today = Calendar.getInstance();
-        int age = today.get(Calendar.YEAR) - year;
-        if (today.get(Calendar.MONTH) < month ||
-                (today.get(Calendar.MONTH) == month && today.get(Calendar.DAY_OF_MONTH) < day)) {
-            age--;
-        }
-        // Return 0 if the user specifies a date of birth in the future.
-        return Math.max(0, age);
     }
 
     @Override

@@ -14,10 +14,7 @@
      limitations under the License.
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <!-- NOTE: EditTextPreference accepts EditText attributes. -->
-    <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
-    <com.android.emergency.EmergencyEditTextPreference
+    <com.android.emergency.preferences.EmergencyEditTextPreference
         android:hint="@string/name_hint"
         android:icon="@drawable/ic_account_circle"
         android:inputType="textCapWords|textPersonName"
@@ -27,7 +24,7 @@
         android:summary="@string/default_summary_none"
         android:title="@string/name" />
 
-    <com.android.emergency.DatePreference
+    <com.android.emergency.preferences.DatePreference
         android:defaultValue=""
         android:icon="@drawable/ic_cake_black_24dp"
         android:key="date_of_birth"
@@ -35,7 +32,7 @@
         android:summary="@string/default_summary_none"
         android:title="@string/date_of_birth" />
 
-    <com.android.emergency.EmergencyEditTextPreference
+    <com.android.emergency.preferences.EmergencyEditTextPreference
         android:hint="@string/address_hint"
         android:icon="@drawable/ic_address_black_24dp"
         android:inputType="textCapWords|textPostalAddress|textMultiLine"
@@ -45,9 +42,9 @@
         android:summary="@string/default_summary_none"
         android:title="@string/address" />
 
-    <com.android.emergency.EmergencyListPreference
+    <com.android.emergency.preferences.EmergencyListPreference
         android:defaultValue="@string/default_summary_none"
-        android:entries="@array/blood_type_values"
+        android:entries="@array/blood_type_entries"
         android:entryValues="@array/blood_type_values"
         android:icon="@drawable/ic_bloodtype_black_24dp"
         android:key="blood_type"
@@ -56,7 +53,7 @@
         android:summary="@string/default_summary_none"
         android:title="@string/blood_type" />
 
-    <com.android.emergency.EmergencyEditTextPreference
+    <com.android.emergency.preferences.EmergencyEditTextPreference
         android:capitalize="sentences"
         android:hint="@string/allergies_hint"
         android:icon="@drawable/ic_allergies_black_24dp"
@@ -67,7 +64,7 @@
         android:summary="@string/default_summary_none"
         android:title="@string/allergies" />
 
-    <com.android.emergency.EmergencyEditTextPreference
+    <com.android.emergency.preferences.EmergencyEditTextPreference
         android:capitalize="sentences"
         android:hint="@string/medications_hint"
         android:icon="@drawable/ic_medication_24dp"
@@ -78,9 +75,9 @@
         android:summary="@string/default_summary_none"
         android:title="@string/medications" />
 
-    <com.android.emergency.EmergencyListPreference
+    <com.android.emergency.preferences.EmergencyListPreference
         android:defaultValue="@string/default_summary_none"
-        android:entries="@array/organ_donor_values"
+        android:entries="@array/organ_donor_entries"
         android:entryValues="@array/organ_donor_values"
         android:icon="@drawable/ic_heart_black_24dp"
         android:key="organ_donor"
@@ -89,7 +86,7 @@
         android:summary="@string/default_summary_none"
         android:title="@string/organ_donor" />
 
-    <com.android.emergency.EmergencyEditTextPreference
+    <com.android.emergency.preferences.EmergencyEditTextPreference
         android:capitalize="sentences"
         android:hint="@string/medical_conditions_hint"
         android:icon="@drawable/ic_notes_black_24dp"

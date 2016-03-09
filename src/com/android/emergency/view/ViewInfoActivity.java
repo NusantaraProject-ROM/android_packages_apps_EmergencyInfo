@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.emergency;
+package com.android.emergency.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -23,6 +23,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
+import com.android.emergency.EmergencyTabPreferenceActivity;
+import com.android.emergency.R;
+import com.android.emergency.edit.EditInfoActivity;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 

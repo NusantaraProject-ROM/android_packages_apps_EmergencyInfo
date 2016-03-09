@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.emergency;
+package com.android.emergency.edit;
 
 import static android.view.WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD;
 
@@ -21,13 +21,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.android.emergency.EmergencyTabPreferenceActivity;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 /**
  * Activity for editing emergency information.
  */
 public class EditInfoActivity extends EmergencyTabPreferenceActivity {
-    private static final String FRAGMENT_TAG = "edit_info_fragment";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

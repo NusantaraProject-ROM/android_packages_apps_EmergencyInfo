@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2016 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.emergency.preferences.EmergencyEditTextPreference
+        android:enabled="false"
+        android:icon="@drawable/ic_account_circle"
+        android:key="name"
+        android:selectable="false"
+        android:shouldDisableView="false"
+        android:summary="@string/default_summary_none"
+        android:title="@string/name" />
+
+    <com.android.emergency.preferences.ViewDatePreference
+        android:enabled="false"
+        android:icon="@drawable/ic_cake_black_24dp"
+        android:key="date_of_birth"
+        android:selectable="false"
+        android:shouldDisableView="false"
+        android:summary="@string/default_summary_none"
+        android:title="@string/date_of_birth" />
+
+    <com.android.emergency.preferences.EmergencyEditTextPreference
+        android:enabled="false"
+        android:icon="@drawable/ic_address_black_24dp"
+        android:key="address"
+        android:selectable="false"
+        android:shouldDisableView="false"
+        android:summary="@string/default_summary_none"
+        android:title="@string/address" />
+
+    <com.android.emergency.preferences.EmergencyListPreference
+        android:defaultValue="@string/default_summary_none"
+        android:enabled="false"
+        android:icon="@drawable/ic_bloodtype_black_24dp"
+        android:entries="@array/blood_type_entries"
+        android:entryValues="@array/blood_type_values"
+        android:key="blood_type"
+        android:selectable="false"
+        android:shouldDisableView="false"
+        android:summary="@string/default_summary_none"
+        android:title="@string/blood_type" />
+
+    <com.android.emergency.preferences.EmergencyEditTextPreference
+        android:enabled="false"
+        android:icon="@drawable/ic_allergies_black_24dp"
+        android:key="allergies"
+        android:selectable="false"
+        android:shouldDisableView="false"
+        android:summary="@string/default_summary_none"
+        android:title="@string/allergies" />
+
+    <com.android.emergency.preferences.EmergencyEditTextPreference
+        android:enabled="false"
+        android:icon="@drawable/ic_medication_24dp"
+        android:key="medications"
+        android:selectable="false"
+        android:shouldDisableView="false"
+        android:summary="@string/default_summary_none"
+        android:title="@string/medications" />
+
+    <com.android.emergency.preferences.EmergencyListPreference
+        android:defaultValue="@string/default_summary_none"
+        android:enabled="false"
+        android:icon="@drawable/ic_heart_black_24dp"
+        android:entries="@array/organ_donor_entries"
+        android:entryValues="@array/organ_donor_values"
+        android:key="organ_donor"
+        android:selectable="false"
+        android:shouldDisableView="false"
+        android:summary="@string/default_summary_none"
+        android:title="@string/organ_donor" />
+
+    <com.android.emergency.preferences.EmergencyEditTextPreference
+        android:enabled="false"
+        android:icon="@drawable/ic_notes_black_24dp"
+        android:key="medical_conditions"
+        android:selectable="false"
+        android:shouldDisableView="false"
+        android:summary="@string/default_summary_none"
+        android:title="@string/medical_conditions" />
+</PreferenceScreen>

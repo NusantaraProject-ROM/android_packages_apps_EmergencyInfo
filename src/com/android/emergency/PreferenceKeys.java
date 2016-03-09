@@ -16,16 +16,18 @@
 package com.android.emergency;
 
 /**
- * Provides common methods to be called when reloading a preference.
+ * Contains the keys of the preferences used in this app.
  */
-public interface ReloadablePreferenceInterface {
+public interface PreferenceKeys {
 
-    /** Reloads the value from the preference and updates the summary with that value. */
-    void reloadFromPreference();
+    /** Key for emergency contacts preference */
+    public static final String KEY_EMERGENCY_CONTACTS = "emergency_contacts";
 
-    /**
-     * Returns whether the persisted string is empty or set to the default value, i.e. the user
-     * didn't set it.
-     */
-    boolean isNotSet();
+    /** Key for the add contact preference */
+    public static final String KEY_ADD_CONTACT = "add_contact";
+
+
+    /** Keys for all editable emergency info preferences */
+    public static final String[] KEYS_EMERGENCY_INFO = {"name", "address", "date_of_birth",
+            "blood_type", "allergies", "medications", "medical_conditions", "organ_donor"};
 }

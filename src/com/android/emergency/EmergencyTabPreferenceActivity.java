@@ -34,7 +34,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
+
+import com.android.emergency.edit.EditEmergencyContactsFragment;
+import com.android.emergency.edit.EditEmergencyInfoFragment;
+import com.android.emergency.view.ViewEmergencyContactsFragment;
+import com.android.emergency.view.ViewEmergencyInfoFragment;
 
 /**
  * A {@link PreferenceActivity} which implements and proxies the necessary calls
@@ -234,9 +238,17 @@ public abstract class EmergencyTabPreferenceActivity extends PreferenceActivity 
             }
             switch (position) {
                 case INDEX_INFO_TAB:
-                    return EmergencyInfoFragment.newInstance(isInViewMode());
+                    if (isInViewMode()) {
+                        return ViewEmergencyInfoFragment.newInstance();
+                    } else {
+                        return EditEmergencyInfoFragment.newInstance();
+                    }
                 case INDEX_CONTACTS_TAB:
-                    return EmergencyContactsFragment.newInstance(isInViewMode());
+                    if (isInViewMode()) {
+                        return ViewEmergencyContactsFragment.newInstance();
+                    } else {
+                        return EditEmergencyContactsFragment.newInstance();
+                    }
             }
             return null;
         }

@@ -13,15 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.emergency;
+package com.android.emergency.preferences;
 
 import android.content.Context;
 import android.net.Uri;
-import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.util.ArraySet;
 import android.util.AttributeSet;
 
+import com.android.emergency.EmergencyContactManager;
+import com.android.emergency.ReloadablePreferenceInterface;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -37,18 +38,11 @@ public class EmergencyContactsPreference extends PreferenceCategory
         implements ReloadablePreferenceInterface,
         ContactPreference.RemoveContactPreferenceListener {
 
-    private boolean mReadOnly = false;
-
     /** Stores the emergency contact's ContactsContract.CommonDataKinds.Phone.CONTENT_URI */
     private Set<Uri> mEmergencyContacts = new ArraySet<Uri>();
 
     public EmergencyContactsPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
-    }
-
-    /** Sets whether this category will be used in read only mode or in edit mode. */
-    public void setReadOnly(boolean readOnly) {
-        mReadOnly = readOnly;
     }
 
     @Override
@@ -61,6 +55,11 @@ public class EmergencyContactsPreference extends PreferenceCategory
     @Override
     public void reloadFromPreference() {
         setEmergencyContacts(getPersistedEmergencyContacts());
+    }
+
+    @Override
+    public boolean isNotSet() {
+        return mEmergencyContacts.isEmpty();
     }
 
     @Override
@@ -103,22 +102,16 @@ public class EmergencyContactsPreference extends PreferenceCategory
 
     private void addContactPreference(Uri contactUri) {
         final ContactPreference contactPreference = new ContactPreference(getContext(), contactUri);
-        contactPreference
-                .setOnPreferenceClickListener(
-                        new Preference.OnPreferenceClickListener() {
-                            @Override
-                            public boolean onPreferenceClick(Preference preference) {
-                                if (mReadOnly) {
-                                    contactPreference.callContact();
-                                } else {
-                                    contactPreference.displayContact();
-                                }
-                                return true;
-                            }
-                        }
-                );
-        contactPreference.setRemoveContactPreferenceListener(mReadOnly ? null : this);
+        onBindContactView(contactPreference);
         addPreference(contactPreference);
+    }
+
+    /**
+     * Called when {@code contactPreference} has been added to this category. You may now set
+     * listeners.
+     */
+    protected void onBindContactView(final ContactPreference contactPreference) {
+        contactPreference.setRemoveContactPreferenceListener(this);
     }
 
     private Set<Uri> getPersistedEmergencyContacts() {

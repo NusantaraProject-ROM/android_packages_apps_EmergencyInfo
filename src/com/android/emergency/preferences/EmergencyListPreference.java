@@ -13,11 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.emergency;
+package com.android.emergency.preferences;
 
 import android.content.Context;
 import android.preference.ListPreference;
+import android.text.TextUtils;
 import android.util.AttributeSet;
+
+import com.android.emergency.ReloadablePreferenceInterface;
 
 /**
  * Custom {@link ListPreference} that allows us to refresh and update the summary.
@@ -38,12 +41,17 @@ public class EmergencyListPreference extends ListPreference
     }
 
     @Override
+    public boolean isNotSet() {
+        return TextUtils.isEmpty(getValue());
+    }
+
+    @Override
     public CharSequence getSummary() {
-        final CharSequence entry = getEntry();
-        if (entry == null) {
+        final CharSequence value = getValue();
+        if (TextUtils.isEmpty(value)) {
             return super.getSummary();
         } else {
-            return entry;
+            return value;
         }
     }
 }

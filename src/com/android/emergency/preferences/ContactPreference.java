@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.emergency;
+package com.android.emergency.preferences;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -26,6 +26,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.android.emergency.EmergencyContactManager;
+import com.android.emergency.PhotoUtils;
+import com.android.emergency.R;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -125,14 +128,5 @@ public class ContactPreference extends Preference {
                 new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + mContact.getPhoneNumber()));
         MetricsLogger.action(getContext(), MetricsEvent.ACTION_CALL_EMERGENCY_CONTACT);
         getContext().startActivity(callIntent);
-    }
-
-    /**
-     * Displays a contact card for the contact.
-     */
-    public void displayContact() {
-        Intent contactIntent = new Intent(Intent.ACTION_VIEW);
-        contactIntent.setData(mContact.getContactLookupUri());
-        getContext().startActivity(contactIntent);
     }
 }

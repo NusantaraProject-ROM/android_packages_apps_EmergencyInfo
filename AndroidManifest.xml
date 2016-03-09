@@ -23,7 +23,7 @@
         android:label="@string/app_label"
         android:supportsRtl="true">
         <activity
-            android:name=".ViewInfoActivity"
+            android:name=".view.ViewInfoActivity"
             android:theme="@style/AppThemeEmergency"
             android:showOnLockScreen="true">
             <intent-filter>
@@ -33,7 +33,7 @@
         </activity>
 
         <activity
-            android:name=".EditInfoActivity"
+            android:name=".edit.EditInfoActivity"
             android:label="@string/edit_emergency_info_label"
             android:theme="@style/AppTheme">
             <intent-filter>
