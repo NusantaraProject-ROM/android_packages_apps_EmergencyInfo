@@ -39,7 +39,7 @@ public class ViewEmergencyInfoFragment extends PreferenceFragment {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.view_emergency_info);
 
-        for (String preferenceKey : PreferenceKeys.KEYS_EMERGENCY_INFO) {
+        for (String preferenceKey : PreferenceKeys.KEYS_VIEW_EMERGENCY_INFO) {
             Preference preference = findPreference(preferenceKey);
             mPreferences.add(preference);
         }

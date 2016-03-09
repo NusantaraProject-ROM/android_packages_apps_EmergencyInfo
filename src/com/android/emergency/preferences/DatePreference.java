@@ -22,8 +22,6 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.Preference;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.DatePicker;
@@ -32,29 +30,25 @@ import com.android.emergency.R;
 import com.android.emergency.ReloadablePreferenceInterface;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.Date;
 
-/** A base class for {@link Preference} to select a date upon it being clicked. */
+/**
+ * A base class for {@link Preference} to select a date upon it being clicked.
+ *
+ * <p>The user should pass a String as a default value for the date in milliseconds since epoch.
+ */
 public class DatePreference extends Preference implements DatePickerDialog.OnDateSetListener,
         ReloadablePreferenceInterface {
-    private static final String SEPARATOR = "/";
-    private static final int YEAR_INDEX = 0;
-    private static final int MONTH_INDEX = 1;
-    private static final int DAY_INDEX = 2;
-
+    private static final long DEFAULT_UNSET_VALUE = Long.MIN_VALUE;
     private final DatePickerDialog mDatePickerDialog;
-    private int mYear;
-    private int mMonth;
-    private int mDay;
-    private boolean mDateExists = false;
-    private final DateFormat mDateFormat;
+    private long mDateTimeMillis;
+    private boolean mDateSet;
+    private final DateFormat mDateFormat = DateFormat.getDateInstance();
 
     /** Creates a new instance initialized with {@code context} and {@code attrs}. */
     public DatePreference(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mDateFormat = SimpleDateFormat.getDateInstance();
         final Calendar calendar = Calendar.getInstance();
         mDatePickerDialog = new DatePickerDialog(
                 context,
@@ -77,13 +71,13 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
     protected void onBindView(View view) {
         super.onBindView(view);
         View removeDateOfBirth = view.findViewById(R.id.remove_dob);
-        if (!isSelectable() || !mDateExists) {
+        if (!isSelectable() || isNotSet()) {
             removeDateOfBirth.setVisibility(View.GONE);
         } else {
             removeDateOfBirth.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    setDate("");
+                    setDate(DEFAULT_UNSET_VALUE);
                 }
             });
         }
@@ -93,105 +87,72 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
         if (state != null) {
             mDatePickerDialog.onRestoreInstanceState(state);
         }
-        if (mDateExists) {
-            mDatePickerDialog.updateDate(mYear, mMonth, mDay);
+        if (!isNotSet()) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(mDateTimeMillis);
+            mDatePickerDialog.updateDate(calendar.get(Calendar.YEAR),
+                    calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DAY_OF_MONTH));
         }
         mDatePickerDialog.show();
     }
 
     @Override
     protected void onSetInitialValue(boolean restorePersistedValue, Object defaultValue) {
-        setDate(restorePersistedValue ? getPersistedString("") : (String) defaultValue);
+        setDate(restorePersistedValue ? getPersistedLong(DEFAULT_UNSET_VALUE) : (Long) defaultValue);
     }
 
     @Override
     public void reloadFromPreference() {
-        setDate(getPersistedString(""));
+        setDate(getPersistedLong(DEFAULT_UNSET_VALUE));
     }
 
 
     @Override
     public boolean isNotSet() {
-        return !mDateExists;
+        return mDateTimeMillis == DEFAULT_UNSET_VALUE;
     }
 
-    @Nullable
-    public Calendar getDate() {
-        if (mDateExists) {
-            Calendar date = Calendar.getInstance();
-            date.set(mYear, mMonth, mDay);
-            return date;
-        } else {
-            return null;
-        }
+    public long getDate() {
+        return mDateTimeMillis;
     }
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        String date = serialize(year, month, day);
-        if (callChangeListener(date)) {
-            setDate(true /* dateExists */, year, month, day);
+        Calendar calendar = Calendar.getInstance();
+        calendar.clear(); // Clears hour, minutes and seconds
+        calendar.set(year, month, day);
+        long dateTimeInMillis = calendar.getTimeInMillis();
+        if (callChangeListener(dateTimeInMillis)) {
+            setDate(dateTimeInMillis);
         }
     }
 
     @Override
     protected Object onGetDefaultValue(TypedArray a, int index) {
-        return a.getString(index);
+        return Long.parseLong(a.getString(index));
     }
 
     @Override
     public CharSequence getSummary() {
-        if (!mDateExists) {
+        if (isNotSet()) {
             return super.getSummary();
         } else {
-            return convertToLocaleDate(mYear, mMonth, mDay);
+            return mDateFormat.format(new Date(mDateTimeMillis));
         }
     }
 
-    private void setDate(String date) {
-        if (!TextUtils.isEmpty(date)) {
-            int[] yearMonthDay = deserialize(date, new int[3]);
-            setDate(true /* dateExists */,
-                    yearMonthDay[YEAR_INDEX],
-                    yearMonthDay[MONTH_INDEX],
-                    yearMonthDay[DAY_INDEX]);
-        } else {
-            setDate(false /* dateExists */,
-                    mYear,
-                    mMonth,
-                    mDay);
+    private void setDate(long dateTimeMillis) {
+        // Always persist/notify the first time.
+        final boolean changed = mDateTimeMillis != dateTimeMillis;
+        if (changed || !mDateSet) {
+            mDateSet = true;
+            mDateTimeMillis = dateTimeMillis;
+            persistLong(mDateTimeMillis);
+            if(changed) {
+                notifyChanged();
+            }
         }
-    }
-
-    private void setDate(boolean dateExists, int year, int month, int day) {
-        if (mDateExists != dateExists || year != mYear || month != mMonth || day != mDay) {
-            mDateExists = dateExists;
-            mYear = year;
-            mMonth = month;
-            mDay = day;
-            String date = mDateExists ? serialize(year, month, day) : "";
-            persistString(date);
-            notifyChanged();
-        }
-    }
-
-    private static String serialize(int year, int month, int day) {
-        return year + SEPARATOR + month + SEPARATOR + day;
-    }
-
-    private static int[] deserialize(String date, int[] yearMonthDay) {
-        if (yearMonthDay == null || yearMonthDay.length < 3) {
-            yearMonthDay = new int[3];
-        }
-        String parts[] = date.split(SEPARATOR);
-        yearMonthDay[YEAR_INDEX] = Integer.parseInt(parts[YEAR_INDEX]);
-        yearMonthDay[MONTH_INDEX] = Integer.parseInt(parts[MONTH_INDEX]);
-        yearMonthDay[DAY_INDEX] = Integer.parseInt(parts[DAY_INDEX]);
-        return yearMonthDay;
-    }
-
-    private String convertToLocaleDate(int year, int month, int day) {
-        return mDateFormat.format(new GregorianCalendar(year, month, day).getTime());
     }
 
     @Override

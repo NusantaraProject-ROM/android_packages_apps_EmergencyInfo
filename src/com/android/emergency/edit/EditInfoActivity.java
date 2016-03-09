@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.android.emergency.EmergencyTabPreferenceActivity;
+import com.android.emergency.R;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 /**
@@ -31,6 +32,8 @@ public class EditInfoActivity extends EmergencyTabPreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.edit_activity_layout);
+
         getWindow().addFlags(FLAG_DISMISS_KEYGUARD);
         MetricsLogger.visible(this, MetricsEvent.ACTION_EDIT_EMERGENCY_INFO);
     }

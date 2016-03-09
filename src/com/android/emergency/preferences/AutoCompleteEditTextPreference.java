@@ -124,8 +124,6 @@ public class AutoCompleteEditTextPreference extends DialogPreference {
 
         AutoCompleteTextView editText = mAutoCompleteTextView;
         editText.setText(getText());
-        // This moves the cursor to the end of the text.
-        editText.setSelection(getText().length());
 
         ViewParent oldParent = editText.getParent();
         if (oldParent != view) {

@@ -26,8 +26,36 @@ public interface PreferenceKeys {
     /** Key for the add contact preference */
     public static final String KEY_ADD_CONTACT = "add_contact";
 
+    /** Key to store and read the name of the user. */
+    public static final String KEY_NAME = "name";
+
+    /** Key to store and read the date of birth of the user. */
+    public static final String KEY_DATE_OF_BIRTH = "date_of_birth";
+
+    /** Key to store and read the address of the user. */
+    public static final String KEY_ADDRESS = "address";
+
+    /** Key to store and read the blood type of the user. */
+    public static final String KEY_BLOOD_TYPE = "blood_type";
+
+    /** Key to store and read the allergies of the user. */
+    public static final String KEY_ALLERGIES = "allergies";
+
+    /** Key to store and read the medications of the user. */
+    public static final String KEY_MEDICATIONS = "medications";
+
+    /** Key to store and read the medical conditions of the user. */
+    public static final String KEY_MEDICAL_CONDITIONS = "medical_conditions";
+
+    /** Key to store and read the organ donor choice of the user. */
+    public static final String KEY_ORGAN_DONOR = "organ_donor";
 
     /** Keys for all editable emergency info preferences */
-    public static final String[] KEYS_EMERGENCY_INFO = {"name", "address", "date_of_birth",
-            "blood_type", "allergies", "medications", "medical_conditions", "organ_donor"};
+    public static final String[] KEYS_EDIT_EMERGENCY_INFO = {KEY_NAME, KEY_ADDRESS,
+            KEY_DATE_OF_BIRTH, KEY_BLOOD_TYPE, KEY_ALLERGIES, KEY_MEDICATIONS,
+            KEY_MEDICAL_CONDITIONS, KEY_ORGAN_DONOR};
+
+    /** Keys for all viewable emergency info preferences */
+    public static final String[] KEYS_VIEW_EMERGENCY_INFO = {KEY_ADDRESS, KEY_BLOOD_TYPE,
+            KEY_ALLERGIES, KEY_MEDICATIONS, KEY_MEDICAL_CONDITIONS, KEY_ORGAN_DONOR};
 }

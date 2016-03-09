@@ -22,6 +22,7 @@
     <string name="address">Address</string>
     <string name="date_of_birth">Date of birth</string>
     <string name="dob_and_age">Age: %1$d (%2$s)</string>
+    <string name="age">Age: %1$d</string>
     <string name="remove_dob_icon_text">Remove date of birth</string>
     <string name="blood_type">Blood type</string>
     <string name="oplus">O+</string>

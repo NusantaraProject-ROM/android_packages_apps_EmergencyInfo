@@ -15,24 +15,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:enabled="false"
-        android:icon="@drawable/ic_account_circle"
-        android:key="name"
-        android:selectable="false"
-        android:shouldDisableView="false"
-        android:summary="@string/default_summary_none"
-        android:title="@string/name" />
-
-    <com.android.emergency.preferences.ViewDatePreference
-        android:enabled="false"
-        android:icon="@drawable/ic_cake_black_24dp"
-        android:key="date_of_birth"
-        android:selectable="false"
-        android:shouldDisableView="false"
-        android:summary="@string/default_summary_none"
-        android:title="@string/date_of_birth" />
-
-    <com.android.emergency.preferences.EmergencyEditTextPreference
-        android:enabled="false"
         android:icon="@drawable/ic_address_black_24dp"
         android:key="address"
         android:selectable="false"

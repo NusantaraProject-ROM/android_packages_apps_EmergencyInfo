@@ -19,7 +19,6 @@ import android.content.Context;
 import android.preference.EditTextPreference;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.view.View;
 
 import com.android.emergency.ReloadablePreferenceInterface;
 
@@ -31,13 +30,6 @@ public class EmergencyEditTextPreference extends EditTextPreference
 
     public EmergencyEditTextPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
-    }
-
-    @Override
-    protected void onBindDialogView(View view) {
-        super.onBindDialogView(view);
-        // This moves the cursor to the end of the text.
-        getEditText().setSelection(getText().length());
     }
 
     @Override

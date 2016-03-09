@@ -15,6 +15,7 @@
  */
 package com.android.emergency;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
@@ -45,7 +46,7 @@ import com.android.emergency.view.ViewEmergencyInfoFragment;
  * to be used with AppCompat. It uses a tab layout to separate personal and medical information
  * from emergency contacts.
  */
-public abstract class EmergencyTabPreferenceActivity extends PreferenceActivity {
+public abstract class EmergencyTabPreferenceActivity extends Activity {
 
     private AppCompatDelegate mDelegate;
 
@@ -65,8 +66,10 @@ public abstract class EmergencyTabPreferenceActivity extends PreferenceActivity 
         getDelegate().installViewFactory();
         getDelegate().onCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
+        setupActionBar();
+    }
 
-        setContentView(R.layout.tab_layout);
+    private void setupTabs() {
         mTabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
 
         if (mTabsAdapter == null) {
@@ -89,8 +92,6 @@ public abstract class EmergencyTabPreferenceActivity extends PreferenceActivity 
         // Select the same tab that was selected in the Edit/View activity.
         final int selectedTabIndex = getIntent().getIntExtra(EXTRA_SELECTED_TAB, INDEX_INFO_TAB);
         selectTab(selectedTabIndex);
-
-        setupActionBar();
     }
 
     /** Selects the tab at index {@code selectedTabIndex}. */
@@ -131,6 +132,7 @@ public abstract class EmergencyTabPreferenceActivity extends PreferenceActivity 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         getDelegate().setContentView(layoutResID);
+        setupTabs();
     }
 
     @Override

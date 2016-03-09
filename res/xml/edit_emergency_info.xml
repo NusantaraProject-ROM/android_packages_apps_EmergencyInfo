@@ -24,7 +24,6 @@
         android:title="@string/name" />
 
     <com.android.emergency.preferences.DatePreference
-        android:defaultValue=""
         android:icon="@drawable/ic_cake_black_24dp"
         android:key="date_of_birth"
         android:summary="@string/default_summary_none"

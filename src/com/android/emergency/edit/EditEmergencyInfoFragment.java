@@ -22,12 +22,8 @@ import android.preference.PreferenceFragment;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
-import com.android.emergency.ReloadablePreferenceInterface;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Fragment that displays personal and medical information.
@@ -39,7 +35,7 @@ public class EditEmergencyInfoFragment extends PreferenceFragment {
 
         addPreferencesFromResource(R.xml.edit_emergency_info);
 
-        for (String preferenceKey : PreferenceKeys.KEYS_EMERGENCY_INFO) {
+        for (String preferenceKey : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
             Preference preference = findPreference(preferenceKey);
             preference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
