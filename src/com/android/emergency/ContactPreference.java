@@ -15,18 +15,15 @@
  */
 package com.android.emergency;
 
-import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.preference.Preference;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.view.View;
 
 import com.android.internal.logging.MetricsLogger;
@@ -63,7 +60,13 @@ public class ContactPreference extends Preference {
         // the contact.
         mContact = EmergencyContactManager.getContact(context, contactUri);
         setTitle(mContact.getName());
-        setSummary(mContact.getPhoneNumber());
+        String summary = mContact.getPhoneType() == null ?
+                mContact.getPhoneNumber() :
+                String.format(
+                        context.getResources().getString(R.string.phone_type_and_phone_number),
+                        mContact.getPhoneType(),
+                        mContact.getPhoneNumber());
+        setSummary(summary);
         setWidgetLayoutResource(R.layout.preference_user_delete_widget);
         setPersistent(false);
 

@@ -36,6 +36,7 @@ public class EmergencyContactManager {
      */
     public static Contact getContact(Context context, Uri contactUri) {
         String phoneNumber = null;
+        String phoneType = null;
         String name = null;
         Bitmap photo = null;
         final Uri contactLookupUri =
@@ -45,13 +46,19 @@ public class EmergencyContactManager {
                 contactUri,
                 new String[]{ContactsContract.Contacts.DISPLAY_NAME,
                         ContactsContract.CommonDataKinds.Phone.NUMBER,
+                        ContactsContract.CommonDataKinds.Phone.TYPE,
+                        ContactsContract.CommonDataKinds.Phone.LABEL,
                         ContactsContract.CommonDataKinds.Photo.PHOTO_ID},
                 null, null, null);
         try {
             if (cursor.moveToNext()) {
                 name = cursor.getString(0);
                 phoneNumber = cursor.getString(1);
-                Long photoId = cursor.getLong(2);
+                phoneType = ContactsContract.CommonDataKinds.Phone.getTypeLabel(
+                        context.getResources(),
+                        cursor.getInt(2),
+                        cursor.getString(3)).toString();
+                Long photoId = cursor.getLong(4);
                 if (photoId != null && photoId > 0) {
                     Uri photoUri = ContentUris.withAppendedId(ContactsContract.Data.CONTENT_URI,
                             photoId);
@@ -76,7 +83,7 @@ public class EmergencyContactManager {
                 cursor.close();
             }
         }
-        return new Contact(contactLookupUri, contactUri, name, phoneNumber, photo);
+        return new Contact(contactLookupUri, contactUri, name, phoneNumber, phoneType, photo);
     }
 
     /** Returns whether the contact uri is not null and corresponds to an existing contact. */
@@ -111,6 +118,8 @@ public class EmergencyContactManager {
         private final String mName;
         /** The emergency contact's phone number selected by the user. */
         private final String mPhoneNumber;
+        /** The emergency contact's phone number type (mobile, work, home, etc). */
+        private final String mPhoneType;
         /** The contact's photo. */
         private final Bitmap mPhoto;
 
@@ -119,11 +128,13 @@ public class EmergencyContactManager {
                        Uri contactUri,
                        String name,
                        String phoneNumber,
+                       String phoneType,
                        Bitmap photo) {
             mContactLookupUri = contactLookupUri;
             mContactUri = contactUri;
             mName = name;
             mPhoneNumber = phoneNumber;
+            mPhoneType = phoneType;
             mPhoto = photo;
         }
 
@@ -149,6 +160,11 @@ public class EmergencyContactManager {
         /** Returns the phone number selected by the user. */
         public String getPhoneNumber() {
             return mPhoneNumber;
+        }
+
+        /** Returns the phone type (e.g. mobile, work, home, etc.) . */
+        public String getPhoneType() {
+            return mPhoneType;
         }
 
         /** Returns the photo assigned to this contact. */

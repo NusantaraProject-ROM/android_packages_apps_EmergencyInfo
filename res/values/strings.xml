@@ -59,10 +59,10 @@
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
 
-    <string name="description">This information can help first responders in an emergency. It is
-        stored on your device only, but anyone can read it from the emergency dialer without 
-        unlocking your phone.
+    <string name="description">This information can help first responders in an emergency. It is stored on your device only, but anyone can read it from the emergency dialer without unlocking your phone.
     </string>
     <string name="phone_number_error">No phone number available for this contact</string>
     <string name="edit_emergency_info">Edit emergency information</string>
+
+    <string name="phone_type_and_phone_number">%1$s • %2$s</string>
 </resources>
