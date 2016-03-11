@@ -19,9 +19,7 @@
     <string name="tab_title_info">Info</string>
     <string name="tab_title_contacts">Contacts</string>
     <string name="name">Name</string>
-    <string name="name_hint">For example, John Doe</string>
     <string name="address">Address</string>
-    <string name="address_hint">For example, 1600 Amphitheatre Pkwy, Mountain View, CA 94043</string>
     <string name="date_of_birth">Date of birth</string>
     <string name="dob_and_age">Age: %1$d (%2$s)</string>
     <string name="remove_dob_icon_text">Remove date of birth</string>

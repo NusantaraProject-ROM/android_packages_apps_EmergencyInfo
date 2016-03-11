@@ -16,29 +16,32 @@
 package com.android.emergency.preferences;
 
 import android.content.Context;
-import android.preference.EditTextPreference;
+import android.os.UserManager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.view.View;
+import android.widget.ArrayAdapter;
 
 import com.android.emergency.ReloadablePreferenceInterface;
 
 /**
- * Custom {@link EditTextPreference} that allows us to refresh and update the summary.
+ * {@link AutoCompleteEditTextPreference} that prepopulates the edit text view with the name of the
+ * user provided in settings.
  */
-public class EmergencyEditTextPreference extends EditTextPreference
-        implements ReloadablePreferenceInterface {
-
-    public EmergencyEditTextPreference(Context context, AttributeSet attrs) {
+public class NameAutoCompletePreference extends AutoCompleteEditTextPreference implements
+        ReloadablePreferenceInterface {
+    public NameAutoCompletePreference(Context context, AttributeSet attrs) {
         super(context, attrs);
+        getAutoCompleteTextView().setAdapter(createAdapter());
     }
 
-    @Override
-    protected void onBindDialogView(View view) {
-        super.onBindDialogView(view);
-        // This moves the cursor to the end of the text.
-        getEditText().setSelection(getText().length());
+    private ArrayAdapter createAdapter() {
+        UserManager userManager =
+                (UserManager) getContext().getSystemService(Context.USER_SERVICE);
+        String[] autocompleteSuggestions = {userManager.getUserName()};
+        return new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_dropdown_item_1line, autocompleteSuggestions);
     }
+
 
     @Override
     public void reloadFromPreference() {
