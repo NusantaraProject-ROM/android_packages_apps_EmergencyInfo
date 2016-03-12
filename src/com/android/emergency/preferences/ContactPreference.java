@@ -129,4 +129,13 @@ public class ContactPreference extends Preference {
         MetricsLogger.action(getContext(), MetricsEvent.ACTION_CALL_EMERGENCY_CONTACT);
         getContext().startActivity(callIntent);
     }
+
+    /**
+     * Displays a contact card for the contact.
+     */
+    public void displayContact() {
+        Intent contactIntent = new Intent(Intent.ACTION_VIEW);
+        contactIntent.setData(mContact.getContactLookupUri());
+        getContext().startActivity(contactIntent);
+    }
 }

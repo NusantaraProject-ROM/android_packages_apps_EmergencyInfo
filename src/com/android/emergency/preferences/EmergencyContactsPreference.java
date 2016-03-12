@@ -17,6 +17,7 @@ package com.android.emergency.preferences;
 
 import android.content.Context;
 import android.net.Uri;
+import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.util.ArraySet;
 import android.util.AttributeSet;
@@ -112,6 +113,16 @@ public class EmergencyContactsPreference extends PreferenceCategory
      */
     protected void onBindContactView(final ContactPreference contactPreference) {
         contactPreference.setRemoveContactPreferenceListener(this);
+        contactPreference
+                .setOnPreferenceClickListener(
+                        new Preference.OnPreferenceClickListener() {
+                            @Override
+                            public boolean onPreferenceClick(Preference preference) {
+                                contactPreference.displayContact();
+                                return true;
+                            }
+                        }
+                );
     }
 
     private Set<Uri> getPersistedEmergencyContacts() {
