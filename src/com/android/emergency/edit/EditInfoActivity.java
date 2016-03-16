@@ -42,13 +42,4 @@ public class EditInfoActivity extends EmergencyTabPreferenceActivity {
     public boolean isInViewMode() {
         return false;
     }
-
-    @Override
-    public void onBackPressed() {
-        // If returning to the ViewInfoActivity, then the currently selected tab will be shown.
-        Intent resultIntent = new Intent();
-        resultIntent.putExtra(EXTRA_SELECTED_TAB, getSelectedTabPosition());
-        setResult(Activity.RESULT_OK, resultIntent);
-        finish();
-    }
 }

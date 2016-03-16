@@ -44,8 +44,6 @@ import java.util.Date;
  * Activity for viewing emergency information.
  */
 public class ViewInfoActivity extends EmergencyTabPreferenceActivity {
-
-    private static final int EDIT_ACTIVITY_RESULT = 1001;
     private TextView mPersonalCardLargeItem;
     private TextView mPersonalCardSmallItem;
     private SharedPreferences mSharedPreferences;
@@ -118,34 +116,6 @@ public class ViewInfoActivity extends EmergencyTabPreferenceActivity {
         }
         // Return 0 if the user specifies a date of birth in the future.
         return Math.max(0, age);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_edit, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_edit:
-                Intent intent = new Intent(this, EditInfoActivity.class);
-                intent.putExtra(EXTRA_SELECTED_TAB, getSelectedTabPosition());
-                startActivityForResult(intent, EDIT_ACTIVITY_RESULT);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == EDIT_ACTIVITY_RESULT && resultCode == Activity.RESULT_OK) {
-            // Select the same tab that was last selected in the EditInfoActivity
-            selectTab(data.getIntExtra(EXTRA_SELECTED_TAB, getSelectedTabPosition()));
-        }
     }
 
     @Override

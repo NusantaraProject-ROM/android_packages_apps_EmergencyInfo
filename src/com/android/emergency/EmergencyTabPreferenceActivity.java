@@ -47,10 +47,7 @@ import com.android.emergency.view.ViewEmergencyInfoFragment;
  * from emergency contacts.
  */
 public abstract class EmergencyTabPreferenceActivity extends Activity {
-
     private AppCompatDelegate mDelegate;
-
-    protected static final String EXTRA_SELECTED_TAB = "selected_tab";
 
     public static final int INDEX_INFO_TAB = 0;
     public static final int INDEX_CONTACTS_TAB = 1;
@@ -88,16 +85,6 @@ public abstract class EmergencyTabPreferenceActivity extends Activity {
             // changes to this layout
             viewPager.addOnPageChangeListener(new TabLayoutOnPageChangeListener(mTabLayout));
         }
-
-        // Select the same tab that was selected in the Edit/View activity.
-        final int selectedTabIndex = getIntent().getIntExtra(EXTRA_SELECTED_TAB, INDEX_INFO_TAB);
-        selectTab(selectedTabIndex);
-    }
-
-    /** Selects the tab at index {@code selectedTabIndex}. */
-    public void selectTab(int selectedTabIndex) {
-        TabLayout.Tab tab = mTabLayout.getTabAt(selectedTabIndex);
-        tab.select();
     }
 
     /** Returns the index of the currently selected tab. */
