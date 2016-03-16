@@ -27,10 +27,10 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.android.emergency.EmergencyContactManager;
-import com.android.emergency.PhotoUtils;
 import com.android.emergency.R;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.settingslib.drawable.CircleFramedDrawable;
 
 
 /**
@@ -74,7 +74,13 @@ public class ContactPreference extends Preference {
         setPersistent(false);
 
         //TODO: Consider doing the following in a non-UI thread.
-        Drawable icon = PhotoUtils.encircleUserPhoto(mContact.getPhoto(), getContext());
+        Drawable icon;
+        if (mContact.getPhoto() != null) {
+            icon = new CircleFramedDrawable(mContact.getPhoto(),
+                    (int) context.getResources().getDimension(R.dimen.circle_avatar_size));
+        } else {
+            icon = context.getResources().getDrawable(R.drawable.ic_person_black_24dp);
+        }
         setIcon(icon);
     }
 

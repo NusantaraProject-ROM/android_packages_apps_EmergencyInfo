@@ -17,18 +17,16 @@ package com.android.emergency.edit;
 
 import static android.view.WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 
-import com.android.emergency.EmergencyTabPreferenceActivity;
+import com.android.emergency.EmergencyTabActivity;
 import com.android.emergency.R;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 /**
  * Activity for editing emergency information.
  */
-public class EditInfoActivity extends EmergencyTabPreferenceActivity {
+public class EditInfoActivity extends EmergencyTabActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,5 +39,10 @@ public class EditInfoActivity extends EmergencyTabPreferenceActivity {
     @Override
     public boolean isInViewMode() {
         return false;
+    }
+
+    @Override
+    public String getActivityTitle() {
+        return getString(R.string.edit_emergency_info_label);
     }
 }

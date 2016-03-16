@@ -19,19 +19,13 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
-import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.TabLayout.TabLayoutOnPageChangeListener;
 import android.support.design.widget.TabLayout.ViewPagerOnTabSelectedListener;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,13 +36,10 @@ import com.android.emergency.view.ViewEmergencyContactsFragment;
 import com.android.emergency.view.ViewEmergencyInfoFragment;
 
 /**
- * A {@link PreferenceActivity} which implements and proxies the necessary calls
- * to be used with AppCompat. It uses a tab layout to separate personal and medical information
+ * An activity uses a tab layout to separate personal and medical information
  * from emergency contacts.
  */
-public abstract class EmergencyTabPreferenceActivity extends Activity {
-    private AppCompatDelegate mDelegate;
-
+public abstract class EmergencyTabActivity extends Activity {
     public static final int INDEX_INFO_TAB = 0;
     public static final int INDEX_CONTACTS_TAB = 1;
     private static final int NUMBER_TABS = 2;
@@ -57,14 +48,6 @@ public abstract class EmergencyTabPreferenceActivity extends Activity {
     private TabLayout mTabLayout;
 
     private Fragment[] mFragments = new Fragment[NUMBER_TABS];
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        getDelegate().installViewFactory();
-        getDelegate().onCreate(savedInstanceState);
-        super.onCreate(savedInstanceState);
-        setupActionBar();
-    }
 
     private void setupTabs() {
         mTabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
@@ -87,119 +70,41 @@ public abstract class EmergencyTabPreferenceActivity extends Activity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int display_mode = getResources().getConfiguration().orientation;
+
+        if (display_mode == Configuration.ORIENTATION_PORTRAIT) {
+            mTabLayout.setTabMode(TabLayout.MODE_FIXED);
+            mTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        }
+    }
+
     /** Returns the index of the currently selected tab. */
     public int getSelectedTabPosition() {
         return mTabLayout.getSelectedTabPosition();
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        getDelegate().onPostCreate(savedInstanceState);
-    }
-
-    public ActionBar getSupportActionBar() {
-        return getDelegate().getSupportActionBar();
-    }
-
-    public void setSupportActionBar(@Nullable Toolbar toolbar) {
-        getDelegate().setSupportActionBar(toolbar);
-    }
-
-    @Override
-    public MenuInflater getMenuInflater() {
-        return getDelegate().getMenuInflater();
-    }
-
-    @Override
     public void setContentView(@LayoutRes int layoutResID) {
-        getDelegate().setContentView(layoutResID);
+        super.setContentView(layoutResID);
         setupTabs();
-    }
-
-    @Override
-    public void setContentView(View view) {
-        getDelegate().setContentView(view);
-    }
-
-    @Override
-    public void setContentView(View view, ViewGroup.LayoutParams params) {
-        getDelegate().setContentView(view, params);
-    }
-
-    @Override
-    public void addContentView(View view, ViewGroup.LayoutParams params) {
-        getDelegate().addContentView(view, params);
-    }
-
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
-        getDelegate().onPostResume();
-    }
-
-    @Override
-    protected void onTitleChanged(CharSequence title, int color) {
-        super.onTitleChanged(title, color);
-        getDelegate().setTitle(title);
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        getDelegate().onConfigurationChanged(newConfig);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        getDelegate().onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        getDelegate().onDestroy();
-    }
-
-    private void setupActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            // Show the Up button in the action bar.
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button.
-            case android.R.id.home:
+        Toolbar toolbar = (Toolbar) findViewById(R.id.action_bar);
+        toolbar.setTitle(getActivityTitle());
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 onBackPressed();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void invalidateOptionsMenu() {
-        getDelegate().invalidateOptionsMenu();
+            }
+        });
     }
 
     /** Returns whether the activity is in view mode (true) or in edit mode (false). */
     public abstract boolean isInViewMode();
 
-    private AppCompatDelegate getDelegate() {
-        if (mDelegate == null) {
-            mDelegate = AppCompatDelegate.create(this, null);
-        }
-        return mDelegate;
-    }
+    /** Returns the activity title. */
+    public abstract String getActivityTitle();
 
     /** The adapter used to handle the two fragments. */
     private class ViewPagerAdapter extends FragmentStatePagerAdapter {

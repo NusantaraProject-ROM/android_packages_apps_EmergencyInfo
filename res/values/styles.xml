@@ -15,31 +15,29 @@
 -->
 <resources>
     <!-- Base settings theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="actionBarStyle">@style/AppTheme.ActionBar</item>
-        <item name="android:actionBarSize">@dimen/action_bar_size</item>
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="android:preferenceCategoryStyle">@style/AppTheme.PreferenceCategoryStyle</item>
         <item name="colorPrimary">@*android:color/material_blue_grey_900</item>
         <item name="colorPrimaryDark">@*android:color/material_blue_grey_950</item>
         <item name="android:datePickerStyle">@style/AppTheme.DatePickerStyle</item>
     </style>
     <!-- Base emergency theme. -->
-    <style name="AppThemeEmergency" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="actionBarStyle">@style/AppTheme.ActionBar</item>
+    <style name="AppThemeEmergency" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:preferenceCategoryStyle">@style/AppTheme.PreferenceCategoryStyle</item>
         <item name="colorPrimaryDark">@color/emergency_primary_dark</item>
         <item name="colorPrimary">@color/emergency_primary</item>
         <item name="colorAccent">@color/emergency_accent</item>
     </style>
 
-    <!-- Action Bar and tabs -->
-    <style name="AppTheme.ActionBar" parent="style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="elevation">0dp</item>
-        <item name="android:minHeight">@dimen/action_bar_size</item>
-    </style>
+    <!-- Tabs -->
     <style name="AppTheme.TabLayout" parent="Widget.Design.TabLayout">
         <item name="tabTextAppearance">@style/AppTheme.TabText</item>
         <item name="tabSelectedTextColor">@color/tab_text_color</item>
+        <item name="android:textSize">14sp</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabPaddingStart">24dp</item>
+        <item name="tabPaddingEnd">24dp</item>
+        <item name="tabMode">scrollable</item>
     </style>
 
     <style name="AppTheme.TabText" parent="TextAppearance.AppCompat.Button">

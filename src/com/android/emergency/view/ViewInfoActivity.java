@@ -15,24 +15,18 @@
  */
 package com.android.emergency.view;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.emergency.EmergencyTabPreferenceActivity;
+import com.android.emergency.EmergencyTabActivity;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
-import com.android.emergency.edit.EditInfoActivity;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -43,7 +37,7 @@ import java.util.Date;
 /**
  * Activity for viewing emergency information.
  */
-public class ViewInfoActivity extends EmergencyTabPreferenceActivity {
+public class ViewInfoActivity extends EmergencyTabActivity {
     private TextView mPersonalCardLargeItem;
     private TextView mPersonalCardSmallItem;
     private SharedPreferences mSharedPreferences;
@@ -121,5 +115,10 @@ public class ViewInfoActivity extends EmergencyTabPreferenceActivity {
     @Override
     public boolean isInViewMode() {
         return true;
+    }
+
+    @Override
+    public String getActivityTitle() {
+        return getString(R.string.app_label);
     }
 }
