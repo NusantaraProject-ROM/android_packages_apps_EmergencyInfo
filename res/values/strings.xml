@@ -13,26 +13,50 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- The name of the app. [CHAR_LIMIT=20] -->
     <string name="app_label">Emergency Info</string>
+    <!-- The title of the edit info activity. [CHAR_LIMIT=80] -->
     <string name="edit_emergency_info_label">Edit Emergency Info</string>
+    <!-- The title of the emergency info tab. [CHAR_LIMIT=15] -->
     <string name="tab_title_info">Info</string>
+    <!-- The title of the emergency contacts tab. [CHAR_LIMIT=15] -->
     <string name="tab_title_contacts">Contacts</string>
+    <!-- The title of the name preference. [CHAR_LIMIT=80] -->
     <string name="name">Name</string>
+    <!-- The title of the address preference. [CHAR_LIMIT=80] -->
     <string name="address">Address</string>
+    <!-- The title of the date of birth preference. [CHAR_LIMIT=80] -->
     <string name="date_of_birth">Date of birth</string>
-    <string name="dob_and_age">Age: %1$d (%2$s)</string>
-    <string name="age">Age: %1$d</string>
+    <!-- The age and date of birth of the user. [CHAR_LIMIT=40] -->
+    <string name="dob_and_age">
+        Age: <xliff:g id="numerical_age" example="29">%1$d</xliff:g> (<xliff:g id="date_of_birth" example="3 feb 1987">%2$s</xliff:g>)
+        </string>
+    <!-- The age of the user. [CHAR_LIMIT=20] -->
+    <string name="age">
+        Age: <xliff:g id="numerical_age" example="29">%1$d</xliff:g>
+    </string>
+    <!-- The description of the remove date of birth icon, for talkback. [CHAR_LIMIT=NONE] -->
     <string name="remove_dob_icon_text">Remove date of birth</string>
+    <!-- The title of the blood type preference. [CHAR_LIMIT=80] -->
     <string name="blood_type">Blood type</string>
+    <!-- Blood type O+. [CHAR_LIMIT=10] -->
     <string name="oplus">O+</string>
+    <!-- Blood type O-. [CHAR_LIMIT=10] -->
     <string name="ominus">O-</string>
+    <!-- Blood type A+. [CHAR_LIMIT=10] -->
     <string name="aplus">A+</string>
+    <!-- Blood type A-. [CHAR_LIMIT=10] -->
     <string name="aminus">A-</string>
+    <!-- Blood type B+. [CHAR_LIMIT=10] -->
     <string name="bplus">B+</string>
+    <!-- Blood type B-. [CHAR_LIMIT=10] -->
     <string name="bminus">B-</string>
+    <!-- Blood type AB+. [CHAR_LIMIT=10] -->
     <string name="abplus">AB+</string>
+    <!-- Blood type AB-. [CHAR_LIMIT=10] -->
     <string name="abminus">AB-</string>
+    <!-- Blood type H/H. [CHAR_LIMIT=10] -->
     <string name="hh">H/H</string>
     <string-array name="blood_type_entries">
         <item>@string/oplus</item>
@@ -58,15 +82,25 @@
         <item>@string/hh</item>
         <item></item>
     </string-array>
+    <!-- The title of the allergies preference. [CHAR_LIMIT=80] -->
     <string name="allergies">Allergies</string>
+    <!-- Hint to show in the edit text of the allergies. [CHAR_LIMIT=40] -->
     <string name="allergies_hint">For example, peanuts, pollen</string>
+    <!-- The default text to show when a preference is unknown. [CHAR_LIMIT=40] -->
     <string name="default_summary_none">Unknown</string>
+    <!-- The title of the medications preference. [CHAR_LIMIT=80] -->
     <string name="medications">Medications</string>
+    <!-- Hint to show in the edit text of the medications. [CHAR_LIMIT=40] -->
     <string name="medications_hint">For example, lisinopril, aspirin</string>
+    <!-- The title of the medical conditions preference. [CHAR_LIMIT=80] -->
     <string name="medical_conditions">Medical conditions and notes</string>
+    <!-- Hint to show in the edit text of the medical conditions. [CHAR_LIMIT=40] -->
     <string name="medical_conditions_hint">For example, asthma</string>
+    <!-- The title of the organ donor preference. [CHAR_LIMIT=80] -->
     <string name="organ_donor">Organ donor</string>
+    <!-- Affirmative. [CHAR_LIMIT=10] -->
     <string name="yes">Yes</string>
+    <!-- Negative. [CHAR_LIMIT=10] -->
     <string name="no">No</string>
     <string-array name="organ_donor_entries">
         <item>@string/yes</item>
@@ -78,18 +112,24 @@
         <item>@string/no</item>
         <item></item>
     </string-array>
+    <!-- The title of the emergency contacts preference. [CHAR_LIMIT=80] -->
     <string name="emergency_contacts_title">Emergency contacts</string>
+    <!-- The title of the add emergency contacts preference. [CHAR_LIMIT=80] -->
     <string name="add_emergency_contact">Add emergency contact</string>
-    <string name="remove_contact">Remove %s from emergency contacts?</string>
-    <string name="remove_contact_icon_text">Remove contact</string>
-    <string name="remove">Remove</string>
-    <string name="cancel">Cancel</string>
-    <string name="ok">OK</string>
-
-    <string name="description">This information can help first responders in an emergency. It is stored on your device only, but anyone can read it from the emergency dialer without unlocking your phone.
+    <!-- The message of the dialog shown when removing a contact. [CHAR_LIMIT=140] -->
+    <string name="remove_contact">
+        Remove <xliff:g id="contact_name" example="John Doe">%1$s</xliff:g> from emergency contacts?
     </string>
-    <string name="phone_number_error">No phone number available for this contact</string>
-    <string name="edit_emergency_info">Edit emergency information</string>
-
-    <string name="phone_type_and_phone_number">%1$s • %2$s</string>
+    <!-- The description of the remove an emergency contact, for talkback. [CHAR_LIMIT=NONE] -->
+    <string name="remove_contact_icon_text">Remove contact</string>
+    <!-- Button text for removing a contact. [CHAR_LIMIT=10] -->
+    <string name="remove">Remove</string>
+    <!-- Button text for canceling an operation. [CHAR_LIMIT=10] -->
+    <string name="cancel">Cancel</string>
+    <!-- Button text for accepting an operation. [CHAR_LIMIT=10] -->
+    <string name="ok">OK</string>
+    <!-- Subtitle for an emergency contact. [CHAR_LIMIT=NONE] -->
+    <string name="phone_type_and_phone_number">
+        <xliff:g id="phone_type" example="Mobile">%1$s</xliff:g> • <xliff:g id="phone_number" example="333-444-5566">%2$s</xliff:g>
+    </string>
 </resources>

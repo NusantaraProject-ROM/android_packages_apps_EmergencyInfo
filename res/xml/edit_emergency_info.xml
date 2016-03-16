@@ -86,13 +86,4 @@
         android:singleLine="false"
         android:summary="@string/default_summary_none"
         android:title="@string/medical_conditions" />
-
-    <Preference
-        android:clickable="false"
-        android:enabled="false"
-        android:key="description"
-        android:persistent="false"
-        android:selectable="false"
-        android:shouldDisableView="false"
-        android:summary="@string/description" />
 </PreferenceScreen>
