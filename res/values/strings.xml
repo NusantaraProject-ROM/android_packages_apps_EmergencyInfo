@@ -14,19 +14,19 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- The name of the app. [CHAR_LIMIT=20] -->
+    <!-- The name of the app. [CHAR_LIMIT=30] -->
     <string name="app_label">Emergency Info</string>
-    <!-- The title of the edit info activity. [CHAR_LIMIT=80] -->
+    <!-- The title of the edit info activity. [CHAR_LIMIT=30] -->
     <string name="edit_emergency_info_label">Edit Emergency Info</string>
     <!-- The title of the emergency info tab. [CHAR_LIMIT=15] -->
     <string name="tab_title_info">Info</string>
     <!-- The title of the emergency contacts tab. [CHAR_LIMIT=15] -->
     <string name="tab_title_contacts">Contacts</string>
-    <!-- The title of the name preference. [CHAR_LIMIT=80] -->
+    <!-- The title of the name preference. [CHAR_LIMIT=40] -->
     <string name="name">Name</string>
-    <!-- The title of the address preference. [CHAR_LIMIT=80] -->
+    <!-- The title of the address preference. [CHAR_LIMIT=40] -->
     <string name="address">Address</string>
-    <!-- The title of the date of birth preference. [CHAR_LIMIT=80] -->
+    <!-- The title of the date of birth preference. [CHAR_LIMIT=40] -->
     <string name="date_of_birth">Date of birth</string>
     <!-- The age and date of birth of the user. [CHAR_LIMIT=40] -->
     <string name="dob_and_age">
@@ -38,7 +38,7 @@
     </string>
     <!-- The description of the remove date of birth icon, for talkback. [CHAR_LIMIT=NONE] -->
     <string name="remove_dob_icon_text">Remove date of birth</string>
-    <!-- The title of the blood type preference. [CHAR_LIMIT=80] -->
+    <!-- The title of the blood type preference. [CHAR_LIMIT=40] -->
     <string name="blood_type">Blood type</string>
     <!-- Blood type O+. [CHAR_LIMIT=10] -->
     <string name="oplus">O+</string>
@@ -82,21 +82,21 @@
         <item>@string/hh</item>
         <item></item>
     </string-array>
-    <!-- The title of the allergies preference. [CHAR_LIMIT=80] -->
+    <!-- The title of the allergies preference. [CHAR_LIMIT=40] -->
     <string name="allergies">Allergies</string>
-    <!-- Hint to show in the edit text of the allergies. [CHAR_LIMIT=40] -->
-    <string name="allergies_hint">For example, peanuts, pollen</string>
-    <!-- The default text to show when a preference is unknown. [CHAR_LIMIT=40] -->
+    <!-- Hint to show in the edit text of the allergies. [CHAR_LIMIT=30] -->
+    <string name="allergies_hint">For example, peanuts</string>
+    <!-- The default preference subtitle text to show when a preference is unknown. [CHAR_LIMIT=40] -->
     <string name="default_summary_none">Unknown</string>
-    <!-- The title of the medications preference. [CHAR_LIMIT=80] -->
+    <!-- The title of the medications preference. [CHAR_LIMIT=40] -->
     <string name="medications">Medications</string>
-    <!-- Hint to show in the edit text of the medications. [CHAR_LIMIT=40] -->
-    <string name="medications_hint">For example, lisinopril, aspirin</string>
-    <!-- The title of the medical conditions preference. [CHAR_LIMIT=80] -->
+    <!-- Hint to show in the edit text of the medications. [CHAR_LIMIT=30] -->
+    <string name="medications_hint">For example, aspirin</string>
+    <!-- The title of the medical conditions preference. [CHAR_LIMIT=40] -->
     <string name="medical_conditions">Medical conditions and notes</string>
-    <!-- Hint to show in the edit text of the medical conditions. [CHAR_LIMIT=40] -->
+    <!-- Hint to show in the edit text of the medical conditions. [CHAR_LIMIT=30] -->
     <string name="medical_conditions_hint">For example, asthma</string>
-    <!-- The title of the organ donor preference. [CHAR_LIMIT=80] -->
+    <!-- The title of the organ donor preference. [CHAR_LIMIT=40] -->
     <string name="organ_donor">Organ donor</string>
     <!-- Affirmative. [CHAR_LIMIT=10] -->
     <string name="yes">Yes</string>
@@ -112,9 +112,9 @@
         <item>@string/no</item>
         <item></item>
     </string-array>
-    <!-- The title of the emergency contacts preference. [CHAR_LIMIT=80] -->
+    <!-- The title of the emergency contacts preference. [CHAR_LIMIT=40] -->
     <string name="emergency_contacts_title">Emergency contacts</string>
-    <!-- The title of the add emergency contacts preference. [CHAR_LIMIT=80] -->
+    <!-- The title of the add emergency contacts preference. [CHAR_LIMIT=40] -->
     <string name="add_emergency_contact">Add emergency contact</string>
     <!-- The message of the dialog shown when removing a contact. [CHAR_LIMIT=140] -->
     <string name="remove_contact">
@@ -122,11 +122,11 @@
     </string>
     <!-- The description of the remove an emergency contact, for talkback. [CHAR_LIMIT=NONE] -->
     <string name="remove_contact_icon_text">Remove contact</string>
-    <!-- Button text for removing a contact. [CHAR_LIMIT=10] -->
+    <!-- Button text for removing a contact. [CHAR_LIMIT=15] -->
     <string name="remove">Remove</string>
-    <!-- Button text for canceling an operation. [CHAR_LIMIT=10] -->
+    <!-- Button text for canceling an operation. [CHAR_LIMIT=15] -->
     <string name="cancel">Cancel</string>
-    <!-- Button text for accepting an operation. [CHAR_LIMIT=10] -->
+    <!-- Button text for accepting an operation. [CHAR_LIMIT=15] -->
     <string name="ok">OK</string>
     <!-- Subtitle for an emergency contact. [CHAR_LIMIT=NONE] -->
     <string name="phone_type_and_phone_number">
