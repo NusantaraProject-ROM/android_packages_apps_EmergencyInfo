@@ -21,13 +21,13 @@
     style="?android:attr/actionBarStyle">
     <android.support.v7.widget.Toolbar
         android:id="@+id/action_bar"
+        app:navigationContentDescription="@*android:string/action_bar_up_description"
         app:navigationIcon="?homeAsUpIndicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:titleTextColor="@color/tab_text_color"
         app:titleMarginStart="15dp"
         android:minHeight="@dimen/action_bar_size"
-        android:navigationContentDescription="@*android:string/action_bar_up_description"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         style="?android:attr/toolbarStyle"
         android:background="?android:attr/colorPrimary" />
