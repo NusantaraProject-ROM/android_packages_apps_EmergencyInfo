@@ -23,12 +23,16 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
+import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Pair;
 
 import com.android.emergency.EmergencyTabActivity;
 import com.android.emergency.R;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+
+import java.util.ArrayList;
 
 /**
  * Activity for editing emergency information.
@@ -55,6 +59,17 @@ public class EditInfoActivity extends EmergencyTabActivity {
     @Override
     public String getActivityTitle() {
         return getString(R.string.edit_emergency_info_label);
+    }
+
+    @Override
+    protected ArrayList<Pair<String, Fragment>> setUpFragments() {
+        // Always return the two fragments in edit mode.
+        ArrayList<Pair<String, Fragment>> fragments = new ArrayList<>(2);
+        fragments.add(Pair.create(getResources().getString(R.string.tab_title_info),
+                EditEmergencyInfoFragment.newInstance()));
+        fragments.add(Pair.create(getResources().getString(R.string.tab_title_contacts),
+                EditEmergencyContactsFragment.newInstance()));
+        return fragments;
     }
 
     private void showWarningDialog() {

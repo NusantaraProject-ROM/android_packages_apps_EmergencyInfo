@@ -26,49 +26,20 @@ import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
-import com.android.emergency.edit.EditEmergencyContactsFragment;
-import com.android.emergency.edit.EditEmergencyInfoFragment;
-import com.android.emergency.view.ViewEmergencyContactsFragment;
-import com.android.emergency.view.ViewEmergencyInfoFragment;
-
+import java.util.ArrayList;
 /**
  * An activity uses a tab layout to separate personal and medical information
  * from emergency contacts.
  */
 public abstract class EmergencyTabActivity extends ActionBarActivity {
-    public static final int INDEX_INFO_TAB = 0;
-    public static final int INDEX_CONTACTS_TAB = 1;
-    private static final int NUMBER_TABS = 2;
-
     private ViewPagerAdapter mTabsAdapter;
     private TabLayout mTabLayout;
 
-    private Fragment[] mFragments = new Fragment[NUMBER_TABS];
-
-    private void setupTabs() {
-        mTabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-
-        if (mTabsAdapter == null) {
-            // The viewpager that will host the section contents.
-            ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
-            mTabsAdapter = new ViewPagerAdapter(getFragmentManager());
-            viewPager.setAdapter(mTabsAdapter);
-            mTabLayout.setTabsFromPagerAdapter(mTabsAdapter);
-
-            // Set a listener via setOnTabSelectedListener(OnTabSelectedListener) to be notified
-            // when any tab's selection state has been changed.
-            mTabLayout.setOnTabSelectedListener(
-                    new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
-
-            // Use a TabLayout.TabLayoutOnPageChangeListener to forward the scroll and selection
-            // changes to this layout
-            viewPager.addOnPageChangeListener(new TabLayoutOnPageChangeListener(mTabLayout));
-        }
-    }
+    private ArrayList<Pair<String, Fragment>> mFragments;
 
     @Override
     protected void onResume() {
@@ -113,11 +84,47 @@ public abstract class EmergencyTabActivity extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    protected void setupTabs() {
+        mFragments = setUpFragments();
+        mTabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        if (mTabsAdapter == null) {
+            // The viewpager that will host the section contents.
+            ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+            mTabsAdapter = new ViewPagerAdapter(getFragmentManager());
+            viewPager.setAdapter(mTabsAdapter);
+            mTabLayout.setTabsFromPagerAdapter(mTabsAdapter);
+
+            // Set a listener via setOnTabSelectedListener(OnTabSelectedListener) to be notified
+            // when any tab's selection state has been changed.
+            mTabLayout.setOnTabSelectedListener(
+                    new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
+
+            // Use a TabLayout.TabLayoutOnPageChangeListener to forward the scroll and selection
+            // changes to this layout
+            viewPager.addOnPageChangeListener(new TabLayoutOnPageChangeListener(mTabLayout));
+        } else {
+            mTabsAdapter.notifyDataSetChanged();
+            mTabLayout.setTabsFromPagerAdapter(mTabsAdapter);
+        }
+    }
+
+    protected TabLayout getTabLayout() {
+        return mTabLayout;
+    }
+
+    /** Return number of fragments to show in the tabs. */
+    public int getNumberFragments() {
+        return mFragments.size();
+    }
+
     /** Returns whether the activity is in view mode (true) or in edit mode (false). */
     public abstract boolean isInViewMode();
 
     /** Returns the activity title. */
     public abstract String getActivityTitle();
+
+    /** Returns the fragments to show in the tabs. */
+    protected abstract ArrayList<Pair<String, Fragment>> setUpFragments();
 
     /** The adapter used to handle the two fragments. */
     private class ViewPagerAdapter extends FragmentStatePagerAdapter {
@@ -126,54 +133,25 @@ public abstract class EmergencyTabActivity extends ActionBarActivity {
         }
 
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            Fragment fragment = (Fragment) super.instantiateItem(container, position);
-            mFragments[position] = fragment;
-            return fragment;
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            mFragments[position] = null;
-        }
-
-        @Override
         public Fragment getItem(int position) {
-            Fragment fragment = mFragments[position];
-            if (fragment != null) {
-                return fragment;
-            }
-            switch (position) {
-                case INDEX_INFO_TAB:
-                    if (isInViewMode()) {
-                        return ViewEmergencyInfoFragment.newInstance();
-                    } else {
-                        return EditEmergencyInfoFragment.newInstance();
-                    }
-                case INDEX_CONTACTS_TAB:
-                    if (isInViewMode()) {
-                        return ViewEmergencyContactsFragment.newInstance();
-                    } else {
-                        return EditEmergencyContactsFragment.newInstance();
-                    }
-            }
-            return null;
+            return mFragments.get(position).second;
         }
 
         @Override
         public int getCount() {
-            return NUMBER_TABS;
+            return mFragments.size();
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case INDEX_INFO_TAB:
-                    return getResources().getString(R.string.tab_title_info);
-                case INDEX_CONTACTS_TAB:
-                    return getResources().getString(R.string.tab_title_contacts);
-            }
-            return null;
+            return mFragments.get(position).first;
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+            // The default implementation assumes that items will never change position and always
+            // returns POSITION_UNCHANGED. This is how you can specify that the positions can change
+            return FragmentStatePagerAdapter.POSITION_NONE;
         }
     }
 }
