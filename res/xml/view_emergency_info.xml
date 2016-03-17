@@ -15,6 +15,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:enabled="false"
+        android:focusable="true"
         android:icon="@drawable/ic_address_black_24dp"
         android:key="address"
         android:selectable="false"
@@ -24,6 +25,7 @@
 
     <com.android.emergency.preferences.EmergencyListPreference
         android:enabled="false"
+        android:focusable="true"
         android:icon="@drawable/ic_bloodtype_black_24dp"
         android:entries="@array/blood_type_entries"
         android:entryValues="@array/blood_type_values"
@@ -35,6 +37,7 @@
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:enabled="false"
+        android:focusable="true"
         android:icon="@drawable/ic_allergies_black_24dp"
         android:key="allergies"
         android:selectable="false"
@@ -44,6 +47,7 @@
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:enabled="false"
+        android:focusable="true"
         android:icon="@drawable/ic_medication_24dp"
         android:key="medications"
         android:selectable="false"
@@ -53,6 +57,7 @@
 
     <com.android.emergency.preferences.EmergencyListPreference
         android:enabled="false"
+        android:focusable="true"
         android:icon="@drawable/ic_heart_black_24dp"
         android:entries="@array/organ_donor_entries"
         android:entryValues="@array/organ_donor_values"
@@ -64,6 +69,7 @@
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:enabled="false"
+        android:focusable="true"
         android:icon="@drawable/ic_notes_black_24dp"
         android:key="medical_conditions"
         android:selectable="false"
