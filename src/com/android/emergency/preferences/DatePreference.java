@@ -40,7 +40,9 @@ import java.util.Date;
  */
 public class DatePreference extends Preference implements DatePickerDialog.OnDateSetListener,
         ReloadablePreferenceInterface {
-    private static final long DEFAULT_UNSET_VALUE = Long.MIN_VALUE;
+    /** Default value used when no date of birth is set. */
+    public static final long DEFAULT_UNSET_VALUE = Long.MIN_VALUE;
+
     private final DatePickerDialog mDatePickerDialog;
     private long mDateTimeMillis;
     private boolean mDateSet;

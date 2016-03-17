@@ -27,6 +27,7 @@ import android.widget.TextView;
 import com.android.emergency.EmergencyTabActivity;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
+import com.android.emergency.preferences.DatePreference;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -67,10 +68,10 @@ public class ViewInfoActivity extends EmergencyTabActivity {
 
     private void loadProfileCard() {
         String name = mSharedPreferences.getString(PreferenceKeys.KEY_NAME, "");
-        long dateOfBirthTimeMillis =
-                mSharedPreferences.getLong(PreferenceKeys.KEY_DATE_OF_BIRTH, Long.MAX_VALUE);
+        long dateOfBirthTimeMillis = mSharedPreferences.getLong(PreferenceKeys.KEY_DATE_OF_BIRTH,
+                DatePreference.DEFAULT_UNSET_VALUE);
         boolean nameEmpty = TextUtils.isEmpty(name);
-        boolean dateOfBirthNotSet = dateOfBirthTimeMillis == Long.MIN_VALUE;
+        boolean dateOfBirthNotSet = dateOfBirthTimeMillis == DatePreference.DEFAULT_UNSET_VALUE;
         if (nameEmpty && dateOfBirthNotSet) {
             mPersonalCard.setVisibility(View.GONE);
         } else {
