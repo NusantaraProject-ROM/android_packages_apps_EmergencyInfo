@@ -17,7 +17,6 @@
     <com.android.emergency.preferences.NameAutoCompletePreference
         android:icon="@drawable/ic_account_circle"
         android:inputType="textCapWords|textPersonName"
-        android:selectAllOnFocus="true"
         android:key="name"
         android:singleLine="true"
         android:summary="@string/default_summary_none"

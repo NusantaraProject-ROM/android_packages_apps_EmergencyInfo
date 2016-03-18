@@ -53,7 +53,7 @@ public class AutoCompleteEditTextPreference extends DialogPreference {
                                           int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
 
-        mAutoCompleteTextView = new InstantAutoCompleteTextView(context);
+        mAutoCompleteTextView = new InstantAutoCompleteTextView(context, attrs);
 
         // Give it an ID so it can be saved/restored
         mAutoCompleteTextView.setId(R.id.edit);
@@ -65,6 +65,7 @@ public class AutoCompleteEditTextPreference extends DialogPreference {
          * We reset the enabled state.
          */
         mAutoCompleteTextView.setEnabled(true);
+        setDialogLayoutResource(R.layout.preference_dialog_autocomplete_edittext);
     }
 
     public AutoCompleteEditTextPreference(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -72,7 +73,7 @@ public class AutoCompleteEditTextPreference extends DialogPreference {
     }
 
     public AutoCompleteEditTextPreference(Context context, AttributeSet attrs) {
-        this(context, attrs, com.android.internal.R.attr.editTextPreferenceStyle);
+        this(context, attrs, android.R.attr.dialogPreferenceStyle);
     }
 
     public AutoCompleteEditTextPreference(Context context) {
@@ -141,7 +142,7 @@ public class AutoCompleteEditTextPreference extends DialogPreference {
      */
     protected void onAddEditTextToDialogView(View dialogView, AutoCompleteTextView editText) {
         ViewGroup container = (ViewGroup) dialogView
-                .findViewById(com.android.internal.R.id.edittext_container);
+                .findViewById(R.id.autocomplete_edittext_container);
         if (container != null) {
             container.addView(editText, ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -233,8 +234,8 @@ public class AutoCompleteEditTextPreference extends DialogPreference {
 
     /** {@link AutoCompleteTextView} that always shows the suggestions. */
     private class InstantAutoCompleteTextView extends AutoCompleteTextView {
-        public InstantAutoCompleteTextView(Context context) {
-            super(context);
+        public InstantAutoCompleteTextView(Context context, AttributeSet attrs) {
+            super(context, attrs);
         }
 
         @Override
