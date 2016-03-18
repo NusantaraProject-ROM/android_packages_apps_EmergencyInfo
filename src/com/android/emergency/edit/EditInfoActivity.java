@@ -17,20 +17,31 @@ package com.android.emergency.edit;
 
 import static android.view.WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import com.android.emergency.EmergencyTabActivity;
 import com.android.emergency.R;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+
 /**
  * Activity for editing emergency information.
  */
 public class EditInfoActivity extends EmergencyTabActivity {
+    private static final String TAG_WARNING_DIALOG = "warning_dialog";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_activity_layout);
+
+        showWarningDialog();
 
         getWindow().addFlags(FLAG_DISMISS_KEYGUARD);
         MetricsLogger.visible(this, MetricsEvent.ACTION_EDIT_EMERGENCY_INFO);
@@ -44,5 +55,49 @@ public class EditInfoActivity extends EmergencyTabActivity {
     @Override
     public String getActivityTitle() {
         return getString(R.string.edit_emergency_info_label);
+    }
+
+    private void showWarningDialog() {
+        // DialogFragment.show() will take care of adding the fragment
+        // in a transaction.  We also want to remove any currently showing
+        // dialog, so make our own transaction and take care of that here.
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment previousDialog = getFragmentManager().findFragmentByTag(TAG_WARNING_DIALOG);
+        if (previousDialog != null) {
+            ft.remove(previousDialog);
+        }
+        ft.addToBackStack(null);
+
+        DialogFragment newFragment = WarningDialogFragment.newInstance();
+        newFragment.setCancelable(false);
+        newFragment.show(ft, TAG_WARNING_DIALOG);
+    }
+
+    /**
+     * Warning dialog shown to the user each time they go in to the edit info view. Using a {@link
+     * DialogFragment} takes care of screen rotation issues.
+     */
+    public static class WarningDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            Dialog dialog = new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.user_emergency_info_title)
+                    .setMessage(R.string.user_emergency_info_consent)
+                    .setPositiveButton(R.string.emergency_info_continue, null)
+                    .setNegativeButton(android.R.string.cancel,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    getActivity().finish();
+                                }
+                            })
+                    .create();
+            dialog.setCanceledOnTouchOutside(false);
+            return dialog;
+        }
+
+        public static DialogFragment newInstance() {
+            return new WarningDialogFragment();
+        }
     }
 }

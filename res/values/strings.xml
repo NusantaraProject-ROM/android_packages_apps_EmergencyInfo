@@ -18,6 +18,8 @@
     <string name="app_label">Emergency Info</string>
     <!-- The title of the edit info activity. [CHAR_LIMIT=30] -->
     <string name="edit_emergency_info_label">Edit Emergency Info</string>
+    <!-- The description of the pencil icon, for talkback. [CHAR_LIMIT=NONE] -->
+    <string name="edit_info">Edit emergency information</string>
     <!-- The title of the emergency info tab. [CHAR_LIMIT=15] -->
     <string name="tab_title_info">Info</string>
     <!-- The title of the emergency contacts tab. [CHAR_LIMIT=15] -->
@@ -132,7 +134,9 @@
     <string name="phone_type_and_phone_number">
         <xliff:g id="phone_type" example="Mobile">%1$s</xliff:g> • <xliff:g id="phone_number" example="333-444-5566">%2$s</xliff:g>
     </string>
-    <!-- Message of dialog to user to confirm that he understands that emergency information is shown in emergency dialer [CHAR LIMIT=none] -->
+    <!-- Title of dialog shown to the user to confirm that he understands that emergency information is shown in emergency dialer [CHAR LIMIT=30] -->
+    <string name="user_emergency_info_title">Emergency information</string>
+    <!-- Message of dialog shown to user to confirm that he understands that emergency information is shown in emergency dialer [CHAR LIMIT=none] -->
     <string name="user_emergency_info_consent">Information you enter here can help first responders in an emergency. It is stored on your device only, but anyone can read it from the emergency dialer without unlocking your phone.</string>
     <!-- Label for button in confirmation dialog when the user clicks on emergency information [CHAR LIMIT=15] -->
     <string name="emergency_info_continue">Continue</string>

@@ -21,8 +21,6 @@
     style="?android:attr/actionBarStyle">
     <android.support.v7.widget.Toolbar
         android:id="@+id/action_bar"
-        app:navigationContentDescription="@*android:string/action_bar_up_description"
-        app:navigationIcon="?homeAsUpIndicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:titleTextColor="@color/tab_text_color"

@@ -15,7 +15,6 @@
  */
 package com.android.emergency;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
@@ -25,6 +24,7 @@ import android.support.design.widget.TabLayout.TabLayoutOnPageChangeListener;
 import android.support.design.widget.TabLayout.ViewPagerOnTabSelectedListener;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,7 +39,7 @@ import com.android.emergency.view.ViewEmergencyInfoFragment;
  * An activity uses a tab layout to separate personal and medical information
  * from emergency contacts.
  */
-public abstract class EmergencyTabActivity extends Activity {
+public abstract class EmergencyTabActivity extends ActionBarActivity {
     public static final int INDEX_INFO_TAB = 0;
     public static final int INDEX_CONTACTS_TAB = 1;
     private static final int NUMBER_TABS = 2;
@@ -81,6 +81,17 @@ public abstract class EmergencyTabActivity extends Activity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button.
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     /** Returns the index of the currently selected tab. */
     public int getSelectedTabPosition() {
         return mTabLayout.getSelectedTabPosition();
@@ -98,6 +109,8 @@ public abstract class EmergencyTabActivity extends Activity {
                 onBackPressed();
             }
         });
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     /** Returns whether the activity is in view mode (true) or in edit mode (false). */

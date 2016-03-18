@@ -15,10 +15,14 @@
  */
 package com.android.emergency.view;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
@@ -27,6 +31,7 @@ import android.widget.TextView;
 import com.android.emergency.EmergencyTabActivity;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
+import com.android.emergency.edit.EditInfoActivity;
 import com.android.emergency.preferences.DatePreference;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -111,6 +116,24 @@ public class ViewInfoActivity extends EmergencyTabActivity {
         }
         // Return 0 if the user specifies a date of birth in the future.
         return Math.max(0, age);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.view_info_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_edit:
+                Intent intent = new Intent(this, EditInfoActivity.class);
+                startActivity(intent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
