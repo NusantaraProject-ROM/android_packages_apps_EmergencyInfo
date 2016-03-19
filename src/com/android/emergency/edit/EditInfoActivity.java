@@ -41,7 +41,13 @@ public class EditInfoActivity extends EmergencyTabActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_activity_layout);
 
-        showWarningDialog();
+        // savedInstanceState is null on first start and non-null on restart.
+        // We want to show the dialog on first start, even if there is a screen rotation but avoid
+        // reshowing it if a rotation occurs (which causes onCreate to be called again, but this
+        // time with savedInstanceState!=null).
+        if (savedInstanceState == null) {
+            showWarningDialog();
+        }
 
         getWindow().addFlags(FLAG_DISMISS_KEYGUARD);
         MetricsLogger.visible(this, MetricsEvent.ACTION_EDIT_EMERGENCY_INFO);
