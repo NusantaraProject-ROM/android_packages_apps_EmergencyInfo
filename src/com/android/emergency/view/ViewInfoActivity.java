@@ -60,7 +60,6 @@ public class ViewInfoActivity extends EmergencyTabActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_activity_layout);
-        // TODO: investigate encryption mode b/27577600
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mPersonalCard = (LinearLayout) findViewById(R.id.name_and_dob_linear_layout);
         mPersonalCardLargeItem = (TextView) findViewById(R.id.personal_card_large);
