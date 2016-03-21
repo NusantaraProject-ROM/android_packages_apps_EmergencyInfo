@@ -15,11 +15,14 @@
  */
 package com.android.emergency.view;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.TabLayout;
 import android.text.TextUtils;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -37,6 +40,7 @@ import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -69,6 +73,10 @@ public class ViewInfoActivity extends EmergencyTabActivity {
     public void onResume() {
         super.onResume();
         loadProfileCard();
+        // Update the tabs: new info might have been added/deleted from the edit screen that
+        // could lead to adding/removing a fragment
+        setupTabs();
+        maybeHideTabs();
     }
 
     private void loadProfileCard() {
@@ -99,6 +107,15 @@ public class ViewInfoActivity extends EmergencyTabActivity {
                 mPersonalCardLargeItem.setText(name);
                 mPersonalCardSmallItem.setText("");
             }
+        }
+    }
+
+    private void maybeHideTabs() {
+        TabLayout tabLayout = getTabLayout();
+        if (getNumberFragments() <= 1) {
+            tabLayout.setVisibility(View.GONE);
+        } else {
+            tabLayout.setVisibility(View.VISIBLE);
         }
     }
 
@@ -144,5 +161,21 @@ public class ViewInfoActivity extends EmergencyTabActivity {
     @Override
     public String getActivityTitle() {
         return getString(R.string.app_label);
+    }
+
+    @Override
+    protected ArrayList<Pair<String, Fragment>> setUpFragments() {
+        // Return only the fragments that have at least one piece of information set:
+        ArrayList<Pair<String, Fragment>> fragments = new ArrayList<>(2);
+
+        if (ViewEmergencyInfoFragment.hasAtLeastOnePreferenceSet(this)) {
+            fragments.add(Pair.create(getResources().getString(R.string.tab_title_info),
+                    ViewEmergencyInfoFragment.newInstance()));
+        }
+        if (ViewEmergencyContactsFragment.hasAtLeastOneEmergencyContact(this)) {
+            fragments.add(Pair.create(getResources().getString(R.string.tab_title_contacts),
+                    ViewEmergencyContactsFragment.newInstance()));
+        }
+        return fragments;
     }
 }
