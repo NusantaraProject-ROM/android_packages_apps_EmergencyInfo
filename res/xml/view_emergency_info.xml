@@ -23,7 +23,7 @@
         android:summary="@string/default_summary_none"
         android:title="@string/address" />
 
-    <com.android.emergency.preferences.EmergencyListPreference
+    <com.android.emergency.preferences.BloodTypeListPreference
         android:enabled="false"
         android:focusable="true"
         android:icon="@drawable/ic_bloodtype_black_24dp"

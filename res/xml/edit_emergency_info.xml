@@ -36,7 +36,7 @@
         android:summary="@string/default_summary_none"
         android:title="@string/address" />
 
-    <com.android.emergency.preferences.EmergencyListPreference
+    <com.android.emergency.preferences.BloodTypeListPreference
         android:entries="@array/blood_type_entries"
         android:entryValues="@array/blood_type_values"
         android:icon="@drawable/ic_bloodtype_black_24dp"

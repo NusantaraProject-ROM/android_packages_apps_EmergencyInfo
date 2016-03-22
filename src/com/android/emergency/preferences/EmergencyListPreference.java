@@ -27,9 +27,6 @@ import com.android.emergency.ReloadablePreferenceInterface;
  */
 public class EmergencyListPreference extends ListPreference
         implements ReloadablePreferenceInterface {
-    public EmergencyListPreference(Context context) {
-        super(context);
-    }
 
     public EmergencyListPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
