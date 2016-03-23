@@ -89,6 +89,7 @@ public class ViewInfoActivity extends EmergencyTabActivity {
         } else {
             mPersonalCard.setVisibility(View.VISIBLE);
             if (!dateOfBirthNotSet) {
+                mPersonalCardSmallItem.setVisibility(View.VISIBLE);
                 int age = computeAge(dateOfBirthTimeMillis);
                 String localizedDob = mDateFormat.format(new Date(dateOfBirthTimeMillis));
                 if (nameEmpty) {
@@ -103,6 +104,7 @@ public class ViewInfoActivity extends EmergencyTabActivity {
                             localizedDob));
                 }
             } else {
+                mPersonalCardSmallItem.setVisibility(View.GONE);
                 mPersonalCardLargeItem.setText(name);
                 mPersonalCardSmallItem.setText("");
             }
