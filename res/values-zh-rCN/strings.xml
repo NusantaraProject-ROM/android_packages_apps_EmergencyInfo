@@ -16,18 +16,18 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="6982776986315236447">"Thông tin khẩn cấp"</string>
-    <string name="edit_emergency_info_label" msgid="1118583158162236259">"Chỉnh sửa thông tin khẩn cấp"</string>
-    <string name="edit_info" msgid="5973929805855224805">"Chỉnh sửa thông tin khẩn cấp"</string>
-    <string name="tab_title_info" msgid="1402033103294855812">"Thông tin"</string>
-    <string name="tab_title_contacts" msgid="4298341166404791209">"Liên hệ"</string>
-    <string name="name" msgid="4286267457738861977">"Tên"</string>
-    <string name="address" msgid="6449303483151189969">"Địa chỉ"</string>
-    <string name="date_of_birth" msgid="777979232444227891">"Ngày sinh"</string>
-    <string name="dob_and_age" msgid="6222285267782059671">"Độ tuổi: <xliff:g id="NUMERICAL_AGE">%1$d</xliff:g> (<xliff:g id="DATE_OF_BIRTH">%2$s</xliff:g>)"</string>
-    <string name="age" msgid="8327537794752630199">"Độ tuổi: <xliff:g id="NUMERICAL_AGE">%1$d</xliff:g>"</string>
-    <string name="remove_dob_icon_text" msgid="4413507180967999944">"Xóa ngày sinh"</string>
-    <string name="blood_type" msgid="6947022772999974608">"Nhóm máu"</string>
+    <string name="app_label" msgid="6982776986315236447">"紧急信息"</string>
+    <string name="edit_emergency_info_label" msgid="1118583158162236259">"修改紧急信息"</string>
+    <string name="edit_info" msgid="5973929805855224805">"修改紧急信息"</string>
+    <string name="tab_title_info" msgid="1402033103294855812">"信息"</string>
+    <string name="tab_title_contacts" msgid="4298341166404791209">"联系人"</string>
+    <string name="name" msgid="4286267457738861977">"姓名"</string>
+    <string name="address" msgid="6449303483151189969">"地址"</string>
+    <string name="date_of_birth" msgid="777979232444227891">"出生日期"</string>
+    <string name="dob_and_age" msgid="6222285267782059671">"年龄：<xliff:g id="NUMERICAL_AGE">%1$d</xliff:g>（<xliff:g id="DATE_OF_BIRTH">%2$s</xliff:g>）"</string>
+    <string name="age" msgid="8327537794752630199">"年龄：<xliff:g id="NUMERICAL_AGE">%1$d</xliff:g>"</string>
+    <string name="remove_dob_icon_text" msgid="4413507180967999944">"移除出生日期"</string>
+    <string name="blood_type" msgid="6947022772999974608">"血型"</string>
     <string name="oplus" msgid="7759756742377867011">"O+"</string>
     <string name="ominus" msgid="5227278501191741055">"O-"</string>
     <string name="aplus" msgid="4982472245421753463">"A+"</string>
@@ -56,30 +56,30 @@
     <!-- no translation found for blood_type_values:6 (8958075411756791444) -->
     <!-- no translation found for blood_type_values:7 (3220569165111014544) -->
     <!-- no translation found for blood_type_values:8 (2846464881836893218) -->
-    <string name="allergies" msgid="2789200777539258165">"Dị ứng"</string>
-    <string name="allergies_hint" msgid="5488918780522184147">"Ví dụ: đậu phộng"</string>
-    <string name="default_summary_none" msgid="3849818429984786157">"Không xác định"</string>
-    <string name="medications" msgid="644428945685557183">"Dược phẩm"</string>
-    <string name="medications_hint" msgid="3221620025945593723">"Ví dụ: aspirin"</string>
-    <string name="medical_conditions" msgid="6147422114803729239">"Ghi chú và tình trạng bệnh"</string>
-    <string name="medical_conditions_hint" msgid="6959152183029062882">"Ví dụ: bệnh hen"</string>
-    <string name="organ_donor" msgid="5953509460007124827">"Người hiến tạng"</string>
-    <string name="yes" msgid="5829765567799916128">"Có"</string>
-    <string name="no" msgid="1681689233660683509">"Không"</string>
+    <string name="allergies" msgid="2789200777539258165">"过敏症"</string>
+    <string name="allergies_hint" msgid="5488918780522184147">"例如，花生"</string>
+    <string name="default_summary_none" msgid="3849818429984786157">"未知"</string>
+    <string name="medications" msgid="644428945685557183">"用药"</string>
+    <string name="medications_hint" msgid="3221620025945593723">"例如，阿司匹林"</string>
+    <string name="medical_conditions" msgid="6147422114803729239">"医疗状况和注意事项"</string>
+    <string name="medical_conditions_hint" msgid="6959152183029062882">"例如，哮喘"</string>
+    <string name="organ_donor" msgid="5953509460007124827">"器官捐献者"</string>
+    <string name="yes" msgid="5829765567799916128">"是"</string>
+    <string name="no" msgid="1681689233660683509">"否"</string>
     <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
     <!-- no translation found for organ_donor_values:0 (2173836985052439809) -->
     <!-- no translation found for organ_donor_values:1 (5641258921546624538) -->
-    <string name="emergency_contacts_title" msgid="5462202017417821030">"Liên hệ khẩn cấp"</string>
-    <string name="add_emergency_contact" msgid="4987882226775581405">"Thêm liên hệ khẩn cấp"</string>
-    <string name="remove_contact" msgid="6934983445723096759">"Xóa <xliff:g id="CONTACT_NAME">%1$s</xliff:g> khỏi liên hệ khẩn cấp của bạn?"</string>
-    <string name="remove_contact_icon_text" msgid="4576641386490101363">"Xóa liên hệ"</string>
-    <string name="remove" msgid="1243949503772376064">"Xóa"</string>
-    <string name="cancel" msgid="7401575239009060939">"Hủy"</string>
-    <string name="ok" msgid="163967937451981024">"OK"</string>
+    <string name="emergency_contacts_title" msgid="5462202017417821030">"紧急情况联系人"</string>
+    <string name="add_emergency_contact" msgid="4987882226775581405">"添加紧急情况联系人"</string>
+    <string name="remove_contact" msgid="6934983445723096759">"要将“<xliff:g id="CONTACT_NAME">%1$s</xliff:g>”从紧急情况联系人中移除吗？"</string>
+    <string name="remove_contact_icon_text" msgid="4576641386490101363">"移除联系人"</string>
+    <string name="remove" msgid="1243949503772376064">"移除"</string>
+    <string name="cancel" msgid="7401575239009060939">"取消"</string>
+    <string name="ok" msgid="163967937451981024">"确定"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="user_emergency_info_title" msgid="7827058167207376581">"Thông tin khẩn cấp"</string>
-    <string name="user_emergency_info_consent" msgid="8938078996730885830">"Thông tin bạn nhập ở đây có thể giúp người trả lời đầu tiên trong trường hợp khẩn cấp. Thông tin này chỉ được lưu trữ trên thiết bị của bạn nhưng bất cứ ai đều có thể đọc được từ trình quay số khẩn cấp mà không cần mở khóa điện thoại của bạn."</string>
-    <string name="emergency_info_continue" msgid="5453201508537906087">"Tiếp tục"</string>
+    <string name="user_emergency_info_title" msgid="7827058167207376581">"紧急信息"</string>
+    <string name="user_emergency_info_consent" msgid="8938078996730885830">"您在此处输入的信息可协助第一线救援人员在发生紧急事件时提供相关援助。系统只会将这项信息存储在您的设备上，但任何人都能在您的手机未解锁的情况下通过紧急呼救拨号器看到此信息。"</string>
+    <string name="emergency_info_continue" msgid="5453201508537906087">"继续"</string>
 </resources>

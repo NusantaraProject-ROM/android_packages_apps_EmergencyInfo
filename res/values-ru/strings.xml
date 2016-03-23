@@ -16,47 +16,27 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- no translation found for app_label (6982776986315236447) -->
-    <skip />
-    <!-- no translation found for edit_emergency_info_label (1118583158162236259) -->
-    <skip />
+    <string name="app_label" msgid="6982776986315236447">"Информация для чрезв. ситуаций"</string>
+    <string name="edit_emergency_info_label" msgid="1118583158162236259">"Изменение информации"</string>
     <string name="edit_info" msgid="5973929805855224805">"Изменить данные для экстренных случаев"</string>
-    <!-- no translation found for tab_title_info (1402033103294855812) -->
-    <skip />
-    <!-- no translation found for tab_title_contacts (4298341166404791209) -->
-    <skip />
-    <!-- no translation found for name (4286267457738861977) -->
-    <skip />
-    <!-- no translation found for address (6449303483151189969) -->
-    <skip />
-    <!-- no translation found for date_of_birth (777979232444227891) -->
-    <skip />
-    <!-- no translation found for dob_and_age (6222285267782059671) -->
-    <skip />
-    <!-- no translation found for age (8327537794752630199) -->
-    <skip />
-    <!-- no translation found for remove_dob_icon_text (4413507180967999944) -->
-    <skip />
-    <!-- no translation found for blood_type (6947022772999974608) -->
-    <skip />
-    <!-- no translation found for oplus (7759756742377867011) -->
-    <skip />
-    <!-- no translation found for ominus (5227278501191741055) -->
-    <skip />
-    <!-- no translation found for aplus (4982472245421753463) -->
-    <skip />
-    <!-- no translation found for aminus (1469727296074783670) -->
-    <skip />
-    <!-- no translation found for bplus (5395850743718234762) -->
-    <skip />
-    <!-- no translation found for bminus (3813367242072886088) -->
-    <skip />
-    <!-- no translation found for abplus (8061792867513932701) -->
-    <skip />
-    <!-- no translation found for abminus (2510867828094325481) -->
-    <skip />
-    <!-- no translation found for hh (3071675674015857183) -->
-    <skip />
+    <string name="tab_title_info" msgid="1402033103294855812">"Сведения"</string>
+    <string name="tab_title_contacts" msgid="4298341166404791209">"Контакты"</string>
+    <string name="name" msgid="4286267457738861977">"Имя"</string>
+    <string name="address" msgid="6449303483151189969">"Адрес"</string>
+    <string name="date_of_birth" msgid="777979232444227891">"Дата рождения"</string>
+    <string name="dob_and_age" msgid="6222285267782059671">"Возраст: <xliff:g id="NUMERICAL_AGE">%1$d</xliff:g> (<xliff:g id="DATE_OF_BIRTH">%2$s</xliff:g>)"</string>
+    <string name="age" msgid="8327537794752630199">"Возраст: <xliff:g id="NUMERICAL_AGE">%1$d</xliff:g>"</string>
+    <string name="remove_dob_icon_text" msgid="4413507180967999944">"Удалить дату рождения"</string>
+    <string name="blood_type" msgid="6947022772999974608">"Группа крови"</string>
+    <string name="oplus" msgid="7759756742377867011">"O+"</string>
+    <string name="ominus" msgid="5227278501191741055">"O-"</string>
+    <string name="aplus" msgid="4982472245421753463">"A+"</string>
+    <string name="aminus" msgid="1469727296074783670">"A-"</string>
+    <string name="bplus" msgid="5395850743718234762">"B+"</string>
+    <string name="bminus" msgid="3813367242072886088">"B-"</string>
+    <string name="abplus" msgid="8061792867513932701">"AB+"</string>
+    <string name="abminus" msgid="2510867828094325481">"AB-"</string>
+    <string name="hh" msgid="3071675674015857183">"H/H"</string>
     <!-- no translation found for blood_type_entries:0 (5051829403671092348) -->
     <!-- no translation found for blood_type_entries:1 (5289547171251363498) -->
     <!-- no translation found for blood_type_entries:2 (1998151664134824279) -->
@@ -76,50 +56,30 @@
     <!-- no translation found for blood_type_values:6 (8958075411756791444) -->
     <!-- no translation found for blood_type_values:7 (3220569165111014544) -->
     <!-- no translation found for blood_type_values:8 (2846464881836893218) -->
-    <!-- no translation found for allergies (2789200777539258165) -->
-    <skip />
-    <!-- no translation found for allergies_hint (5488918780522184147) -->
-    <skip />
-    <!-- no translation found for default_summary_none (3849818429984786157) -->
-    <skip />
-    <!-- no translation found for medications (644428945685557183) -->
-    <skip />
-    <!-- no translation found for medications_hint (3221620025945593723) -->
-    <skip />
-    <!-- no translation found for medical_conditions (6147422114803729239) -->
-    <skip />
-    <!-- no translation found for medical_conditions_hint (6959152183029062882) -->
-    <skip />
-    <!-- no translation found for organ_donor (5953509460007124827) -->
-    <skip />
-    <!-- no translation found for yes (5829765567799916128) -->
-    <skip />
-    <!-- no translation found for no (1681689233660683509) -->
-    <skip />
+    <string name="allergies" msgid="2789200777539258165">"Аллергии"</string>
+    <string name="allergies_hint" msgid="5488918780522184147">"Например, на арахис"</string>
+    <string name="default_summary_none" msgid="3849818429984786157">"Неизвестно"</string>
+    <string name="medications" msgid="644428945685557183">"Медицинские препараты"</string>
+    <string name="medications_hint" msgid="3221620025945593723">"Например, аспирин"</string>
+    <string name="medical_conditions" msgid="6147422114803729239">"Заболевания и примечания"</string>
+    <string name="medical_conditions_hint" msgid="6959152183029062882">"Например, астма"</string>
+    <string name="organ_donor" msgid="5953509460007124827">"Донор органов"</string>
+    <string name="yes" msgid="5829765567799916128">"Да"</string>
+    <string name="no" msgid="1681689233660683509">"Нет"</string>
     <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
     <!-- no translation found for organ_donor_values:0 (2173836985052439809) -->
     <!-- no translation found for organ_donor_values:1 (5641258921546624538) -->
-    <!-- no translation found for emergency_contacts_title (5462202017417821030) -->
-    <skip />
-    <!-- no translation found for add_emergency_contact (4987882226775581405) -->
-    <skip />
-    <!-- no translation found for remove_contact (6934983445723096759) -->
-    <skip />
-    <!-- no translation found for remove_contact_icon_text (4576641386490101363) -->
-    <skip />
-    <!-- no translation found for remove (1243949503772376064) -->
-    <skip />
-    <!-- no translation found for cancel (7401575239009060939) -->
-    <skip />
-    <!-- no translation found for ok (163967937451981024) -->
-    <skip />
-    <!-- no translation found for phone_type_and_phone_number (5034188169563878371) -->
-    <skip />
+    <string name="emergency_contacts_title" msgid="5462202017417821030">"Контакты для чрезвычайных ситуаций"</string>
+    <string name="add_emergency_contact" msgid="4987882226775581405">"Контакт для чрезвычайных ситуаций"</string>
+    <string name="remove_contact" msgid="6934983445723096759">"Удалить контакт \"<xliff:g id="CONTACT_NAME">%1$s</xliff:g>\" из контактов для чрезвычайных ситуаций?"</string>
+    <string name="remove_contact_icon_text" msgid="4576641386490101363">"Удалить контакт"</string>
+    <string name="remove" msgid="1243949503772376064">"Удалить"</string>
+    <string name="cancel" msgid="7401575239009060939">"Отмена"</string>
+    <string name="ok" msgid="163967937451981024">"ОК"</string>
+    <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g>: <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"Данные для экстренных случаев"</string>
-    <!-- no translation found for user_emergency_info_consent (8938078996730885830) -->
-    <skip />
-    <!-- no translation found for emergency_info_continue (5453201508537906087) -->
-    <skip />
+    <string name="user_emergency_info_consent" msgid="8938078996730885830">"Информация, которую вы здесь укажете, сохранится только на вашем устройстве, но будет доступна любому при вызове экстренной службы без разблокировки телефона."</string>
+    <string name="emergency_info_continue" msgid="5453201508537906087">"Продолжить"</string>
 </resources>

@@ -16,18 +16,18 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="6982776986315236447">"Thông tin khẩn cấp"</string>
-    <string name="edit_emergency_info_label" msgid="1118583158162236259">"Chỉnh sửa thông tin khẩn cấp"</string>
-    <string name="edit_info" msgid="5973929805855224805">"Chỉnh sửa thông tin khẩn cấp"</string>
-    <string name="tab_title_info" msgid="1402033103294855812">"Thông tin"</string>
-    <string name="tab_title_contacts" msgid="4298341166404791209">"Liên hệ"</string>
-    <string name="name" msgid="4286267457738861977">"Tên"</string>
-    <string name="address" msgid="6449303483151189969">"Địa chỉ"</string>
-    <string name="date_of_birth" msgid="777979232444227891">"Ngày sinh"</string>
-    <string name="dob_and_age" msgid="6222285267782059671">"Độ tuổi: <xliff:g id="NUMERICAL_AGE">%1$d</xliff:g> (<xliff:g id="DATE_OF_BIRTH">%2$s</xliff:g>)"</string>
-    <string name="age" msgid="8327537794752630199">"Độ tuổi: <xliff:g id="NUMERICAL_AGE">%1$d</xliff:g>"</string>
-    <string name="remove_dob_icon_text" msgid="4413507180967999944">"Xóa ngày sinh"</string>
-    <string name="blood_type" msgid="6947022772999974608">"Nhóm máu"</string>
+    <string name="app_label" msgid="6982776986315236447">"Informacioni i urgjencës"</string>
+    <string name="edit_emergency_info_label" msgid="1118583158162236259">"Modifiko informacionin e urgjencës"</string>
+    <string name="edit_info" msgid="5973929805855224805">"Redakto informacionin e urgjencës"</string>
+    <string name="tab_title_info" msgid="1402033103294855812">"Informacione"</string>
+    <string name="tab_title_contacts" msgid="4298341166404791209">"Kontaktet"</string>
+    <string name="name" msgid="4286267457738861977">"Emri"</string>
+    <string name="address" msgid="6449303483151189969">"Adresa"</string>
+    <string name="date_of_birth" msgid="777979232444227891">"Datëlindja"</string>
+    <string name="dob_and_age" msgid="6222285267782059671">"Mosha: <xliff:g id="NUMERICAL_AGE">%1$d</xliff:g> (<xliff:g id="DATE_OF_BIRTH">%2$s</xliff:g>)"</string>
+    <string name="age" msgid="8327537794752630199">"Mosha: <xliff:g id="NUMERICAL_AGE">%1$d</xliff:g>"</string>
+    <string name="remove_dob_icon_text" msgid="4413507180967999944">"Hiq datën e lindjes"</string>
+    <string name="blood_type" msgid="6947022772999974608">"Grupi i gjakut"</string>
     <string name="oplus" msgid="7759756742377867011">"O+"</string>
     <string name="ominus" msgid="5227278501191741055">"O-"</string>
     <string name="aplus" msgid="4982472245421753463">"A+"</string>
@@ -56,30 +56,30 @@
     <!-- no translation found for blood_type_values:6 (8958075411756791444) -->
     <!-- no translation found for blood_type_values:7 (3220569165111014544) -->
     <!-- no translation found for blood_type_values:8 (2846464881836893218) -->
-    <string name="allergies" msgid="2789200777539258165">"Dị ứng"</string>
-    <string name="allergies_hint" msgid="5488918780522184147">"Ví dụ: đậu phộng"</string>
-    <string name="default_summary_none" msgid="3849818429984786157">"Không xác định"</string>
-    <string name="medications" msgid="644428945685557183">"Dược phẩm"</string>
-    <string name="medications_hint" msgid="3221620025945593723">"Ví dụ: aspirin"</string>
-    <string name="medical_conditions" msgid="6147422114803729239">"Ghi chú và tình trạng bệnh"</string>
-    <string name="medical_conditions_hint" msgid="6959152183029062882">"Ví dụ: bệnh hen"</string>
-    <string name="organ_donor" msgid="5953509460007124827">"Người hiến tạng"</string>
-    <string name="yes" msgid="5829765567799916128">"Có"</string>
-    <string name="no" msgid="1681689233660683509">"Không"</string>
+    <string name="allergies" msgid="2789200777539258165">"Alergjitë"</string>
+    <string name="allergies_hint" msgid="5488918780522184147">"Për shembull, kikirikët"</string>
+    <string name="default_summary_none" msgid="3849818429984786157">"E panjohur"</string>
+    <string name="medications" msgid="644428945685557183">"Mjekimet"</string>
+    <string name="medications_hint" msgid="3221620025945593723">"Për shembull, aspirinë"</string>
+    <string name="medical_conditions" msgid="6147422114803729239">"Problemet mjekësore dhe shënime"</string>
+    <string name="medical_conditions_hint" msgid="6959152183029062882">"Për shembull, astma"</string>
+    <string name="organ_donor" msgid="5953509460007124827">"Dhurues organesh"</string>
+    <string name="yes" msgid="5829765567799916128">"Po"</string>
+    <string name="no" msgid="1681689233660683509">"Jo"</string>
     <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
     <!-- no translation found for organ_donor_values:0 (2173836985052439809) -->
     <!-- no translation found for organ_donor_values:1 (5641258921546624538) -->
-    <string name="emergency_contacts_title" msgid="5462202017417821030">"Liên hệ khẩn cấp"</string>
-    <string name="add_emergency_contact" msgid="4987882226775581405">"Thêm liên hệ khẩn cấp"</string>
-    <string name="remove_contact" msgid="6934983445723096759">"Xóa <xliff:g id="CONTACT_NAME">%1$s</xliff:g> khỏi liên hệ khẩn cấp của bạn?"</string>
-    <string name="remove_contact_icon_text" msgid="4576641386490101363">"Xóa liên hệ"</string>
-    <string name="remove" msgid="1243949503772376064">"Xóa"</string>
-    <string name="cancel" msgid="7401575239009060939">"Hủy"</string>
-    <string name="ok" msgid="163967937451981024">"OK"</string>
+    <string name="emergency_contacts_title" msgid="5462202017417821030">"Kontaktet e urgjencës"</string>
+    <string name="add_emergency_contact" msgid="4987882226775581405">"Shto kontakt urgjence"</string>
+    <string name="remove_contact" msgid="6934983445723096759">"Të hiqet <xliff:g id="CONTACT_NAME">%1$s</xliff:g> nga kontaktet e urgjencës?"</string>
+    <string name="remove_contact_icon_text" msgid="4576641386490101363">"Hiq kontaktin"</string>
+    <string name="remove" msgid="1243949503772376064">"Hiqe"</string>
+    <string name="cancel" msgid="7401575239009060939">"Anulo"</string>
+    <string name="ok" msgid="163967937451981024">"Në rregull"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="user_emergency_info_title" msgid="7827058167207376581">"Thông tin khẩn cấp"</string>
-    <string name="user_emergency_info_consent" msgid="8938078996730885830">"Thông tin bạn nhập ở đây có thể giúp người trả lời đầu tiên trong trường hợp khẩn cấp. Thông tin này chỉ được lưu trữ trên thiết bị của bạn nhưng bất cứ ai đều có thể đọc được từ trình quay số khẩn cấp mà không cần mở khóa điện thoại của bạn."</string>
-    <string name="emergency_info_continue" msgid="5453201508537906087">"Tiếp tục"</string>
+    <string name="user_emergency_info_title" msgid="7827058167207376581">"Informacioni i urgjencës"</string>
+    <string name="user_emergency_info_consent" msgid="8938078996730885830">"Informacionet që fut këtu mund t\'i ndihmojnë personat e parë që përgjigjen në rast urgjence. Ato ruhen vetëm në pajisjen tënde, por çdo person mund t\'i lexojë nga formuesi i numrit i urgjencës pa e shkyçur telefonin."</string>
+    <string name="emergency_info_continue" msgid="5453201508537906087">"Vazhdo"</string>
 </resources>

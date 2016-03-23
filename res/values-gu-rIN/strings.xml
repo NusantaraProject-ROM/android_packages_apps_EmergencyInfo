@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2016 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="6982776986315236447">"કટોકટીની માહિતી"</string>
+    <string name="edit_emergency_info_label" msgid="1118583158162236259">"કટોકટીની માહિતી સંપાદિત કરો"</string>
+    <string name="edit_info" msgid="5973929805855224805">"કટોકટીની માહિતી સંપાદિત કરો"</string>
+    <string name="tab_title_info" msgid="1402033103294855812">"માહિતી"</string>
+    <string name="tab_title_contacts" msgid="4298341166404791209">"સંપર્કો"</string>
+    <string name="name" msgid="4286267457738861977">"નામ"</string>
+    <string name="address" msgid="6449303483151189969">"સરનામું"</string>
+    <string name="date_of_birth" msgid="777979232444227891">"જન્મ તારીખ"</string>
+    <string name="dob_and_age" msgid="6222285267782059671">"ઉંમર: <xliff:g id="NUMERICAL_AGE">%1$d</xliff:g> (<xliff:g id="DATE_OF_BIRTH">%2$s</xliff:g>)"</string>
+    <string name="age" msgid="8327537794752630199">"ઉંમર: <xliff:g id="NUMERICAL_AGE">%1$d</xliff:g>"</string>
+    <string name="remove_dob_icon_text" msgid="4413507180967999944">"જન્મ તારીખ દૂર કરો"</string>
+    <string name="blood_type" msgid="6947022772999974608">"રક્તનો પ્રકાર"</string>
+    <string name="oplus" msgid="7759756742377867011">"O+"</string>
+    <string name="ominus" msgid="5227278501191741055">"O-"</string>
+    <string name="aplus" msgid="4982472245421753463">"A+"</string>
+    <string name="aminus" msgid="1469727296074783670">"A-"</string>
+    <string name="bplus" msgid="5395850743718234762">"B+"</string>
+    <string name="bminus" msgid="3813367242072886088">"B-"</string>
+    <string name="abplus" msgid="8061792867513932701">"AB+"</string>
+    <string name="abminus" msgid="2510867828094325481">"AB-"</string>
+    <string name="hh" msgid="3071675674015857183">"H/H"</string>
+    <!-- no translation found for blood_type_entries:0 (5051829403671092348) -->
+    <!-- no translation found for blood_type_entries:1 (5289547171251363498) -->
+    <!-- no translation found for blood_type_entries:2 (1998151664134824279) -->
+    <!-- no translation found for blood_type_entries:3 (8861834946033182783) -->
+    <!-- no translation found for blood_type_entries:4 (3936437251649109847) -->
+    <!-- no translation found for blood_type_entries:5 (891231420183639230) -->
+    <!-- no translation found for blood_type_entries:6 (8911255985148284758) -->
+    <!-- no translation found for blood_type_entries:7 (2352690820681480000) -->
+    <!-- no translation found for blood_type_entries:8 (8050126448069904266) -->
+    <!-- no translation found for blood_type_entries:9 (6638754103385431982) -->
+    <!-- no translation found for blood_type_values:0 (498350339046257435) -->
+    <!-- no translation found for blood_type_values:1 (1076768983245442897) -->
+    <!-- no translation found for blood_type_values:2 (6102821646297839903) -->
+    <!-- no translation found for blood_type_values:3 (1226116972025397325) -->
+    <!-- no translation found for blood_type_values:4 (5282376116313403782) -->
+    <!-- no translation found for blood_type_values:5 (7577577122089304871) -->
+    <!-- no translation found for blood_type_values:6 (8958075411756791444) -->
+    <!-- no translation found for blood_type_values:7 (3220569165111014544) -->
+    <!-- no translation found for blood_type_values:8 (2846464881836893218) -->
+    <string name="allergies" msgid="2789200777539258165">"એલર્જીસ"</string>
+    <string name="allergies_hint" msgid="5488918780522184147">"ઉદાહરણ તરીકે, મગફળી"</string>
+    <string name="default_summary_none" msgid="3849818429984786157">"અજાણી"</string>
+    <string name="medications" msgid="644428945685557183">"દવાઓ"</string>
+    <string name="medications_hint" msgid="3221620025945593723">"ઉદાહરણ તરીકે, એસ્પિરિન"</string>
+    <string name="medical_conditions" msgid="6147422114803729239">"તબીબી અવસ્થાઓ અને નોંધ"</string>
+    <string name="medical_conditions_hint" msgid="6959152183029062882">"ઉદાહરણ તરીકે, અસ્થમા"</string>
+    <string name="organ_donor" msgid="5953509460007124827">"અંગ દાતા"</string>
+    <string name="yes" msgid="5829765567799916128">"હા"</string>
+    <string name="no" msgid="1681689233660683509">"નહીં"</string>
+    <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->
+    <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
+    <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
+    <!-- no translation found for organ_donor_values:0 (2173836985052439809) -->
+    <!-- no translation found for organ_donor_values:1 (5641258921546624538) -->
+    <string name="emergency_contacts_title" msgid="5462202017417821030">"કટોકટીના સંપર્કો"</string>
+    <string name="add_emergency_contact" msgid="4987882226775581405">"કટોકટીનો સંપર્ક ઉમેરો"</string>
+    <string name="remove_contact" msgid="6934983445723096759">"<xliff:g id="CONTACT_NAME">%1$s</xliff:g> ને કટોકટીના સંપર્કોમાંથી દૂર કરીએ?"</string>
+    <string name="remove_contact_icon_text" msgid="4576641386490101363">"સંપર્ક દૂર કરો"</string>
+    <string name="remove" msgid="1243949503772376064">"દૂર કરો"</string>
+    <string name="cancel" msgid="7401575239009060939">"રદ કરો"</string>
+    <string name="ok" msgid="163967937451981024">"ઑકે"</string>
+    <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
+    <string name="user_emergency_info_title" msgid="7827058167207376581">"કટોકટીની માહિતી"</string>
+    <string name="user_emergency_info_consent" msgid="8938078996730885830">"તમે અહીં દાખલ કરો છો તે માહિતી કટોકટીમાં પ્રથમ જવાબ આપનારા વપરાશકર્તાઓની સહાય કરી શકે છે. તે તમારા ઉપકરણ પર જ સંગ્રહિત કરવામાં આવે છે, પરંતુ કોઈપણ વ્યક્તિ તમારા ફોનને અનલૉક કર્યા વિના કટોકટી ડાયલરમાંથી તેને વાંચી શકે છે."</string>
+    <string name="emergency_info_continue" msgid="5453201508537906087">"ચાલુ રાખો"</string>
+</resources>

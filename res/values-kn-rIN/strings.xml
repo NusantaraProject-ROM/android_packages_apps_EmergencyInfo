@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2016 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- no translation found for app_label (6982776986315236447) -->
+    <skip />
+    <!-- no translation found for edit_emergency_info_label (1118583158162236259) -->
+    <skip />
+    <string name="edit_info" msgid="5973929805855224805">"ತುರ್ತು ಮಾಹಿತಿಯನ್ನು ಸಂಪಾದಿಸಿ"</string>
+    <!-- no translation found for tab_title_info (1402033103294855812) -->
+    <skip />
+    <!-- no translation found for tab_title_contacts (4298341166404791209) -->
+    <skip />
+    <!-- no translation found for name (4286267457738861977) -->
+    <skip />
+    <!-- no translation found for address (6449303483151189969) -->
+    <skip />
+    <!-- no translation found for date_of_birth (777979232444227891) -->
+    <skip />
+    <!-- no translation found for dob_and_age (6222285267782059671) -->
+    <skip />
+    <!-- no translation found for age (8327537794752630199) -->
+    <skip />
+    <!-- no translation found for remove_dob_icon_text (4413507180967999944) -->
+    <skip />
+    <!-- no translation found for blood_type (6947022772999974608) -->
+    <skip />
+    <!-- no translation found for oplus (7759756742377867011) -->
+    <skip />
+    <!-- no translation found for ominus (5227278501191741055) -->
+    <skip />
+    <!-- no translation found for aplus (4982472245421753463) -->
+    <skip />
+    <!-- no translation found for aminus (1469727296074783670) -->
+    <skip />
+    <!-- no translation found for bplus (5395850743718234762) -->
+    <skip />
+    <!-- no translation found for bminus (3813367242072886088) -->
+    <skip />
+    <!-- no translation found for abplus (8061792867513932701) -->
+    <skip />
+    <!-- no translation found for abminus (2510867828094325481) -->
+    <skip />
+    <!-- no translation found for hh (3071675674015857183) -->
+    <skip />
+    <!-- no translation found for blood_type_entries:0 (5051829403671092348) -->
+    <!-- no translation found for blood_type_entries:1 (5289547171251363498) -->
+    <!-- no translation found for blood_type_entries:2 (1998151664134824279) -->
+    <!-- no translation found for blood_type_entries:3 (8861834946033182783) -->
+    <!-- no translation found for blood_type_entries:4 (3936437251649109847) -->
+    <!-- no translation found for blood_type_entries:5 (891231420183639230) -->
+    <!-- no translation found for blood_type_entries:6 (8911255985148284758) -->
+    <!-- no translation found for blood_type_entries:7 (2352690820681480000) -->
+    <!-- no translation found for blood_type_entries:8 (8050126448069904266) -->
+    <!-- no translation found for blood_type_entries:9 (6638754103385431982) -->
+    <!-- no translation found for blood_type_values:0 (498350339046257435) -->
+    <!-- no translation found for blood_type_values:1 (1076768983245442897) -->
+    <!-- no translation found for blood_type_values:2 (6102821646297839903) -->
+    <!-- no translation found for blood_type_values:3 (1226116972025397325) -->
+    <!-- no translation found for blood_type_values:4 (5282376116313403782) -->
+    <!-- no translation found for blood_type_values:5 (7577577122089304871) -->
+    <!-- no translation found for blood_type_values:6 (8958075411756791444) -->
+    <!-- no translation found for blood_type_values:7 (3220569165111014544) -->
+    <!-- no translation found for blood_type_values:8 (2846464881836893218) -->
+    <!-- no translation found for allergies (2789200777539258165) -->
+    <skip />
+    <!-- no translation found for allergies_hint (5488918780522184147) -->
+    <skip />
+    <!-- no translation found for default_summary_none (3849818429984786157) -->
+    <skip />
+    <!-- no translation found for medications (644428945685557183) -->
+    <skip />
+    <!-- no translation found for medications_hint (3221620025945593723) -->
+    <skip />
+    <!-- no translation found for medical_conditions (6147422114803729239) -->
+    <skip />
+    <!-- no translation found for medical_conditions_hint (6959152183029062882) -->
+    <skip />
+    <!-- no translation found for organ_donor (5953509460007124827) -->
+    <skip />
+    <!-- no translation found for yes (5829765567799916128) -->
+    <skip />
+    <!-- no translation found for no (1681689233660683509) -->
+    <skip />
+    <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->
+    <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
+    <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
+    <!-- no translation found for organ_donor_values:0 (2173836985052439809) -->
+    <!-- no translation found for organ_donor_values:1 (5641258921546624538) -->
+    <!-- no translation found for emergency_contacts_title (5462202017417821030) -->
+    <skip />
+    <!-- no translation found for add_emergency_contact (4987882226775581405) -->
+    <skip />
+    <!-- no translation found for remove_contact (6934983445723096759) -->
+    <skip />
+    <!-- no translation found for remove_contact_icon_text (4576641386490101363) -->
+    <skip />
+    <!-- no translation found for remove (1243949503772376064) -->
+    <skip />
+    <!-- no translation found for cancel (7401575239009060939) -->
+    <skip />
+    <!-- no translation found for ok (163967937451981024) -->
+    <skip />
+    <!-- no translation found for phone_type_and_phone_number (5034188169563878371) -->
+    <skip />
+    <string name="user_emergency_info_title" msgid="7827058167207376581">"ತುರ್ತು ಮಾಹಿತಿ"</string>
+    <!-- no translation found for user_emergency_info_consent (8938078996730885830) -->
+    <skip />
+    <!-- no translation found for emergency_info_continue (5453201508537906087) -->
+    <skip />
+</resources>
