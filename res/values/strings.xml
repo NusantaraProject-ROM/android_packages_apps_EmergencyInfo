@@ -16,7 +16,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- The name of the app. [CHAR_LIMIT=30] -->
     <string name="app_label">Emergency Info</string>
-    <!-- The title of the edit info activity. [CHAR_LIMIT=30] -->
+    <!-- The title of the edit info activity. "Emergency Info" should be translated using app_label above [CHAR_LIMIT=30] -->
     <string name="edit_emergency_info_label">Edit Emergency Info</string>
     <!-- The description of the pencil icon, for talkback. [CHAR_LIMIT=NONE] -->
     <string name="edit_info">Edit emergency information</string>
