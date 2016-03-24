@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.Preference;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.DatePicker;
@@ -103,7 +104,8 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
 
     @Override
     protected void onSetInitialValue(boolean restorePersistedValue, Object defaultValue) {
-        setDate(restorePersistedValue ? getPersistedLong(DEFAULT_UNSET_VALUE) : (Long) defaultValue);
+        setDate(restorePersistedValue ? getPersistedLong(DEFAULT_UNSET_VALUE)
+                : (Long) defaultValue);
     }
 
     @Override
@@ -134,7 +136,11 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
 
     @Override
     protected Object onGetDefaultValue(TypedArray a, int index) {
-        return Long.parseLong(a.getString(index));
+        String longValueAsStr = a.getString(index);
+        if (TextUtils.isEmpty(longValueAsStr)) {
+            return DEFAULT_UNSET_VALUE;
+        }
+        return Long.parseLong(longValueAsStr);
     }
 
     @Override
