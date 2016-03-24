@@ -19,9 +19,11 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.text.TextUtils;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
+import com.android.emergency.preferences.DatePreference;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -40,8 +42,15 @@ public class EditEmergencyInfoFragment extends PreferenceFragment {
             preference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object value) {
+                    boolean notSet;
+                    if (!preference.getKey().equals(PreferenceKeys.KEY_DATE_OF_BIRTH)) {
+                        notSet = TextUtils.isEmpty((String) value);
+                    } else {
+                        notSet = DatePreference.DEFAULT_UNSET_VALUE == ((Long) value);
+                    }
                     MetricsLogger.action(preference.getContext(),
-                            MetricsEvent.ACTION_EDIT_EMERGENCY_INFO_FIELD, preference.getKey());
+                            MetricsEvent.ACTION_EDIT_EMERGENCY_INFO_FIELD,
+                            preference.getKey() + ":" + (notSet ? "0" : "1"));
                     return true;
                 }
             });

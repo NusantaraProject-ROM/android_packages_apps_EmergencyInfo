@@ -79,7 +79,9 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
             removeDateOfBirth.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    setDate(DEFAULT_UNSET_VALUE);
+                    if (callChangeListener(DEFAULT_UNSET_VALUE)) {
+                        setDate(DEFAULT_UNSET_VALUE);
+                    }
                 }
             });
         }
