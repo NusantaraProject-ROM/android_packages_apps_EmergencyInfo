@@ -21,6 +21,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.preference.Preference;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -28,6 +31,7 @@ import android.view.View;
 
 import com.android.emergency.EmergencyContactManager;
 import com.android.emergency.R;
+import com.android.emergency.ReloadablePreferenceInterface;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settingslib.drawable.CircleFramedDrawable;
@@ -38,8 +42,9 @@ import com.android.settingslib.drawable.CircleFramedDrawable;
  */
 public class ContactPreference extends Preference {
 
-    private final EmergencyContactManager.Contact mContact;
+    private EmergencyContactManager.Contact mContact;
     @Nullable private RemoveContactPreferenceListener mRemoveContactPreferenceListener;
+    @Nullable private AlertDialog mRemoveContactDialog;
 
     /**
      * Listener for removing a contact.
@@ -58,28 +63,45 @@ public class ContactPreference extends Preference {
     public ContactPreference(Context context, @NonNull Uri contactUri) {
         super(context);
         setOrder(DEFAULT_ORDER);
-        // This preference is reloaded each time onResume, so it is guaranteed to have a fresh
-        // representation of the contact each time we click on this preference to display or to call
-        // the contact.
-        mContact = EmergencyContactManager.getContact(context, contactUri);
+
+        setUri(contactUri);
+
+        setWidgetLayoutResource(R.layout.preference_user_delete_widget);
+        setPersistent(false);
+    }
+
+    public void setUri(@NonNull Uri contactUri) {
+        if (mContact != null && !contactUri.equals(mContact.getContactUri()) &&
+                mRemoveContactDialog != null) {
+            mRemoveContactDialog.dismiss();
+        }
+
+        mContact = EmergencyContactManager.getContact(getContext(), contactUri);
+
         setTitle(mContact.getName());
+        setKey(mContact.getContactUri().toString());
         String summary = mContact.getPhoneType() == null ?
                 mContact.getPhoneNumber() :
                 String.format(
-                        context.getResources().getString(R.string.phone_type_and_phone_number),
+                        getContext().getResources().getString(R.string.phone_type_and_phone_number),
                         mContact.getPhoneType(),
                         mContact.getPhoneNumber());
         setSummary(summary);
-        setWidgetLayoutResource(R.layout.preference_user_delete_widget);
-        setPersistent(false);
+
+        // Update the message to show the correct name.
+        if (mRemoveContactDialog != null) {
+            mRemoveContactDialog.setMessage(
+                    String.format(getContext().getString(R.string.remove_contact),
+                            mContact.getName()));
+        }
 
         //TODO: Consider doing the following in a non-UI thread.
         Drawable icon;
         if (mContact.getPhoto() != null) {
             icon = new CircleFramedDrawable(mContact.getPhoto(),
-                    (int) context.getResources().getDimension(R.dimen.circle_avatar_size));
+                    (int) getContext().getResources().getDimension(R.dimen.circle_avatar_size));
         } else {
-            icon = context.getResources().getDrawable(R.drawable.ic_person_black_24dp);
+            icon = getContext().getResources().getDrawable(R.drawable.ic_person_black_24dp);
         }
         setIcon(icon);
     }
@@ -88,6 +110,30 @@ public class ContactPreference extends Preference {
     public void setRemoveContactPreferenceListener(
             RemoveContactPreferenceListener removeContactListener) {
         mRemoveContactPreferenceListener = removeContactListener;
+        if (mRemoveContactPreferenceListener == null) {
+            mRemoveContactDialog = null;
+            return;
+        }
+        if (mRemoveContactDialog != null) {
+            return;
+        }
+        // Create the remove contact dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setNegativeButton(getContext().getString(R.string.cancel), null);
+        builder.setPositiveButton(getContext().getString(R.string.remove),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface,
+                                        int which) {
+                        if (mRemoveContactPreferenceListener != null) {
+                            mRemoveContactPreferenceListener
+                                    .onRemoveContactPreference(ContactPreference.this);
+                        }
+                    }
+                });
+        builder.setMessage(String.format(getContext().getString(R.string.remove_contact),
+                mContact.getName()));
+        mRemoveContactDialog = builder.create();
     }
 
     @Override
@@ -100,22 +146,7 @@ public class ContactPreference extends Preference {
             deleteContactIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                    builder.setMessage(String.format(getContext()
-                            .getString(R.string.remove_contact),
-                            mContact.getName()));
-                    builder.setPositiveButton(getContext().getString(R.string.remove),
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface,
-                                                    int which) {
-                                    if (mRemoveContactPreferenceListener != null) {
-                                        mRemoveContactPreferenceListener
-                                                .onRemoveContactPreference(ContactPreference.this);
-                                    }
-                                }
-                            }).setNegativeButton(getContext().getString(R.string.cancel), null);
-                    builder.create().show();
+                    showRemoveContactDialog(null);
                 }
             });
 
@@ -143,5 +174,75 @@ public class ContactPreference extends Preference {
         Intent contactIntent = new Intent(Intent.ACTION_VIEW);
         contactIntent.setData(mContact.getContactLookupUri());
         getContext().startActivity(contactIntent);
+    }
+
+    /** Shows the dialog to remove the contact, restoring it from {@code state} if it's not null. */
+    private void showRemoveContactDialog(Bundle state) {
+        if (mRemoveContactDialog == null) {
+            return;
+        }
+        if (state != null) {
+            mRemoveContactDialog.onRestoreInstanceState(state);
+        }
+        mRemoveContactDialog.show();
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        final Parcelable superState = super.onSaveInstanceState();
+        if (mRemoveContactDialog == null || !mRemoveContactDialog.isShowing()) {
+            return superState;
+        }
+        final SavedState myState = new SavedState(superState);
+        myState.isDialogShowing = true;
+        myState.dialogBundle = mRemoveContactDialog.onSaveInstanceState();
+        return myState;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        if (state == null || !state.getClass().equals(SavedState.class)) {
+            // Didn't save state for us in onSaveInstanceState
+            super.onRestoreInstanceState(state);
+            return;
+        }
+        SavedState myState = (SavedState) state;
+        super.onRestoreInstanceState(myState.getSuperState());
+        if (myState.isDialogShowing) {
+            showRemoveContactDialog(myState.dialogBundle);
+        }
+    }
+
+    private static class SavedState extends BaseSavedState {
+        boolean isDialogShowing;
+        Bundle dialogBundle;
+
+        public SavedState(Parcel source) {
+            super(source);
+            isDialogShowing = source.readInt() == 1;
+            dialogBundle = source.readBundle();
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            super.writeToParcel(dest, flags);
+            dest.writeInt(isDialogShowing ? 1 : 0);
+            dest.writeBundle(dialogBundle);
+        }
+
+        public SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        public static final Parcelable.Creator<SavedState> CREATOR =
+                new Parcelable.Creator<SavedState>() {
+                    public SavedState createFromParcel(Parcel in) {
+                        return new SavedState(in);
+                    }
+
+                    public SavedState[] newArray(int size) {
+                        return new SavedState[size];
+                    }
+                };
     }
 }
