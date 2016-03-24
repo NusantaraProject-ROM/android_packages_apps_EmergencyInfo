@@ -28,6 +28,7 @@ import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -91,13 +92,34 @@ public class EmergencyContactsPreference extends PreferenceCategory
     }
 
     private void setEmergencyContacts(Set<Uri> emergencyContacts) {
+        if (mEmergencyContacts.equals(emergencyContacts)) {
+            // Force reload
+            for (int i = 0; i < getPreferenceCount(); i++) {
+                ContactPreference contactPreference = (ContactPreference) getPreference(i);
+                contactPreference.setUri(contactPreference.getContactUri());
+            }
+            return;
+        }
+
         mEmergencyContacts = emergencyContacts;
         persistEmergencyContacts(emergencyContacts);
         notifyChanged();
-        removeAll();
 
-        for (Uri contactUri : emergencyContacts) {
-            addContactPreference(contactUri);
+        while (getPreferenceCount() - emergencyContacts.size() > 0) {
+            removePreference(getPreference(0));
+        }
+
+        // Reload the preferences or add new ones if necessary
+        Iterator<Uri> it = emergencyContacts.iterator();
+        int i = 0;
+        while (it.hasNext()) {
+            if (i < getPreferenceCount()) {
+                ContactPreference contactPreference = (ContactPreference) getPreference(i);
+                contactPreference.setUri(it.next());
+            } else {
+                addContactPreference(it.next());
+            }
+            i++;
         }
     }
 
