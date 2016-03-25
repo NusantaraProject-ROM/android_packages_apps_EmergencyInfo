@@ -17,18 +17,14 @@ package com.android.emergency.view;
 
 import android.app.Fragment;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.widget.ListView;
 
-import com.android.emergency.EmergencyContactManager;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.preferences.EmergencyContactsPreference;
-
-import java.util.Collections;
 
 /**
  * Fragment that displays emergency contacts.
@@ -66,13 +62,12 @@ public class ViewEmergencyContactsFragment extends PreferenceFragment {
 
     /** Returns true if there is at least one valid (still existing) emergency contact. */
     public static boolean hasAtLeastOneEmergencyContact(Context context) {
-        for (String uriString : PreferenceManager.getDefaultSharedPreferences(context)
-                .getStringSet(PreferenceKeys.KEY_EMERGENCY_CONTACTS,
-                        Collections.<String>emptySet())) {
-            if (EmergencyContactManager.isValidEmergencyContact(context, Uri.parse(uriString))) {
-                return true;
-            }
-        }
-        return false;
+        String emergencyContactsString = PreferenceManager.getDefaultSharedPreferences(context)
+                .getString(PreferenceKeys.KEY_EMERGENCY_CONTACTS, "");
+
+        return !EmergencyContactsPreference.deserializeAndFilter(
+                PreferenceKeys.KEY_EMERGENCY_CONTACTS,
+                context,
+                emergencyContactsString).isEmpty();
     }
 }

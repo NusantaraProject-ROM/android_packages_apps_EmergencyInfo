@@ -16,10 +16,12 @@
 package com.android.emergency.preferences;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.TypedArray;
 import android.net.Uri;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
-import android.util.ArraySet;
+import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 
 import com.android.emergency.EmergencyContactManager;
@@ -27,9 +29,10 @@ import com.android.emergency.ReloadablePreferenceInterface;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Custom {@link PreferenceCategory} that deals with contacts being deleted from the contacts app.
@@ -40,8 +43,12 @@ public class EmergencyContactsPreference extends PreferenceCategory
         implements ReloadablePreferenceInterface,
         ContactPreference.RemoveContactPreferenceListener {
 
+    private static final String CONTACT_SEPARATOR = "|";
+    private static final String QUOTE_CONTACT_SEPARATOR = Pattern.quote(CONTACT_SEPARATOR);
+
     /** Stores the emergency contact's ContactsContract.CommonDataKinds.Phone.CONTENT_URI */
-    private Set<Uri> mEmergencyContacts = new ArraySet<Uri>();
+    private List<Uri> mEmergencyContacts = new ArrayList<Uri>();
+    private boolean mEmergencyContactsSet = false;
 
     public EmergencyContactsPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -51,7 +58,14 @@ public class EmergencyContactsPreference extends PreferenceCategory
     protected void onSetInitialValue(boolean restorePersistedValue, Object defaultValue) {
         setEmergencyContacts(restorePersistedValue ?
                 getPersistedEmergencyContacts() :
-                deserializeAndFilterExisting((Set<String>) defaultValue));
+                deserializeAndFilter(getKey(),
+                        getContext(),
+                        (String) defaultValue));
+    }
+
+    @Override
+    protected Object onGetDefaultValue(TypedArray a, int index) {
+        return a.getString(index);
     }
 
     @Override
@@ -68,7 +82,7 @@ public class EmergencyContactsPreference extends PreferenceCategory
     public void onRemoveContactPreference(ContactPreference contactPreference) {
         Uri newContact = contactPreference.getContactUri();
         if (mEmergencyContacts.contains(newContact)) {
-            Set<Uri> updatedContacts = new ArraySet<Uri>((ArraySet<Uri>) mEmergencyContacts);
+            List<Uri> updatedContacts = new ArrayList<Uri>(mEmergencyContacts);
             if (updatedContacts.remove(newContact) && callChangeListener(updatedContacts)) {
                 MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETE_EMERGENCY_CONTACT);
                 setEmergencyContacts(updatedContacts);
@@ -83,7 +97,7 @@ public class EmergencyContactsPreference extends PreferenceCategory
      */
     public void addNewEmergencyContact(Uri contactUri) {
         if (!mEmergencyContacts.contains(contactUri)) {
-            Set<Uri> updatedContacts = new ArraySet<Uri>((ArraySet<Uri>) mEmergencyContacts);
+            List<Uri> updatedContacts = new ArrayList<Uri>(mEmergencyContacts);
             if (updatedContacts.add(contactUri) && callChangeListener(updatedContacts)) {
                 MetricsLogger.action(getContext(), MetricsEvent.ACTION_ADD_EMERGENCY_CONTACT);
                 setEmergencyContacts(updatedContacts);
@@ -91,19 +105,16 @@ public class EmergencyContactsPreference extends PreferenceCategory
         }
     }
 
-    private void setEmergencyContacts(Set<Uri> emergencyContacts) {
-        if (mEmergencyContacts.equals(emergencyContacts)) {
-            // Force reload
-            for (int i = 0; i < getPreferenceCount(); i++) {
-                ContactPreference contactPreference = (ContactPreference) getPreference(i);
-                contactPreference.setUri(contactPreference.getContactUri());
+    private void setEmergencyContacts(List<Uri> emergencyContacts) {
+        final boolean changed = !mEmergencyContacts.equals(emergencyContacts);
+        if (changed || !mEmergencyContactsSet) {
+            mEmergencyContacts = emergencyContacts;
+            mEmergencyContactsSet = true;
+            persistString(serialize(emergencyContacts));
+            if (changed) {
+                notifyChanged();
             }
-            return;
         }
-
-        mEmergencyContacts = emergencyContacts;
-        persistEmergencyContacts(emergencyContacts);
-        notifyChanged();
 
         while (getPreferenceCount() - emergencyContacts.size() > 0) {
             removePreference(getPreference(0));
@@ -147,44 +158,49 @@ public class EmergencyContactsPreference extends PreferenceCategory
                 );
     }
 
-    private Set<Uri> getPersistedEmergencyContacts() {
-        return deserializeAndFilterExisting(
-                getPersistedStringSet(Collections.<String>emptySet()));
+    private List<Uri> getPersistedEmergencyContacts() {
+        return deserializeAndFilter(getKey(), getContext(), getPersistedString(""));
     }
 
     /**
-     * Converts the strings to Uris and only keeps those corresponding to still existing contacts.
+     * Converts the string representing the emergency contacts to a list of Uris and only keeps
+     * those corresponding to still existing contacts. It persists the contacts if at least one
+     * contact was does not exist anymore.
      */
-    private Set<Uri> deserializeAndFilterExisting(Set<String> emergencyContactStrings) {
-        Set<Uri> emergencyContacts = new ArraySet<Uri>(emergencyContactStrings.size());
-        for (String emergencyContact : emergencyContactStrings) {
+    public static List<Uri> deserializeAndFilter(String key, Context context,
+                                                 String emergencyContactString) {
+        String[] emergencyContactsArray =
+                emergencyContactString.split(QUOTE_CONTACT_SEPARATOR);
+        List<Uri> filteredEmergencyContacts = new ArrayList<Uri>(emergencyContactsArray.length);
+        for (String emergencyContact : emergencyContactsArray) {
             Uri contactUri = Uri.parse(emergencyContact);
-            if (EmergencyContactManager.isValidEmergencyContact(getContext(), contactUri)) {
-                emergencyContacts.add(contactUri);
+            if (EmergencyContactManager.isValidEmergencyContact(context, contactUri)) {
+                filteredEmergencyContacts.add(contactUri);
             }
         }
-
         // If not all contacts were added, then we need to overwrite the emergency contacts stored
         // in shared preferences. This deals with emergency contacts being deleted from contacts:
         // currently we have no way to being notified when this happens.
-        if (emergencyContacts.size() != emergencyContactStrings.size()) {
-            persistEmergencyContacts(emergencyContacts);
+        if (filteredEmergencyContacts.size() != emergencyContactsArray.length) {
+            String emergencyContactStrings = serialize(filteredEmergencyContacts);
+            SharedPreferences sharedPreferences =
+                    PreferenceManager.getDefaultSharedPreferences(context);
+            sharedPreferences.edit().putString(key, emergencyContactStrings).apply();
         }
-
-        return emergencyContacts;
+        return filteredEmergencyContacts;
     }
 
-    private void persistEmergencyContacts(Set<Uri> emergencyContacts) {
-        Set<String> emergencyContactStrings = serialize(emergencyContacts);
-        persistStringSet(emergencyContactStrings);
-    }
-
-    /** Converts the Uris to their string representation. */
-    private Set<String> serialize(Set<Uri> emergencyContacts) {
-        Set<String> emergencyContactStrings = new ArraySet<String>(emergencyContacts.size());
-        for (Uri contactUri : emergencyContacts) {
-            emergencyContactStrings.add(contactUri.toString());
+    /** Converts the Uris to a string representation. */
+    public static String serialize(List<Uri> emergencyContacts) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < emergencyContacts.size(); i++) {
+            sb.append(emergencyContacts.get(i).toString());
+            sb.append(CONTACT_SEPARATOR);
         }
-        return emergencyContactStrings;
+
+        if (sb.length() > 0) {
+            sb.setLength(sb.length() - 1);
+        }
+        return sb.toString();
     }
 }
