@@ -19,6 +19,8 @@ import android.content.Context;
 import android.preference.EditTextPreference;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.View;
+import android.widget.TextView;
 
 import com.android.emergency.ReloadablePreferenceInterface;
 
@@ -27,6 +29,8 @@ import com.android.emergency.ReloadablePreferenceInterface;
  */
 public class EmergencyEditTextPreference extends EditTextPreference
         implements ReloadablePreferenceInterface {
+
+    private static final int MAX_LINES = 50;
 
     public EmergencyEditTextPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -46,5 +50,13 @@ public class EmergencyEditTextPreference extends EditTextPreference
     public CharSequence getSummary() {
         String text = getText();
         return TextUtils.isEmpty(text) ? super.getSummary() : text;
+    }
+
+    @Override
+    protected void onBindView(View view) {
+        super.onBindView(view);
+        final TextView summaryView = (TextView) view.findViewById(
+                com.android.internal.R.id.summary);
+        summaryView.setMaxLines(MAX_LINES);
     }
 }
