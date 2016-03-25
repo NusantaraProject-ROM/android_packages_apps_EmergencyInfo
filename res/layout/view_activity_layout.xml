@@ -43,11 +43,14 @@
             android:id="@+id/personal_card_small"
             android:layout_width="wrap_content"
             android:layout_height="19dp"
-            android:layout_marginBottom="18dp"
             android:layout_marginLeft="72dp"
             android:layout_marginTop="1dp"
             android:textColor="#FFFFFF"
             android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="18dp"></LinearLayout>
     </LinearLayout>
     <include layout="@layout/tabs"/>
 </LinearLayout>
