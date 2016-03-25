@@ -19,13 +19,13 @@
         android:inputType="textCapWords|textPersonName"
         android:key="name"
         android:singleLine="true"
-        android:summary="@string/default_summary_none"
+        android:summary="@string/unknown_name"
         android:title="@string/name" />
 
     <com.android.emergency.preferences.DatePreference
         android:icon="@drawable/ic_cake_black_24dp"
         android:key="date_of_birth"
-        android:summary="@string/default_summary_none"
+        android:summary="@string/unknown_date_of_birth"
         android:title="@string/date_of_birth" />
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
@@ -33,7 +33,7 @@
         android:inputType="textCapWords|textPostalAddress|textMultiLine"
         android:key="address"
         android:singleLine="false"
-        android:summary="@string/default_summary_none"
+        android:summary="@string/unknown_address"
         android:title="@string/address" />
 
     <com.android.emergency.preferences.BloodTypeListPreference
@@ -43,7 +43,7 @@
         android:key="blood_type"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
-        android:summary="@string/default_summary_none"
+        android:summary="@string/unknown_blood_type"
         android:title="@string/blood_type" />
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
@@ -53,7 +53,7 @@
         android:inputType="textMultiLine"
         android:key="allergies"
         android:singleLine="false"
-        android:summary="@string/default_summary_none"
+        android:summary="@string/unknown_allergies"
         android:title="@string/allergies" />
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
@@ -63,7 +63,7 @@
         android:inputType="textMultiLine"
         android:key="medications"
         android:singleLine="false"
-        android:summary="@string/default_summary_none"
+        android:summary="@string/unknown_medications"
         android:title="@string/medications" />
 
     <com.android.emergency.preferences.EmergencyListPreference
@@ -73,7 +73,7 @@
         android:key="organ_donor"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
-        android:summary="@string/default_summary_none"
+        android:summary="@string/unknown_organ_donor"
         android:title="@string/organ_donor" />
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
@@ -83,6 +83,6 @@
         android:inputType="textMultiLine"
         android:key="medical_conditions"
         android:singleLine="false"
-        android:summary="@string/default_summary_none"
+        android:summary="@string/unknown_medical_conditions"
         android:title="@string/medical_conditions" />
 </PreferenceScreen>
