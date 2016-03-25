@@ -15,9 +15,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- The name of the app. [CHAR_LIMIT=30] -->
-    <string name="app_label">Emergency Info</string>
-    <!-- The title of the edit info activity. "Emergency Info" should be translated using app_label above [CHAR_LIMIT=30] -->
-    <string name="edit_emergency_info_label">Edit Emergency Info</string>
+    <string name="app_label">Emergency Information</string>
+    <!-- The title of the edit info activity. "Emergency Information" should be translated using app_label above [CHAR_LIMIT=30] -->
+    <string name="edit_emergency_info_label">Edit Emergency Information</string>
     <!-- The description of the pencil icon, for talkback. [CHAR_LIMIT=NONE] -->
     <string name="edit_info">Edit emergency information</string>
     <!-- The title of the emergency info tab. [CHAR_LIMIT=15] -->
@@ -26,10 +26,16 @@
     <string name="tab_title_contacts">Contacts</string>
     <!-- The title of the name preference. [CHAR_LIMIT=40] -->
     <string name="name">Name</string>
+    <!-- The default preference subtitle text to show when the name is unknown. [CHAR_LIMIT=40] -->
+    <string name="unknown_name">Unknown</string>
     <!-- The title of the address preference. [CHAR_LIMIT=40] -->
     <string name="address">Address</string>
+    <!-- The default preference subtitle text to show when the address is unknown. [CHAR_LIMIT=40] -->
+    <string name="unknown_address">Unknown</string>
     <!-- The title of the date of birth preference. [CHAR_LIMIT=40] -->
     <string name="date_of_birth">Date of birth</string>
+    <!-- The default preference subtitle text to show when the date of birth is unknown. [CHAR_LIMIT=40] -->
+    <string name="unknown_date_of_birth">Unknown</string>
     <!-- The age and date of birth of the user. [CHAR_LIMIT=40] -->
     <string name="dob_and_age">
         Age: <xliff:g id="numerical_age" example="29">%1$d</xliff:g> (<xliff:g id="date_of_birth" example="3 feb 1987">%2$s</xliff:g>)
@@ -42,6 +48,8 @@
     <string name="remove_dob_icon_text">Remove date of birth</string>
     <!-- The title of the blood type preference. [CHAR_LIMIT=40] -->
     <string name="blood_type">Blood type</string>
+    <!-- The default preference subtitle text to show when the blood type is unknown. [CHAR_LIMIT=40] -->
+    <string name="unknown_blood_type">Unknown</string>
     <!-- Blood type O+. [CHAR_LIMIT=10] -->
     <string name="oplus">O+</string>
     <!-- Blood type O-. [CHAR_LIMIT=10] -->
@@ -70,7 +78,7 @@
         <item>@string/abplus</item>
         <item>@string/abminus</item>
         <item>@string/hh</item>
-        <item>@string/default_summary_none</item>
+        <item>@string/unknown_blood_type</item>
     </string-array>
     <string-array name="blood_type_values">
         <item>@string/oplus</item>
@@ -105,24 +113,30 @@
         <!-- Content descriptions for blood type H/H, used for talkback. [CHAR_LIMIT=NONE] -->
         <item>H H</item>
         <!-- Content descriptions for unknown blood type, used for talkback. [CHAR_LIMIT=NONE] -->
-        <item>@string/default_summary_none</item>
+        <item>@string/unknown_blood_type</item>
     </string-array>
     <!-- The title of the allergies preference. [CHAR_LIMIT=40] -->
     <string name="allergies">Allergies</string>
+    <!-- The default preference subtitle text to show when the allergies are unknown. [CHAR_LIMIT=40] -->
+    <string name="unknown_allergies">Unknown</string>
     <!-- Hint to show in the edit text of the allergies. [CHAR_LIMIT=30] -->
     <string name="allergies_hint">For example, peanuts</string>
-    <!-- The default preference subtitle text to show when a preference is unknown. [CHAR_LIMIT=40] -->
-    <string name="default_summary_none">Unknown</string>
     <!-- The title of the medications preference. [CHAR_LIMIT=40] -->
     <string name="medications">Medications</string>
+    <!-- The default preference subtitle text to show when the medications are unknown. [CHAR_LIMIT=40] -->
+    <string name="unknown_medications">Unknown</string>
     <!-- Hint to show in the edit text of the medications. [CHAR_LIMIT=30] -->
     <string name="medications_hint">For example, aspirin</string>
     <!-- The title of the medical conditions preference. [CHAR_LIMIT=40] -->
     <string name="medical_conditions">Medical conditions and notes</string>
+    <!-- The default preference subtitle text to show when the medical conditions are unknown. [CHAR_LIMIT=40] -->
+    <string name="unknown_medical_conditions">Unknown</string>
     <!-- Hint to show in the edit text of the medical conditions. [CHAR_LIMIT=30] -->
     <string name="medical_conditions_hint">For example, asthma</string>
     <!-- The title of the organ donor preference. [CHAR_LIMIT=40] -->
     <string name="organ_donor">Organ donor</string>
+    <!-- The default preference subtitle text to show when the organ donor choice is unknown. [CHAR_LIMIT=40] -->
+    <string name="unknown_organ_donor">Unknown</string>
     <!-- Affirmative. [CHAR_LIMIT=10] -->
     <string name="yes">Yes</string>
     <!-- Negative. [CHAR_LIMIT=10] -->
@@ -130,7 +144,7 @@
     <string-array name="organ_donor_entries">
         <item>@string/yes</item>
         <item>@string/no</item>
-        <item>@string/default_summary_none</item>
+        <item>@string/unknown_organ_donor</item>
     </string-array>
     <string-array name="organ_donor_values">
         <item>@string/yes</item>

@@ -20,7 +20,7 @@
         android:key="address"
         android:selectable="false"
         android:shouldDisableView="false"
-        android:summary="@string/default_summary_none"
+        android:summary="@string/unknown_address"
         android:title="@string/address" />
 
     <com.android.emergency.preferences.BloodTypeListPreference
@@ -32,7 +32,7 @@
         android:key="blood_type"
         android:selectable="false"
         android:shouldDisableView="false"
-        android:summary="@string/default_summary_none"
+        android:summary="@string/unknown_organ_donor"
         android:title="@string/blood_type" />
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
@@ -42,7 +42,7 @@
         android:key="allergies"
         android:selectable="false"
         android:shouldDisableView="false"
-        android:summary="@string/default_summary_none"
+        android:summary="@string/unknown_allergies"
         android:title="@string/allergies" />
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
@@ -52,7 +52,7 @@
         android:key="medications"
         android:selectable="false"
         android:shouldDisableView="false"
-        android:summary="@string/default_summary_none"
+        android:summary="@string/unknown_medications"
         android:title="@string/medications" />
 
     <com.android.emergency.preferences.EmergencyListPreference
@@ -64,7 +64,7 @@
         android:key="organ_donor"
         android:selectable="false"
         android:shouldDisableView="false"
-        android:summary="@string/default_summary_none"
+        android:summary="@string/unknown_organ_donor"
         android:title="@string/organ_donor" />
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
@@ -74,6 +74,6 @@
         android:key="medical_conditions"
         android:selectable="false"
         android:shouldDisableView="false"
-        android:summary="@string/default_summary_none"
+        android:summary="@string/unknown_medical_conditions"
         android:title="@string/medical_conditions" />
 </PreferenceScreen>
