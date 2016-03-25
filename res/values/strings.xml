@@ -36,10 +36,10 @@
     <string name="date_of_birth">Date of birth</string>
     <!-- The default preference subtitle text to show when the date of birth is unknown. [CHAR_LIMIT=40] -->
     <string name="unknown_date_of_birth">Unknown</string>
-    <!-- The age and date of birth of the user. [CHAR_LIMIT=40] -->
-    <string name="dob_and_age">
-        Age: <xliff:g id="numerical_age" example="29">%1$d</xliff:g> (<xliff:g id="date_of_birth" example="3 feb 1987">%2$s</xliff:g>)
-        </string>
+    <!-- Parenthesis around the date of birth of a user. [CHAR_LIMIT=40] -->
+    <string name="dob">
+        (<xliff:g id="date_of_birth" example="3 feb 1987">%1$s</xliff:g>)
+    </string>
     <!-- The age of the user. [CHAR_LIMIT=20] -->
     <string name="age">
         Age: <xliff:g id="numerical_age" example="29">%1$d</xliff:g>
