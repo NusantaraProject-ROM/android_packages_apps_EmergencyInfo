@@ -16,6 +16,7 @@
 package com.android.emergency.preferences;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
@@ -25,16 +26,17 @@ import android.os.Parcelable;
 import android.preference.DialogPreference;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
+import android.widget.TextView;
 
 import com.android.emergency.R;
-import com.android.emergency.ReloadablePreferenceInterface;
 
 /**
  * Almost a copy of EditTextPreference that shows a {@link AutoCompleteTextView} instead of the
@@ -65,6 +67,18 @@ public class AutoCompleteEditTextPreference extends DialogPreference {
          * We reset the enabled state.
          */
         mAutoCompleteTextView.setEnabled(true);
+
+        mAutoCompleteTextView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    onClick(getDialog(), DialogInterface.BUTTON_POSITIVE);
+                    getDialog().dismiss();
+                    return true;
+                }
+                return false;
+            }
+        });
         setDialogLayoutResource(R.layout.preference_dialog_autocomplete_edittext);
     }
 
