@@ -18,4 +18,6 @@
     <color name="emergency_primary">#E53935</color>
     <color name="emergency_accent">#FFFF00</color>
     <color name="tab_text_color">#FFFFFF</color>
+    <color name="material_teal_200">#FF80CBC4</color>
+    <color name="white_with_alpha">#B2FFFFFF</color>
 </resources>

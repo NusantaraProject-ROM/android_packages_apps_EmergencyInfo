@@ -18,6 +18,7 @@
         <item name="android:preferenceCategoryStyle">@style/AppTheme.PreferenceCategoryStyle</item>
         <item name="colorPrimary">@color/material_blue_grey_900</item>
         <item name="colorPrimaryDark">@color/material_blue_grey_950</item>
+        <item name="colorAccent">@color/material_teal_200</item>
         <item name="android:datePickerStyle">@style/AppTheme.DatePickerStyle</item>
     </style>
     <!-- Base emergency theme. -->
