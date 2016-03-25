@@ -44,11 +44,11 @@ public class EmergencyListPreference extends ListPreference
 
     @Override
     public CharSequence getSummary() {
-        final CharSequence value = getValue();
-        if (TextUtils.isEmpty(value)) {
+        final CharSequence entry = getEntry();
+        if (TextUtils.isEmpty(entry)) {
             return super.getSummary();
         } else {
-            return value;
+            return entry;
         }
     }
 }

@@ -80,16 +80,26 @@
         <item>@string/hh</item>
         <item>@string/unknown_blood_type</item>
     </string-array>
+    <!-- Blood type values. Do not translate -->
     <string-array name="blood_type_values">
-        <item>@string/oplus</item>
-        <item>@string/ominus</item>
-        <item>@string/aplus</item>
-        <item>@string/aminus</item>
-        <item>@string/bplus</item>
-        <item>@string/bminus</item>
-        <item>@string/abplus</item>
-        <item>@string/abminus</item>
-        <item>@string/hh</item>
+        <!-- Do not translate -->
+        <item>0+</item>
+        <!-- Do not translate -->
+        <item>O-</item>
+        <!-- Do not translate -->
+        <item>A+</item>
+        <!-- Do not translate -->
+        <item>A-</item>
+        <!-- Do not translate -->
+        <item>B+</item>
+        <!-- Do not translate -->
+        <item>B-</item>
+        <!-- Do not translate -->
+        <item>AB+</item>
+        <!-- Do not translate -->
+        <item>AB-</item>
+        <!-- Do not translate -->
+        <item>H/H</item>
         <item></item>
     </string-array>
     <!-- Content descriptions for the blood types, used for talkback. -->
@@ -146,9 +156,12 @@
         <item>@string/no</item>
         <item>@string/unknown_organ_donor</item>
     </string-array>
+    <!-- Organ donor values. Do not translate -->
     <string-array name="organ_donor_values">
-        <item>@string/yes</item>
-        <item>@string/no</item>
+        <!-- Do not translate -->
+        <item>Yes</item>
+        <!-- Do not translate -->
+        <item>No</item>
         <item></item>
     </string-array>
     <!-- The title of the emergency contacts preference. [CHAR_LIMIT=40] -->
