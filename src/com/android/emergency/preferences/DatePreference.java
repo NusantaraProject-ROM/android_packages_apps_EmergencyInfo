@@ -52,6 +52,7 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
     /** Creates a new instance initialized with {@code context} and {@code attrs}. */
     public DatePreference(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mDateTimeMillis = DEFAULT_UNSET_VALUE;
         final Calendar calendar = Calendar.getInstance();
         mDatePickerDialog = new DatePickerDialog(
                 context,
