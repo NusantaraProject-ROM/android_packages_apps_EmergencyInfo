@@ -42,10 +42,11 @@ public class BloodTypeListPreference extends EmergencyListPreference {
     @Override
     public CharSequence getSummary() {
         final String value = getValue();
-        if (TextUtils.isEmpty(value)) {
+        int index = findIndexOfValue(value);
+        if (index < 0) {
             return super.getSummary();
         } else {
-            return createAccessibleSequence(value, mContentDescriptions[findIndexOfValue(value)]);
+            return createAccessibleSequence(getEntries()[index], mContentDescriptions[index]);
         }
     }
 
