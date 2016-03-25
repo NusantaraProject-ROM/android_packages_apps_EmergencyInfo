@@ -21,7 +21,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -91,17 +94,21 @@ public class ViewInfoActivity extends EmergencyTabActivity {
             if (!dateOfBirthNotSet) {
                 mPersonalCardSmallItem.setVisibility(View.VISIBLE);
                 int age = computeAge(dateOfBirthTimeMillis);
-                String localizedDob = mDateFormat.format(new Date(dateOfBirthTimeMillis));
+                String localizedDob = String.format(getString(R.string.dob),
+                        mDateFormat.format(new Date(dateOfBirthTimeMillis)));
+                Spannable spannableDob = new SpannableString(localizedDob);
+                spannableDob.setSpan(new ForegroundColorSpan(
+                                getResources().getColor(R.color.white_with_alpha)), 0,
+                        localizedDob.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 if (nameEmpty) {
                     // Display date of birth info in two lines: age and then date of birth
-                    mPersonalCardLargeItem.setText(String.format(getString(R.string.age),
-                            age));
-                    mPersonalCardSmallItem.setText(localizedDob);
+                    mPersonalCardLargeItem.setText(String.format(getString(R.string.age), age));
+                    mPersonalCardSmallItem.setText(spannableDob);
                 } else {
                     mPersonalCardLargeItem.setText(name);
-                    mPersonalCardSmallItem.setText(String.format(getString(R.string.dob_and_age),
-                            age,
-                            localizedDob));
+                    mPersonalCardSmallItem.setText(String.format(getString(R.string.age), age));
+                    mPersonalCardSmallItem.append(" ");
+                    mPersonalCardSmallItem.append(spannableDob);
                 }
             } else {
                 mPersonalCardSmallItem.setVisibility(View.GONE);
