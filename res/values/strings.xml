@@ -109,9 +109,9 @@
         <!-- Content descriptions for blood type O-, used for talkback. [CHAR_LIMIT=NONE] -->
         <item>O negative</item>
         <!-- Content descriptions for blood type A+, used for talkback. [CHAR_LIMIT=NONE] -->
-        <item>A positive</item>
+        <item>A, positive</item>
         <!-- Content descriptions for blood type A-, used for talkback. [CHAR_LIMIT=NONE] -->
-        <item>A negative</item>
+        <item>A, negative</item>
         <!-- Content descriptions for blood type B+, used for talkback. [CHAR_LIMIT=NONE] -->
         <item>B positive</item>
         <!-- Content descriptions for blood type B-, used for talkback. [CHAR_LIMIT=NONE] -->
