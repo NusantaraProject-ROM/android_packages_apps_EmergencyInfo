@@ -16,9 +16,9 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- no translation found for app_label (6982776986315236447) -->
+    <!-- no translation found for app_label (3832318668025860600) -->
     <skip />
-    <!-- no translation found for edit_emergency_info_label (1118583158162236259) -->
+    <!-- no translation found for edit_emergency_info_label (7023565992774864407) -->
     <skip />
     <string name="edit_info" msgid="5973929805855224805">"Փոփոխել արտակարգ իրավիճակների տեղեկությունները"</string>
     <!-- no translation found for tab_title_info (1402033103294855812) -->
@@ -27,17 +27,25 @@
     <skip />
     <!-- no translation found for name (4286267457738861977) -->
     <skip />
+    <!-- no translation found for unknown_name (2834802479170495056) -->
+    <skip />
     <!-- no translation found for address (6449303483151189969) -->
+    <skip />
+    <!-- no translation found for unknown_address (4212576729941786121) -->
     <skip />
     <!-- no translation found for date_of_birth (777979232444227891) -->
     <skip />
-    <!-- no translation found for dob_and_age (6222285267782059671) -->
+    <!-- no translation found for unknown_date_of_birth (7416355536916066758) -->
+    <skip />
+    <!-- no translation found for dob (2813161080307245706) -->
     <skip />
     <!-- no translation found for age (8327537794752630199) -->
     <skip />
     <!-- no translation found for remove_dob_icon_text (4413507180967999944) -->
     <skip />
     <!-- no translation found for blood_type (6947022772999974608) -->
+    <skip />
+    <!-- no translation found for unknown_blood_type (6337228278125085668) -->
     <skip />
     <!-- no translation found for oplus (7759756742377867011) -->
     <skip />
@@ -67,30 +75,30 @@
     <!-- no translation found for blood_type_entries:7 (2352690820681480000) -->
     <!-- no translation found for blood_type_entries:8 (8050126448069904266) -->
     <!-- no translation found for blood_type_entries:9 (6638754103385431982) -->
-    <!-- no translation found for blood_type_values:0 (498350339046257435) -->
-    <!-- no translation found for blood_type_values:1 (1076768983245442897) -->
-    <!-- no translation found for blood_type_values:2 (6102821646297839903) -->
-    <!-- no translation found for blood_type_values:3 (1226116972025397325) -->
-    <!-- no translation found for blood_type_values:4 (5282376116313403782) -->
-    <!-- no translation found for blood_type_values:5 (7577577122089304871) -->
-    <!-- no translation found for blood_type_values:6 (8958075411756791444) -->
-    <!-- no translation found for blood_type_values:7 (3220569165111014544) -->
-    <!-- no translation found for blood_type_values:8 (2846464881836893218) -->
+    <!-- no translation found for blood_type_content_description:2 (4885572478229559423) -->
+    <!-- no translation found for blood_type_content_description:3 (5013120505234933005) -->
+    <!-- no translation found for blood_type_content_description:9 (1362921785855892976) -->
     <!-- no translation found for allergies (2789200777539258165) -->
+    <skip />
+    <!-- no translation found for unknown_allergies (4383115953418061237) -->
     <skip />
     <!-- no translation found for allergies_hint (5488918780522184147) -->
     <skip />
-    <!-- no translation found for default_summary_none (3849818429984786157) -->
-    <skip />
     <!-- no translation found for medications (644428945685557183) -->
+    <skip />
+    <!-- no translation found for unknown_medications (2764171064510423734) -->
     <skip />
     <!-- no translation found for medications_hint (3221620025945593723) -->
     <skip />
     <!-- no translation found for medical_conditions (6147422114803729239) -->
     <skip />
+    <!-- no translation found for unknown_medical_conditions (8051364895172053770) -->
+    <skip />
     <!-- no translation found for medical_conditions_hint (6959152183029062882) -->
     <skip />
     <!-- no translation found for organ_donor (5953509460007124827) -->
+    <skip />
+    <!-- no translation found for unknown_organ_donor (2780515342875494225) -->
     <skip />
     <!-- no translation found for yes (5829765567799916128) -->
     <skip />
@@ -99,8 +107,6 @@
     <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
-    <!-- no translation found for organ_donor_values:0 (2173836985052439809) -->
-    <!-- no translation found for organ_donor_values:1 (5641258921546624538) -->
     <!-- no translation found for emergency_contacts_title (5462202017417821030) -->
     <skip />
     <!-- no translation found for add_emergency_contact (4987882226775581405) -->

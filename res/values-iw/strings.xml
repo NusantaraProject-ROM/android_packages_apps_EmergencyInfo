@@ -16,10 +16,8 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- no translation found for app_label (6982776986315236447) -->
-    <skip />
-    <!-- no translation found for edit_emergency_info_label (1118583158162236259) -->
-    <skip />
+    <string name="app_label" msgid="3832318668025860600">"מידע על מקרה חירום"</string>
+    <string name="edit_emergency_info_label" msgid="7023565992774864407">"עריכת מידע למקרה חירום"</string>
     <string name="edit_info" msgid="5973929805855224805">"עריכת מידע למקרה חירום"</string>
     <!-- no translation found for tab_title_info (1402033103294855812) -->
     <skip />
@@ -27,18 +25,21 @@
     <skip />
     <!-- no translation found for name (4286267457738861977) -->
     <skip />
+    <string name="unknown_name" msgid="2834802479170495056">"לא ידוע"</string>
     <!-- no translation found for address (6449303483151189969) -->
     <skip />
+    <string name="unknown_address" msgid="4212576729941786121">"לא ידוע"</string>
     <!-- no translation found for date_of_birth (777979232444227891) -->
     <skip />
-    <!-- no translation found for dob_and_age (6222285267782059671) -->
-    <skip />
+    <string name="unknown_date_of_birth" msgid="7416355536916066758">"לא ידוע"</string>
+    <string name="dob" msgid="2813161080307245706">"(<xliff:g id="DATE_OF_BIRTH">%1$s</xliff:g>)"</string>
     <!-- no translation found for age (8327537794752630199) -->
     <skip />
     <!-- no translation found for remove_dob_icon_text (4413507180967999944) -->
     <skip />
     <!-- no translation found for blood_type (6947022772999974608) -->
     <skip />
+    <string name="unknown_blood_type" msgid="6337228278125085668">"לא ידוע"</string>
     <!-- no translation found for oplus (7759756742377867011) -->
     <skip />
     <!-- no translation found for ominus (5227278501191741055) -->
@@ -67,31 +68,27 @@
     <!-- no translation found for blood_type_entries:7 (2352690820681480000) -->
     <!-- no translation found for blood_type_entries:8 (8050126448069904266) -->
     <!-- no translation found for blood_type_entries:9 (6638754103385431982) -->
-    <!-- no translation found for blood_type_values:0 (498350339046257435) -->
-    <!-- no translation found for blood_type_values:1 (1076768983245442897) -->
-    <!-- no translation found for blood_type_values:2 (6102821646297839903) -->
-    <!-- no translation found for blood_type_values:3 (1226116972025397325) -->
-    <!-- no translation found for blood_type_values:4 (5282376116313403782) -->
-    <!-- no translation found for blood_type_values:5 (7577577122089304871) -->
-    <!-- no translation found for blood_type_values:6 (8958075411756791444) -->
-    <!-- no translation found for blood_type_values:7 (3220569165111014544) -->
-    <!-- no translation found for blood_type_values:8 (2846464881836893218) -->
+    <!-- no translation found for blood_type_content_description:2 (4885572478229559423) -->
+    <!-- no translation found for blood_type_content_description:3 (5013120505234933005) -->
+    <!-- no translation found for blood_type_content_description:9 (1362921785855892976) -->
     <!-- no translation found for allergies (2789200777539258165) -->
     <skip />
+    <string name="unknown_allergies" msgid="4383115953418061237">"לא ידוע"</string>
     <!-- no translation found for allergies_hint (5488918780522184147) -->
-    <skip />
-    <!-- no translation found for default_summary_none (3849818429984786157) -->
     <skip />
     <!-- no translation found for medications (644428945685557183) -->
     <skip />
+    <string name="unknown_medications" msgid="2764171064510423734">"לא ידוע"</string>
     <!-- no translation found for medications_hint (3221620025945593723) -->
     <skip />
     <!-- no translation found for medical_conditions (6147422114803729239) -->
     <skip />
+    <string name="unknown_medical_conditions" msgid="8051364895172053770">"לא ידוע"</string>
     <!-- no translation found for medical_conditions_hint (6959152183029062882) -->
     <skip />
     <!-- no translation found for organ_donor (5953509460007124827) -->
     <skip />
+    <string name="unknown_organ_donor" msgid="2780515342875494225">"לא ידוע"</string>
     <!-- no translation found for yes (5829765567799916128) -->
     <skip />
     <!-- no translation found for no (1681689233660683509) -->
@@ -99,8 +96,6 @@
     <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
-    <!-- no translation found for organ_donor_values:0 (2173836985052439809) -->
-    <!-- no translation found for organ_donor_values:1 (5641258921546624538) -->
     <!-- no translation found for emergency_contacts_title (5462202017417821030) -->
     <skip />
     <!-- no translation found for add_emergency_contact (4987882226775581405) -->
