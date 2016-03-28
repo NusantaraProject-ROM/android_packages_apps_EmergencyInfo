@@ -23,8 +23,8 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
-import android.app.Fragment;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Pair;
 
 import com.android.emergency.EmergencyTabActivity;
@@ -39,6 +39,8 @@ import java.util.ArrayList;
  */
 public class EditInfoActivity extends EmergencyTabActivity {
     private static final String TAG_WARNING_DIALOG = "warning_dialog";
+    private static final String KEY_LAST_CONSENT_TIME_MS = "last_consent_time_ms";
+    private static final long ONE_DAY_MS = 24 * 60 * 60 * 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,14 @@ public class EditInfoActivity extends EmergencyTabActivity {
         // reshowing it if a rotation occurs (which causes onCreate to be called again, but this
         // time with savedInstanceState!=null).
         if (savedInstanceState == null) {
-            showWarningDialog();
+            long lastConsentTimeMs = PreferenceManager.getDefaultSharedPreferences(this)
+                    .getLong(KEY_LAST_CONSENT_TIME_MS, Long.MAX_VALUE);
+            long nowMs = System.currentTimeMillis();
+            // Check if at least one day has gone by since the user last gave his constant or if
+            // the last consent was in the future (e.g. if the user changed the date).
+            if (nowMs - lastConsentTimeMs > ONE_DAY_MS || lastConsentTimeMs > nowMs) {
+                showWarningDialog();
+            }
         }
 
         getWindow().addFlags(FLAG_DISMISS_KEYGUARD);
@@ -104,7 +113,16 @@ public class EditInfoActivity extends EmergencyTabActivity {
             Dialog dialog = new AlertDialog.Builder(getActivity())
                     .setTitle(R.string.user_emergency_info_title)
                     .setMessage(R.string.user_emergency_info_consent)
-                    .setPositiveButton(R.string.emergency_info_continue, null)
+                    .setPositiveButton(R.string.emergency_info_continue,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    PreferenceManager.getDefaultSharedPreferences(
+                                            getActivity()).edit()
+                                            .putLong(KEY_LAST_CONSENT_TIME_MS,
+                                                    System.currentTimeMillis()).apply();
+                                }
+                            })
                     .setNegativeButton(android.R.string.cancel,
                             new DialogInterface.OnClickListener() {
                                 @Override
