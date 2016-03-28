@@ -187,7 +187,7 @@
     <!-- Title of dialog shown to the user to confirm that he understands that emergency information is shown in emergency dialer [CHAR LIMIT=30] -->
     <string name="user_emergency_info_title">Emergency information</string>
     <!-- Message of dialog shown to user to confirm that he understands that emergency information is shown in emergency dialer [CHAR LIMIT=none] -->
-    <string name="user_emergency_info_consent">Information you enter here can help first responders in an emergency. It is stored on your device only, but anyone can read it from the emergency dialer without unlocking your phone.</string>
+    <string name="user_emergency_info_consent">Information you enter here can help first responders in an emergency. It is stored on your device only, and anyone can read it from the emergency dialer without unlocking your phone.</string>
     <!-- Label for button in confirmation dialog when the user clicks on emergency information [CHAR LIMIT=15] -->
     <string name="emergency_info_continue">Continue</string>
 </resources>
