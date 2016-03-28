@@ -74,12 +74,6 @@ public abstract class EmergencyTabActivity extends Activity {
         setupTabs();
         Toolbar toolbar = (Toolbar) findViewById(R.id.action_bar);
         toolbar.setTitle(getActivityTitle());
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
         setActionBar(toolbar);
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
