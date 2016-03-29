@@ -29,6 +29,7 @@
             android:name=".view.ViewInfoActivity"
             android:theme="@style/AppThemeEmergency"
             android:showOnLockScreen="true"
+            android:enabled="false"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.telephony.action.EMERGENCY_ASSISTANCE" />

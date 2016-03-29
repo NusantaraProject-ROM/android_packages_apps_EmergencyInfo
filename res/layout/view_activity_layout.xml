@@ -52,5 +52,26 @@
             android:layout_width="match_parent"
             android:layout_height="18dp"></LinearLayout>
     </LinearLayout>
-    <include layout="@layout/tabs"/>
+
+    <ViewFlipper
+        android:id="@+id/view_flipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="@dimen/tab_elevation">
+
+        <TextView
+            android:id="@+id/no_info_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:text="@string/no_info_provided"
+            android:textColor="#9E9E9E"
+            android:textSize="16sp" />
+
+        <include
+            android:id="@+id/tabs"
+            layout="@layout/tabs" />
+    </ViewFlipper>
 </LinearLayout>

@@ -190,4 +190,6 @@
     <string name="user_emergency_info_consent">Information you enter here can help first responders in an emergency. It is stored on your device only, and anyone can read it from the emergency dialer without unlocking your phone.</string>
     <!-- Label for button in confirmation dialog when the user clicks on emergency information [CHAR LIMIT=15] -->
     <string name="emergency_info_continue">Continue</string>
+    <!-- Message shown when no emergency information has been provided by the user [CHAR LIMIT=NONE] -->
+    <string name="no_info_provided">No emergency information provided</string>
 </resources>

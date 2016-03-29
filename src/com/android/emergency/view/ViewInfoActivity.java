@@ -33,6 +33,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import com.android.emergency.EmergencyTabActivity;
 import com.android.emergency.PreferenceKeys;
@@ -55,6 +56,7 @@ public class ViewInfoActivity extends EmergencyTabActivity {
     private TextView mPersonalCardSmallItem;
     private SharedPreferences mSharedPreferences;
     private LinearLayout mPersonalCard;
+    private ViewFlipper mViewFlipper;
 
     private final DateFormat mDateFormat = DateFormat.getDateInstance();
 
@@ -67,6 +69,7 @@ public class ViewInfoActivity extends EmergencyTabActivity {
         mPersonalCard = (LinearLayout) findViewById(R.id.name_and_dob_linear_layout);
         mPersonalCardLargeItem = (TextView) findViewById(R.id.personal_card_large);
         mPersonalCardSmallItem = (TextView) findViewById(R.id.personal_card_small);
+        mViewFlipper = (ViewFlipper) findViewById(R.id.view_flipper);
 
         MetricsLogger.visible(this, MetricsEvent.ACTION_VIEW_EMERGENCY_INFO);
     }
@@ -119,6 +122,14 @@ public class ViewInfoActivity extends EmergencyTabActivity {
     }
 
     private void maybeHideTabs() {
+        // Show a TextView with "No information provided" if there are no fragments.
+        if (getNumberFragments() == 0) {
+            mViewFlipper.setDisplayedChild(
+                    mViewFlipper.indexOfChild(findViewById(R.id.no_info_text_view)));
+        } else {
+            mViewFlipper.setDisplayedChild(mViewFlipper.indexOfChild(findViewById(R.id.tabs)));
+        }
+
         TabLayout tabLayout = getTabLayout();
         if (getNumberFragments() <= 1) {
             tabLayout.setVisibility(View.GONE);
