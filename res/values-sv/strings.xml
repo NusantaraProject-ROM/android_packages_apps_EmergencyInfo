@@ -51,8 +51,6 @@
     <!-- no translation found for blood_type_entries:7 (2352690820681480000) -->
     <!-- no translation found for blood_type_entries:8 (8050126448069904266) -->
     <!-- no translation found for blood_type_entries:9 (6638754103385431982) -->
-    <!-- no translation found for blood_type_content_description:2 (4885572478229559423) -->
-    <!-- no translation found for blood_type_content_description:3 (5013120505234933005) -->
     <!-- no translation found for blood_type_content_description:9 (1362921785855892976) -->
     <string name="allergies" msgid="2789200777539258165">"Allergi"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"Ingen uppgift"</string>
@@ -79,6 +77,9 @@
     <string name="ok" msgid="163967937451981024">"Ok"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"Krisinformation"</string>
-    <string name="user_emergency_info_consent" msgid="8938078996730885830">"Den information som du anger här kan hjälpa räddningspersonal vid en nödsituation. Den finns bara lagrad på enheten men vem som helst kan läsa den från skärmen för nödsamtal utan att låsa upp telefonen."</string>
+    <!-- no translation found for user_emergency_info_consent (5636028073450797246) -->
+    <skip />
     <string name="emergency_info_continue" msgid="5453201508537906087">"Fortsätt"</string>
+    <!-- no translation found for no_info_provided (6775035037534954056) -->
+    <skip />
 </resources>
