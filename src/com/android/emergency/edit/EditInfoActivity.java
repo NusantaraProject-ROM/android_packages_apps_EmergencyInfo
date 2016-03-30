@@ -22,13 +22,17 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.ComponentName;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Pair;
 
 import com.android.emergency.EmergencyTabActivity;
 import com.android.emergency.R;
+import com.android.emergency.view.ViewEmergencyContactsFragment;
+import com.android.emergency.view.ViewInfoActivity;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -64,6 +68,22 @@ public class EditInfoActivity extends EmergencyTabActivity {
 
         getWindow().addFlags(FLAG_DISMISS_KEYGUARD);
         MetricsLogger.visible(this, MetricsEvent.ACTION_EDIT_EMERGENCY_INFO);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        // Enable ViewInfoActivity if the user input some info. Otherwise, disable it.
+        PackageManager pm = getPackageManager();
+        if (ViewEmergencyContactsFragment.hasAtLeastOneEmergencyContact(this)
+                || EditEmergencyInfoFragment.hasAtLeastOnePreferenceSet(this)) {
+            pm.setComponentEnabledSetting(new ComponentName(this, ViewInfoActivity.class),
+                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+        } else {
+            pm.setComponentEnabledSetting(new ComponentName(this, ViewInfoActivity.class),
+                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+        }
     }
 
     @Override
