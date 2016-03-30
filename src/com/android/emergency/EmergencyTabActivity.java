@@ -78,6 +78,14 @@ public abstract class EmergencyTabActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    /** Selects the tab at index {@code selectedTabIndex}. */
+    public void selectTab(int selectedTabIndex) {
+        if (mTabLayout != null && selectedTabIndex >= 0 &&
+                selectedTabIndex < mTabLayout.getTabCount()) {
+            mTabLayout.getTabAt(selectedTabIndex).select();
+        }
+    }
+
     protected void setupTabs() {
         mFragments = setUpFragments();
         mTabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
