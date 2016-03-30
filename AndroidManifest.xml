@@ -39,7 +39,6 @@
 
         <activity
             android:name=".edit.EditInfoActivity"
-            android:label="@string/edit_emergency_info_label"
             android:theme="@style/AppTheme"
             android:launchMode="singleTask">
             <intent-filter>

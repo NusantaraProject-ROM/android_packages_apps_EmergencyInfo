@@ -73,7 +73,6 @@ public abstract class EmergencyTabActivity extends Activity {
         super.setContentView(layoutResID);
         setupTabs();
         Toolbar toolbar = (Toolbar) findViewById(R.id.action_bar);
-        toolbar.setTitle(getActivityTitle());
         setActionBar(toolbar);
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -114,6 +113,11 @@ public abstract class EmergencyTabActivity extends Activity {
         return mTabLayout;
     }
 
+    /** Return the fragments. */
+    public ArrayList<Pair<String, Fragment>> getFragments() {
+        return mFragments;
+    }
+
     /** Return number of fragments to show in the tabs. */
     public int getNumberFragments() {
         return mFragments.size();
@@ -121,9 +125,6 @@ public abstract class EmergencyTabActivity extends Activity {
 
     /** Returns whether the activity is in view mode (true) or in edit mode (false). */
     public abstract boolean isInViewMode();
-
-    /** Returns the activity title. */
-    public abstract String getActivityTitle();
 
     /** Returns the fragments to show in the tabs. */
     protected abstract ArrayList<Pair<String, Fragment>> setUpFragments();

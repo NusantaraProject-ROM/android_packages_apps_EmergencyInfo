@@ -26,6 +26,7 @@ import android.text.TextUtils;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
+import com.android.emergency.ReloadablePreferenceInterface;
 import com.android.emergency.preferences.DatePreference;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -75,6 +76,23 @@ public class EditEmergencyInfoFragment extends PreferenceFragment {
             }
         }
         return false;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        reloadFromPreference();
+    }
+
+    /** Reloads all the preferences by reading the value from the shared preferences. */
+    public void reloadFromPreference() {
+        for (String preferenceKey : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
+            ReloadablePreferenceInterface preference = (ReloadablePreferenceInterface)
+                    findPreference(preferenceKey);
+            if (preference != null) {
+                preference.reloadFromPreference();
+            }
+        }
     }
 
     public static Fragment newInstance() {

@@ -15,9 +15,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- The name of the app. [CHAR_LIMIT=30] -->
-    <string name="app_label">Emergency Information</string>
-    <!-- The title of the edit info activity. "Emergency Information" should be translated using app_label above [CHAR_LIMIT=30] -->
-    <string name="edit_emergency_info_label">Edit Emergency Information</string>
+    <string name="app_label">Emergency information</string>
     <!-- The description of the pencil icon, for talkback. [CHAR_LIMIT=NONE] -->
     <string name="edit_info">Edit emergency information</string>
     <!-- The title of the emergency info tab. [CHAR_LIMIT=15] -->
@@ -192,4 +190,10 @@
     <string name="emergency_info_continue">Continue</string>
     <!-- Message shown when no emergency information has been provided by the user [CHAR LIMIT=NONE] -->
     <string name="no_info_provided">No emergency information provided</string>
+    <!-- Label for action item on the menu of the editing screen [CHAR LIMIT=15] -->
+    <string name="clear_all">Clear all</string>
+    <!-- Label for button of dialog shown to clear all information and contacts [CHAR LIMIT=15] -->
+    <string name="clear">Clear</string>
+    <!-- Message of dialog shown to clear all information and contacts [CHAR LIMIT=NONE] -->
+    <string name="clear_all_message">Clear all information and contacts?</string>
 </resources>
