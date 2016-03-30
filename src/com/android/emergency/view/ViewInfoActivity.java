@@ -174,11 +174,6 @@ public class ViewInfoActivity extends EmergencyTabActivity {
     }
 
     @Override
-    public boolean isInViewMode() {
-        return true;
-    }
-
-    @Override
     protected ArrayList<Pair<String, Fragment>> setUpFragments() {
         // Return only the fragments that have at least one piece of information set:
         ArrayList<Pair<String, Fragment>> fragments = new ArrayList<>(2);

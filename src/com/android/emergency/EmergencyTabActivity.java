@@ -123,9 +123,6 @@ public abstract class EmergencyTabActivity extends Activity {
         return mFragments.size();
     }
 
-    /** Returns whether the activity is in view mode (true) or in edit mode (false). */
-    public abstract boolean isInViewMode();
-
     /** Returns the fragments to show in the tabs. */
     protected abstract ArrayList<Pair<String, Fragment>> setUpFragments();
 
