@@ -24,10 +24,10 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.ComponentName;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -52,6 +52,7 @@ public class EditInfoActivity extends EmergencyTabActivity {
     private static final long ONE_DAY_MS = 24 * 60 * 60 * 1000;
     private static final String ACTION_EDIT_EMERGENCY_CONTACTS =
             "android.emergency.EDIT_EMERGENCY_CONTACTS";
+    private static final String ACTION_USER_SETTINGS = "android.settings.USER_SETTINGS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +111,11 @@ public class EditInfoActivity extends EmergencyTabActivity {
         switch (item.getItemId()) {
             case R.id.action_clear_all:
                 showClearAllDialog();
+                return true;
+            case android.R.id.home:
+                Intent intent = new Intent(ACTION_USER_SETTINGS);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                navigateUpTo(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);

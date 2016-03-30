@@ -166,7 +166,7 @@ public class ViewInfoActivity extends EmergencyTabActivity {
         switch (item.getItemId()) {
             case R.id.action_edit:
                 Intent intent = new Intent(this, EditInfoActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 return true;
         }
