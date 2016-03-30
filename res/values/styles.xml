@@ -33,7 +33,6 @@
     <style name="AppTheme.TabLayout" parent="Widget.Design.TabLayout">
         <item name="tabTextAppearance">@style/AppTheme.TabText</item>
         <item name="tabSelectedTextColor">@color/tab_text_color</item>
-        <item name="android:textSize">14sp</item>
         <item name="tabIndicatorHeight">2dp</item>
         <item name="tabPaddingStart">24dp</item>
         <item name="tabPaddingEnd">24dp</item>
@@ -42,6 +41,7 @@
 
     <style name="AppTheme.TabText" parent="TextAppearance.Design.Tab">
         <item name="android:textColor">@color/tab_text_color</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <!-- Preferences -->
