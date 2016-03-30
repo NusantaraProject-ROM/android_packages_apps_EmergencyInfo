@@ -116,11 +116,6 @@ public class EditInfoActivity extends EmergencyTabActivity {
     }
 
     @Override
-    public boolean isInViewMode() {
-        return false;
-    }
-
-    @Override
     protected ArrayList<Pair<String, Fragment>> setUpFragments() {
         // Always return the two fragments in edit mode.
         ArrayList<Pair<String, Fragment>> fragments = new ArrayList<>(2);
