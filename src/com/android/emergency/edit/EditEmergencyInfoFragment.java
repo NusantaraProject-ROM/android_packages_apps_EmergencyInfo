@@ -16,9 +16,12 @@
 package com.android.emergency.edit;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
 import com.android.emergency.PreferenceKeys;
@@ -55,6 +58,23 @@ public class EditEmergencyInfoFragment extends PreferenceFragment {
                 }
             });
         }
+    }
+
+    /** Returns true if there is at least one preference set. */
+    public static boolean hasAtLeastOnePreferenceSet(Context context) {
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(context);
+        for (String key : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
+            if (key.equals(PreferenceKeys.KEY_DATE_OF_BIRTH)) {
+                if (sharedPreferences.getLong(key, DatePreference.DEFAULT_UNSET_VALUE)
+                        != DatePreference.DEFAULT_UNSET_VALUE) {
+                    return true;
+                }
+            } else if (!TextUtils.isEmpty(sharedPreferences.getString(key, ""))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static Fragment newInstance() {
