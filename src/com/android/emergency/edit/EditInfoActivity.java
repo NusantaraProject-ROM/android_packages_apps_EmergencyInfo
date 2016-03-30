@@ -27,7 +27,11 @@ import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
 import android.util.Pair;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.android.emergency.EmergencyTabActivity;
 import com.android.emergency.R;
@@ -43,6 +47,7 @@ import java.util.ArrayList;
  */
 public class EditInfoActivity extends EmergencyTabActivity {
     private static final String TAG_WARNING_DIALOG = "warning_dialog";
+    private static final String TAG_CLEAR_ALL_DIALOG = "clear_all_dialog";
     private static final String KEY_LAST_CONSENT_TIME_MS = "last_consent_time_ms";
     private static final long ONE_DAY_MS = 24 * 60 * 60 * 1000;
     private static final String ACTION_EDIT_EMERGENCY_CONTACTS =
@@ -94,13 +99,25 @@ public class EditInfoActivity extends EmergencyTabActivity {
     }
 
     @Override
-    public boolean isInViewMode() {
-        return false;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.edit_info_menu, menu);
+        return true;
     }
 
     @Override
-    public String getActivityTitle() {
-        return getString(R.string.edit_emergency_info_label);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_clear_all:
+                showClearAllDialog();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean isInViewMode() {
+        return false;
     }
 
     @Override
@@ -128,6 +145,33 @@ public class EditInfoActivity extends EmergencyTabActivity {
         DialogFragment newFragment = WarningDialogFragment.newInstance();
         newFragment.setCancelable(false);
         newFragment.show(ft, TAG_WARNING_DIALOG);
+    }
+
+    private void showClearAllDialog() {
+        // DialogFragment.show() will take care of adding the fragment
+        // in a transaction.  We also want to remove any currently showing
+        // dialog, so make our own transaction and take care of that here.
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment previousDialog = getFragmentManager().findFragmentByTag(TAG_CLEAR_ALL_DIALOG);
+        if (previousDialog != null) {
+            ft.remove(previousDialog);
+        }
+        ft.addToBackStack(null);
+
+        DialogFragment newFragment = ClearAllDialogFragment.newInstance();
+        newFragment.show(ft, TAG_CLEAR_ALL_DIALOG);
+    }
+    
+    private void onClearAllPreferences() {
+        PreferenceManager.getDefaultSharedPreferences(this).edit().clear().apply();
+
+        ArrayList<Pair<String, Fragment>> fragments = getFragments();
+        EditEmergencyInfoFragment editEmergencyInfoFragment =
+                (EditEmergencyInfoFragment) fragments.get(0).second;
+        editEmergencyInfoFragment.reloadFromPreference();
+        EditEmergencyContactsFragment editEmergencyContactsFragment =
+                (EditEmergencyContactsFragment) fragments.get(1).second;
+        editEmergencyContactsFragment.reloadFromPreference();
     }
 
     /**
@@ -164,6 +208,32 @@ public class EditInfoActivity extends EmergencyTabActivity {
 
         public static DialogFragment newInstance() {
             return new WarningDialogFragment();
+        }
+    }
+
+    /**
+     * Dialog shown to the user when they tap on the CLEAR ALL menu item. Using a {@link
+     * DialogFragment} takes care of screen rotation issues.
+     */
+    public static class ClearAllDialogFragment extends DialogFragment {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            Dialog dialog = new AlertDialog.Builder(getActivity())
+                    .setMessage(R.string.clear_all_message)
+                    .setPositiveButton(R.string.clear, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ((EditInfoActivity) getActivity()).onClearAllPreferences();
+                        }
+                    })
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .create();
+            return dialog;
+        }
+
+        public static DialogFragment newInstance() {
+            return new ClearAllDialogFragment();
         }
     }
 }

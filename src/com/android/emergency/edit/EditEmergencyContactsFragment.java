@@ -67,7 +67,14 @@ public class EditEmergencyContactsFragment extends PreferenceFragment {
     @Override
     public void onResume() {
         super.onResume();
-        mEmergencyContactsPreferenceCategory.reloadFromPreference();
+        reloadFromPreference();
+    }
+
+    /** Reloads the contacts by reading the value from the shared preferences. */
+    public void reloadFromPreference() {
+        if (mEmergencyContactsPreferenceCategory != null) {
+            mEmergencyContactsPreferenceCategory.reloadFromPreference();
+        }
     }
 
     @Override

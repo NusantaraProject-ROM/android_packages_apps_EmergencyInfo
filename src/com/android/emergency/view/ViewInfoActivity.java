@@ -179,11 +179,6 @@ public class ViewInfoActivity extends EmergencyTabActivity {
     }
 
     @Override
-    public String getActivityTitle() {
-        return getString(R.string.app_label);
-    }
-
-    @Override
     protected ArrayList<Pair<String, Fragment>> setUpFragments() {
         // Return only the fragments that have at least one piece of information set:
         ArrayList<Pair<String, Fragment>> fragments = new ArrayList<>(2);
