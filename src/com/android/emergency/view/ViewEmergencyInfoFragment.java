@@ -27,7 +27,6 @@ import android.text.TextUtils;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.ReloadablePreferenceInterface;
-import com.android.emergency.preferences.DatePreference;
 
 import java.util.ArrayList;
 import java.util.List;
