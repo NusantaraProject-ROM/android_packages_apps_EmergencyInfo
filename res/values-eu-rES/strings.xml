@@ -16,29 +16,22 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- no translation found for app_label (3832318668025860600) -->
-    <skip />
-    <!-- no translation found for edit_emergency_info_label (7023565992774864407) -->
-    <skip />
+    <string name="app_label" msgid="3832318668025860600">"Larrialdietarako informazioa"</string>
+    <string name="edit_emergency_info_label" msgid="7023565992774864407">"Editatu larrialdietarako informazioa"</string>
     <string name="edit_info" msgid="5973929805855224805">"Editatu larrialdietarako informazioa"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"Informazioa"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"Kontaktuak"</string>
     <string name="name" msgid="4286267457738861977">"Izena"</string>
-    <!-- no translation found for unknown_name (2834802479170495056) -->
-    <skip />
+    <string name="unknown_name" msgid="2834802479170495056">"Ezezaguna"</string>
     <string name="address" msgid="6449303483151189969">"Helbidea"</string>
-    <!-- no translation found for unknown_address (4212576729941786121) -->
-    <skip />
+    <string name="unknown_address" msgid="4212576729941786121">"Ezezaguna"</string>
     <string name="date_of_birth" msgid="777979232444227891">"Jaioteguna"</string>
-    <!-- no translation found for unknown_date_of_birth (7416355536916066758) -->
-    <skip />
-    <!-- no translation found for dob (2813161080307245706) -->
-    <skip />
+    <string name="unknown_date_of_birth" msgid="7416355536916066758">"Ezezaguna"</string>
+    <string name="dob" msgid="2813161080307245706">"(<xliff:g id="DATE_OF_BIRTH">%1$s</xliff:g>)"</string>
     <string name="age" msgid="8327537794752630199">"Adina: <xliff:g id="NUMERICAL_AGE">%1$d</xliff:g>"</string>
     <string name="remove_dob_icon_text" msgid="4413507180967999944">"Kendu jaioteguna"</string>
     <string name="blood_type" msgid="6947022772999974608">"Odol-taldea"</string>
-    <!-- no translation found for unknown_blood_type (6337228278125085668) -->
-    <skip />
+    <string name="unknown_blood_type" msgid="6337228278125085668">"Ezezaguna"</string>
     <string name="oplus" msgid="7759756742377867011">"O+"</string>
     <string name="ominus" msgid="5227278501191741055">"O-"</string>
     <string name="aplus" msgid="4982472245421753463">"A+"</string>
@@ -58,24 +51,18 @@
     <!-- no translation found for blood_type_entries:7 (2352690820681480000) -->
     <!-- no translation found for blood_type_entries:8 (8050126448069904266) -->
     <!-- no translation found for blood_type_entries:9 (6638754103385431982) -->
-    <!-- no translation found for blood_type_content_description:2 (4885572478229559423) -->
-    <!-- no translation found for blood_type_content_description:3 (5013120505234933005) -->
     <!-- no translation found for blood_type_content_description:9 (1362921785855892976) -->
     <string name="allergies" msgid="2789200777539258165">"Alergiak"</string>
-    <!-- no translation found for unknown_allergies (4383115953418061237) -->
-    <skip />
+    <string name="unknown_allergies" msgid="4383115953418061237">"Ezezaguna"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"Adibidez, kakahueteak"</string>
     <string name="medications" msgid="644428945685557183">"Sendagaiak"</string>
-    <!-- no translation found for unknown_medications (2764171064510423734) -->
-    <skip />
+    <string name="unknown_medications" msgid="2764171064510423734">"Ezezaguna"</string>
     <string name="medications_hint" msgid="3221620025945593723">"Adibidez, aspirina"</string>
     <string name="medical_conditions" msgid="6147422114803729239">"Gaixotasunak eta oharrak"</string>
-    <!-- no translation found for unknown_medical_conditions (8051364895172053770) -->
-    <skip />
+    <string name="unknown_medical_conditions" msgid="8051364895172053770">"Ezezaguna"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"Adibidez, asma"</string>
     <string name="organ_donor" msgid="5953509460007124827">"Organo-emailea"</string>
-    <!-- no translation found for unknown_organ_donor (2780515342875494225) -->
-    <skip />
+    <string name="unknown_organ_donor" msgid="2780515342875494225">"Ezezaguna"</string>
     <string name="yes" msgid="5829765567799916128">"Bai"</string>
     <string name="no" msgid="1681689233660683509">"Ez"</string>
     <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->
@@ -90,6 +77,9 @@
     <string name="ok" msgid="163967937451981024">"Ados"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"Larrialdietarako informazioa"</string>
-    <string name="user_emergency_info_consent" msgid="8938078996730885830">"Hemen emandako informazioa larrialdiren bati erantzuteko telefono hau hartzen duenarentzat izango da lagungarria. Gailuan bakarrik gordetzen da eta larrialdietarako markagailuan irakur daiteke, telefonoa desblokeatu gabe."</string>
+    <!-- no translation found for user_emergency_info_consent (5636028073450797246) -->
+    <skip />
     <string name="emergency_info_continue" msgid="5453201508537906087">"Jarraitu"</string>
+    <!-- no translation found for no_info_provided (6775035037534954056) -->
+    <skip />
 </resources>

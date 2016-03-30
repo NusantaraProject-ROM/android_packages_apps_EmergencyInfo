@@ -51,8 +51,6 @@
     <!-- no translation found for blood_type_entries:7 (2352690820681480000) -->
     <!-- no translation found for blood_type_entries:8 (8050126448069904266) -->
     <!-- no translation found for blood_type_entries:9 (6638754103385431982) -->
-    <!-- no translation found for blood_type_content_description:2 (4885572478229559423) -->
-    <!-- no translation found for blood_type_content_description:3 (5013120505234933005) -->
     <!-- no translation found for blood_type_content_description:9 (1362921785855892976) -->
     <string name="allergies" msgid="2789200777539258165">"ဓာတ်မတည့်မှုများ"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"အမျိုးအမည်မသိ"</string>
@@ -79,6 +77,9 @@
     <string name="ok" msgid="163967937451981024">"အိုကေ"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"အရေးပေါ်အချက်အလက်"</string>
-    <string name="user_emergency_info_consent" msgid="8938078996730885830">"ဤနေရာတွင် ထည့်သွင်းထားသည့် အချက်အလက်များသည် အရေးပေါ်အခြေအနေတွင် ပထမတုံ့ပြန်သူကို ကူညီပေးနိုင်ပါသည်။ ၎င်းကိုသင့်စက်ပစ္စည်းတွင်သာ သိမ်းဆည်းထားသော်လည်း၊ မည်သူမဆို သင့်ဖုန်းကို လော့ခ်ဖွင့်ခြင်းမရှိဘဲ အရေးပေါ်ခေါ်ဆိုသည့်ခလုတ်မှ ၎င်းကိုဖတ်နိုင်ပါသည်။"</string>
+    <!-- no translation found for user_emergency_info_consent (5636028073450797246) -->
+    <skip />
     <string name="emergency_info_continue" msgid="5453201508537906087">"ရှေ့ဆက်ပါ"</string>
+    <!-- no translation found for no_info_provided (6775035037534954056) -->
+    <skip />
 </resources>
