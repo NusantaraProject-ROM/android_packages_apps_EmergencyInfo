@@ -45,6 +45,8 @@ public class EditInfoActivity extends EmergencyTabActivity {
     private static final String TAG_WARNING_DIALOG = "warning_dialog";
     private static final String KEY_LAST_CONSENT_TIME_MS = "last_consent_time_ms";
     private static final long ONE_DAY_MS = 24 * 60 * 60 * 1000;
+    private static final String ACTION_EDIT_EMERGENCY_CONTACTS =
+            "android.emergency.EDIT_EMERGENCY_CONTACTS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,11 @@ public class EditInfoActivity extends EmergencyTabActivity {
             if (nowMs - lastConsentTimeMs > ONE_DAY_MS || lastConsentTimeMs > nowMs) {
                 showWarningDialog();
             }
+        }
+
+        if (ACTION_EDIT_EMERGENCY_CONTACTS.equals(getIntent().getAction())) {
+            // Select emergency contacts tab
+            selectTab(1);
         }
 
         getWindow().addFlags(FLAG_DISMISS_KEYGUARD);
