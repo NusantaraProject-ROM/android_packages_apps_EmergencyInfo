@@ -46,6 +46,10 @@
                 <action android:name="android.settings.EDIT_EMERGENGY_INFO" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.emergency.EDIT_EMERGENCY_CONTACTS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 
