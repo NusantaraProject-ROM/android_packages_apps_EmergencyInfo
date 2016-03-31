@@ -29,30 +29,37 @@ import android.widget.DatePicker;
 
 import com.android.emergency.R;
 import com.android.emergency.ReloadablePreferenceInterface;
+import com.android.internal.annotations.VisibleForTesting;
 
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
- * A base class for {@link Preference} to select a date upon it being clicked.
+ * A base class for {@link Preference} to select a date of birth upon it being clicked. Internally
+ * the date of birth is stored as the UTC time in milliseconds at the beginning of the day.
  *
- * <p>The user should pass a String as a default value for the date in milliseconds since epoch.
+ * <p>The user should pass a String as a default value for the date in milliseconds in UTC time.
  */
-public class DatePreference extends Preference implements DatePickerDialog.OnDateSetListener,
+public class BirthdayPreference extends Preference implements DatePickerDialog.OnDateSetListener,
         ReloadablePreferenceInterface {
     /** Default value used when no date of birth is set. */
     public static final long DEFAULT_UNSET_VALUE = Long.MIN_VALUE;
+    private static final TimeZone UTC_TIME_ZONE = TimeZone.getTimeZone("UTC");
 
     private final DatePickerDialog mDatePickerDialog;
     private long mDateTimeMillis;
     private boolean mDateSet;
-    private final DateFormat mDateFormat = DateFormat.getDateInstance();
+    private final DateFormat mDateFormat;
 
     /** Creates a new instance initialized with {@code context} and {@code attrs}. */
-    public DatePreference(Context context, AttributeSet attrs) {
+    public BirthdayPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         mDateTimeMillis = DEFAULT_UNSET_VALUE;
+        mDateFormat = DateFormat.getDateInstance();
+        mDateFormat.setTimeZone(UTC_TIME_ZONE);
+        // Calendar.getInstance() uses default locale
         final Calendar calendar = Calendar.getInstance();
         mDatePickerDialog = new DatePickerDialog(
                 context,
@@ -82,7 +89,7 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
                 @Override
                 public void onClick(View view) {
                     if (callChangeListener(DEFAULT_UNSET_VALUE)) {
-                        setDate(DEFAULT_UNSET_VALUE);
+                        setDateOfBirth(DEFAULT_UNSET_VALUE);
                     }
                 }
             });
@@ -94,7 +101,7 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
             mDatePickerDialog.onRestoreInstanceState(state);
         }
         if (!isNotSet()) {
-            Calendar calendar = Calendar.getInstance();
+            Calendar calendar = Calendar.getInstance(UTC_TIME_ZONE);
             calendar.setTimeInMillis(mDateTimeMillis);
             mDatePickerDialog.updateDate(calendar.get(Calendar.YEAR),
                     calendar.get(Calendar.MONTH),
@@ -105,13 +112,13 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
 
     @Override
     protected void onSetInitialValue(boolean restorePersistedValue, Object defaultValue) {
-        setDate(restorePersistedValue ? getPersistedLong(DEFAULT_UNSET_VALUE)
+        setDateOfBirth(restorePersistedValue ? getPersistedLong(DEFAULT_UNSET_VALUE)
                 : (Long) defaultValue);
     }
 
     @Override
     public void reloadFromPreference() {
-        setDate(getPersistedLong(DEFAULT_UNSET_VALUE));
+        setDateOfBirth(getPersistedLong(DEFAULT_UNSET_VALUE));
     }
 
 
@@ -120,18 +127,22 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
         return mDateTimeMillis == DEFAULT_UNSET_VALUE;
     }
 
-    public long getDate() {
+    /**
+     * Returns the date of birth in milliseconds in UTC time.
+     */
+    @VisibleForTesting
+    public long getDateOfBirth() {
         return mDateTimeMillis;
     }
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        Calendar calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance(UTC_TIME_ZONE);
         calendar.clear(); // Clears hour, minutes and seconds
         calendar.set(year, month, day);
         long dateTimeInMillis = calendar.getTimeInMillis();
         if (callChangeListener(dateTimeInMillis)) {
-            setDate(dateTimeInMillis);
+            setDateOfBirth(dateTimeInMillis);
         }
     }
 
@@ -153,7 +164,11 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
         }
     }
 
-    private void setDate(long dateTimeMillis) {
+    /**
+     * Sets the date of birth in millis in UTC time.
+     */
+    @VisibleForTesting
+    public void setDateOfBirth(long dateTimeMillis) {
         // Always persist/notify the first time.
         final boolean changed = mDateTimeMillis != dateTimeMillis;
         if (changed || !mDateSet) {
@@ -192,6 +207,11 @@ public class DatePreference extends Preference implements DatePickerDialog.OnDat
         if (myState.isDialogShowing) {
             showDatePickerDialog(myState.dialogBundle);
         }
+    }
+
+    @VisibleForTesting
+    public DatePickerDialog getDatePickerDialog() {
+        return mDatePickerDialog;
     }
 
     private static class SavedState extends BaseSavedState {

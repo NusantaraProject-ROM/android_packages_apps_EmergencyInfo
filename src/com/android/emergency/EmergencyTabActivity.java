@@ -27,7 +27,6 @@ import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Pair;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toolbar;
 
 import java.util.ArrayList;
@@ -109,7 +108,7 @@ public abstract class EmergencyTabActivity extends Activity {
         }
     }
 
-    protected TabLayout getTabLayout() {
+    public TabLayout getTabLayout() {
         return mTabLayout;
     }
 
