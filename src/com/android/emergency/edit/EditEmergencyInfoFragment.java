@@ -27,7 +27,7 @@ import android.text.TextUtils;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.ReloadablePreferenceInterface;
-import com.android.emergency.preferences.DatePreference;
+import com.android.emergency.preferences.BirthdayPreference;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -50,7 +50,7 @@ public class EditEmergencyInfoFragment extends PreferenceFragment {
                     if (!preference.getKey().equals(PreferenceKeys.KEY_DATE_OF_BIRTH)) {
                         notSet = TextUtils.isEmpty((String) value);
                     } else {
-                        notSet = DatePreference.DEFAULT_UNSET_VALUE == ((Long) value);
+                        notSet = BirthdayPreference.DEFAULT_UNSET_VALUE == ((Long) value);
                     }
                     MetricsLogger.action(preference.getContext(),
                             MetricsEvent.ACTION_EDIT_EMERGENCY_INFO_FIELD,
@@ -67,8 +67,8 @@ public class EditEmergencyInfoFragment extends PreferenceFragment {
                 PreferenceManager.getDefaultSharedPreferences(context);
         for (String key : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
             if (key.equals(PreferenceKeys.KEY_DATE_OF_BIRTH)) {
-                if (sharedPreferences.getLong(key, DatePreference.DEFAULT_UNSET_VALUE)
-                        != DatePreference.DEFAULT_UNSET_VALUE) {
+                if (sharedPreferences.getLong(key, BirthdayPreference.DEFAULT_UNSET_VALUE)
+                        != BirthdayPreference.DEFAULT_UNSET_VALUE) {
                     return true;
                 }
             } else if (!TextUtils.isEmpty(sharedPreferences.getString(key, ""))) {

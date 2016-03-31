@@ -39,7 +39,7 @@ import com.android.emergency.EmergencyTabActivity;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.edit.EditInfoActivity;
-import com.android.emergency.preferences.DatePreference;
+import com.android.emergency.preferences.BirthdayPreference;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -47,6 +47,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Activity for viewing emergency information.
@@ -58,7 +59,8 @@ public class ViewInfoActivity extends EmergencyTabActivity {
     private LinearLayout mPersonalCard;
     private ViewFlipper mViewFlipper;
 
-    private final DateFormat mDateFormat = DateFormat.getDateInstance();
+    private static final TimeZone UTC_TIME_ZONE = TimeZone.getTimeZone("UTC");
+    private DateFormat mDateFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +72,9 @@ public class ViewInfoActivity extends EmergencyTabActivity {
         mPersonalCardLargeItem = (TextView) findViewById(R.id.personal_card_large);
         mPersonalCardSmallItem = (TextView) findViewById(R.id.personal_card_small);
         mViewFlipper = (ViewFlipper) findViewById(R.id.view_flipper);
+
+        mDateFormat = DateFormat.getDateInstance();
+        mDateFormat.setTimeZone(UTC_TIME_ZONE);
 
         MetricsLogger.visible(this, MetricsEvent.ACTION_VIEW_EMERGENCY_INFO);
     }
@@ -87,9 +92,9 @@ public class ViewInfoActivity extends EmergencyTabActivity {
     private void loadProfileCard() {
         String name = mSharedPreferences.getString(PreferenceKeys.KEY_NAME, "");
         long dateOfBirthTimeMillis = mSharedPreferences.getLong(PreferenceKeys.KEY_DATE_OF_BIRTH,
-                DatePreference.DEFAULT_UNSET_VALUE);
+                BirthdayPreference.DEFAULT_UNSET_VALUE);
         boolean nameEmpty = TextUtils.isEmpty(name);
-        boolean dateOfBirthNotSet = dateOfBirthTimeMillis == DatePreference.DEFAULT_UNSET_VALUE;
+        boolean dateOfBirthNotSet = dateOfBirthTimeMillis == BirthdayPreference.DEFAULT_UNSET_VALUE;
         if (nameEmpty && dateOfBirthNotSet) {
             mPersonalCard.setVisibility(View.GONE);
         } else {
@@ -138,10 +143,9 @@ public class ViewInfoActivity extends EmergencyTabActivity {
         }
     }
 
-    private int computeAge(long dateOfBirthTimeMillis) {
-        // Today is in the default time zone of the phone
-        Calendar today = Calendar.getInstance();
-        Calendar dateOfBirthCalendar = Calendar.getInstance();
+    static int computeAge(long dateOfBirthTimeMillis) {
+        Calendar today = Calendar.getInstance(UTC_TIME_ZONE);
+        Calendar dateOfBirthCalendar = Calendar.getInstance(UTC_TIME_ZONE);
         dateOfBirthCalendar.setTimeInMillis(dateOfBirthTimeMillis);
         int age = today.get(Calendar.YEAR) - dateOfBirthCalendar.get(Calendar.YEAR);
         if (today.get(Calendar.MONTH) < dateOfBirthCalendar.get(Calendar.MONTH) ||
