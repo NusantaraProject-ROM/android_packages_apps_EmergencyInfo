@@ -29,6 +29,7 @@
         <activity
             android:name=".view.ViewInfoActivity"
             android:theme="@style/AppThemeEmergency"
+            android:taskAffinity="com.android.settings"
             android:showOnLockScreen="true"
             android:icon="@mipmap/ic_launcher_settings"
             android:enabled="false"
@@ -43,6 +44,7 @@
             android:name=".edit.EditInfoActivity"
             android:icon="@mipmap/ic_launcher_settings"
             android:theme="@style/AppTheme"
+            android:taskAffinity="com.android.settings"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.settings.EDIT_EMERGENGY_INFO" />
