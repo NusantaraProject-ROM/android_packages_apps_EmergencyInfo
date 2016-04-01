@@ -16,13 +16,11 @@
 package com.android.emergency.edit;
 
 import android.app.Fragment;
+import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Pair;
 
 import com.android.emergency.PreferenceKeys;
-import com.android.emergency.edit.EditEmergencyContactsFragment;
-import com.android.emergency.edit.EditEmergencyInfoFragment;
-import com.android.emergency.edit.EditInfoActivity;
 import com.android.emergency.preferences.EmergencyContactsPreference;
 
 import java.util.ArrayList;
@@ -41,6 +39,8 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
 
     @Override
     protected void setUp() throws Exception {
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().apply();
+
         mFragments = getActivity().getFragments();
         mEditEmergencyInfoFragment = (EditEmergencyInfoFragment) mFragments.get(0).second;
         mEditEmergencyContactsFragment = (EditEmergencyContactsFragment) mFragments.get(1).second;

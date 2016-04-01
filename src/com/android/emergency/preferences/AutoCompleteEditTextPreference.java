@@ -37,6 +37,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 
 import com.android.emergency.R;
+import com.android.internal.annotations.VisibleForTesting;
 
 /**
  * Almost a copy of EditTextPreference that shows a {@link AutoCompleteTextView} instead of the
@@ -122,6 +123,12 @@ public class AutoCompleteEditTextPreference extends DialogPreference {
         super.showDialog(state);
         Window window = getDialog().getWindow();
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+    }
+
+    @VisibleForTesting
+    @Override
+    public void onClick() {
+        super.onClick();
     }
 
     /**
