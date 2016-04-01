@@ -23,7 +23,8 @@
         android:summary="@string/unknown_address"
         android:title="@string/address" />
 
-    <com.android.emergency.preferences.BloodTypeListPreference
+    <com.android.emergency.preferences.EmergencyListPreference
+        xmlns:app="http://schemas.android.com/apk/res/com.android.emergency"
         android:enabled="false"
         android:focusable="true"
         android:icon="@drawable/ic_bloodtype_black_24dp"
@@ -33,7 +34,8 @@
         android:selectable="false"
         android:shouldDisableView="false"
         android:summary="@string/unknown_organ_donor"
-        android:title="@string/blood_type" />
+        android:title="@string/blood_type"
+        app:entryContentDescriptions="@array/blood_type_content_description" />/>
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:enabled="false"

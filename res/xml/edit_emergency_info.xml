@@ -36,16 +36,18 @@
         android:summary="@string/unknown_address"
         android:title="@string/address" />
 
-    <com.android.emergency.preferences.BloodTypeListPreference
+    <com.android.emergency.preferences.EmergencyListPreference
+        xmlns:app="http://schemas.android.com/apk/res/com.android.emergency"
+        android:defaultValue=""
         android:entries="@array/blood_type_entries"
         android:entryValues="@array/blood_type_values"
         android:icon="@drawable/ic_bloodtype_black_24dp"
         android:key="blood_type"
-        android:defaultValue=""
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
         android:summary="@string/unknown_blood_type"
-        android:title="@string/blood_type" />
+        android:title="@string/blood_type"
+        app:entryContentDescriptions="@array/blood_type_content_description" />
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:capitalize="sentences"
