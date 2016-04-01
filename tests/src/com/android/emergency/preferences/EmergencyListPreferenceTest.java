@@ -119,7 +119,7 @@ public class EmergencyListPreferenceTest
                 .edit()
                 .putString(mOrganDonorPreference.getKey(),
                         (String) mOrganDonorPreference.getEntryValues()[0])
-                .apply();
+                .commit();
         runTestOnUiThread(new Runnable() {
             @Override
             public void run() {
