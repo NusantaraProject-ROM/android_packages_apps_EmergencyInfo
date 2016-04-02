@@ -26,6 +26,7 @@ import android.util.AttributeSet;
 
 import com.android.emergency.EmergencyContactManager;
 import com.android.emergency.ReloadablePreferenceInterface;
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -105,7 +106,12 @@ public class EmergencyContactsPreference extends PreferenceCategory
         }
     }
 
-    private void setEmergencyContacts(List<Uri> emergencyContacts) {
+    @VisibleForTesting
+    public List<Uri> getEmergencyContacts() {
+        return mEmergencyContacts;
+    }
+
+    public void setEmergencyContacts(List<Uri> emergencyContacts) {
         final boolean changed = !mEmergencyContacts.equals(emergencyContacts);
         if (changed || !mEmergencyContactsSet) {
             mEmergencyContacts = emergencyContacts;

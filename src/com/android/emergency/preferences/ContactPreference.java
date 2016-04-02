@@ -31,7 +31,7 @@ import android.view.View;
 
 import com.android.emergency.EmergencyContactManager;
 import com.android.emergency.R;
-import com.android.emergency.ReloadablePreferenceInterface;
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settingslib.drawable.CircleFramedDrawable;
@@ -155,6 +155,16 @@ public class ContactPreference extends Preference {
 
     public Uri getContactUri() {
         return mContact.getContactUri();
+    }
+
+    @VisibleForTesting
+    EmergencyContactManager.Contact getContact() {
+        return mContact;
+    }
+
+    @VisibleForTesting
+    AlertDialog getRemoveContactDialog() {
+        return mRemoveContactDialog;
     }
 
     /**
