@@ -16,8 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="3832318668025860600">"அவசரத் தகவல்"</string>
-    <string name="edit_emergency_info_label" msgid="7023565992774864407">"அவசரத் தகவலை மாற்று"</string>
+    <string name="app_label" msgid="1090682794607161063">"அவசரத் தகவல்"</string>
     <string name="edit_info" msgid="5973929805855224805">"அவசரத் தகவலைத் திருத்தும் ஐகான்"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"தகவல்"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"தொடர்புகள்"</string>
@@ -77,9 +76,10 @@
     <string name="ok" msgid="163967937451981024">"சரி"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"அவசரத் தகவல்"</string>
-    <!-- no translation found for user_emergency_info_consent (5636028073450797246) -->
-    <skip />
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"இங்கே உள்ளிடும் தகவலானது அவசரச் சூழல்களில் முதலில் உங்களுக்கு உதவ முன்வருபவர்களுக்கு உதவும். இது உங்கள் சாதனத்தில் மட்டும் சேமிக்கப்பட்டிருக்கும், மேலும் உங்கள் மொபைலைத் திறக்காமல் அவசர அழைப்பு டயலரில் எவரும் படிக்கலாம்."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"தொடரவும்"</string>
-    <!-- no translation found for no_info_provided (6775035037534954056) -->
-    <skip />
+    <string name="no_info_provided" msgid="6775035037534954056">"அவசரத் தகவல் வழங்கப்படவில்லை"</string>
+    <string name="clear_all" msgid="8899013032870561633">"அனைத்தையும் அழி"</string>
+    <string name="clear" msgid="3648880442502887163">"அழி"</string>
+    <string name="clear_all_message" msgid="1548432000373861295">"எல்லா தகவலையும் தொடர்புகளையும் அழிக்கவா?"</string>
 </resources>

@@ -16,8 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="3832318668025860600">"Emergency Information"</string>
-    <string name="edit_emergency_info_label" msgid="7023565992774864407">"Endre info for nødstilfeller"</string>
+    <string name="app_label" msgid="1090682794607161063">"Informasjon for nødstilfeller"</string>
     <string name="edit_info" msgid="5973929805855224805">"Endre informasjonen for nødstilfeller"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"Informasjon"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"Kontakter"</string>
@@ -77,9 +76,10 @@
     <string name="ok" msgid="163967937451981024">"OK"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"Informasjon for nødstilfeller"</string>
-    <!-- no translation found for user_emergency_info_consent (5636028073450797246) -->
-    <skip />
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Informasjonen du skriver inn her, kan hjelpe dem som ankommer ulykkesstedet først ved eventuelle ulykker. Informasjonen er bare lagret på enheten din, og hvem som helst kan lese den via alternativet for nødanrop uten å låse opp telefonen din."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"Fortsett"</string>
-    <!-- no translation found for no_info_provided (6775035037534954056) -->
-    <skip />
+    <string name="no_info_provided" msgid="6775035037534954056">"Informasjon for nødstilfeller er ikke oppgitt"</string>
+    <string name="clear_all" msgid="8899013032870561633">"Fjern alt"</string>
+    <string name="clear" msgid="3648880442502887163">"Fjern"</string>
+    <string name="clear_all_message" msgid="1548432000373861295">"Vil du fjerne all informasjonen og alle kontaktene?"</string>
 </resources>

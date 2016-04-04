@@ -16,8 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="3832318668025860600">"Звесткі для экстранных сітуац."</string>
-    <string name="edit_emergency_info_label" msgid="7023565992774864407">"Рэд. звестак для экстран. сіт."</string>
+    <string name="app_label" msgid="1090682794607161063">"Звесткі для экстранных сітуац."</string>
     <string name="edit_info" msgid="5973929805855224805">"Рэдагаванне звестак для экстранных сітуацый"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"Звесткі"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"Кантакты"</string>
@@ -32,14 +31,14 @@
     <string name="remove_dob_icon_text" msgid="4413507180967999944">"Выдаліць дату нараджэння"</string>
     <string name="blood_type" msgid="6947022772999974608">"Група крыві"</string>
     <string name="unknown_blood_type" msgid="6337228278125085668">"Невядома"</string>
-    <string name="oplus" msgid="7759756742377867011">"O+"</string>
-    <string name="ominus" msgid="5227278501191741055">"O-"</string>
-    <string name="aplus" msgid="4982472245421753463">"A+"</string>
-    <string name="aminus" msgid="1469727296074783670">"A-"</string>
-    <string name="bplus" msgid="5395850743718234762">"B+"</string>
-    <string name="bminus" msgid="3813367242072886088">"B-"</string>
-    <string name="abplus" msgid="8061792867513932701">"AB+"</string>
-    <string name="abminus" msgid="2510867828094325481">"AB-"</string>
+    <string name="oplus" msgid="7759756742377867011">"I+"</string>
+    <string name="ominus" msgid="5227278501191741055">"I–"</string>
+    <string name="aplus" msgid="4982472245421753463">"II+"</string>
+    <string name="aminus" msgid="1469727296074783670">"II–"</string>
+    <string name="bplus" msgid="5395850743718234762">"III+"</string>
+    <string name="bminus" msgid="3813367242072886088">"III–"</string>
+    <string name="abplus" msgid="8061792867513932701">"IV+"</string>
+    <string name="abminus" msgid="2510867828094325481">"IV–"</string>
     <string name="hh" msgid="3071675674015857183">"H/H"</string>
     <!-- no translation found for blood_type_entries:0 (5051829403671092348) -->
     <!-- no translation found for blood_type_entries:1 (5289547171251363498) -->
@@ -77,9 +76,10 @@
     <string name="ok" msgid="163967937451981024">"ОК"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"Звесткі для экстранных сітуац."</string>
-    <!-- no translation found for user_emergency_info_consent (5636028073450797246) -->
-    <skip />
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Інфармацыя, якую вы ўвядзеце тут, можа быць карыснай для асоб, якія будуць аказваць першую дапамогу ў выпадку надзвычайнай сітуацыі. Яна захоўваецца толькі на вашай прыладзе, і любы чалавек можа прачытаць яе ў набіральніку нумара для экстранных сітуацый, не разблакіруючы тэлефон."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"Працягнуць"</string>
-    <!-- no translation found for no_info_provided (6775035037534954056) -->
-    <skip />
+    <string name="no_info_provided" msgid="6775035037534954056">"Няма звестак для экстранных сітуацый"</string>
+    <string name="clear_all" msgid="8899013032870561633">"Ачысціць усё"</string>
+    <string name="clear" msgid="3648880442502887163">"Ачысціць"</string>
+    <string name="clear_all_message" msgid="1548432000373861295">"Ачысціць усю інфармацыю і кантакты?"</string>
 </resources>

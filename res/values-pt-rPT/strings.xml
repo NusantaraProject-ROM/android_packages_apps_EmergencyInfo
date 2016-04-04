@@ -16,8 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="3832318668025860600">"Informações de emergência"</string>
-    <string name="edit_emergency_info_label" msgid="7023565992774864407">"Editar Informações de emergência"</string>
+    <string name="app_label" msgid="1090682794607161063">"Informações de emergência"</string>
     <string name="edit_info" msgid="5973929805855224805">"Editar informações de emergência"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"Informações"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"Contactos"</string>
@@ -77,9 +76,10 @@
     <string name="ok" msgid="163967937451981024">"Ok"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"Informações de emergência"</string>
-    <!-- no translation found for user_emergency_info_consent (5636028073450797246) -->
-    <skip />
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"As informações aqui introduzidas podem ajudar os socorristas numa emergência. São armazenadas apenas no seu dispositivo e qualquer pessoa as pode ler a partir do teclado de emergência sem desbloquear o telemóvel."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"Continuar"</string>
-    <!-- no translation found for no_info_provided (6775035037534954056) -->
-    <skip />
+    <string name="no_info_provided" msgid="6775035037534954056">"Informações de emergência não fornecidas"</string>
+    <string name="clear_all" msgid="8899013032870561633">"Limpar tudo"</string>
+    <string name="clear" msgid="3648880442502887163">"Limpar"</string>
+    <string name="clear_all_message" msgid="1548432000373861295">"Pretende limpar todas as informações e contactos?"</string>
 </resources>

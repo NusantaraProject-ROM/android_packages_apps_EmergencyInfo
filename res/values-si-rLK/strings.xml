@@ -16,8 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="3832318668025860600">"හදිසි අවස්ථා තොරතුරු"</string>
-    <string name="edit_emergency_info_label" msgid="7023565992774864407">"හදිසි අවස්ථා තොරතුරු සංස්කරණය කිරීම"</string>
+    <string name="app_label" msgid="1090682794607161063">"හදිසි අවස්ථා තොරතුරු"</string>
     <string name="edit_info" msgid="5973929805855224805">"හදිසි අවස්ථා තොරතුරු සංස්කරණය කිරීම"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"තොරතුරු"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"සම්බන්ධතා"</string>
@@ -77,9 +76,10 @@
     <string name="ok" msgid="163967937451981024">"හරි"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"හදිසි අවස්ථා තොරතුරු"</string>
-    <!-- no translation found for user_emergency_info_consent (5636028073450797246) -->
-    <skip />
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"ඔබ මෙහි ඇතුළු කළ තොරතුරු හදිසි අවස්ථාවකදී පළමු ප්‍රතිචාර දක්වන්නන්ට උදවු විය හැකිය. එය ඔබේ උපාංගය මත පමණක් ගබඩා වනු ඇත, නමුත් ඕනෑම කෙනෙකුට ඔබේ දුරකථනය අගුලු හැරීමෙන් තොරව හදිසි අවස්ථා ඩයල්කරු වෙතින් එය කියවිය හැකිය."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"දිගටම කර ගෙන යන්න"</string>
-    <!-- no translation found for no_info_provided (6775035037534954056) -->
-    <skip />
+    <string name="no_info_provided" msgid="6775035037534954056">"හදිසි අවස්ථා තොරතුරු සපයා නැත"</string>
+    <string name="clear_all" msgid="8899013032870561633">"සියල්ල හිස් කරන්න"</string>
+    <string name="clear" msgid="3648880442502887163">"හිස් කරන්න"</string>
+    <string name="clear_all_message" msgid="1548432000373861295">"සියලු තොරතුරු හා සම්බන්ධතා හිස් කරන්නද?"</string>
 </resources>

@@ -16,8 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="3832318668025860600">"निकडीची माहिती"</string>
-    <string name="edit_emergency_info_label" msgid="7023565992774864407">"आणीबाणी माहिती संपादित करा"</string>
+    <string name="app_label" msgid="1090682794607161063">"आणीबाणी माहिती"</string>
     <string name="edit_info" msgid="5973929805855224805">"आणीबाणी माहिती संपादित करा"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"माहिती"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"संपर्क"</string>
@@ -77,9 +76,10 @@
     <string name="ok" msgid="163967937451981024">"ठीक आहे"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"आणीबाणी माहिती"</string>
-    <!-- no translation found for user_emergency_info_consent (5636028073450797246) -->
-    <skip />
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"आपण येथे प्रविष्ट करता ती माहिती आणीबाणीमध्ये प्रतिसादकर्त्यांना प्रथम मदत करू शकते. ती फक्त आपल्या डिव्हाइसवर संचयित केली जाते आणि आपला फोन अनलॉक न करता ती आणीबाणी डायलर मधून कोणीही वाचू शकतो."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"सुरू ठेवा"</string>
-    <!-- no translation found for no_info_provided (6775035037534954056) -->
-    <skip />
+    <string name="no_info_provided" msgid="6775035037534954056">"कोणतीही आणीबाणी माहिती प्रदान केली नाही"</string>
+    <string name="clear_all" msgid="8899013032870561633">"सर्व साफ करा"</string>
+    <string name="clear" msgid="3648880442502887163">"साफ करा"</string>
+    <string name="clear_all_message" msgid="1548432000373861295">"सर्व माहिती आणि संपर्क साफ करायचे?"</string>
 </resources>

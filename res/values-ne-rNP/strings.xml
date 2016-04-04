@@ -16,8 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="3832318668025860600">"आपतकालीन जानकारी"</string>
-    <string name="edit_emergency_info_label" msgid="7023565992774864407">"आपतकालीन जानकारी सम्पादन"</string>
+    <string name="app_label" msgid="1090682794607161063">"आपतकालीन सूचना"</string>
     <string name="edit_info" msgid="5973929805855224805">"आपतकालीन जानकारीलाई सम्पादन गर्नुहोस्"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"जानकारी"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"सम्पर्कहरू"</string>
@@ -60,7 +59,7 @@
     <string name="medications_hint" msgid="3221620025945593723">"उदाहरणका लागि एस्पिरिन"</string>
     <string name="medical_conditions" msgid="6147422114803729239">"चिकित्सा अवस्था र टिप्पणीहरू"</string>
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"अज्ञात"</string>
-    <string name="medical_conditions_hint" msgid="6959152183029062882">"उदाहरणका लागि अस्थमा"</string>
+    <string name="medical_conditions_hint" msgid="6959152183029062882">"उदाहरणका लागि दम"</string>
     <string name="organ_donor" msgid="5953509460007124827">"अंग दाता"</string>
     <string name="unknown_organ_donor" msgid="2780515342875494225">"अज्ञात"</string>
     <string name="yes" msgid="5829765567799916128">"हुन्छ"</string>
@@ -77,9 +76,10 @@
     <string name="ok" msgid="163967937451981024">"ठीक छ"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"आपतकालीन जानकारी"</string>
-    <!-- no translation found for user_emergency_info_consent (5636028073450797246) -->
-    <skip />
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"तपाईँले यहाँ प्रविष्ट गरेको जानकारीले आपतकालीन अवस्थामा सहयोग पुर्याउने पहिला व्यक्तिहरूलाई मद्दत गर्न सक्छ। यसलाई तपाईँको यन्त्रमा मात्र भण्डारण गरिन्छ र कसैले पनि तपाईँको फोनलाई अनलक नगरिकन आपतकालीन अवस्थाको डायलरबाट यसलाई पढ्न सक्छ।"</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"जारी राख्नुहोस्"</string>
-    <!-- no translation found for no_info_provided (6775035037534954056) -->
-    <skip />
+    <string name="no_info_provided" msgid="6775035037534954056">"कुनै पनि आपतकालीन जानकारी प्रदान गरिएको छैन"</string>
+    <string name="clear_all" msgid="8899013032870561633">"सबै हटाउनुहोस्"</string>
+    <string name="clear" msgid="3648880442502887163">"खाली गर्नुहोस्"</string>
+    <string name="clear_all_message" msgid="1548432000373861295">"सबै जानकारी र सम्पर्कहरूलाई खाली गर्ने हो?"</string>
 </resources>
