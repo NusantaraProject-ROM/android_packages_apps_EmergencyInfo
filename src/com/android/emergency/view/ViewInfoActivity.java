@@ -143,10 +143,14 @@ public class ViewInfoActivity extends EmergencyTabActivity {
         }
     }
 
-    static int computeAge(long dateOfBirthTimeMillis) {
+    private static int computeAge(long dateOfBirthTimeMillis) {
         Calendar today = Calendar.getInstance(UTC_TIME_ZONE);
         Calendar dateOfBirthCalendar = Calendar.getInstance(UTC_TIME_ZONE);
         dateOfBirthCalendar.setTimeInMillis(dateOfBirthTimeMillis);
+        return computeAge(today, dateOfBirthCalendar);
+    }
+
+    static int computeAge(Calendar today, Calendar dateOfBirthCalendar) {
         int age = today.get(Calendar.YEAR) - dateOfBirthCalendar.get(Calendar.YEAR);
         if (today.get(Calendar.MONTH) < dateOfBirthCalendar.get(Calendar.MONTH) ||
                 (today.get(Calendar.MONTH) == dateOfBirthCalendar.get(Calendar.MONTH) &&
