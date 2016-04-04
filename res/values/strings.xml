@@ -102,27 +102,36 @@
     </string-array>
     <!-- Content descriptions for the blood types, used for talkback. -->
     <string-array name="blood_type_content_description">
-        <!-- Content descriptions for blood type O+, used for talkback. [CHAR_LIMIT=NONE] -->
-        <item>O positive</item>
-        <!-- Content descriptions for blood type O-, used for talkback. [CHAR_LIMIT=NONE] -->
-        <item>O negative</item>
-        <!-- Content descriptions for blood type A+, used for talkback. [CHAR_LIMIT=NONE] -->
-        <item>A, positive</item>
-        <!-- Content descriptions for blood type A-, used for talkback. [CHAR_LIMIT=NONE] -->
-        <item>A, negative</item>
-        <!-- Content descriptions for blood type B+, used for talkback. [CHAR_LIMIT=NONE] -->
-        <item>B positive</item>
-        <!-- Content descriptions for blood type B-, used for talkback. [CHAR_LIMIT=NONE] -->
-        <item>B negative</item>
-        <!-- Content descriptions for blood type AB+, used for talkback. [CHAR_LIMIT=NONE] -->
-        <item>A B positive</item>
-        <!-- Content descriptions for blood type AB-, used for talkback. [CHAR_LIMIT=NONE] -->
-        <item>A B negative</item>
-        <!-- Content descriptions for blood type H/H, used for talkback. [CHAR_LIMIT=NONE] -->
-        <item>H H</item>
-        <!-- Content descriptions for unknown blood type, used for talkback. [CHAR_LIMIT=NONE] -->
+        <item>@string/o_positive</item>
+        <item>@string/o_negative</item>
+        <item>@string/a_positive</item>
+        <item>@string/a_negative</item>
+        <item>@string/b_positive</item>
+        <item>@string/b_negative</item>
+        <item>@string/ab_positive</item>
+        <item>@string/ab_negative</item>
+        <item>@string/h_h</item>
         <item>@string/unknown_blood_type</item>
     </string-array>
+    <!-- Content descriptions for blood type O+, used for talkback. [CHAR_LIMIT=NONE] -->
+    <string name="o_positive">O positive</string>
+    <!-- Content descriptions for blood type O-, used for talkback. [CHAR_LIMIT=NONE] -->
+    <string name="o_negative">O negative</string>
+    <!-- Content descriptions for blood type A+, used for talkback. [CHAR_LIMIT=NONE] -->
+    <string name="a_positive">A, positive</string>
+    <!-- Content descriptions for blood type A-, used for talkback. [CHAR_LIMIT=NONE] -->
+    <string name="a_negative">A, negative</string>
+    <!-- Content descriptions for blood type B+, used for talkback. [CHAR_LIMIT=NONE] -->
+    <string name="b_positive">B positive</string>
+    <!-- Content descriptions for blood type B-, used for talkback. [CHAR_LIMIT=NONE] -->
+    <string name="b_negative">B negative</string>
+    <!-- Content descriptions for blood type AB+, used for talkback. [CHAR_LIMIT=NONE] -->
+    <string name="ab_positive">A B positive</string>
+    <!-- Content descriptions for blood type AB-, used for talkback. [CHAR_LIMIT=NONE] -->
+    <string name="ab_negative">A B negative</string>
+    <!-- Content descriptions for blood type H/H, used for talkback. [CHAR_LIMIT=NONE] -->
+    <string name="h_h">H H</string>
+
     <!-- The title of the allergies preference. [CHAR_LIMIT=40] -->
     <string name="allergies">Allergies</string>
     <!-- The default preference subtitle text to show when the allergies are unknown. [CHAR_LIMIT=40] -->
@@ -136,7 +145,7 @@
     <!-- Hint to show in the edit text of the medications. [CHAR_LIMIT=30] -->
     <string name="medications_hint">For example, aspirin</string>
     <!-- The title of the medical conditions preference. [CHAR_LIMIT=40] -->
-    <string name="medical_conditions">Medical conditions and notes</string>
+    <string name="medical_conditions">Medical notes</string>
     <!-- The default preference subtitle text to show when the medical conditions are unknown. [CHAR_LIMIT=40] -->
     <string name="unknown_medical_conditions">Unknown</string>
     <!-- Hint to show in the edit text of the medical conditions. [CHAR_LIMIT=30] -->
@@ -165,7 +174,7 @@
     <!-- The title of the emergency contacts preference. [CHAR_LIMIT=40] -->
     <string name="emergency_contacts_title">Emergency contacts</string>
     <!-- The title of the add emergency contacts preference. [CHAR_LIMIT=40] -->
-    <string name="add_emergency_contact">Add emergency contact</string>
+    <string name="add_emergency_contact">Add contact</string>
     <!-- The message of the dialog shown when removing a contact. [CHAR_LIMIT=140] -->
     <string name="remove_contact">
         Remove <xliff:g id="contact_name" example="John Doe">%1$s</xliff:g> from emergency contacts?
