@@ -35,7 +35,7 @@
         android:shouldDisableView="false"
         android:summary="@string/unknown_organ_donor"
         android:title="@string/blood_type"
-        app:entryContentDescriptions="@array/blood_type_content_description" />/>
+        app:entryContentDescriptions="@array/blood_type_content_description" />
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:enabled="false"
