@@ -14,7 +14,8 @@
      limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.emergency">
+    package="com.android.emergency"
+    android:sharedUserId="com.android.emergency.uid">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
