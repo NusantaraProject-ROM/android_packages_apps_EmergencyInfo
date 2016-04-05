@@ -28,6 +28,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.android.emergency.ContactTestUtils;
+import com.android.emergency.EmergencyContactManager;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.edit.EditInfoActivity;
@@ -62,7 +64,7 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
                 .indexOfChild(getActivity().findViewById(R.id.no_info_text_view));
         mTabsIndex = mViewFlipper.indexOfChild(getActivity().findViewById(R.id.tabs));
 
-        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().apply();
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
     }
 
     public void testInitialState() throws Throwable {
@@ -81,7 +83,7 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
 
         final String name = "John";
         PreferenceManager.getDefaultSharedPreferences(getActivity())
-                .edit().putString(PreferenceKeys.KEY_NAME, name).apply();
+                .edit().putString(PreferenceKeys.KEY_NAME, name).commit();
 
         onResume();
 
@@ -101,7 +103,7 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
 
         final long dateOfBirth = 537148800000L;
         PreferenceManager.getDefaultSharedPreferences(getActivity())
-                .edit().putLong(PreferenceKeys.KEY_DATE_OF_BIRTH, dateOfBirth).apply();
+                .edit().putLong(PreferenceKeys.KEY_DATE_OF_BIRTH, dateOfBirth).commit();
 
         onResume();
 
@@ -113,12 +115,12 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
         assertEquals(View.VISIBLE, mPersonalCardSmallItem.getVisibility());
     }
 
-    public void testSetEmergencyInfo() throws Throwable {
+    public void testEmergencyInfoSet() throws Throwable {
         onPause();
 
         final String allergies = "Peanuts";
         PreferenceManager.getDefaultSharedPreferences(getActivity())
-                .edit().putString(PreferenceKeys.KEY_ALLERGIES, allergies).apply();
+                .edit().putString(PreferenceKeys.KEY_ALLERGIES, allergies).commit();
 
         onResume();
 
@@ -131,8 +133,58 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
         assertNotNull(viewEmergencyInfoFragment);
     }
 
-    //TODO: test set one emergency contact (tab layout still not shown) and set both emergency info
-    // and emergency contacts (tab layout shown)
+    public void testEmergencyContactSet() throws Throwable {
+        onPause();
+
+        final String emergencyContact =
+                ContactTestUtils.createContact(getActivity().getContentResolver(),
+                        "John", "123").toString();
+        PreferenceManager.getDefaultSharedPreferences(getActivity())
+                .edit().putString(PreferenceKeys.KEY_EMERGENCY_CONTACTS, emergencyContact).commit();
+
+        onResume();
+
+        mFragments = getActivity().getFragments();
+        assertEquals(mTabsIndex, mViewFlipper.getDisplayedChild());
+        assertEquals(1, mFragments.size());
+        assertEquals(View.GONE, getActivity().getTabLayout().getVisibility());
+        ViewEmergencyContactsFragment viewEmergencyContactsFragment =
+                (ViewEmergencyContactsFragment) mFragments.get(0).second;
+        assertNotNull(viewEmergencyContactsFragment);
+
+        assertTrue(ContactTestUtils.deleteContact(getActivity().getContentResolver(),
+                "John", "123"));
+    }
+
+    public void testInfoAndEmergencyContactsSet() throws Throwable {
+        onPause();
+
+        final String emergencyContact =
+                ContactTestUtils.createContact(getActivity().getContentResolver(),
+                        "John", "123").toString();
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit()
+                .putString(PreferenceKeys.KEY_EMERGENCY_CONTACTS, emergencyContact).commit();
+
+                final String allergies = "Peanuts";
+        PreferenceManager.getDefaultSharedPreferences(getActivity())
+                .edit().putString(PreferenceKeys.KEY_ALLERGIES, allergies).commit();
+
+        onResume();
+
+        mFragments = getActivity().getFragments();
+        assertEquals(mTabsIndex, mViewFlipper.getDisplayedChild());
+        assertEquals(2, mFragments.size());
+        assertEquals(View.VISIBLE, getActivity().getTabLayout().getVisibility());
+        ViewEmergencyInfoFragment viewEmergencyInfoFragment =
+                (ViewEmergencyInfoFragment) mFragments.get(0).second;
+        assertNotNull(viewEmergencyInfoFragment);
+        ViewEmergencyContactsFragment viewEmergencyContactsFragment =
+                (ViewEmergencyContactsFragment) mFragments.get(1).second;
+        assertNotNull(viewEmergencyContactsFragment);
+
+        assertTrue(ContactTestUtils.deleteContact(getActivity().getContentResolver(),
+                "John", "123"));
+    }
 
     public void testComputeAge() {
         Calendar today = Calendar.getInstance();
@@ -181,8 +233,13 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
     }
 
 
-    private void onPause() {
-        getInstrumentation().callActivityOnPause(getActivity());
+    private void onPause() throws Throwable {
+        runTestOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                getInstrumentation().callActivityOnPause(getActivity());
+            }
+        });
     }
 
     private void onResume() throws Throwable {
