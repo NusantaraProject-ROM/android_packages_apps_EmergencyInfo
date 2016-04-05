@@ -82,7 +82,7 @@ public class NameAutoCompletePreferenceTest
     public void testReloadFromPreference() throws Throwable {
         String name = "John";
         mEditInfoFragment.getPreferenceManager().getSharedPreferences().edit()
-                .putString(mNameAutoCompletePreference.getKey(), name).apply();
+                .putString(mNameAutoCompletePreference.getKey(), name).commit();
 
         runTestOnUiThread(new Runnable() {
             @Override

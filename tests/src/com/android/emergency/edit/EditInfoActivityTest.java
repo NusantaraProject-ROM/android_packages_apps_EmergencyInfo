@@ -21,12 +21,17 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.util.Pair;
 
 import com.android.emergency.PreferenceKeys;
+import com.android.emergency.R;
+import com.android.emergency.preferences.BirthdayPreference;
 import com.android.emergency.preferences.EmergencyContactsPreference;
+import com.android.emergency.preferences.EmergencyEditTextPreference;
+import com.android.emergency.preferences.EmergencyListPreference;
+import com.android.emergency.preferences.NameAutoCompletePreference;
 
 import java.util.ArrayList;
 
 /**
- * Tests for {@link EditInfoActivity}
+ * Tests for {@link EditInfoActivity}.
  */
 public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditInfoActivity> {
     private ArrayList<Pair<String, Fragment>> mFragments;
@@ -39,7 +44,8 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
 
     @Override
     protected void setUp() throws Exception {
-        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().apply();
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
+
 
         mFragments = getActivity().getFragments();
         mEditEmergencyInfoFragment = (EditEmergencyInfoFragment) mFragments.get(0).second;
@@ -64,5 +70,90 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         assertEquals(0, emergencyContactsPreference.getPreferenceCount());
     }
 
-    // TODO: test dialogs and clear all
+    public void testClearAllPreferences () throws Throwable {
+        final NameAutoCompletePreference namePreference =
+                (NameAutoCompletePreference) mEditEmergencyInfoFragment
+                        .findPreference(PreferenceKeys.KEY_NAME);
+        final BirthdayPreference dateOfBirthPreference =
+                (BirthdayPreference) mEditEmergencyInfoFragment
+                        .findPreference(PreferenceKeys.KEY_DATE_OF_BIRTH);
+        final EmergencyEditTextPreference addressPreference =
+                (EmergencyEditTextPreference) mEditEmergencyInfoFragment
+                        .findPreference(PreferenceKeys.KEY_ADDRESS);
+        final EmergencyListPreference bloodTypePreference =
+                (EmergencyListPreference) mEditEmergencyInfoFragment
+                        .findPreference(PreferenceKeys.KEY_BLOOD_TYPE);
+        final EmergencyEditTextPreference allergiesPreference =
+                (EmergencyEditTextPreference) mEditEmergencyInfoFragment
+                        .findPreference(PreferenceKeys.KEY_ALLERGIES);
+        final EmergencyEditTextPreference medicationsPreference =
+                (EmergencyEditTextPreference) mEditEmergencyInfoFragment
+                        .findPreference(PreferenceKeys.KEY_MEDICATIONS);
+        final EmergencyEditTextPreference medicalConditionsPreference =
+                (EmergencyEditTextPreference) mEditEmergencyInfoFragment
+                        .findPreference(PreferenceKeys.KEY_MEDICAL_CONDITIONS);
+        final EmergencyListPreference organDonorPreference =
+                (EmergencyListPreference) mEditEmergencyInfoFragment
+                        .findPreference(PreferenceKeys.KEY_ORGAN_DONOR);
+
+        runTestOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                namePreference.setText("John");
+                dateOfBirthPreference.setDateOfBirth(123456L);
+                addressPreference.setText("Home");
+                bloodTypePreference.setValue("A+");
+                allergiesPreference.setText("Peanuts");
+                medicationsPreference.setText("Aspirin");
+                medicalConditionsPreference.setText("Asthma");
+                organDonorPreference.setValue("Yes");
+            }
+        });
+
+        String unknownName = getActivity().getResources().getString(R.string.unknown_name);
+        String unknownDateOfBirth =
+                getActivity().getResources().getString(R.string.unknown_date_of_birth);
+        String unknownAddress = getActivity().getResources().getString(R.string.unknown_address);
+        String unknownBloodType =
+                getActivity().getResources().getString(R.string.unknown_blood_type);
+        String unknownAllergies =
+                getActivity().getResources().getString(R.string.unknown_allergies);
+        String unknownMedications =
+                getActivity().getResources().getString(R.string.unknown_medications);
+        String unknownMedicalConditions =
+                getActivity().getResources().getString(R.string.unknown_medical_conditions);
+        String unknownOrganDonor =
+                getActivity().getResources().getString(R.string.unknown_organ_donor);
+
+        assertNotSame(unknownName, namePreference.getSummary());
+        assertNotSame(unknownDateOfBirth, dateOfBirthPreference.getSummary());
+        assertNotSame(unknownAddress, addressPreference.getSummary());
+        assertNotSame(unknownBloodType, bloodTypePreference.getSummary());
+        assertNotSame(unknownAllergies, allergiesPreference.getSummary());
+        assertNotSame(unknownMedications, medicationsPreference.getSummary());
+        assertNotSame(unknownMedicalConditions, medicalConditionsPreference.getSummary());
+        assertNotSame(unknownOrganDonor, organDonorPreference.getSummary());
+
+        runTestOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                getActivity().onClearAllPreferences();
+            }
+        });
+        getInstrumentation().waitForIdleSync();
+
+        assertEquals(unknownName, namePreference.getSummary());
+        assertEquals(unknownDateOfBirth, dateOfBirthPreference.getSummary());
+        assertEquals(unknownAddress, addressPreference.getSummary());
+        assertEquals(unknownBloodType, bloodTypePreference.getSummary().toString());
+        assertEquals(unknownAllergies, allergiesPreference.getSummary());
+        assertEquals(unknownMedications, medicationsPreference.getSummary());
+        assertEquals(unknownMedicalConditions, medicalConditionsPreference.getSummary());
+        assertEquals(unknownOrganDonor, organDonorPreference.getSummary());
+
+        // TODO: Test that contacts are deleted as well
+
+    }
+
+    // TODO: test dialogs
 }

@@ -162,8 +162,8 @@ public class EditInfoActivity extends EmergencyTabActivity {
         DialogFragment newFragment = ClearAllDialogFragment.newInstance();
         newFragment.show(ft, TAG_CLEAR_ALL_DIALOG);
     }
-    
-    private void onClearAllPreferences() {
+
+    void onClearAllPreferences() {
         PreferenceManager.getDefaultSharedPreferences(this).edit().clear().commit();
 
         ArrayList<Pair<String, Fragment>> fragments = getFragments();
@@ -174,6 +174,7 @@ public class EditInfoActivity extends EmergencyTabActivity {
                 (EditEmergencyContactsFragment) fragments.get(1).second;
         editEmergencyContactsFragment.reloadFromPreference();
     }
+
 
     /**
      * Warning dialog shown to the user each time they go in to the edit info view. Using a {@link
