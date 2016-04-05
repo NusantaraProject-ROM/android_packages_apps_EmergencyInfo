@@ -164,7 +164,7 @@ public class EditInfoActivity extends EmergencyTabActivity {
     }
     
     private void onClearAllPreferences() {
-        PreferenceManager.getDefaultSharedPreferences(this).edit().clear().apply();
+        PreferenceManager.getDefaultSharedPreferences(this).edit().clear().commit();
 
         ArrayList<Pair<String, Fragment>> fragments = getFragments();
         EditEmergencyInfoFragment editEmergencyInfoFragment =
