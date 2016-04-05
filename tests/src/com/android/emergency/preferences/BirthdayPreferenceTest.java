@@ -148,7 +148,7 @@ public class BirthdayPreferenceTest extends ActivityInstrumentationTestCase2<Edi
     public void testReloadFromPreference() throws Throwable {
         long dateMs = 123456600L;
         mBirthdayPreference.getSharedPreferences().edit()
-                .putLong(mBirthdayPreference.getKey(), dateMs).apply();
+                .putLong(mBirthdayPreference.getKey(), dateMs).commit();
         runTestOnUiThread(new Runnable() {
             @Override
             public void run() {

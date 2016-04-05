@@ -79,7 +79,7 @@ public class EmergencyEditTextPreferenceTest
     public void testReloadFromPreference() throws Throwable {
         String medicalConditions = "Asthma";
         mEditInfoFragment.getPreferenceManager().getSharedPreferences().edit()
-                .putString(mPreference.getKey(), medicalConditions).apply();
+                .putString(mPreference.getKey(), medicalConditions).commit();
         runTestOnUiThread(new Runnable() {
             @Override
             public void run() {
