@@ -19,11 +19,12 @@ import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.suitebuilder.annotation.LargeTest;
 import android.view.View;
 
 import com.android.emergency.ContactTestUtils;
-import com.android.emergency.EmergencyContactManager;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.edit.EditEmergencyContactsFragment;
@@ -35,6 +36,7 @@ import java.util.List;
 /**
  * Tests for {@link EmergencyContactsPreference}.
  */
+@LargeTest
 public class EmergencyContactsPreferenceTest
         extends ActivityInstrumentationTestCase2<EditInfoActivity> {
     private EmergencyContactsPreference mEmergencyContactsPreference;
@@ -65,6 +67,12 @@ public class EmergencyContactsPreferenceTest
         }
 
         mContentResolver = getActivity().getContentResolver();
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
+        super.tearDown();
     }
 
     public void testEmptyState() {

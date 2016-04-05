@@ -17,7 +17,10 @@ package com.android.emergency.preferences;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.suitebuilder.annotation.LargeTest;
+import android.view.View;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
@@ -27,6 +30,7 @@ import com.android.emergency.edit.EditInfoActivity;
 /**
  * Tests for {@link BirthdayPreference}.
  */
+@LargeTest
 public class BirthdayPreferenceTest extends ActivityInstrumentationTestCase2<EditInfoActivity> {
 
     private BirthdayPreference mBirthdayPreference;
@@ -52,6 +56,12 @@ public class BirthdayPreferenceTest extends ActivityInstrumentationTestCase2<Edi
         } catch (Throwable throwable) {
             fail("Should not throw exception");
         }
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
+        super.tearDown();
     }
 
     public void testGetSummary() {
@@ -159,5 +169,30 @@ public class BirthdayPreferenceTest extends ActivityInstrumentationTestCase2<Edi
         assertEquals(dateMs, mBirthdayPreference.getDateOfBirth());
     }
 
-    //TODO: test clearing date with widget layout
+    public void testWidgetClearsDate() throws Throwable {
+        runTestOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mBirthdayPreference.setDateOfBirth(12345L);
+            }
+        });
+        getInstrumentation().waitForIdleSync();
+        assertEquals(12345L, mBirthdayPreference.getDateOfBirth());
+
+        // Make the widget visible manually.
+        // TODO: For some reason, the test doesn't call onBindView when the date is set and
+        // notifyChanged() is called. Investigate this.
+        View datePreferenceView = mBirthdayPreference.getView(null, null);
+        final View removeDob = datePreferenceView.findViewById(R.id.remove_dob);
+        removeDob.setVisibility(View.VISIBLE);
+
+        runTestOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                removeDob.performClick();
+            }
+        });
+        getInstrumentation().waitForIdleSync();
+        assertEquals(mBirthdayPreference.DEFAULT_UNSET_VALUE, mBirthdayPreference.getDateOfBirth());
+    }
 }
