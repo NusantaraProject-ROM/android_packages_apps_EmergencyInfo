@@ -17,7 +17,9 @@ package com.android.emergency.preferences;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.suitebuilder.annotation.LargeTest;
 import android.widget.AutoCompleteTextView;
 
 import com.android.emergency.PreferenceKeys;
@@ -28,6 +30,7 @@ import com.android.emergency.edit.EditInfoActivity;
 /**
  * Tests for {@link NameAutoCompletePreference}.
  */
+@LargeTest
 public class NameAutoCompletePreferenceTest
         extends ActivityInstrumentationTestCase2<EditInfoActivity> {
     private NameAutoCompletePreference mNameAutoCompletePreference;
@@ -53,6 +56,12 @@ public class NameAutoCompletePreferenceTest
         } catch (Throwable throwable) {
             fail("Should not throw exception");
         }
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
+        super.tearDown();
     }
 
     public void testSummary() {

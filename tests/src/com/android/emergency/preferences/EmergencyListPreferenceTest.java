@@ -15,7 +15,9 @@
  */
 package com.android.emergency.preferences;
 
+import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.suitebuilder.annotation.LargeTest;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.TtsSpan;
@@ -28,6 +30,7 @@ import com.android.emergency.edit.EditInfoActivity;
 /**
  * Tests for {@link EmergencyListPreference}.
  */
+@LargeTest
 public class EmergencyListPreferenceTest
         extends ActivityInstrumentationTestCase2<EditInfoActivity> {
     private EmergencyListPreference mOrganDonorPreference;
@@ -57,6 +60,12 @@ public class EmergencyListPreferenceTest
         } catch (Throwable throwable) {
             fail("Should not throw exception");
         }
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
+        super.tearDown();
     }
 
     public void testSummary_organDonor() {

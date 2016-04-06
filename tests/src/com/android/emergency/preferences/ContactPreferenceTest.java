@@ -15,48 +15,82 @@
  */
 package com.android.emergency.preferences;
 
+import android.app.Instrumentation;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.test.ActivityInstrumentationTestCase2;
-import android.view.View;
-import android.widget.ListView;
+import android.test.suitebuilder.annotation.MediumTest;
 
 import com.android.emergency.ContactTestUtils;
-import com.android.emergency.EmergencyContactManager;
-import com.android.emergency.R;
 import com.android.emergency.edit.EditInfoActivity;
 
 /**
  * Tests for {@link ContactPreference}.
  */
+@MediumTest
 public class ContactPreferenceTest extends ActivityInstrumentationTestCase2<EditInfoActivity> {
+    private static final String NAME = "Jake";
+    private static final String PHONE_NUMBER = "123456";
+    private ContactPreference mContactPreference;
+    private Uri mContactUri;
+
     public ContactPreferenceTest() {
         super(EditInfoActivity.class);
     }
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+        mContactUri =
+                ContactTestUtils.createContact(getActivity().getContentResolver(),
+                        NAME,
+                        PHONE_NUMBER);
+        mContactPreference = new ContactPreference(getActivity(), mContactUri);
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        assertTrue(ContactTestUtils.deleteContact(getActivity().getContentResolver(),
+                NAME,
+                PHONE_NUMBER));
+        super.tearDown();
+    }
 
     public void testContactPreference() {
-        String name = "Jake";
-        String phoneNumber = "123456";
-        Uri contactUri =
-                ContactTestUtils.createContact(getActivity().getContentResolver(),
-                        name,
-                        phoneNumber);
-        ContactPreference contactPreference = new ContactPreference(getActivity(), contactUri);
-        assertEquals(contactUri, contactPreference.getContactUri());
-        assertEquals(name, contactPreference.getContact().getName());
-        assertEquals(phoneNumber, contactPreference.getContact().getPhoneNumber());
+        assertEquals(mContactUri, mContactPreference.getContactUri());
+        assertEquals(NAME, mContactPreference.getContact().getName());
+        assertEquals(PHONE_NUMBER, mContactPreference.getContact().getPhoneNumber());
 
-        assertNull(contactPreference.getRemoveContactDialog());
-        contactPreference.setRemoveContactPreferenceListener(
+        assertNull(mContactPreference.getRemoveContactDialog());
+        mContactPreference.setRemoveContactPreferenceListener(
                 new ContactPreference.RemoveContactPreferenceListener() {
                     @Override
                     public void onRemoveContactPreference(ContactPreference preference) {
                         // Do nothing
                     }
                 });
-        assertNotNull(contactPreference.getRemoveContactDialog());
+        assertNotNull(mContactPreference.getRemoveContactDialog());
+    }
 
-        assertTrue(ContactTestUtils.deleteContact(getActivity().getContentResolver(),
-                name,
-                phoneNumber));
+
+    public void testDisplayContact() throws Throwable {
+        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_VIEW);
+        intentFilter.addDataType(ContactsContract.Contacts.CONTENT_ITEM_TYPE);
+        Instrumentation.ActivityMonitor activityMonitor =
+                getInstrumentation().addMonitor(intentFilter, null, true /* block */);
+        mContactPreference.displayContact();
+
+        assertEquals(true, getInstrumentation().checkMonitorHit(activityMonitor, 1 /* minHits */));
+    }
+
+    public void testCallContact() throws Throwable {
+        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_CALL);
+        intentFilter.addDataScheme("tel");
+        Instrumentation.ActivityMonitor activityMonitor =
+                getInstrumentation().addMonitor(intentFilter, null, true /* block */);
+        mContactPreference.callContact();
+
+        assertEquals(true, getInstrumentation().checkMonitorHit(activityMonitor, 1 /* minHits */));
     }
 }
