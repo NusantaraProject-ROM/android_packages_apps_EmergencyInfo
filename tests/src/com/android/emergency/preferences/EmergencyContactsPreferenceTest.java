@@ -147,8 +147,15 @@ public class EmergencyContactsPreferenceTest
         // Delete Jane from other app (e.g. contacts)
         assertTrue(ContactTestUtils
                 .deleteContact(mContentResolver, nameJane, phoneNumberJane));
+        getInstrumentation().waitForIdleSync();
 
-        mEmergencyContactsPreference.reloadFromPreference();
+        runTestOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mEmergencyContactsPreference.reloadFromPreference();
+            }
+        });
+
         getInstrumentation().waitForIdleSync();
 
         // Assert the only remaining contact is John

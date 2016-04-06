@@ -21,7 +21,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -46,10 +45,10 @@ import java.util.ArrayList;
  * Activity for editing emergency information.
  */
 public class EditInfoActivity extends EmergencyTabActivity {
-    private static final String TAG_WARNING_DIALOG = "warning_dialog";
-    private static final String TAG_CLEAR_ALL_DIALOG = "clear_all_dialog";
-    private static final String KEY_LAST_CONSENT_TIME_MS = "last_consent_time_ms";
-    private static final long ONE_DAY_MS = 24 * 60 * 60 * 1000;
+    static final String TAG_WARNING_DIALOG = "warning_dialog";
+    static final String TAG_CLEAR_ALL_DIALOG = "clear_all_dialog";
+    static final String KEY_LAST_CONSENT_TIME_MS = "last_consent_time_ms";
+    static final long ONE_DAY_MS = 24 * 60 * 60 * 1000;
     private static final String ACTION_EDIT_EMERGENCY_CONTACTS =
             "android.emergency.EDIT_EMERGENCY_CONTACTS";
     private static final String ACTION_USER_SETTINGS = "android.settings.USER_SETTINGS";
@@ -58,21 +57,6 @@ public class EditInfoActivity extends EmergencyTabActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_activity_layout);
-
-        // savedInstanceState is null on first start and non-null on restart.
-        // We want to show the dialog on first start, even if there is a screen rotation but avoid
-        // reshowing it if a rotation occurs (which causes onCreate to be called again, but this
-        // time with savedInstanceState!=null).
-        if (savedInstanceState == null) {
-            long lastConsentTimeMs = PreferenceManager.getDefaultSharedPreferences(this)
-                    .getLong(KEY_LAST_CONSENT_TIME_MS, Long.MAX_VALUE);
-            long nowMs = System.currentTimeMillis();
-            // Check if at least one day has gone by since the user last gave his constant or if
-            // the last consent was in the future (e.g. if the user changed the date).
-            if (nowMs - lastConsentTimeMs > ONE_DAY_MS || lastConsentTimeMs > nowMs) {
-                showWarningDialog();
-            }
-        }
 
         if (ACTION_EDIT_EMERGENCY_CONTACTS.equals(getIntent().getAction())) {
             // Select emergency contacts tab
@@ -84,9 +68,21 @@ public class EditInfoActivity extends EmergencyTabActivity {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        long lastConsentTimeMs = PreferenceManager.getDefaultSharedPreferences(this)
+                .getLong(KEY_LAST_CONSENT_TIME_MS, Long.MAX_VALUE);
+        long nowMs = System.currentTimeMillis();
+        // Check if at least one day has gone by since the user last gave his constant or if
+        // the last consent was in the future (e.g. if the user changed the date).
+        if (nowMs - lastConsentTimeMs > ONE_DAY_MS || lastConsentTimeMs > nowMs) {
+            showWarningDialog();
+        }
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
-
         // Enable ViewInfoActivity if the user input some info. Otherwise, disable it.
         PackageManager pm = getPackageManager();
         if (ViewEmergencyContactsFragment.hasAtLeastOneEmergencyContact(this)
@@ -133,37 +129,28 @@ public class EditInfoActivity extends EmergencyTabActivity {
     }
 
     private void showWarningDialog() {
-        // DialogFragment.show() will take care of adding the fragment
-        // in a transaction.  We also want to remove any currently showing
-        // dialog, so make our own transaction and take care of that here.
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment previousDialog = getFragmentManager().findFragmentByTag(TAG_WARNING_DIALOG);
-        if (previousDialog != null) {
-            ft.remove(previousDialog);
-        }
-        ft.addToBackStack(null);
+        final WarningDialogFragment previousFragment =
+                (WarningDialogFragment) getFragmentManager()
+                        .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
 
-        DialogFragment newFragment = WarningDialogFragment.newInstance();
-        newFragment.setCancelable(false);
-        newFragment.show(ft, TAG_WARNING_DIALOG);
+        if (previousFragment == null) {
+            DialogFragment newFragment = WarningDialogFragment.newInstance();
+            newFragment.setCancelable(false);
+            newFragment.show(getFragmentManager(), TAG_WARNING_DIALOG);
+        }
     }
 
     private void showClearAllDialog() {
-        // DialogFragment.show() will take care of adding the fragment
-        // in a transaction.  We also want to remove any currently showing
-        // dialog, so make our own transaction and take care of that here.
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment previousDialog = getFragmentManager().findFragmentByTag(TAG_CLEAR_ALL_DIALOG);
-        if (previousDialog != null) {
-            ft.remove(previousDialog);
+        final ClearAllDialogFragment previousFragment =
+                (ClearAllDialogFragment) getFragmentManager()
+                        .findFragmentByTag(EditInfoActivity.TAG_CLEAR_ALL_DIALOG);
+        if (previousFragment == null) {
+            DialogFragment newFragment = ClearAllDialogFragment.newInstance();
+            newFragment.show(getFragmentManager(), TAG_CLEAR_ALL_DIALOG);
         }
-        ft.addToBackStack(null);
-
-        DialogFragment newFragment = ClearAllDialogFragment.newInstance();
-        newFragment.show(ft, TAG_CLEAR_ALL_DIALOG);
     }
 
-    void onClearAllPreferences() {
+    private void onClearAllPreferences() {
         PreferenceManager.getDefaultSharedPreferences(this).edit().clear().commit();
 
         ArrayList<Pair<String, Fragment>> fragments = getFragments();
@@ -174,7 +161,6 @@ public class EditInfoActivity extends EmergencyTabActivity {
                 (EditEmergencyContactsFragment) fragments.get(1).second;
         editEmergencyContactsFragment.reloadFromPreference();
     }
-
 
     /**
      * Warning dialog shown to the user each time they go in to the edit info view. Using a {@link

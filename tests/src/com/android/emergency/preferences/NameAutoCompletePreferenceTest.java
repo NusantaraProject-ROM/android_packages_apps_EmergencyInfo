@@ -103,9 +103,15 @@ public class NameAutoCompletePreferenceTest
         assertFalse(mNameAutoCompletePreference.isNotSet());
     }
 
-    public void testSetText() {
-        String name = "John";
-        mNameAutoCompletePreference.setText(name);
+    public void testSetText() throws Throwable {
+        final String name = "John";
+        runTestOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mNameAutoCompletePreference.setText(name);
+            }
+        });
+
         assertEquals(name, mNameAutoCompletePreference.getText());
         assertEquals(name, mNameAutoCompletePreference.getSummary());
     }
