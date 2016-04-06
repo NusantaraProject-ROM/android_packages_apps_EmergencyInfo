@@ -99,9 +99,15 @@ public class EmergencyEditTextPreferenceTest
         assertFalse(mPreference.isNotSet());
     }
 
-    public void testSetText() {
-        String medicalConditions = "Asthma";
-        mPreference.setText(medicalConditions);
+    public void testSetText() throws Throwable {
+        final String medicalConditions = "Asthma";
+        runTestOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mPreference.setText(medicalConditions);
+            }
+        });
+
         assertEquals(medicalConditions, mPreference.getText());
         assertEquals(medicalConditions, mPreference.getSummary());
     }

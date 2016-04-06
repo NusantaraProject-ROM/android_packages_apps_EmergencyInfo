@@ -15,8 +15,12 @@
  */
 package com.android.emergency.edit;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
+import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.LargeTest;
@@ -42,6 +46,7 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
     private ArrayList<Pair<String, Fragment>> mFragments;
     private EditEmergencyInfoFragment mEditEmergencyInfoFragment;
     private EditEmergencyContactsFragment mEditEmergencyContactsFragment;
+    private PowerManager.WakeLock mKeepScreenOnWakeLock;
 
     public EditInfoActivityTest() {
         super(EditInfoActivity.class);
@@ -51,6 +56,7 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
     protected void setUp() throws Exception {
         super.setUp();
         PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
+        forceScreenOn();
 
         mFragments = getActivity().getFragments();
         mEditEmergencyInfoFragment = (EditEmergencyInfoFragment) mFragments.get(0).second;
@@ -60,6 +66,7 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
     @Override
     protected void tearDown() throws Exception {
         PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
+        releaseScreenOn();
         super.tearDown();
     }
 
@@ -79,6 +86,7 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
     }
 
     public void testClearAllPreferences () throws Throwable {
+        EditInfoActivity editInfoActivity = getActivity();
         final NameAutoCompletePreference namePreference =
                 (NameAutoCompletePreference) mEditEmergencyInfoFragment
                         .findPreference(PreferenceKeys.KEY_NAME);
@@ -108,7 +116,7 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
                 (EmergencyContactsPreference) mEditEmergencyContactsFragment
                         .findPreference(PreferenceKeys.KEY_EMERGENCY_CONTACTS);
         final Uri contactUri = ContactTestUtils
-                .createContact(getActivity().getContentResolver(), "Michael", "789");
+                .createContact(editInfoActivity.getContentResolver(), "Michael", "789");
         final List<Uri> emergencyContacts = new ArrayList<>();
         emergencyContacts.add(contactUri);
 
@@ -127,20 +135,20 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
             }
         });
 
-        String unknownName = getActivity().getResources().getString(R.string.unknown_name);
+        String unknownName = editInfoActivity.getResources().getString(R.string.unknown_name);
         String unknownDateOfBirth =
-                getActivity().getResources().getString(R.string.unknown_date_of_birth);
+                editInfoActivity.getResources().getString(R.string.unknown_date_of_birth);
         String unknownAddress = getActivity().getResources().getString(R.string.unknown_address);
         String unknownBloodType =
-                getActivity().getResources().getString(R.string.unknown_blood_type);
+                editInfoActivity.getResources().getString(R.string.unknown_blood_type);
         String unknownAllergies =
-                getActivity().getResources().getString(R.string.unknown_allergies);
+                editInfoActivity.getResources().getString(R.string.unknown_allergies);
         String unknownMedications =
-                getActivity().getResources().getString(R.string.unknown_medications);
+                editInfoActivity.getResources().getString(R.string.unknown_medications);
         String unknownMedicalConditions =
-                getActivity().getResources().getString(R.string.unknown_medical_conditions);
+                editInfoActivity.getResources().getString(R.string.unknown_medical_conditions);
         String unknownOrganDonor =
-                getActivity().getResources().getString(R.string.unknown_organ_donor);
+                editInfoActivity.getResources().getString(R.string.unknown_organ_donor);
 
         assertNotSame(unknownName, namePreference.getSummary());
         assertNotSame(unknownDateOfBirth, dateOfBirthPreference.getSummary());
@@ -153,10 +161,26 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         assertEquals(1, emergencyContactsPreference.getEmergencyContacts().size());
         assertEquals(1, emergencyContactsPreference.getPreferenceCount());
 
+
+        EditInfoActivity.ClearAllDialogFragment clearAllDialogFragment =
+                (EditInfoActivity.ClearAllDialogFragment) editInfoActivity.getFragmentManager()
+                        .findFragmentByTag(EditInfoActivity.TAG_CLEAR_ALL_DIALOG);
+        assertNull(clearAllDialogFragment);
+        getInstrumentation().invokeMenuActionSync(editInfoActivity, R.id.action_clear_all,
+                0 /* flags */);
+        getInstrumentation().waitForIdleSync();
+        final EditInfoActivity.ClearAllDialogFragment clearAllDialogFragmentAfterwards =
+                (EditInfoActivity.ClearAllDialogFragment) editInfoActivity.getFragmentManager()
+                        .findFragmentByTag(EditInfoActivity.TAG_CLEAR_ALL_DIALOG);
+
+        assertTrue(clearAllDialogFragmentAfterwards.getDialog().isShowing());
+
         runTestOnUiThread(new Runnable() {
             @Override
             public void run() {
-                getActivity().onClearAllPreferences();
+                ((AlertDialog) clearAllDialogFragmentAfterwards.getDialog())
+                        .getButton(DialogInterface.BUTTON_POSITIVE)
+                        .performClick();
             }
         });
         getInstrumentation().waitForIdleSync();
@@ -174,5 +198,130 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
 
         assertTrue(ContactTestUtils
                 .deleteContact(getActivity().getContentResolver(), "Michael", "789"));
+    }
+
+    public void testWarningDialog_onPauseAndResume() throws Throwable {
+        final EditInfoActivity.WarningDialogFragment dialog =
+                (EditInfoActivity.WarningDialogFragment) getActivity().getFragmentManager()
+                        .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
+        assertTrue(dialog.getDialog().isShowing());
+
+        onPause();
+        onResume();
+
+        final EditInfoActivity.WarningDialogFragment dialogAfterOnResume =
+                (EditInfoActivity.WarningDialogFragment) getActivity().getFragmentManager()
+                        .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
+        assertTrue(dialogAfterOnResume.getDialog().isShowing());
+    }
+
+    public void testWarningDialog_negativeButton() throws Throwable {
+        EditInfoActivity activity = getActivity();
+        final EditInfoActivity.WarningDialogFragment dialogFragment =
+                (EditInfoActivity.WarningDialogFragment) activity.getFragmentManager()
+                        .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
+        assertNotNull(dialogFragment.getActivity());
+        assertTrue(dialogFragment.getDialog().isShowing());
+        runTestOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                ((AlertDialog) dialogFragment.getDialog())
+                        .getButton(DialogInterface.BUTTON_NEGATIVE)
+                        .performClick();
+            }
+        });
+        getInstrumentation().waitForIdleSync();
+
+        assertNull(dialogFragment.getDialog());
+    }
+
+    public void testWarningDialog_positiveButton() throws Throwable {
+        EditInfoActivity activity = getActivity();
+        final EditInfoActivity.WarningDialogFragment dialogFragment =
+                (EditInfoActivity.WarningDialogFragment) activity.getFragmentManager()
+                        .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
+        assertTrue(dialogFragment.getDialog().isShowing());
+
+        runTestOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                ((AlertDialog) dialogFragment.getDialog())
+                        .getButton(DialogInterface.BUTTON_POSITIVE)
+                        .performClick();
+            }
+        });
+        getInstrumentation().waitForIdleSync();
+        assertNull(dialogFragment.getDialog());
+
+        onPause();
+        onResume();
+
+        EditInfoActivity.WarningDialogFragment dialogAfterOnResume =
+                (EditInfoActivity.WarningDialogFragment) getActivity().getFragmentManager()
+                        .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
+        assertNull(dialogAfterOnResume);
+    }
+
+    public void testWarningDialogTimer_overOneDayAgo() throws Throwable {
+        EditInfoActivity activity = getActivity();
+        final EditInfoActivity.WarningDialogFragment dialogFragment =
+                (EditInfoActivity.WarningDialogFragment) activity.getFragmentManager()
+                        .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
+        runTestOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                ((AlertDialog) dialogFragment.getDialog())
+                        .getButton(DialogInterface.BUTTON_POSITIVE)
+                        .performClick();
+            }
+        });
+        getInstrumentation().waitForIdleSync();
+
+        onPause();
+        // Manually make the last consent be a bit over a day ago
+        long overOneDayAgoMs = System.currentTimeMillis() - EditInfoActivity.ONE_DAY_MS - 60_000;
+        PreferenceManager.getDefaultSharedPreferences(activity).edit()
+                .putLong(EditInfoActivity.KEY_LAST_CONSENT_TIME_MS,
+                        overOneDayAgoMs).commit();
+        onResume();
+
+        EditInfoActivity.WarningDialogFragment dialogAfterOnResume =
+                (EditInfoActivity.WarningDialogFragment) getActivity().getFragmentManager()
+                        .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
+        assertTrue(dialogAfterOnResume.getDialog().isShowing());
+    }
+
+    private void onPause() throws Throwable {
+        runTestOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                getInstrumentation().callActivityOnPause(getActivity());
+            }
+        });
+    }
+
+    private void onResume() throws Throwable {
+        runTestOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                getInstrumentation().callActivityOnResume(getActivity());
+            }
+        });
+        getInstrumentation().waitForIdleSync();
+    }
+
+    private void forceScreenOn() {
+        int levelAndFlags = PowerManager.FULL_WAKE_LOCK
+                | PowerManager.ON_AFTER_RELEASE
+                | PowerManager.ACQUIRE_CAUSES_WAKEUP;
+        PowerManager powerManager =
+                (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
+        mKeepScreenOnWakeLock = powerManager.newWakeLock(levelAndFlags, "EditEmergencyInfo");
+        mKeepScreenOnWakeLock.setReferenceCounted(false);
+        mKeepScreenOnWakeLock.acquire();
+    }
+
+    private void releaseScreenOn() {
+        mKeepScreenOnWakeLock.release();
     }
 }
