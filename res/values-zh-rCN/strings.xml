@@ -16,8 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- no translation found for app_label (1090682794607161063) -->
-    <skip />
+    <string name="app_label" msgid="1090682794607161063">"紧急信息"</string>
     <string name="edit_info" msgid="5973929805855224805">"修改紧急信息"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"信息"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"联系人"</string>
@@ -51,14 +50,42 @@
     <!-- no translation found for blood_type_entries:7 (2352690820681480000) -->
     <!-- no translation found for blood_type_entries:8 (8050126448069904266) -->
     <!-- no translation found for blood_type_entries:9 (6638754103385431982) -->
+    <!-- no translation found for blood_type_content_description:0 (6667226742834222579) -->
+    <!-- no translation found for blood_type_content_description:1 (26984754285801844) -->
+    <!-- no translation found for blood_type_content_description:2 (4290187884207566057) -->
+    <!-- no translation found for blood_type_content_description:3 (8729414234644535532) -->
+    <!-- no translation found for blood_type_content_description:4 (1807545222747872988) -->
+    <!-- no translation found for blood_type_content_description:5 (5646845390063186080) -->
+    <!-- no translation found for blood_type_content_description:6 (7419135957542939964) -->
+    <!-- no translation found for blood_type_content_description:7 (6751057832905330075) -->
+    <!-- no translation found for blood_type_content_description:8 (3886106257727561539) -->
     <!-- no translation found for blood_type_content_description:9 (1362921785855892976) -->
+    <!-- no translation found for o_positive (5944181307873488422) -->
+    <skip />
+    <!-- no translation found for o_negative (5261178297066132923) -->
+    <skip />
+    <!-- no translation found for a_positive (160635169929713435) -->
+    <skip />
+    <!-- no translation found for a_negative (6680390511183224469) -->
+    <skip />
+    <!-- no translation found for b_positive (8225619238000785345) -->
+    <skip />
+    <!-- no translation found for b_negative (4110646487598488955) -->
+    <skip />
+    <!-- no translation found for ab_positive (1931300033534642005) -->
+    <skip />
+    <!-- no translation found for ab_negative (2064555613093591729) -->
+    <skip />
+    <!-- no translation found for h_h (2183333409760379720) -->
+    <skip />
     <string name="allergies" msgid="2789200777539258165">"过敏症"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"未知"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"例如，花生"</string>
     <string name="medications" msgid="644428945685557183">"用药"</string>
     <string name="unknown_medications" msgid="2764171064510423734">"未知"</string>
     <string name="medications_hint" msgid="3221620025945593723">"例如，阿司匹林"</string>
-    <string name="medical_conditions" msgid="6147422114803729239">"医疗状况和注意事项"</string>
+    <!-- no translation found for medical_conditions (3555690011498283592) -->
+    <skip />
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"未知"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"例如，哮喘"</string>
     <string name="organ_donor" msgid="5953509460007124827">"器官捐献者"</string>
@@ -69,7 +96,8 @@
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
     <string name="emergency_contacts_title" msgid="5462202017417821030">"紧急情况联系人"</string>
-    <string name="add_emergency_contact" msgid="4987882226775581405">"添加紧急情况联系人"</string>
+    <!-- no translation found for add_emergency_contact (4063577069613981029) -->
+    <skip />
     <string name="remove_contact" msgid="6934983445723096759">"要将“<xliff:g id="CONTACT_NAME">%1$s</xliff:g>”从紧急情况联系人中移除吗？"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"移除联系人"</string>
     <string name="remove" msgid="1243949503772376064">"移除"</string>
@@ -80,10 +108,7 @@
     <string name="user_emergency_info_consent" msgid="5636028073450797246">"您在此处输入的信息可协助第一线救援人员在发生紧急事件时提供相关援助。系统只会将这项信息存储在您的设备上，但任何人都能在您的手机未解锁的情况下通过紧急呼救拨号器看到此信息。"</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"继续"</string>
     <string name="no_info_provided" msgid="6775035037534954056">"未提供紧急信息"</string>
-    <!-- no translation found for clear_all (8899013032870561633) -->
-    <skip />
-    <!-- no translation found for clear (3648880442502887163) -->
-    <skip />
-    <!-- no translation found for clear_all_message (1548432000373861295) -->
-    <skip />
+    <string name="clear_all" msgid="8899013032870561633">"全部清除"</string>
+    <string name="clear" msgid="3648880442502887163">"清除"</string>
+    <string name="clear_all_message" msgid="1548432000373861295">"要清除所有信息和联系人吗？"</string>
 </resources>
