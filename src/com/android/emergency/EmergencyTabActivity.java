@@ -29,6 +29,8 @@ import android.util.Pair;
 import android.view.MenuItem;
 import android.widget.Toolbar;
 
+import com.android.internal.annotations.VisibleForTesting;
+
 import java.util.ArrayList;
 /**
  * An activity uses a tab layout to separate personal and medical information
@@ -63,6 +65,7 @@ public abstract class EmergencyTabActivity extends Activity {
     }
 
     /** Returns the index of the currently selected tab. */
+    @VisibleForTesting
     public int getSelectedTabPosition() {
         return mTabLayout.getSelectedTabPosition();
     }

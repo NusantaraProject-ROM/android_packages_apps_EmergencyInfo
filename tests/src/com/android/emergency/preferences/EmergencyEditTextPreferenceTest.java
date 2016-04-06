@@ -15,7 +15,9 @@
  */
 package com.android.emergency.preferences;
 
+import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.suitebuilder.annotation.MediumTest;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
@@ -25,6 +27,7 @@ import com.android.emergency.edit.EditInfoActivity;
 /**
  * Tests for {@link EmergencyEditTextPreference}.
  */
+@MediumTest
 public class EmergencyEditTextPreferenceTest
         extends ActivityInstrumentationTestCase2<EditInfoActivity> {
     private EmergencyEditTextPreference mPreference;
@@ -50,6 +53,12 @@ public class EmergencyEditTextPreferenceTest
         } catch (Throwable throwable) {
             fail("Should not throw exception");
         }
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
+        super.tearDown();
     }
 
     public void testSummary() {

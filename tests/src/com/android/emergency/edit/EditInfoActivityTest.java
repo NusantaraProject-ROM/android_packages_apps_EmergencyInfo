@@ -16,10 +16,13 @@
 package com.android.emergency.edit;
 
 import android.app.Fragment;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.suitebuilder.annotation.LargeTest;
 import android.util.Pair;
 
+import com.android.emergency.ContactTestUtils;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.preferences.BirthdayPreference;
@@ -29,10 +32,12 @@ import com.android.emergency.preferences.EmergencyListPreference;
 import com.android.emergency.preferences.NameAutoCompletePreference;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Tests for {@link EditInfoActivity}.
  */
+@LargeTest
 public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditInfoActivity> {
     private ArrayList<Pair<String, Fragment>> mFragments;
     private EditEmergencyInfoFragment mEditEmergencyInfoFragment;
@@ -44,25 +49,28 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
 
     @Override
     protected void setUp() throws Exception {
+        super.setUp();
         PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
-
 
         mFragments = getActivity().getFragments();
         mEditEmergencyInfoFragment = (EditEmergencyInfoFragment) mFragments.get(0).second;
         mEditEmergencyContactsFragment = (EditEmergencyContactsFragment) mFragments.get(1).second;
     }
 
+    @Override
+    protected void tearDown() throws Exception {
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
+        super.tearDown();
+    }
+
     public void testTwoFragments() {
         assertEquals(2, mFragments.size());
     }
 
-    public void testEditEmergencyInfoFragmentInitialState() {
+    public void testInitialState() {
         for (String key : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
             assertNotNull(mEditEmergencyInfoFragment.findPreference(key));
         }
-    }
-
-    public void testEditEmergencyContactFragmentInitialState() {
         EmergencyContactsPreference emergencyContactsPreference =
                 (EmergencyContactsPreference) mEditEmergencyContactsFragment
                         .findPreference(PreferenceKeys.KEY_EMERGENCY_CONTACTS);
@@ -96,6 +104,14 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
                 (EmergencyListPreference) mEditEmergencyInfoFragment
                         .findPreference(PreferenceKeys.KEY_ORGAN_DONOR);
 
+        final EmergencyContactsPreference emergencyContactsPreference =
+                (EmergencyContactsPreference) mEditEmergencyContactsFragment
+                        .findPreference(PreferenceKeys.KEY_EMERGENCY_CONTACTS);
+        final Uri contactUri = ContactTestUtils
+                .createContact(getActivity().getContentResolver(), "Michael", "789");
+        final List<Uri> emergencyContacts = new ArrayList<>();
+        emergencyContacts.add(contactUri);
+
         runTestOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -107,6 +123,7 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
                 medicationsPreference.setText("Aspirin");
                 medicalConditionsPreference.setText("Asthma");
                 organDonorPreference.setValue("Yes");
+                emergencyContactsPreference.setEmergencyContacts(emergencyContacts);
             }
         });
 
@@ -133,6 +150,8 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         assertNotSame(unknownMedications, medicationsPreference.getSummary());
         assertNotSame(unknownMedicalConditions, medicalConditionsPreference.getSummary());
         assertNotSame(unknownOrganDonor, organDonorPreference.getSummary());
+        assertEquals(1, emergencyContactsPreference.getEmergencyContacts().size());
+        assertEquals(1, emergencyContactsPreference.getPreferenceCount());
 
         runTestOnUiThread(new Runnable() {
             @Override
@@ -150,10 +169,10 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         assertEquals(unknownMedications, medicationsPreference.getSummary());
         assertEquals(unknownMedicalConditions, medicalConditionsPreference.getSummary());
         assertEquals(unknownOrganDonor, organDonorPreference.getSummary());
+        assertEquals(0, emergencyContactsPreference.getEmergencyContacts().size());
+        assertEquals(0, emergencyContactsPreference.getPreferenceCount());
 
-        // TODO: Test that contacts are deleted as well
-
+        assertTrue(ContactTestUtils
+                .deleteContact(getActivity().getContentResolver(), "Michael", "789"));
     }
-
-    // TODO: test dialogs
 }

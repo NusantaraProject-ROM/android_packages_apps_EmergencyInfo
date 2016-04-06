@@ -18,9 +18,12 @@ package com.android.emergency.view;
 import android.app.Fragment;
 import android.app.Instrumentation;
 import android.content.ComponentName;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.suitebuilder.annotation.LargeTest;
 import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.View;
@@ -29,7 +32,6 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.android.emergency.ContactTestUtils;
-import com.android.emergency.EmergencyContactManager;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.edit.EditInfoActivity;
@@ -40,6 +42,7 @@ import java.util.Calendar;
 /**
  * Tests for {@link ViewInfoActivity}.
  */
+@LargeTest
 public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewInfoActivity> {
     private ArrayList<Pair<String, Fragment>> mFragments;
     private LinearLayout mPersonalCard;
@@ -55,6 +58,7 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
 
     @Override
     protected void setUp() throws Exception {
+        super.setUp();
         enableActivity();
         mPersonalCard = (LinearLayout)  getActivity().findViewById(R.id.name_and_dob_linear_layout);
         mPersonalCardLargeItem = (TextView)  getActivity().findViewById(R.id.personal_card_large);
@@ -65,6 +69,12 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
         mTabsIndex = mViewFlipper.indexOfChild(getActivity().findViewById(R.id.tabs));
 
         PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().clear().commit();
+        super.tearDown();
     }
 
     public void testInitialState() throws Throwable {
@@ -215,7 +225,7 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
         assertEquals(0, ViewInfoActivity.computeAge(today, dateOfBirth));
     }
 
-    public void testCanGoToEditInfoActivity() {
+    public void testCanGoToEditInfoActivityFromMenu() {
         final ViewInfoActivity activity = getActivity();
 
         Instrumentation.ActivityMonitor activityMonitor =
@@ -232,6 +242,23 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
         editInfoActivity.finish();
     }
 
+    public void testCanGoToEditInfoActivityFromBroadcast() {
+        String action = "android.emergency.EDIT_EMERGENCY_CONTACTS";
+        Instrumentation.ActivityMonitor activityMonitor =
+                getInstrumentation().addMonitor(new IntentFilter(action),
+                        null /* result */, false /* block */);
+        getActivity().startActivity(new Intent(action));
+
+        getInstrumentation().waitForIdleSync();
+        assertEquals(true, getInstrumentation().checkMonitorHit(activityMonitor, 1 /* minHits */));
+
+        EditInfoActivity editInfoActivity = (EditInfoActivity)
+                getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 1000 /* timeOut */);
+        assertNotNull(editInfoActivity);
+        // The contacts tab index is 1
+        assertEquals(1, editInfoActivity.getSelectedTabPosition());
+        editInfoActivity.finish();
+    }
 
     private void onPause() throws Throwable {
         runTestOnUiThread(new Runnable() {
