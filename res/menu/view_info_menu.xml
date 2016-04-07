@@ -17,6 +17,6 @@
     <item
         android:id="@+id/action_edit"
         android:icon="@drawable/ic_mode_edit_24dp"
-        android:contentDescription="@string/edit_info"
+        android:title="@string/edit_info"
         android:showAsAction="always" />
 </menu>
