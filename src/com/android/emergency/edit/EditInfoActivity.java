@@ -21,10 +21,9 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
-import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Pair;
@@ -33,9 +32,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.android.emergency.EmergencyTabActivity;
+import com.android.emergency.PackageManagerUtils;
+import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
-import com.android.emergency.view.ViewEmergencyContactsFragment;
-import com.android.emergency.view.ViewInfoActivity;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -83,16 +82,7 @@ public class EditInfoActivity extends EmergencyTabActivity {
     @Override
     public void onPause() {
         super.onPause();
-        // Enable ViewInfoActivity if the user input some info. Otherwise, disable it.
-        PackageManager pm = getPackageManager();
-        if (ViewEmergencyContactsFragment.hasAtLeastOneEmergencyContact(this)
-                || EditEmergencyInfoFragment.hasAtLeastOnePreferenceSet(this)) {
-            pm.setComponentEnabledSetting(new ComponentName(this, ViewInfoActivity.class),
-                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
-        } else {
-            pm.setComponentEnabledSetting(new ComponentName(this, ViewInfoActivity.class),
-                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
-        }
+        PackageManagerUtils.disableViewInfoActivityIfNoInfoAvailable(this);
     }
 
     @Override
@@ -151,8 +141,13 @@ public class EditInfoActivity extends EmergencyTabActivity {
     }
 
     private void onClearAllPreferences() {
-        PreferenceManager.getDefaultSharedPreferences(this).edit().clear().commit();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        for (String key : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
+            sharedPreferences.edit().remove(key).commit();
+        }
+        sharedPreferences.edit().remove(PreferenceKeys.KEY_EMERGENCY_CONTACTS).commit();
 
+        // Refresh the UI.
         ArrayList<Pair<String, Fragment>> fragments = getFragments();
         EditEmergencyInfoFragment editEmergencyInfoFragment =
                 (EditEmergencyInfoFragment) fragments.get(0).second;
