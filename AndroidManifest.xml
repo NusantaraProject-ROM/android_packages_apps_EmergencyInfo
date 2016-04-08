@@ -33,7 +33,6 @@
             android:taskAffinity="com.android.settings"
             android:showOnLockScreen="true"
             android:icon="@mipmap/ic_launcher_settings"
-            android:enabled="false"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.telephony.action.EMERGENCY_ASSISTANCE" />
