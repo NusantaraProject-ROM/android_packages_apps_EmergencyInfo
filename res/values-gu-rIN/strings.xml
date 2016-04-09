@@ -60,32 +60,22 @@
     <!-- no translation found for blood_type_content_description:7 (6751057832905330075) -->
     <!-- no translation found for blood_type_content_description:8 (3886106257727561539) -->
     <!-- no translation found for blood_type_content_description:9 (1362921785855892976) -->
-    <!-- no translation found for o_positive (5944181307873488422) -->
-    <skip />
-    <!-- no translation found for o_negative (5261178297066132923) -->
-    <skip />
-    <!-- no translation found for a_positive (160635169929713435) -->
-    <skip />
-    <!-- no translation found for a_negative (6680390511183224469) -->
-    <skip />
-    <!-- no translation found for b_positive (8225619238000785345) -->
-    <skip />
-    <!-- no translation found for b_negative (4110646487598488955) -->
-    <skip />
-    <!-- no translation found for ab_positive (1931300033534642005) -->
-    <skip />
-    <!-- no translation found for ab_negative (2064555613093591729) -->
-    <skip />
-    <!-- no translation found for h_h (2183333409760379720) -->
-    <skip />
+    <string name="o_positive" msgid="5944181307873488422">"O પૉઝિટિવ"</string>
+    <string name="o_negative" msgid="5261178297066132923">"O નેગેટિવ"</string>
+    <string name="a_positive" msgid="160635169929713435">"A, પૉઝિટિવ"</string>
+    <string name="a_negative" msgid="6680390511183224469">"A, નેગેટિવ"</string>
+    <string name="b_positive" msgid="8225619238000785345">"B પૉઝિટિવ"</string>
+    <string name="b_negative" msgid="4110646487598488955">"B નેગેટિવ"</string>
+    <string name="ab_positive" msgid="1931300033534642005">"A B પૉઝિટિવ"</string>
+    <string name="ab_negative" msgid="2064555613093591729">"A B નેગેટિવ"</string>
+    <string name="h_h" msgid="2183333409760379720">"H H"</string>
     <string name="allergies" msgid="2789200777539258165">"એલર્જીસ"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"અજાણી"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"ઉદાહરણ તરીકે, મગફળી"</string>
     <string name="medications" msgid="644428945685557183">"દવાઓ"</string>
     <string name="unknown_medications" msgid="2764171064510423734">"અજાણી"</string>
     <string name="medications_hint" msgid="3221620025945593723">"ઉદાહરણ તરીકે, એસ્પિરિન"</string>
-    <!-- no translation found for medical_conditions (3555690011498283592) -->
-    <skip />
+    <string name="medical_conditions" msgid="3555690011498283592">"તબીબી નોધો"</string>
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"અજાણી"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"ઉદાહરણ તરીકે, અસ્થમા"</string>
     <string name="organ_donor" msgid="5953509460007124827">"અંગ દાતા"</string>
@@ -96,8 +86,7 @@
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
     <string name="emergency_contacts_title" msgid="5462202017417821030">"કટોકટીના સંપર્કો"</string>
-    <!-- no translation found for add_emergency_contact (4063577069613981029) -->
-    <skip />
+    <string name="add_emergency_contact" msgid="4063577069613981029">"સંપર્ક ઉમેરો"</string>
     <string name="remove_contact" msgid="6934983445723096759">"<xliff:g id="CONTACT_NAME">%1$s</xliff:g> ને કટોકટીના સંપર્કોમાંથી દૂર કરીએ?"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"સંપર્ક દૂર કરો"</string>
     <string name="remove" msgid="1243949503772376064">"દૂર કરો"</string>

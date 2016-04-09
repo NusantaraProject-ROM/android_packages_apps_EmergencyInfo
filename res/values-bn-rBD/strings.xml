@@ -60,32 +60,22 @@
     <!-- no translation found for blood_type_content_description:7 (6751057832905330075) -->
     <!-- no translation found for blood_type_content_description:8 (3886106257727561539) -->
     <!-- no translation found for blood_type_content_description:9 (1362921785855892976) -->
-    <!-- no translation found for o_positive (5944181307873488422) -->
-    <skip />
-    <!-- no translation found for o_negative (5261178297066132923) -->
-    <skip />
-    <!-- no translation found for a_positive (160635169929713435) -->
-    <skip />
-    <!-- no translation found for a_negative (6680390511183224469) -->
-    <skip />
-    <!-- no translation found for b_positive (8225619238000785345) -->
-    <skip />
-    <!-- no translation found for b_negative (4110646487598488955) -->
-    <skip />
-    <!-- no translation found for ab_positive (1931300033534642005) -->
-    <skip />
-    <!-- no translation found for ab_negative (2064555613093591729) -->
-    <skip />
-    <!-- no translation found for h_h (2183333409760379720) -->
-    <skip />
+    <string name="o_positive" msgid="5944181307873488422">"ও পজিটিভ"</string>
+    <string name="o_negative" msgid="5261178297066132923">"ও নেগেটিভ"</string>
+    <string name="a_positive" msgid="160635169929713435">"এ পজিটিভ"</string>
+    <string name="a_negative" msgid="6680390511183224469">"এ, নেগেটিভ"</string>
+    <string name="b_positive" msgid="8225619238000785345">"বি পজেটিভ"</string>
+    <string name="b_negative" msgid="4110646487598488955">"বি নেগেটিভ"</string>
+    <string name="ab_positive" msgid="1931300033534642005">"এ বি পজেটিভ"</string>
+    <string name="ab_negative" msgid="2064555613093591729">"এ বি নেগেটিভ"</string>
+    <string name="h_h" msgid="2183333409760379720">"এইচ এইচ"</string>
     <string name="allergies" msgid="2789200777539258165">"এলার্জি"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"অজানা"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"যেমন, চীনাবাদাম"</string>
     <string name="medications" msgid="644428945685557183">"ঔষধ"</string>
     <string name="unknown_medications" msgid="2764171064510423734">"অজানা"</string>
     <string name="medications_hint" msgid="3221620025945593723">"যেমন, অ্যাসপিরিন"</string>
-    <!-- no translation found for medical_conditions (3555690011498283592) -->
-    <skip />
+    <string name="medical_conditions" msgid="3555690011498283592">"মেডিকেল নোটগুলি"</string>
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"অজানা"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"যেমন, হাঁপানি"</string>
     <string name="organ_donor" msgid="5953509460007124827">"অঙ্গ দাতা"</string>
@@ -96,8 +86,7 @@
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
     <string name="emergency_contacts_title" msgid="5462202017417821030">"জরুরি পরিচিতিগুলি"</string>
-    <!-- no translation found for add_emergency_contact (4063577069613981029) -->
-    <skip />
+    <string name="add_emergency_contact" msgid="4063577069613981029">"পরিচিতি যোগ করুন"</string>
     <string name="remove_contact" msgid="6934983445723096759">"জরুরি পরিচিতিগুলি থেকে <xliff:g id="CONTACT_NAME">%1$s</xliff:g> কে সরাবেন?"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"পরিচিতি সরান"</string>
     <string name="remove" msgid="1243949503772376064">"সরান"</string>

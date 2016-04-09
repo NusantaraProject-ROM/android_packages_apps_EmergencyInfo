@@ -60,32 +60,22 @@
     <!-- no translation found for blood_type_content_description:7 (6751057832905330075) -->
     <!-- no translation found for blood_type_content_description:8 (3886106257727561539) -->
     <!-- no translation found for blood_type_content_description:9 (1362921785855892976) -->
-    <!-- no translation found for o_positive (5944181307873488422) -->
-    <skip />
-    <!-- no translation found for o_negative (5261178297066132923) -->
-    <skip />
-    <!-- no translation found for a_positive (160635169929713435) -->
-    <skip />
-    <!-- no translation found for a_negative (6680390511183224469) -->
-    <skip />
-    <!-- no translation found for b_positive (8225619238000785345) -->
-    <skip />
-    <!-- no translation found for b_negative (4110646487598488955) -->
-    <skip />
-    <!-- no translation found for ab_positive (1931300033534642005) -->
-    <skip />
-    <!-- no translation found for ab_negative (2064555613093591729) -->
-    <skip />
-    <!-- no translation found for h_h (2183333409760379720) -->
-    <skip />
+    <string name="o_positive" msgid="5944181307873488422">"O 양성"</string>
+    <string name="o_negative" msgid="5261178297066132923">"O 음성"</string>
+    <string name="a_positive" msgid="160635169929713435">"A, 양성"</string>
+    <string name="a_negative" msgid="6680390511183224469">"A, 음성"</string>
+    <string name="b_positive" msgid="8225619238000785345">"B 양성"</string>
+    <string name="b_negative" msgid="4110646487598488955">"B 음성"</string>
+    <string name="ab_positive" msgid="1931300033534642005">"A B 양성"</string>
+    <string name="ab_negative" msgid="2064555613093591729">"A B 음성"</string>
+    <string name="h_h" msgid="2183333409760379720">"H H"</string>
     <string name="allergies" msgid="2789200777539258165">"알레르기"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"알 수 없음"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"예를 들어 땅콩"</string>
     <string name="medications" msgid="644428945685557183">"약물"</string>
     <string name="unknown_medications" msgid="2764171064510423734">"알 수 없음"</string>
     <string name="medications_hint" msgid="3221620025945593723">"예를 들어 아스피린"</string>
-    <!-- no translation found for medical_conditions (3555690011498283592) -->
-    <skip />
+    <string name="medical_conditions" msgid="3555690011498283592">"의료 기록"</string>
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"알 수 없음"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"예를 들어 천식"</string>
     <string name="organ_donor" msgid="5953509460007124827">"장기 기증자"</string>
@@ -96,8 +86,7 @@
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
     <string name="emergency_contacts_title" msgid="5462202017417821030">"비상 연락처"</string>
-    <!-- no translation found for add_emergency_contact (4063577069613981029) -->
-    <skip />
+    <string name="add_emergency_contact" msgid="4063577069613981029">"연락처 추가"</string>
     <string name="remove_contact" msgid="6934983445723096759">"비상 연락처에서 <xliff:g id="CONTACT_NAME">%1$s</xliff:g>님을 삭제하시겠습니까?"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"연락처 삭제"</string>
     <string name="remove" msgid="1243949503772376064">"삭제"</string>
