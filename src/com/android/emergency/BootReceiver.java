@@ -16,13 +16,9 @@
 package com.android.emergency;
 
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 
-import com.android.emergency.edit.EditEmergencyInfoFragment;
-import com.android.emergency.view.ViewEmergencyContactsFragment;
 import com.android.emergency.view.ViewInfoActivity;
 
 /**
@@ -32,15 +28,8 @@ import com.android.emergency.view.ViewInfoActivity;
 public class BootReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        // Enable ViewInfoActivity if the user input some info. Otherwise, disable it.
-        PackageManager pm = context.getPackageManager();
-        if (ViewEmergencyContactsFragment.hasAtLeastOneEmergencyContact(context)
-                || EditEmergencyInfoFragment.hasAtLeastOnePreferenceSet(context)) {
-            pm.setComponentEnabledSetting(new ComponentName(context, ViewInfoActivity.class),
-                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
-        } else {
-            pm.setComponentEnabledSetting(new ComponentName(context, ViewInfoActivity.class),
-                    PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+        if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
+            PackageManagerUtils.disableViewInfoActivityIfNoInfoAvailable(context);
         }
     }
 }
