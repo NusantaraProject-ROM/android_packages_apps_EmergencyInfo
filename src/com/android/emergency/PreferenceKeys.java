@@ -50,7 +50,11 @@ public interface PreferenceKeys {
     /** Key to store and read the organ donor choice of the user. */
     public static final String KEY_ORGAN_DONOR = "organ_donor";
 
-    /** Keys for all editable emergency info preferences */
+    /**
+     * Keys for all editable emergency info preferences.
+     *
+     * <p>Note: Do not change the order of these keys, since the order is used to collect TRON stats
+     */
     public static final String[] KEYS_EDIT_EMERGENCY_INFO = {KEY_NAME, KEY_ADDRESS,
             KEY_DATE_OF_BIRTH, KEY_BLOOD_TYPE, KEY_ALLERGIES, KEY_MEDICATIONS,
             KEY_MEDICAL_CONDITIONS, KEY_ORGAN_DONOR};
