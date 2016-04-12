@@ -41,7 +41,9 @@ public class EditEmergencyInfoFragment extends PreferenceFragment {
 
         addPreferencesFromResource(R.xml.edit_emergency_info);
 
-        for (String preferenceKey : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
+        for (int i = 0; i < PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO.length; i++) {
+            final int index = i;
+            String preferenceKey = PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO[i];
             Preference preference = findPreference(preferenceKey);
             preference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
@@ -52,9 +54,12 @@ public class EditEmergencyInfoFragment extends PreferenceFragment {
                     } else {
                         notSet = BirthdayPreference.DEFAULT_UNSET_VALUE == ((Long) value);
                     }
-                    MetricsLogger.action(preference.getContext(),
+                    // 0 is the default subtype. In DP1 and DP2 we had no explicit subtype.
+                    // Start at 10 to differentiate between before and after.
+                    MetricsLogger.action(
+                            preference.getContext(),
                             MetricsEvent.ACTION_EDIT_EMERGENCY_INFO_FIELD,
-                            preference.getKey() + ":" + (notSet ? "0" : "1"));
+                            10 + index * 2 + (notSet ? 0 : 1));
                     return true;
                 }
             });
