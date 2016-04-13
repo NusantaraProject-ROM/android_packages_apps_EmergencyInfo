@@ -90,11 +90,24 @@ public class ViewInfoActivity extends EmergencyTabActivity {
     }
 
     private void loadProfileCard() {
+        // Name
         String name = mSharedPreferences.getString(PreferenceKeys.KEY_NAME, "");
-        long dateOfBirthTimeMillis = mSharedPreferences.getLong(PreferenceKeys.KEY_DATE_OF_BIRTH,
-                BirthdayPreference.DEFAULT_UNSET_VALUE);
         boolean nameEmpty = TextUtils.isEmpty(name);
+
+        // Date of birth
+        long dateOfBirthTimeMillis = BirthdayPreference.DEFAULT_UNSET_VALUE;
+        try {
+            dateOfBirthTimeMillis = mSharedPreferences.getLong(PreferenceKeys.KEY_DATE_OF_BIRTH,
+                    BirthdayPreference.DEFAULT_UNSET_VALUE);
+        } catch (ClassCastException e) {
+            // Protect against b/27946460: We used to store the date of birth as a string.
+            // If it is a string, ignore its value. If it is not a string it will throw
+            // a ClassCastException
+            mSharedPreferences.getString(PreferenceKeys.KEY_DATE_OF_BIRTH, "");
+        }
         boolean dateOfBirthNotSet = dateOfBirthTimeMillis == BirthdayPreference.DEFAULT_UNSET_VALUE;
+
+        // Load the cards
         if (nameEmpty && dateOfBirthNotSet) {
             mPersonalCard.setVisibility(View.GONE);
         } else {
