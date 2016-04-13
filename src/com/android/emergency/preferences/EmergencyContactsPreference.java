@@ -191,7 +191,7 @@ public class EmergencyContactsPreference extends PreferenceCategory
             String emergencyContactStrings = serialize(filteredEmergencyContacts);
             SharedPreferences sharedPreferences =
                     PreferenceManager.getDefaultSharedPreferences(context);
-            sharedPreferences.edit().putString(key, emergencyContactStrings).commit();
+            sharedPreferences.edit().putString(key, emergencyContactStrings).apply();
         }
         return filteredEmergencyContacts;
     }
