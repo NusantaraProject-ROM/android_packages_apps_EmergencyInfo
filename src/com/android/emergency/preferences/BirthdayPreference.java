@@ -27,6 +27,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.DatePicker;
 
+import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.ReloadablePreferenceInterface;
 import com.android.internal.annotations.VisibleForTesting;
@@ -206,6 +207,20 @@ public class BirthdayPreference extends Preference implements DatePickerDialog.O
         super.onRestoreInstanceState(myState.getSuperState());
         if (myState.isDialogShowing) {
             showDatePickerDialog(myState.dialogBundle);
+        }
+    }
+
+    @Override
+    protected long getPersistedLong(long defaultReturnValue) {
+        try {
+            return super.getPersistedLong(defaultReturnValue);
+        } catch (ClassCastException e) {
+            // Protect against b/27946460: We used to store the date of birth as a
+            // string. If it is a string, ignore its value. If it is not a string it will throw
+            // a ClassCastException
+            getPersistedString("");
+
+            return defaultReturnValue;
         }
     }
 
