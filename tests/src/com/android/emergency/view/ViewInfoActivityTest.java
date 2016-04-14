@@ -59,7 +59,6 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        enableActivity();
         mPersonalCard = (LinearLayout)  getActivity().findViewById(R.id.name_and_dob_linear_layout);
         mPersonalCardLargeItem = (TextView)  getActivity().findViewById(R.id.personal_card_large);
         mPersonalCardSmallItem = (TextView)  getActivity().findViewById(R.id.personal_card_small);
@@ -277,16 +276,5 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
             }
         });
         getInstrumentation().waitForIdleSync();
-    }
-
-    private void enableActivity() {
-        // This activity is disabled when no info is set by the EditInfoActivity. We enable it here
-        // for the tests.
-        PackageManager pm = getInstrumentation().getContext().getPackageManager();
-        final ComponentName mComponentName =
-                new ComponentName("com.android.emergency",
-                        "com.android.emergency.view.ViewInfoActivity");
-        pm.setComponentEnabledSetting(mComponentName,
-                PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
     }
 }
