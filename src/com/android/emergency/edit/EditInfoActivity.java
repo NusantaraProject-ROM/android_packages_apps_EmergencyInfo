@@ -32,7 +32,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.android.emergency.EmergencyTabActivity;
-import com.android.emergency.PackageManagerUtils;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.internal.logging.MetricsLogger;
@@ -77,12 +76,6 @@ public class EditInfoActivity extends EmergencyTabActivity {
         if (nowMs - lastConsentTimeMs > ONE_DAY_MS || lastConsentTimeMs > nowMs) {
             showWarningDialog();
         }
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        PackageManagerUtils.disableViewInfoActivityIfNoInfoAvailable(this);
     }
 
     @Override

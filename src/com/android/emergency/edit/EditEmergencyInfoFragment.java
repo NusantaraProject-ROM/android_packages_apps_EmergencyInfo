@@ -74,23 +74,6 @@ public class EditEmergencyInfoFragment extends PreferenceFragment {
         }
     }
 
-    /** Returns true if there is at least one preference set. */
-    public static boolean hasAtLeastOnePreferenceSet(Context context) {
-        SharedPreferences sharedPreferences =
-                PreferenceManager.getDefaultSharedPreferences(context);
-        for (String key : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
-            if (key.equals(PreferenceKeys.KEY_DATE_OF_BIRTH)) {
-                if (sharedPreferences.getLong(key, BirthdayPreference.DEFAULT_UNSET_VALUE)
-                        != BirthdayPreference.DEFAULT_UNSET_VALUE) {
-                    return true;
-                }
-            } else if (!TextUtils.isEmpty(sharedPreferences.getString(key, ""))) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public void onResume() {
         super.onResume();
