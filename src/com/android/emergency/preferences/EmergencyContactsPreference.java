@@ -31,6 +31,7 @@ import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -166,6 +167,19 @@ public class EmergencyContactsPreference extends PreferenceCategory
 
     private List<Uri> getPersistedEmergencyContacts() {
         return deserializeAndFilter(getKey(), getContext(), getPersistedString(""));
+    }
+
+    @Override
+    protected String getPersistedString(String defaultReturnValue) {
+        try {
+            return super.getPersistedString(defaultReturnValue);
+        } catch (ClassCastException e) {
+            // Protect against b/28194605: We used to store the contacts using a string set.
+            // If it is a string set, ignore its value. If it is not a string set it will throw
+            // a ClassCastException
+            getPersistedStringSet(Collections.<String>emptySet());
+            return defaultReturnValue;
+        }
     }
 
     /**
