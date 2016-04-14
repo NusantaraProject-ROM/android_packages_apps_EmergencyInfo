@@ -18,7 +18,7 @@
         android:key="emergency_contacts"
         android:title="@string/emergency_contacts_title" />
     <Preference
-        android:icon="@drawable/ic_menu_add_dark"
+        android:icon="@drawable/ic_add_24dp"
         android:key="add_contact"
         android:persistent="false"
         android:title="@string/add_emergency_contact" />

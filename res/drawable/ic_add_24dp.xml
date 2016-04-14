@@ -13,19 +13,13 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
-    <ImageView
-        android:id="@+id/remove_dob"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:paddingStart="16dip"
-        android:paddingEnd="16dip"
-        android:src="@drawable/ic_clear_24dp"
-        android:contentDescription="@string/remove_dob_icon_text"
-        android:layout_gravity="center"
-        android:background="?android:attr/selectableItemBackground" />
-</LinearLayout>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24.0"
+    android:viewportHeight="24.0"
+    android:tint="#009688">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M19,13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+</vector>
