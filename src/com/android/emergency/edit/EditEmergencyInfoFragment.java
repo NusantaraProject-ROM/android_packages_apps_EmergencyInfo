@@ -52,7 +52,15 @@ public class EditEmergencyInfoFragment extends PreferenceFragment {
                     if (!preference.getKey().equals(PreferenceKeys.KEY_DATE_OF_BIRTH)) {
                         notSet = TextUtils.isEmpty((String) value);
                     } else {
-                        notSet = BirthdayPreference.DEFAULT_UNSET_VALUE == ((Long) value);
+                        if (value instanceof Long) {
+                            notSet = BirthdayPreference.DEFAULT_UNSET_VALUE == ((Long) value);
+                        } else {
+                            // Protect against b/27946460: We used to store the date of birth as a
+                            // string. If it is a string, ignore its value. If it is not a string
+                            // it will throw a ClassCastException
+                            String strValue = (String) value;
+                            notSet = true;
+                        }
                     }
                     // 0 is the default subtype. In DP1 and DP2 we had no explicit subtype.
                     // Start at 10 to differentiate between before and after.
