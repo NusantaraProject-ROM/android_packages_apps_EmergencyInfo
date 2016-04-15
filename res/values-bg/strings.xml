@@ -62,12 +62,12 @@
     <!-- no translation found for blood_type_content_description:9 (1362921785855892976) -->
     <string name="o_positive" msgid="5944181307873488422">"Нулева положителна"</string>
     <string name="o_negative" msgid="5261178297066132923">"Нулева отрицателна"</string>
-    <string name="a_positive" msgid="160635169929713435">"A, положителна"</string>
-    <string name="a_negative" msgid="6680390511183224469">"A, отрицателна"</string>
+    <string name="a_positive" msgid="160635169929713435">"A положителна"</string>
+    <string name="a_negative" msgid="6680390511183224469">"A отрицателна"</string>
     <string name="b_positive" msgid="8225619238000785345">"Б положителна"</string>
     <string name="b_negative" msgid="4110646487598488955">"Б отрицателна"</string>
-    <string name="ab_positive" msgid="1931300033534642005">"A Б положителна"</string>
-    <string name="ab_negative" msgid="2064555613093591729">"A Б отрицателна"</string>
+    <string name="ab_positive" msgid="1931300033534642005">"AБ положителна"</string>
+    <string name="ab_negative" msgid="2064555613093591729">"AБ отрицателна"</string>
     <string name="h_h" msgid="2183333409760379720">"Фенотип Бомбай"</string>
     <string name="allergies" msgid="2789200777539258165">"Алергии"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"Няма данни"</string>

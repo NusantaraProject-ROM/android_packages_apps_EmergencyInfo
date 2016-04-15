@@ -16,7 +16,7 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="1090682794607161063">"Informacje w nagłych wypadkach"</string>
+    <string name="app_label" msgid="1090682794607161063">"Informacje alarmowe"</string>
     <string name="edit_info" msgid="5973929805855224805">"Edytuj informacje alarmowe"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"Informacje"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"Kontakty"</string>
