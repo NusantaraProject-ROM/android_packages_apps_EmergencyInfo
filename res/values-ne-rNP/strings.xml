@@ -86,7 +86,7 @@
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
     <string name="emergency_contacts_title" msgid="5462202017417821030">"आपतकालीन सम्पर्कहरू"</string>
-    <string name="add_emergency_contact" msgid="4063577069613981029">"सम्पर्क थप्नुहोस्"</string>
+    <string name="add_emergency_contact" msgid="4063577069613981029">"सम्पर्कलाई थप्नुहोस्"</string>
     <string name="remove_contact" msgid="6934983445723096759">"<xliff:g id="CONTACT_NAME">%1$s</xliff:g> लाई आपतकालीन सम्पर्कहरूबाट हटाउने हो?"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"सम्पर्कलाई हटाउनुहोस्"</string>
     <string name="remove" msgid="1243949503772376064">"हटाउनुहोस्"</string>
