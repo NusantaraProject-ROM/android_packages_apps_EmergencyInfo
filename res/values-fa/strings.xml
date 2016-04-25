@@ -39,7 +39,7 @@
     <string name="bminus" msgid="3813367242072886088">"B-‎"</string>
     <string name="abplus" msgid="8061792867513932701">"AB+‎"</string>
     <string name="abminus" msgid="2510867828094325481">"AB-‎"</string>
-    <string name="hh" msgid="3071675674015857183">"ساعت/ساعت"</string>
+    <string name="hh" msgid="3071675674015857183">"بمبئی"</string>
     <!-- no translation found for blood_type_entries:0 (5051829403671092348) -->
     <!-- no translation found for blood_type_entries:1 (5289547171251363498) -->
     <!-- no translation found for blood_type_entries:2 (1998151664134824279) -->
@@ -68,7 +68,7 @@
     <string name="b_negative" msgid="4110646487598488955">"‏B منفی"</string>
     <string name="ab_positive" msgid="1931300033534642005">"‏A B مثبت"</string>
     <string name="ab_negative" msgid="2064555613093591729">"‏A B منفی"</string>
-    <string name="h_h" msgid="2183333409760379720">"H H"</string>
+    <string name="h_h" msgid="2183333409760379720">"بمبئی"</string>
     <string name="allergies" msgid="2789200777539258165">"حساسیت‌ها"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"نامشخص"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"مثلاً بادام زمینی"</string>
