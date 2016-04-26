@@ -21,9 +21,10 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.content.ComponentName;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Pair;
@@ -34,6 +35,7 @@ import android.view.MenuItem;
 import com.android.emergency.EmergencyTabActivity;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
+import com.android.emergency.view.ViewInfoActivity;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -53,8 +55,14 @@ public class EditInfoActivity extends EmergencyTabActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.edit_activity_layout);
+        // Protect against b/28401242 by enabling ViewInfoActivity.
+        // We used to have code that disabled/enabled it and it could have been left in disabled
+        // state.
+        PackageManager pm = getPackageManager();
+        pm.setComponentEnabledSetting(new ComponentName(this, ViewInfoActivity.class),
+                PackageManager.COMPONENT_ENABLED_STATE_DEFAULT, PackageManager.DONT_KILL_APP);
 
+        setContentView(R.layout.edit_activity_layout);
         if (ACTION_EDIT_EMERGENCY_CONTACTS.equals(getIntent().getAction())) {
             // Select emergency contacts tab
             selectTab(1);
