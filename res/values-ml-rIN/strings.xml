@@ -39,7 +39,7 @@
     <string name="bminus" msgid="3813367242072886088">"ബി-"</string>
     <string name="abplus" msgid="8061792867513932701">"എബി+"</string>
     <string name="abminus" msgid="2510867828094325481">"എബി-"</string>
-    <string name="hh" msgid="3071675674015857183">"എച്ച്/എച്ച്"</string>
+    <string name="hh" msgid="3071675674015857183">"H/H"</string>
     <!-- no translation found for blood_type_entries:0 (5051829403671092348) -->
     <!-- no translation found for blood_type_entries:1 (5289547171251363498) -->
     <!-- no translation found for blood_type_entries:2 (1998151664134824279) -->
@@ -68,7 +68,7 @@
     <string name="b_negative" msgid="4110646487598488955">"ബി നെഗറ്റീവ്"</string>
     <string name="ab_positive" msgid="1931300033534642005">"എ ബി പോസിറ്റീവ്"</string>
     <string name="ab_negative" msgid="2064555613093591729">"എ ബി നെഗറ്റീവ്"</string>
-    <string name="h_h" msgid="2183333409760379720">"എച്ച് എച്ച്"</string>
+    <string name="h_h" msgid="2183333409760379720">"H H"</string>
     <string name="allergies" msgid="2789200777539258165">"അലർജികൾ"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"അറിയപ്പെടാത്തത്"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"ഉദാഹരണത്തിന്, നിലക്കടല"</string>
