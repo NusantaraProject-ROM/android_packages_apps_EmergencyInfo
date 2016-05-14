@@ -27,6 +27,8 @@ import android.os.Parcelable;
 import android.preference.Preference;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.BidiFormatter;
+import android.text.TextDirectionHeuristics;
 import android.view.View;
 
 import com.android.emergency.EmergencyContactManager;
@@ -85,7 +87,8 @@ public class ContactPreference extends Preference {
                 String.format(
                         getContext().getResources().getString(R.string.phone_type_and_phone_number),
                         mContact.getPhoneType(),
-                        mContact.getPhoneNumber());
+                        BidiFormatter.getInstance().unicodeWrap(mContact.getPhoneNumber(),
+                                TextDirectionHeuristics.LTR));
         setSummary(summary);
 
         // Update the message to show the correct name.
