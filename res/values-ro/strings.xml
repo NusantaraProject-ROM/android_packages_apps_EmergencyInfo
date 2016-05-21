@@ -19,10 +19,10 @@
     <string name="app_label" msgid="1090682794607161063">"Informații în caz de urgență"</string>
     <string name="edit_info" msgid="5973929805855224805">"Editați informațiile afișate în caz de urgență"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"Informații"</string>
-    <string name="tab_title_contacts" msgid="4298341166404791209">"Agendă"</string>
+    <string name="tab_title_contacts" msgid="4298341166404791209">"Persoane"</string>
     <string name="name" msgid="4286267457738861977">"Nume"</string>
     <string name="unknown_name" msgid="2834802479170495056">"Necunoscut"</string>
-    <string name="address" msgid="6449303483151189969">"Formulă de adresare"</string>
+    <string name="address" msgid="6449303483151189969">"Adresă"</string>
     <string name="unknown_address" msgid="4212576729941786121">"Necunoscută"</string>
     <string name="date_of_birth" msgid="777979232444227891">"Data nașterii"</string>
     <string name="unknown_date_of_birth" msgid="7416355536916066758">"Necunoscută"</string>
@@ -79,7 +79,7 @@
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"Necunoscute"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"De exemplu, astm"</string>
     <string name="organ_donor" msgid="5953509460007124827">"Donator de organe"</string>
-    <string name="unknown_organ_donor" msgid="2780515342875494225">"Necunoscută"</string>
+    <string name="unknown_organ_donor" msgid="2780515342875494225">"Necunoscut"</string>
     <string name="yes" msgid="5829765567799916128">"Da"</string>
     <string name="no" msgid="1681689233660683509">"Nu"</string>
     <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->
@@ -94,7 +94,7 @@
     <string name="ok" msgid="163967937451981024">"OK"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"Informații în caz de urgență"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Informațiile pe care le introduceți aici pot fi utile pentru primele persoane care răspund într-o situație de urgență. Sunt stocate doar pe dispozitiv, dar oricine le poate citi din tastatura numerică de urgență, fără să deblocheze telefonul."</string>
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Informațiile introduse aici pot fi utile celor care acordă primul ajutor într-o situație de urgență. Sunt stocate doar pe dispozitiv și oricine le poate citi din tastatura numerică de urgență, fără să deblocheze telefonul."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"Continuați"</string>
     <string name="no_info_provided" msgid="6775035037534954056">"Nu s-au specificat informații în caz de urgență"</string>
     <string name="clear_all" msgid="8899013032870561633">"Ștergeți tot"</string>

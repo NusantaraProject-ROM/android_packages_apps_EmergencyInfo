@@ -17,7 +17,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_label" msgid="1090682794607161063">"Informazioni per le emergenze"</string>
-    <string name="edit_info" msgid="5973929805855224805">"Modifica informazioni relative all\'emergenza"</string>
+    <string name="edit_info" msgid="5973929805855224805">"Modifica informazioni per le emergenze"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"Informazioni"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"Contatti"</string>
     <string name="name" msgid="4286267457738861977">"Nome"</string>
@@ -73,13 +73,13 @@
     <string name="unknown_allergies" msgid="4383115953418061237">"Sconosciute"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"Ad esempio, agli arachidi"</string>
     <string name="medications" msgid="644428945685557183">"Farmaci"</string>
-    <string name="unknown_medications" msgid="2764171064510423734">"Sconosciute"</string>
+    <string name="unknown_medications" msgid="2764171064510423734">"Sconosciuti"</string>
     <string name="medications_hint" msgid="3221620025945593723">"Ad esempio, aspirina"</string>
     <string name="medical_conditions" msgid="3555690011498283592">"Note mediche"</string>
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"Sconosciute"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"Ad esempio, asma"</string>
     <string name="organ_donor" msgid="5953509460007124827">"Donatore di organi"</string>
-    <string name="unknown_organ_donor" msgid="2780515342875494225">"Sconosciuta"</string>
+    <string name="unknown_organ_donor" msgid="2780515342875494225">"Sconosciuto"</string>
     <string name="yes" msgid="5829765567799916128">"Sì"</string>
     <string name="no" msgid="1681689233660683509">"No"</string>
     <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->
@@ -93,7 +93,7 @@
     <string name="cancel" msgid="7401575239009060939">"Annulla"</string>
     <string name="ok" msgid="163967937451981024">"OK"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="user_emergency_info_title" msgid="7827058167207376581">"Informazioni relative all\'emergenza"</string>
+    <string name="user_emergency_info_title" msgid="7827058167207376581">"Informazioni per le emergenze"</string>
     <string name="user_emergency_info_consent" msgid="5636028073450797246">"Le informazioni inserite qui possono essere d\'aiuto ai primi soccorritori in caso di emergenza. Vengono memorizzate soltanto sul dispositivo e chiunque può leggerle durante la chiamata di emergenza senza sbloccare il telefono."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"Continua"</string>
     <string name="no_info_provided" msgid="6775035037534954056">"Nessuna informazione fornita per le emergenze"</string>

@@ -71,13 +71,13 @@
     <string name="h_h" msgid="2183333409760379720">"HH"</string>
     <string name="allergies" msgid="2789200777539258165">"Alergie"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"Neznáme"</string>
-    <string name="allergies_hint" msgid="5488918780522184147">"Príklad: arašidy"</string>
+    <string name="allergies_hint" msgid="5488918780522184147">"Napr. arašidy"</string>
     <string name="medications" msgid="644428945685557183">"Lieky"</string>
     <string name="unknown_medications" msgid="2764171064510423734">"Neznáme"</string>
-    <string name="medications_hint" msgid="3221620025945593723">"Príklad: aspirín"</string>
-    <string name="medical_conditions" msgid="3555690011498283592">"Poznámky od lekára"</string>
+    <string name="medications_hint" msgid="3221620025945593723">"Napr. aspirín"</string>
+    <string name="medical_conditions" msgid="3555690011498283592">"Lekárske poznámky"</string>
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"Neznáme"</string>
-    <string name="medical_conditions_hint" msgid="6959152183029062882">"Príklad: astma"</string>
+    <string name="medical_conditions_hint" msgid="6959152183029062882">"Napr. astma"</string>
     <string name="organ_donor" msgid="5953509460007124827">"Darca orgánov"</string>
     <string name="unknown_organ_donor" msgid="2780515342875494225">"Neznáme"</string>
     <string name="yes" msgid="5829765567799916128">"Áno"</string>
@@ -94,7 +94,7 @@
     <string name="ok" msgid="163967937451981024">"OK"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"Núdzové informácie"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Informácie uvedené na tomto mieste môžu pomôcť osobám, ktoré vám ako prvé prídu pomôcť v tiesňovej situácii. Sú uložené iba na zariadení, ale prečítať si ich môže ktokoľvek na obrazovke tiesňového vytáčania bez nutnosti odomknúť telefón."</string>
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Tu uvedené informácie pomôžu záchranárom, ak sa ocitnete v núdzovej situácii. Sú uložené iba na zariadení. Ktokoľvek si ich môže prečítať na obrazovke tiesňového vytáčania bez nutnosti odomknúť telefón."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"Pokračovať"</string>
     <string name="no_info_provided" msgid="6775035037534954056">"Neposkytli ste žiadne informácie pre prípad núdze"</string>
     <string name="clear_all" msgid="8899013032870561633">"Vymazať všetko"</string>

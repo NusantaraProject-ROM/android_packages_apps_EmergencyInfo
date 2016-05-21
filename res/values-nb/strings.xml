@@ -99,5 +99,5 @@
     <string name="no_info_provided" msgid="6775035037534954056">"Informasjon for nødstilfeller er ikke oppgitt"</string>
     <string name="clear_all" msgid="8899013032870561633">"Fjern alt"</string>
     <string name="clear" msgid="3648880442502887163">"Fjern"</string>
-    <string name="clear_all_message" msgid="1548432000373861295">"Vil du fjerne all informasjonen og alle kontaktene?"</string>
+    <string name="clear_all_message" msgid="1548432000373861295">"Vil du fjerne alle opplysningene og kontaktene?"</string>
 </resources>
