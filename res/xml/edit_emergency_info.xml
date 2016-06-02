@@ -46,6 +46,7 @@
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:capitalize="sentences"
         android:hint="@string/allergies_hint"
+        android:textColorHint="@color/hint_text_color"
         android:icon="@drawable/ic_allergies_black_24dp"
         android:inputType="textMultiLine"
         android:key="allergies"
@@ -56,6 +57,7 @@
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:capitalize="sentences"
         android:hint="@string/medications_hint"
+        android:textColorHint="@color/hint_text_color"
         android:icon="@drawable/ic_medication_24dp"
         android:inputType="textMultiLine"
         android:key="medications"
@@ -77,6 +79,7 @@
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:capitalize="sentences"
         android:hint="@string/medical_conditions_hint"
+        android:textColorHint="@color/hint_text_color"
         android:icon="@drawable/ic_notes_black_24dp"
         android:inputType="textMultiLine"
         android:key="medical_conditions"
