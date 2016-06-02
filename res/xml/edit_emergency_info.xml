@@ -22,12 +22,6 @@
         android:summary="@string/unknown_name"
         android:title="@string/name" />
 
-    <com.android.emergency.preferences.BirthdayPreference
-        android:icon="@drawable/ic_cake_black_24dp"
-        android:key="date_of_birth"
-        android:summary="@string/unknown_date_of_birth"
-        android:title="@string/date_of_birth" />
-
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:icon="@drawable/ic_address_black_24dp"
         android:inputType="textCapWords|textPostalAddress|textMultiLine"

@@ -29,7 +29,6 @@ import android.util.Pair;
 import com.android.emergency.ContactTestUtils;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
-import com.android.emergency.preferences.BirthdayPreference;
 import com.android.emergency.preferences.EmergencyContactsPreference;
 import com.android.emergency.preferences.EmergencyEditTextPreference;
 import com.android.emergency.preferences.EmergencyListPreference;
@@ -90,9 +89,6 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         final NameAutoCompletePreference namePreference =
                 (NameAutoCompletePreference) mEditEmergencyInfoFragment
                         .findPreference(PreferenceKeys.KEY_NAME);
-        final BirthdayPreference dateOfBirthPreference =
-                (BirthdayPreference) mEditEmergencyInfoFragment
-                        .findPreference(PreferenceKeys.KEY_DATE_OF_BIRTH);
         final EmergencyEditTextPreference addressPreference =
                 (EmergencyEditTextPreference) mEditEmergencyInfoFragment
                         .findPreference(PreferenceKeys.KEY_ADDRESS);
@@ -124,7 +120,6 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
             @Override
             public void run() {
                 namePreference.setText("John");
-                dateOfBirthPreference.setDateOfBirth(123456L);
                 addressPreference.setText("Home");
                 bloodTypePreference.setValue("A+");
                 allergiesPreference.setText("Peanuts");
@@ -136,8 +131,6 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         });
 
         String unknownName = editInfoActivity.getResources().getString(R.string.unknown_name);
-        String unknownDateOfBirth =
-                editInfoActivity.getResources().getString(R.string.unknown_date_of_birth);
         String unknownAddress = getActivity().getResources().getString(R.string.unknown_address);
         String unknownBloodType =
                 editInfoActivity.getResources().getString(R.string.unknown_blood_type);
@@ -151,7 +144,6 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
                 editInfoActivity.getResources().getString(R.string.unknown_organ_donor);
 
         assertNotSame(unknownName, namePreference.getSummary());
-        assertNotSame(unknownDateOfBirth, dateOfBirthPreference.getSummary());
         assertNotSame(unknownAddress, addressPreference.getSummary());
         assertNotSame(unknownBloodType, bloodTypePreference.getSummary());
         assertNotSame(unknownAllergies, allergiesPreference.getSummary());
@@ -186,7 +178,6 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         getInstrumentation().waitForIdleSync();
 
         assertEquals(unknownName, namePreference.getSummary());
-        assertEquals(unknownDateOfBirth, dateOfBirthPreference.getSummary());
         assertEquals(unknownAddress, addressPreference.getSummary());
         assertEquals(unknownBloodType, bloodTypePreference.getSummary().toString());
         assertEquals(unknownAllergies, allergiesPreference.getSummary());
