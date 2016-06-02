@@ -47,7 +47,6 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
     private ArrayList<Pair<String, Fragment>> mFragments;
     private LinearLayout mPersonalCard;
     private TextView mPersonalCardLargeItem;
-    private TextView mPersonalCardSmallItem;
     private ViewFlipper mViewFlipper;
     private int mNoInfoIndex;
     private int mTabsIndex;
@@ -61,7 +60,6 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
         super.setUp();
         mPersonalCard = (LinearLayout)  getActivity().findViewById(R.id.name_and_dob_linear_layout);
         mPersonalCardLargeItem = (TextView)  getActivity().findViewById(R.id.personal_card_large);
-        mPersonalCardSmallItem = (TextView)  getActivity().findViewById(R.id.personal_card_small);
         mViewFlipper = (ViewFlipper)  getActivity().findViewById(R.id.view_flipper);
         mNoInfoIndex = mViewFlipper
                 .indexOfChild(getActivity().findViewById(R.id.no_info_text_view));
@@ -104,24 +102,6 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
         assertEquals(mNoInfoIndex, mViewFlipper.getDisplayedChild());
         assertEquals(View.VISIBLE, mPersonalCardLargeItem.getVisibility());
         assertEquals(name, mPersonalCardLargeItem.getText());
-        assertEquals(View.GONE, mPersonalCardSmallItem.getVisibility());
-    }
-
-    public void testDateOfBirthSet() throws Throwable {
-        onPause();
-
-        final long dateOfBirth = 537148800000L;
-        PreferenceManager.getDefaultSharedPreferences(getActivity())
-                .edit().putLong(PreferenceKeys.KEY_DATE_OF_BIRTH, dateOfBirth).commit();
-
-        onResume();
-
-        mFragments = getActivity().getFragments();
-        assertEquals(0, mFragments.size());
-        assertEquals(View.GONE, getActivity().getTabLayout().getVisibility());
-        assertEquals(mNoInfoIndex, mViewFlipper.getDisplayedChild());
-        assertEquals(View.VISIBLE, mPersonalCardLargeItem.getVisibility());
-        assertEquals(View.VISIBLE, mPersonalCardSmallItem.getVisibility());
     }
 
     public void testEmergencyInfoSet() throws Throwable {
@@ -193,35 +173,6 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
 
         assertTrue(ContactTestUtils.deleteContact(getActivity().getContentResolver(),
                 "John", "123"));
-    }
-
-    public void testComputeAge() {
-        Calendar today = Calendar.getInstance();
-        Calendar dateOfBirth = Calendar.getInstance();
-
-        today.set(2016, 1, 9);
-        dateOfBirth.set(1987, 1, 9);
-        assertEquals(29, ViewInfoActivity.computeAge(today, dateOfBirth));
-
-        // One day before birthday
-        today.set(2016, 1, 8);
-        dateOfBirth.set(1987, 1, 9);
-        assertEquals(28, ViewInfoActivity.computeAge(today, dateOfBirth));
-
-        // One month before birthday
-        today.set(2016, 0, 9);
-        dateOfBirth.set(1987, 1, 9);
-        assertEquals(28, ViewInfoActivity.computeAge(today, dateOfBirth));
-
-        // Today is same day as birthday
-        today.set(2016, 1, 9);
-        dateOfBirth.set(2016, 1, 9);
-        assertEquals(0, ViewInfoActivity.computeAge(today, dateOfBirth));
-
-        // Today is before birthday
-        today.set(2013, 4, 17);
-        dateOfBirth.set(2016, 1, 9);
-        assertEquals(0, ViewInfoActivity.computeAge(today, dateOfBirth));
     }
 
     public void testCanGoToEditInfoActivityFromMenu() {
