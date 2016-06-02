@@ -21,10 +21,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -39,28 +36,20 @@ import com.android.emergency.EmergencyTabActivity;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.edit.EditInfoActivity;
-import com.android.emergency.preferences.BirthdayPreference;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
 
 /**
  * Activity for viewing emergency information.
  */
 public class ViewInfoActivity extends EmergencyTabActivity {
     private TextView mPersonalCardLargeItem;
-    private TextView mPersonalCardSmallItem;
     private SharedPreferences mSharedPreferences;
     private LinearLayout mPersonalCard;
     private ViewFlipper mViewFlipper;
 
-    private static final TimeZone UTC_TIME_ZONE = TimeZone.getTimeZone("UTC");
-    private DateFormat mDateFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,11 +59,7 @@ public class ViewInfoActivity extends EmergencyTabActivity {
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mPersonalCard = (LinearLayout) findViewById(R.id.name_and_dob_linear_layout);
         mPersonalCardLargeItem = (TextView) findViewById(R.id.personal_card_large);
-        mPersonalCardSmallItem = (TextView) findViewById(R.id.personal_card_small);
         mViewFlipper = (ViewFlipper) findViewById(R.id.view_flipper);
-
-        mDateFormat = DateFormat.getDateInstance();
-        mDateFormat.setTimeZone(UTC_TIME_ZONE);
 
         MetricsLogger.visible(this, MetricsEvent.ACTION_VIEW_EMERGENCY_INFO);
     }
@@ -82,60 +67,20 @@ public class ViewInfoActivity extends EmergencyTabActivity {
     @Override
     public void onResume() {
         super.onResume();
-        loadProfileCard();
+        loadName();
         // Update the tabs: new info might have been added/deleted from the edit screen that
         // could lead to adding/removing a fragment
         setupTabs();
         maybeHideTabs();
     }
 
-    private void loadProfileCard() {
-        // Name
+    private void loadName() {
         String name = mSharedPreferences.getString(PreferenceKeys.KEY_NAME, "");
-        boolean nameEmpty = TextUtils.isEmpty(name);
-
-        // Date of birth
-        long dateOfBirthTimeMillis = BirthdayPreference.DEFAULT_UNSET_VALUE;
-        try {
-            dateOfBirthTimeMillis = mSharedPreferences.getLong(PreferenceKeys.KEY_DATE_OF_BIRTH,
-                    BirthdayPreference.DEFAULT_UNSET_VALUE);
-        } catch (ClassCastException e) {
-            // Protect against b/27946460: We used to store the date of birth as a string.
-            // If it is a string, ignore its value. If it is not a string it will throw
-            // a ClassCastException
-            mSharedPreferences.getString(PreferenceKeys.KEY_DATE_OF_BIRTH, "");
-        }
-        boolean dateOfBirthNotSet = dateOfBirthTimeMillis == BirthdayPreference.DEFAULT_UNSET_VALUE;
-
-        // Load the cards
-        if (nameEmpty && dateOfBirthNotSet) {
+        if (TextUtils.isEmpty(name)) {
             mPersonalCard.setVisibility(View.GONE);
         } else {
             mPersonalCard.setVisibility(View.VISIBLE);
-            if (!dateOfBirthNotSet) {
-                mPersonalCardSmallItem.setVisibility(View.VISIBLE);
-                int age = computeAge(dateOfBirthTimeMillis);
-                String localizedDob = String.format(getString(R.string.dob),
-                        mDateFormat.format(new Date(dateOfBirthTimeMillis)));
-                Spannable spannableDob = new SpannableString(localizedDob);
-                spannableDob.setSpan(new ForegroundColorSpan(
-                                getResources().getColor(R.color.white_with_alpha)), 0,
-                        localizedDob.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                if (nameEmpty) {
-                    // Display date of birth info in two lines: age and then date of birth
-                    mPersonalCardLargeItem.setText(String.format(getString(R.string.age), age));
-                    mPersonalCardSmallItem.setText(spannableDob);
-                } else {
-                    mPersonalCardLargeItem.setText(name);
-                    mPersonalCardSmallItem.setText(String.format(getString(R.string.age), age));
-                    mPersonalCardSmallItem.append(" ");
-                    mPersonalCardSmallItem.append(spannableDob);
-                }
-            } else {
-                mPersonalCardSmallItem.setVisibility(View.GONE);
-                mPersonalCardLargeItem.setText(name);
-                mPersonalCardSmallItem.setText("");
-            }
+            mPersonalCardLargeItem.setText(name);
         }
     }
 
@@ -154,25 +99,6 @@ public class ViewInfoActivity extends EmergencyTabActivity {
         } else {
             tabLayout.setVisibility(View.VISIBLE);
         }
-    }
-
-    private static int computeAge(long dateOfBirthTimeMillis) {
-        Calendar today = Calendar.getInstance(UTC_TIME_ZONE);
-        Calendar dateOfBirthCalendar = Calendar.getInstance(UTC_TIME_ZONE);
-        dateOfBirthCalendar.setTimeInMillis(dateOfBirthTimeMillis);
-        return computeAge(today, dateOfBirthCalendar);
-    }
-
-    static int computeAge(Calendar today, Calendar dateOfBirthCalendar) {
-        int age = today.get(Calendar.YEAR) - dateOfBirthCalendar.get(Calendar.YEAR);
-        if (today.get(Calendar.MONTH) < dateOfBirthCalendar.get(Calendar.MONTH) ||
-                (today.get(Calendar.MONTH) == dateOfBirthCalendar.get(Calendar.MONTH) &&
-                        today.get(Calendar.DAY_OF_MONTH) <
-                                dateOfBirthCalendar.get(Calendar.DAY_OF_MONTH))) {
-            age--;
-        }
-        // Return 0 if the user specifies a date of birth in the future.
-        return Math.max(0, age);
     }
 
     @Override

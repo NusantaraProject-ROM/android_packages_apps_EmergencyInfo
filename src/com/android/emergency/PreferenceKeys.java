@@ -29,9 +29,6 @@ public interface PreferenceKeys {
     /** Key to store and read the name of the user. */
     public static final String KEY_NAME = "name";
 
-    /** Key to store and read the date of birth of the user. */
-    public static final String KEY_DATE_OF_BIRTH = "date_of_birth";
-
     /** Key to store and read the address of the user. */
     public static final String KEY_ADDRESS = "address";
 
@@ -56,7 +53,7 @@ public interface PreferenceKeys {
      * <p>Note: Do not change the order of these keys, since the order is used to collect TRON stats
      */
     public static final String[] KEYS_EDIT_EMERGENCY_INFO = {KEY_NAME, KEY_ADDRESS,
-            KEY_DATE_OF_BIRTH, KEY_BLOOD_TYPE, KEY_ALLERGIES, KEY_MEDICATIONS,
+            KEY_BLOOD_TYPE, KEY_ALLERGIES, KEY_MEDICATIONS,
             KEY_MEDICAL_CONDITIONS, KEY_ORGAN_DONOR};
 
     /** Keys for all viewable emergency info preferences */

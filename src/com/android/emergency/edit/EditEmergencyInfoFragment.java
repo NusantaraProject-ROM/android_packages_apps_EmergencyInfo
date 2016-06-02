@@ -16,18 +16,14 @@
 package com.android.emergency.edit;
 
 import android.app.Fragment;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.ReloadablePreferenceInterface;
-import com.android.emergency.preferences.BirthdayPreference;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 
@@ -48,26 +44,13 @@ public class EditEmergencyInfoFragment extends PreferenceFragment {
             preference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object value) {
-                    boolean notSet;
-                    if (!preference.getKey().equals(PreferenceKeys.KEY_DATE_OF_BIRTH)) {
-                        notSet = TextUtils.isEmpty((String) value);
-                    } else {
-                        if (value instanceof Long) {
-                            notSet = BirthdayPreference.DEFAULT_UNSET_VALUE == ((Long) value);
-                        } else {
-                            // Protect against b/27946460: We used to store the date of birth as a
-                            // string. If it is a string, ignore its value. If it is not a string
-                            // it will throw a ClassCastException
-                            String strValue = (String) value;
-                            notSet = true;
-                        }
-                    }
+                    boolean notSet = TextUtils.isEmpty((String) value);
                     // 0 is the default subtype. In DP1 and DP2 we had no explicit subtype.
-                    // Start at 10 to differentiate between before and after.
+                    // Start at 30 to differentiate between before and after.
                     MetricsLogger.action(
                             preference.getContext(),
                             MetricsEvent.ACTION_EDIT_EMERGENCY_INFO_FIELD,
-                            10 + index * 2 + (notSet ? 0 : 1));
+                            30 + index * 2 + (notSet ? 0 : 1));
                     return true;
                 }
             });
