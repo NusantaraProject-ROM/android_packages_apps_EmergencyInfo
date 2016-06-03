@@ -71,7 +71,7 @@
     <string name="h_h" msgid="2183333409760379720">"Hh"</string>
     <string name="allergies" msgid="2789200777539258165">"Alergias"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"Desconocidas"</string>
-    <string name="allergies_hint" msgid="5488918780522184147">"Por ejemplo, cacahuetes"</string>
+    <string name="allergies_hint" msgid="5488918780522184147">"Por ejemplo, nueces"</string>
     <string name="medications" msgid="644428945685557183">"Medicación"</string>
     <string name="unknown_medications" msgid="2764171064510423734">"Desconocida"</string>
     <string name="medications_hint" msgid="3221620025945593723">"Por ejemplo, aspirina"</string>

@@ -94,7 +94,7 @@
     <string name="ok" msgid="163967937451981024">"تأیید"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"اطلاعات اضطراری"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"اطلاعاتی که اینجا وارد می‌کنید می‌تواند در شرایط اضطراری به اولین افرادی که در صحنه حاضر می‌شوند راهنمایی کند. این اطلاعات فقط در دستگاهتان ذخیره می‌شوند، و همه می‌توانند بدون باز کردن قفل دستگاهتان، آن را از شماره‌گیر اضطراری بخوانند."</string>
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"اطلاعاتی که اینجا وارد می‌کنید می‌تواند در شرایط اضطراری به اولین افرادی که در صحنه حاضر می‌شوند راهنمایی کند. این اطلاعات فقط در دستگاهتان ذخیره می‌شود، و همه می‌توانند بدون باز کردن قفل دستگاهتان، آن را از شماره‌گیر اضطراری بخوانند."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"ادامه"</string>
     <string name="no_info_provided" msgid="6775035037534954056">"اطلاعات اضطراری ارائه نشده است"</string>
     <string name="clear_all" msgid="8899013032870561633">"پاک کردن همه"</string>

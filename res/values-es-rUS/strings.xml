@@ -94,7 +94,7 @@
     <string name="ok" msgid="163967937451981024">"Aceptar"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"Información de emergencia"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"La información que ingreses aquí puede ayudar a los rescatistas en caso de emergencia. Se almacena solo en tu dispositivo, pero cualquiera puede leerla desde el marcador de emergencia sin necesidad de desbloquear tu teléfono."</string>
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"La información que ingreses aquí puede ayudar a los rescatistas en caso de emergencia. Se almacena solo en tu dispositivo, y cualquiera puede leerla desde el marcador de emergencia sin necesidad de desbloquear el teléfono."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"Continuar"</string>
     <string name="no_info_provided" msgid="6775035037534954056">"No se proporcionó información de emergencia"</string>
     <string name="clear_all" msgid="8899013032870561633">"Borrar todo"</string>
