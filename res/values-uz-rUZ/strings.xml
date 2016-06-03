@@ -17,10 +17,10 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_label" msgid="1090682794607161063">"Favqulodda axborot"</string>
-    <string name="edit_info" msgid="5973929805855224805">"Favqulodda holatlar uchun zarur ma’lumotlarni tahrirlash"</string>
+    <string name="edit_info" msgid="5973929805855224805">"Favqulodda vaziyatlar uchun axborotni tahrirlash"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"Ma’lumot"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"Kontaktlar"</string>
-    <string name="name" msgid="4286267457738861977">"Ismi"</string>
+    <string name="name" msgid="4286267457738861977">"Ism"</string>
     <string name="unknown_name" msgid="2834802479170495056">"Noma’lum"</string>
     <string name="address" msgid="6449303483151189969">"Manzil"</string>
     <string name="unknown_address" msgid="4212576729941786121">"Noma’lum"</string>
@@ -31,14 +31,14 @@
     <string name="remove_dob_icon_text" msgid="4413507180967999944">"Tug‘ilgan kun sanasini o‘chirish"</string>
     <string name="blood_type" msgid="6947022772999974608">"Qon guruhi"</string>
     <string name="unknown_blood_type" msgid="6337228278125085668">"Noma’lum"</string>
-    <string name="oplus" msgid="7759756742377867011">"I musbat"</string>
-    <string name="ominus" msgid="5227278501191741055">"I manfiy"</string>
-    <string name="aplus" msgid="4982472245421753463">"II musbat"</string>
-    <string name="aminus" msgid="1469727296074783670">"II manfiy"</string>
-    <string name="bplus" msgid="5395850743718234762">"III musbat"</string>
-    <string name="bminus" msgid="3813367242072886088">"III manfiy"</string>
-    <string name="abplus" msgid="8061792867513932701">"IV musbat"</string>
-    <string name="abminus" msgid="2510867828094325481">"IV manfiy"</string>
+    <string name="oplus" msgid="7759756742377867011">"O(I) Rh+"</string>
+    <string name="ominus" msgid="5227278501191741055">"O(I) Rh−"</string>
+    <string name="aplus" msgid="4982472245421753463">"A(II) Rh+"</string>
+    <string name="aminus" msgid="1469727296074783670">"A(II) Rh−"</string>
+    <string name="bplus" msgid="5395850743718234762">"B(III) Rh+"</string>
+    <string name="bminus" msgid="3813367242072886088">"B(III) Rh-"</string>
+    <string name="abplus" msgid="8061792867513932701">"AB(IV) Rh+"</string>
+    <string name="abminus" msgid="2510867828094325481">"AB(IV) Rh-"</string>
     <string name="hh" msgid="3071675674015857183">"H/H"</string>
     <!-- no translation found for blood_type_entries:0 (5051829403671092348) -->
     <!-- no translation found for blood_type_entries:1 (5289547171251363498) -->
@@ -72,13 +72,13 @@
     <string name="allergies" msgid="2789200777539258165">"Allergiyalar"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"Noma’lum"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"Masalan, yeryong‘oq"</string>
-    <string name="medications" msgid="644428945685557183">"Dorilar"</string>
+    <string name="medications" msgid="644428945685557183">"Dori-darmon"</string>
     <string name="unknown_medications" msgid="2764171064510423734">"Noma’lum"</string>
     <string name="medications_hint" msgid="3221620025945593723">"Masalan, aspirin"</string>
-    <string name="medical_conditions" msgid="3555690011498283592">"Tibbiy ma’lumotlar"</string>
+    <string name="medical_conditions" msgid="3555690011498283592">"Tibbiy qaydlar"</string>
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"Noma’lum"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"Masalan, astma"</string>
-    <string name="organ_donor" msgid="5953509460007124827">"Donor"</string>
+    <string name="organ_donor" msgid="5953509460007124827">"Organ donori"</string>
     <string name="unknown_organ_donor" msgid="2780515342875494225">"Noma’lum"</string>
     <string name="yes" msgid="5829765567799916128">"Ha"</string>
     <string name="no" msgid="1681689233660683509">"Yo‘q"</string>
@@ -93,11 +93,11 @@
     <string name="cancel" msgid="7401575239009060939">"Bekor qilish"</string>
     <string name="ok" msgid="163967937451981024">"OK"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="user_emergency_info_title" msgid="7827058167207376581">"Favqulodda holatlar uchun zarur ma’lumotlar"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Bu yerda kiritiladigan ma’lumotlar favqulodda holatlarda birinchi javob beruvchi uchun yordam beradi. Bu ma’lumotlar faqatgina qurilmangizda saqlanadi hamda telefonni qulfdan chiqarmasdan turib favqulodda raqam tergichdan hamma o‘qiy oladi."</string>
+    <string name="user_emergency_info_title" msgid="7827058167207376581">"Favqulodda vaziyatlar uchun axborot"</string>
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Bu yerda kiritiladigan ma’lumotlar faqat qurilmangizda saqlanadi. Ular telefoningiz qulfini ochmasdan turib favqulodda xizmatlarga qo‘ng‘iroq qilish vaqtida hammaga ko‘rinadi."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"Davom etish"</string>
-    <string name="no_info_provided" msgid="6775035037534954056">"Hech qanday favqulodda axborot taqdim etilmagan"</string>
-    <string name="clear_all" msgid="8899013032870561633">"Hammasini tozalash"</string>
-    <string name="clear" msgid="3648880442502887163">"Tozalash"</string>
-    <string name="clear_all_message" msgid="1548432000373861295">"Barcha ma’lumotlar va kontaktlar tozalansinmi?"</string>
+    <string name="no_info_provided" msgid="6775035037534954056">"Favqulodda vaziyatlar uchun hech qanday axborot yo‘q"</string>
+    <string name="clear_all" msgid="8899013032870561633">"Hammasini o‘chirish"</string>
+    <string name="clear" msgid="3648880442502887163">"O‘chirish"</string>
+    <string name="clear_all_message" msgid="1548432000373861295">"Barcha kontaktlar va ma’lumotlar o‘chirib tashlansinmi?"</string>
 </resources>

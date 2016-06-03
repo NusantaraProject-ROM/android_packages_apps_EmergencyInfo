@@ -99,5 +99,5 @@
     <string name="no_info_provided" msgid="6775035037534954056">"कुनै पनि आपतकालीन जानकारी प्रदान गरिएको छैन"</string>
     <string name="clear_all" msgid="8899013032870561633">"सबै हटाउनुहोस्"</string>
     <string name="clear" msgid="3648880442502887163">"खाली गर्नुहोस्"</string>
-    <string name="clear_all_message" msgid="1548432000373861295">"सबै जानकारी र सम्पर्कहरूलाई खाली गर्ने हो?"</string>
+    <string name="clear_all_message" msgid="1548432000373861295">"सबै जानकारी र सम्पर्कहरूलाई मेटाउने हो?"</string>
 </resources>

@@ -25,7 +25,7 @@
     <string name="address" msgid="6449303483151189969">"Endereço"</string>
     <string name="unknown_address" msgid="4212576729941786121">"Desconhecido"</string>
     <string name="date_of_birth" msgid="777979232444227891">"Data de nascimento"</string>
-    <string name="unknown_date_of_birth" msgid="7416355536916066758">"Desconhecido"</string>
+    <string name="unknown_date_of_birth" msgid="7416355536916066758">"Desconhecida"</string>
     <string name="dob" msgid="2813161080307245706">"(<xliff:g id="DATE_OF_BIRTH">%1$s</xliff:g>)"</string>
     <string name="age" msgid="8327537794752630199">"Idade: <xliff:g id="NUMERICAL_AGE">%1$d</xliff:g>"</string>
     <string name="remove_dob_icon_text" msgid="4413507180967999944">"Remove a data de nascimento"</string>
@@ -70,13 +70,13 @@
     <string name="ab_negative" msgid="2064555613093591729">"AB negativo"</string>
     <string name="h_h" msgid="2183333409760379720">"H H"</string>
     <string name="allergies" msgid="2789200777539258165">"Alergias"</string>
-    <string name="unknown_allergies" msgid="4383115953418061237">"Desconhecido"</string>
+    <string name="unknown_allergies" msgid="4383115953418061237">"Desconhecidas"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"Por exemplo, amendoim"</string>
     <string name="medications" msgid="644428945685557183">"Medicamentos"</string>
-    <string name="unknown_medications" msgid="2764171064510423734">"Desconhecido"</string>
+    <string name="unknown_medications" msgid="2764171064510423734">"Desconhecidos"</string>
     <string name="medications_hint" msgid="3221620025945593723">"Por exemplo, aspirina"</string>
     <string name="medical_conditions" msgid="3555690011498283592">"Anotações médicas"</string>
-    <string name="unknown_medical_conditions" msgid="8051364895172053770">"Desconhecido"</string>
+    <string name="unknown_medical_conditions" msgid="8051364895172053770">"Desconhecidas"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"Por exemplo, asma"</string>
     <string name="organ_donor" msgid="5953509460007124827">"Doador de órgãos"</string>
     <string name="unknown_organ_donor" msgid="2780515342875494225">"Desconhecido"</string>

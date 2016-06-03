@@ -75,7 +75,7 @@
     <string name="medications" msgid="644428945685557183">"Traitements médicamenteux"</string>
     <string name="unknown_medications" msgid="2764171064510423734">"Inconnus"</string>
     <string name="medications_hint" msgid="3221620025945593723">"Par exemple, aspirine"</string>
-    <string name="medical_conditions" msgid="3555690011498283592">"Notes médicales"</string>
+    <string name="medical_conditions" msgid="3555690011498283592">"Autres informations médicales"</string>
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"Inconnues"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"Par exemple, asthme"</string>
     <string name="organ_donor" msgid="5953509460007124827">"Donneur d\'organes"</string>
@@ -94,7 +94,7 @@
     <string name="ok" msgid="163967937451981024">"OK"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"Informations d\'urgence"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Les informations que vous saisissez ici peuvent aider les premières personnes qui vous porteraient secours en cas d\'urgence. Elles ne sont stockées que sur votre appareil, et elles sont accessibles à tous depuis le clavier d\'urgence sans déverrouiller votre téléphone."</string>
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Les informations que vous saisissez ici peuvent aider les premières personnes qui vous porteraient secours en cas d\'urgence. Elles ne sont stockées que sur votre appareil et elles sont accessibles à tous depuis le clavier d\'urgence, sans déverrouiller votre téléphone."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"Continuer"</string>
     <string name="no_info_provided" msgid="6775035037534954056">"Aucune information d\'urgence fournie"</string>
     <string name="clear_all" msgid="8899013032870561633">"Tout effacer"</string>
