@@ -79,7 +79,7 @@
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"Άγνωστες"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"Για παράδειγμα, άσθμα"</string>
     <string name="organ_donor" msgid="5953509460007124827">"Δωρητής οργάνων"</string>
-    <string name="unknown_organ_donor" msgid="2780515342875494225">"Άγνωστη"</string>
+    <string name="unknown_organ_donor" msgid="2780515342875494225">"Άγνωστο"</string>
     <string name="yes" msgid="5829765567799916128">"Ναι"</string>
     <string name="no" msgid="1681689233660683509">"Όχι"</string>
     <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->
@@ -97,7 +97,7 @@
     <string name="user_emergency_info_consent" msgid="5636028073450797246">"Οι πληροφορίες που εισάγετε εδώ μπορούν να βοηθήσουν τα άτομα που θα ανταποκριθούν πρώτα σε περίπτωση έκτακτης ανάγκης. Αποθηκεύονται μόνο στη συσκευή σας και μπορούν να τα διαβάσουν όλοι από το πρόγραμμα κλήσης έκτακτης ανάγκης χωρίς να ξεκλειδώσουν το τηλέφωνό σας."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"Συνέχεια"</string>
     <string name="no_info_provided" msgid="6775035037534954056">"Δεν παρέχονται πληροφορίες έκτακτης ανάγκης"</string>
-    <string name="clear_all" msgid="8899013032870561633">"Εκκαθάριση όλων"</string>
+    <string name="clear_all" msgid="8899013032870561633">"Διαγραφή όλων"</string>
     <string name="clear" msgid="3648880442502887163">"Εκκαθάριση"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Να διαγραφούν όλες οι πληροφορίες και οι επαφές;"</string>
 </resources>

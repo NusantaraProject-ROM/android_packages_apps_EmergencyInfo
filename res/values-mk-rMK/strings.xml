@@ -30,7 +30,7 @@
     <string name="age" msgid="8327537794752630199">"Возраст: <xliff:g id="NUMERICAL_AGE">%1$d</xliff:g>"</string>
     <string name="remove_dob_icon_text" msgid="4413507180967999944">"Отстранете го датумот на раѓање"</string>
     <string name="blood_type" msgid="6947022772999974608">"Крвна група"</string>
-    <string name="unknown_blood_type" msgid="6337228278125085668">"Непознат"</string>
+    <string name="unknown_blood_type" msgid="6337228278125085668">"Непозната"</string>
     <string name="oplus" msgid="7759756742377867011">"О+"</string>
     <string name="ominus" msgid="5227278501191741055">"О-"</string>
     <string name="aplus" msgid="4982472245421753463">"А+"</string>
@@ -79,7 +79,7 @@
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"Непознати"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"На пример, астма"</string>
     <string name="organ_donor" msgid="5953509460007124827">"Донатор на органи"</string>
-    <string name="unknown_organ_donor" msgid="2780515342875494225">"Непознат"</string>
+    <string name="unknown_organ_donor" msgid="2780515342875494225">"Непознато"</string>
     <string name="yes" msgid="5829765567799916128">"Да"</string>
     <string name="no" msgid="1681689233660683509">"Не"</string>
     <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->

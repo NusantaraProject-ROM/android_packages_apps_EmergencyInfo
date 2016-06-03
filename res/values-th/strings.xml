@@ -94,7 +94,7 @@
     <string name="ok" msgid="163967937451981024">"ตกลง"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"ข้อมูลสำหรับกรณีฉุกเฉิน"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"ข้อมูลที่คุณป้อนที่นี่สามารถช่วยผู้ตอบรายแรกในกรณีฉุกเฉิน โดยระบบจะจัดเก็บข้อมูลนี้ไว้ในอุปกรณ์ของคุณเท่านั้น และทุกคนจะอ่านได้จากโปรแกรมโทรฉุกเฉินโดยไม่ต้องปลดล็อกโทรศัพท์ของคุณ"</string>
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"ข้อมูลที่คุณป้อนที่นี่จะช่วยผู้ที่เข้ามาช่วยเหลือเป็นคนแรกได้ในกรณีฉุกเฉิน โดยระบบจะจัดเก็บข้อมูลนี้ไว้ในอุปกรณ์ของคุณเท่านั้น และทุกคนจะอ่านได้จากโปรแกรมโทรฉุกเฉินโดยไม่ต้องปลดล็อกโทรศัพท์ของคุณ"</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"ต่อไป"</string>
     <string name="no_info_provided" msgid="6775035037534954056">"ไม่ได้ให้ข้อมูลสำหรับกรณีฉุกเฉินไว้"</string>
     <string name="clear_all" msgid="8899013032870561633">"ล้างทั้งหมด"</string>

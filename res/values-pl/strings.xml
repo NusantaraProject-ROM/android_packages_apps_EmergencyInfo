@@ -98,6 +98,6 @@
     <string name="emergency_info_continue" msgid="5453201508537906087">"Dalej"</string>
     <string name="no_info_provided" msgid="6775035037534954056">"Brak informacji alarmowych"</string>
     <string name="clear_all" msgid="8899013032870561633">"Wyczyść wszystko"</string>
-    <string name="clear" msgid="3648880442502887163">"Wyczyść"</string>
+    <string name="clear" msgid="3648880442502887163">"Usuń"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Usunąć wszystkie informacje i kontakty?"</string>
 </resources>

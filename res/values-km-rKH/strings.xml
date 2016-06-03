@@ -16,15 +16,15 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="1090682794607161063">"ព័ត៌មានសង្គ្រោះបន្ទាន់"</string>
-    <string name="edit_info" msgid="5973929805855224805">"កែព័ត៌មានសង្គ្រោះបន្ទាន់"</string>
+    <string name="app_label" msgid="1090682794607161063">"ព័ត៌មានបន្ទាន់"</string>
+    <string name="edit_info" msgid="5973929805855224805">"កែព័ត៌មានបន្ទាន់"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"ព័ត៌មាន"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"ទំនាក់ទំនង"</string>
     <string name="name" msgid="4286267457738861977">"ឈ្មោះ"</string>
     <string name="unknown_name" msgid="2834802479170495056">"មិនស្គាល់"</string>
     <string name="address" msgid="6449303483151189969">"អាសយដ្ឋាន"</string>
     <string name="unknown_address" msgid="4212576729941786121">"មិនស្គាល់"</string>
-    <string name="date_of_birth" msgid="777979232444227891">"ថ្ងៃ​ខែឆ្នាកំណើត"</string>
+    <string name="date_of_birth" msgid="777979232444227891">"ថ្ងៃ​ខែឆ្នាំកំណើត"</string>
     <string name="unknown_date_of_birth" msgid="7416355536916066758">"មិនស្គាល់"</string>
     <string name="dob" msgid="2813161080307245706">"(<xliff:g id="DATE_OF_BIRTH">%1$s</xliff:g>)"</string>
     <string name="age" msgid="8327537794752630199">"អាយុ៖ <xliff:g id="NUMERICAL_AGE">%1$d</xliff:g>"</string>
@@ -69,13 +69,13 @@
     <string name="ab_positive" msgid="1931300033534642005">"A B បូក"</string>
     <string name="ab_negative" msgid="2064555613093591729">"A B ដក"</string>
     <string name="h_h" msgid="2183333409760379720">"H H"</string>
-    <string name="allergies" msgid="2789200777539258165">"ប្រតិកម្ម​នឹង​ធាតុ​អ្វី​មួយ"</string>
+    <string name="allergies" msgid="2789200777539258165">"អាល់លែហ្សី"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"មិនស្គាល់"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"ឧទាហរណ៍៖ សណ្តែកដី"</string>
-    <string name="medications" msgid="644428945685557183">"ការប្រើប្រាស់ថ្នាំ"</string>
+    <string name="medications" msgid="644428945685557183">"ថ្នាំពេទ្យ"</string>
     <string name="unknown_medications" msgid="2764171064510423734">"មិនស្គាល់"</string>
     <string name="medications_hint" msgid="3221620025945593723">"ឧទាហរណ៍៖ ថ្នាំអាស្ពីរីន"</string>
-    <string name="medical_conditions" msgid="3555690011498283592">"កំណត់ចំណាំជម្ងឺ"</string>
+    <string name="medical_conditions" msgid="3555690011498283592">"កំណត់ហេតុវេជ្ជសាស្ត្រ"</string>
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"មិនស្គាល់"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"ឧទាហរណ៍៖ ជម្ងឺហឺត"</string>
     <string name="organ_donor" msgid="5953509460007124827">"អ្នកបរិច្ចាគសរីរាង្គ"</string>
@@ -93,11 +93,11 @@
     <string name="cancel" msgid="7401575239009060939">"បោះបង់"</string>
     <string name="ok" msgid="163967937451981024">"យល់ព្រម"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="user_emergency_info_title" msgid="7827058167207376581">"ព័ត៌មានសង្គ្រោះបន្ទាន់"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"ព័ត៌មានដែលអ្នកបានបញ្ចូលនៅទីនេះអាចជួយដល់អ្នកសង្គ្រោះបឋមនៅពេលករណីសង្គ្រោះបន្ទាន់កើតឡើង។ វាផ្ទុកនៅក្នុងឧបករណ៍របស់អ្នកតែប៉ុណ្ណោះ ប៉ុន្តែអ្នកណាក៏អាចអានវាចេញពីកម្មវិធីហៅទូរស័ព្ទសង្គ្រោះបន្ទាន់ដោយមិនចាំបាច់ដោះសោទូរស័ព្ទរបស់អ្នកបានដែរ។"</string>
+    <string name="user_emergency_info_title" msgid="7827058167207376581">"ព័ត៌មានបន្ទាន់"</string>
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"ព័ត៌មានដែលអ្នកបញ្ចូលនៅទីនេះអាចជួយដល់អ្នកសង្គ្រោះបន្ទាន់ នៅពេលដែល​មានអាសន្នកើតឡើង។ ព័ត៌មាន​នេះ​ត្រូវបាន​ផ្ទុកនៅក្នុងឧបករណ៍របស់អ្នកតែមួយគត់ ហើយអ្នកណាក៏អាចអានព័ត៌មាននេះបាននៅលើអេក្រង់ហៅទូរស័ព្ទសង្គ្រោះបន្ទាន់ដោយមិនចាំបាច់ដោះសោទូរស័ព្ទរបស់អ្នកឡើយ។"</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"បន្ត"</string>
-    <string name="no_info_provided" msgid="6775035037534954056">"គ្មានការផ្តល់ព័ត៌មានសង្គ្រោះបន្ទាន់ទេ"</string>
+    <string name="no_info_provided" msgid="6775035037534954056">"គ្មានព័ត៌មានបន្ទាន់ទេ"</string>
     <string name="clear_all" msgid="8899013032870561633">"ជម្រះទាំងអស់"</string>
     <string name="clear" msgid="3648880442502887163">"ជម្រះ"</string>
-    <string name="clear_all_message" msgid="1548432000373861295">"ជម្រះព័ត៌មាន និងទំនាក់ទំនងទាំងអស់ឬ?"</string>
+    <string name="clear_all_message" msgid="1548432000373861295">"លុបព័ត៌មាន និងទំនាក់ទំនងទាំងអស់ឬ?"</string>
 </resources>

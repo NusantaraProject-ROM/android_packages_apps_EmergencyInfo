@@ -86,7 +86,7 @@
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
     <string name="emergency_contacts_title" msgid="5462202017417821030">"ತುರ್ತು ಸಂಪರ್ಕಗಳು"</string>
-    <string name="add_emergency_contact" msgid="4063577069613981029">"ಸಂಪರ್ಕ ಸೇರಿಸು"</string>
+    <string name="add_emergency_contact" msgid="4063577069613981029">"ಸಂಪರ್ಕ ಸೇರಿಸಿ"</string>
     <string name="remove_contact" msgid="6934983445723096759">"ತರ್ತು ಸಂಪರ್ಕಗಳಿಂದ <xliff:g id="CONTACT_NAME">%1$s</xliff:g> ಅವರನ್ನು ತೆಗೆದುಹಾಕುವುದೇ?"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"ಸಂಪರ್ಕ ತೆಗೆದುಹಾಕಿ"</string>
     <string name="remove" msgid="1243949503772376064">"ತೆಗೆದುಹಾಕಿ"</string>
@@ -94,10 +94,10 @@
     <string name="ok" msgid="163967937451981024">"ಸರಿ"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"ತುರ್ತು ಮಾಹಿತಿ"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"ನೀವು ಇಲ್ಲಿ ನಮೂದಿಸುವ ಮಾಹಿತಿಯು ತುರ್ತುಪರಿಸ್ಥಿತಿಯಲ್ಲಿ ಮೊದಲು ಪ್ರತಿಕ್ರಿಯಿಸುವವರಿಗೆ ಸಹಾಯ ಮಾಡಬಹುದು. ಇದು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಮಾತ್ರ ಸಂಗ್ರಹವಾಗಿರುತ್ತದೆ ಮತ್ತು ನಿಮ್ಮ ಫೋನ್‌ ಅನ್‌ಲಾಕ್ ಮಾಡದೆಯೇ ತುರ್ತು ಡಯಲರ್‌ನಿಂದ ಯಾರು ಬೇಕಾದರೂ ಇದನ್ನು ಓದಬಹುದು."</string>
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"ಇಲ್ಲಿ ನಮೂದಿಸುವ ಮಾಹಿತಿಯು ತುರ್ತುಪರಿಸ್ಥಿತಿಯಲ್ಲಿ ಮೊದಲು ಸಹಾಯಕ್ಕೆ ಬರುವವರಿಗೆ ಪ್ರಯೋಜನಕಾರಿಯಾಗಿರುತ್ತದೆ. ಇದು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಮಾತ್ರ ಸಂಗ್ರಹವಾಗಿರುತ್ತದೆ. ಇದನ್ನು ತುರ್ತು ಡಯಲರ್‌ನಲ್ಲಿ, ನಿಮ್ಮ ಫೋನ್‌ ಅನ್‌ಲಾಕ್ ಮಾಡದೆಯೇ, ಯಾರು ಬೇಕಾದರೂ ಓದಬಹುದು."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"ಮುಂದುವರಿಸು"</string>
     <string name="no_info_provided" msgid="6775035037534954056">"ಯಾವುದೇ ತುರ್ತು ಮಾಹಿತಿಯನ್ನು ಒದಗಿಸಲಾಗಿಲ್ಲ"</string>
-    <string name="clear_all" msgid="8899013032870561633">"ಎಲ್ಲವನ್ನೂ ತೆರವುಗೊಳಿಸು"</string>
+    <string name="clear_all" msgid="8899013032870561633">"ತೆರವುಗೊಳಿಸಿ"</string>
     <string name="clear" msgid="3648880442502887163">"ತೆರವುಗೊಳಿಸು"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"ಎಲ್ಲ ಮಾಹಿತಿ ಮತ್ತು ಸಂಪರ್ಕಗಳನ್ನು ತೆರವುಗೊಳಿಸುವುದೇ?"</string>
 </resources>
