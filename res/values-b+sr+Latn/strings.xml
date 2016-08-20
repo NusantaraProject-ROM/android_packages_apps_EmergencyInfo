@@ -91,7 +91,7 @@
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"Uklonite kontakt"</string>
     <string name="remove" msgid="1243949503772376064">"Ukloni"</string>
     <string name="cancel" msgid="7401575239009060939">"Otkaži"</string>
-    <string name="ok" msgid="163967937451981024">"U redu"</string>
+    <string name="ok" msgid="163967937451981024">"Potvrdi"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"Informacije za hitne slučajeve"</string>
     <string name="user_emergency_info_consent" msgid="5636028073450797246">"Informacije koje ovde unesete mogu da pomognu ekipama hitnih službi u hitnim slučajevima. Čuvaju se samo na uređaju i svako može da ih pročita iz aplikacije za pozive u hitnim slučajevima bez otključavanja telefona."</string>
