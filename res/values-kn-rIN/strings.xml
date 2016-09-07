@@ -96,7 +96,10 @@
     <string name="user_emergency_info_title" msgid="7827058167207376581">"ತುರ್ತು ಮಾಹಿತಿ"</string>
     <string name="user_emergency_info_consent" msgid="5636028073450797246">"ಇಲ್ಲಿ ನಮೂದಿಸುವ ಮಾಹಿತಿಯು ತುರ್ತುಪರಿಸ್ಥಿತಿಯಲ್ಲಿ ಮೊದಲು ಸಹಾಯಕ್ಕೆ ಬರುವವರಿಗೆ ಪ್ರಯೋಜನಕಾರಿಯಾಗಿರುತ್ತದೆ. ಇದು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಮಾತ್ರ ಸಂಗ್ರಹವಾಗಿರುತ್ತದೆ. ಇದನ್ನು ತುರ್ತು ಡಯಲರ್‌ನಲ್ಲಿ, ನಿಮ್ಮ ಫೋನ್‌ ಅನ್‌ಲಾಕ್ ಮಾಡದೆಯೇ, ಯಾರು ಬೇಕಾದರೂ ಓದಬಹುದು."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"ಮುಂದುವರಿಸು"</string>
-    <string name="no_info_provided" msgid="6775035037534954056">"ಯಾವುದೇ ತುರ್ತು ಮಾಹಿತಿಯನ್ನು ಒದಗಿಸಲಾಗಿಲ್ಲ"</string>
+    <!-- no translation found for no_info_provided (716200382010821001) -->
+    <skip />
+    <!-- no translation found for tap_pencil (2723698054265296934) -->
+    <skip />
     <string name="clear_all" msgid="8899013032870561633">"ತೆರವುಗೊಳಿಸಿ"</string>
     <string name="clear" msgid="3648880442502887163">"ತೆರವುಗೊಳಿಸು"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"ಎಲ್ಲ ಮಾಹಿತಿ ಮತ್ತು ಸಂಪರ್ಕಗಳನ್ನು ತೆರವುಗೊಳಿಸುವುದೇ?"</string>

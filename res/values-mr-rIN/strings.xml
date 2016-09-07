@@ -96,7 +96,10 @@
     <string name="user_emergency_info_title" msgid="7827058167207376581">"आणीबाणी माहिती"</string>
     <string name="user_emergency_info_consent" msgid="5636028073450797246">"आपण येथे प्रविष्ट करता ती माहिती आणीबाणीमध्ये प्रथम प्रतिसादकर्त्यांना मदत करू शकते. ती फक्त आपल्या डिव्हाइसवर संचयित केली जाते आणि आपला फोन अनलॉक न करता ती आणीबाणी डायलर मधून कोणीही वाचू शकतो."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"सुरू ठेवा"</string>
-    <string name="no_info_provided" msgid="6775035037534954056">"कोणतीही आणीबाणी माहिती प्रदान केली नाही"</string>
+    <!-- no translation found for no_info_provided (716200382010821001) -->
+    <skip />
+    <!-- no translation found for tap_pencil (2723698054265296934) -->
+    <skip />
     <string name="clear_all" msgid="8899013032870561633">"सर्व साफ करा"</string>
     <string name="clear" msgid="3648880442502887163">"साफ करा"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"सर्व माहिती आणि संपर्क साफ करायचे?"</string>
