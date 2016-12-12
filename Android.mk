@@ -37,8 +37,7 @@ LOCAL_RESOURCE_DIR += $(LOCAL_PATH)/res \
 	$(support_library_root_dir)/v7/preference/res \
 	$(support_library_root_dir)/v7/recyclerview/res \
 	$(support_library_root_dir)/v14/preference/res \
-    $(support_library_root_dir)/design/res
-    include frameworks/base/packages/SettingsLib/common.mk
+        $(support_library_root_dir)/design/res
 
 LOCAL_AAPT_FLAGS := --auto-add-overlay \
     --extra-packages android.support.v7.preference \

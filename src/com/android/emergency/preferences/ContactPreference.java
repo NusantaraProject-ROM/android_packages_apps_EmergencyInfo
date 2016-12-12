@@ -34,12 +34,12 @@ import android.text.BidiFormatter;
 import android.text.TextDirectionHeuristics;
 import android.view.View;
 
+import com.android.emergency.CircleFramedDrawable;
 import com.android.emergency.EmergencyContactManager;
 import com.android.emergency.R;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
-import com.android.settingslib.drawable.CircleFramedDrawable;
 
 import java.util.List;
 
