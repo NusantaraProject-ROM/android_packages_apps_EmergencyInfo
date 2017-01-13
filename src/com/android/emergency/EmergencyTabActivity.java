@@ -116,6 +116,7 @@ public abstract class EmergencyTabActivity extends Activity {
     }
 
     /** Return the fragments. */
+    @VisibleForTesting
     public ArrayList<Pair<String, Fragment>> getFragments() {
         return mFragments;
     }
