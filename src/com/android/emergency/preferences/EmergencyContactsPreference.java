@@ -28,7 +28,7 @@ import com.android.emergency.EmergencyContactManager;
 import com.android.emergency.ReloadablePreferenceInterface;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.MetricsLogger;
-import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 
 import java.util.ArrayList;
 import java.util.Collections;
