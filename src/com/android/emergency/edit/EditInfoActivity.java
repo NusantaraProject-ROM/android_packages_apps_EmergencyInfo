@@ -37,7 +37,7 @@ import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.view.ViewInfoActivity;
 import com.android.internal.logging.MetricsLogger;
-import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
 import java.util.ArrayList;
 
