@@ -17,11 +17,11 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:preferenceCategoryStyle">@style/AppTheme.PreferenceCategoryStyle</item>
         <item name="colorPrimaryDark">@color/primary_dark_color</item>
-        <item name="colorAccent">@color/accent_color_light</item>
         <item name="tabIndicatorColor">@color/accent_color_dark</item>
-        <item name="textColorActionBar">?attr/tabIndicatorColor</item>
+        <item name="textColorActionBar">?android:attr/textColorPrimary</item>
         <item name="android:datePickerStyle">@style/AppTheme.DatePickerStyle</item>
     </style>
+
     <!-- Base emergency theme. -->
     <style name="AppThemeEmergency" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:preferenceCategoryStyle">@style/AppTheme.PreferenceCategoryStyle</item>
