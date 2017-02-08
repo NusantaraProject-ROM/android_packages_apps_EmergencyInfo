@@ -17,6 +17,8 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:preferenceCategoryStyle">@style/AppTheme.PreferenceCategoryStyle</item>
         <item name="colorPrimaryDark">@color/primary_dark_color</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@color/primary_dark_color</item>
         <item name="tabIndicatorColor">@color/accent_color_dark</item>
         <item name="textColorActionBar">?android:attr/textColorPrimary</item>
         <item name="android:datePickerStyle">@style/AppTheme.DatePickerStyle</item>
