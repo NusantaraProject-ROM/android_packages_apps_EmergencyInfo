@@ -63,7 +63,7 @@ public class EmergencyContactsPreferenceTest
                 }
             });
         } catch (Throwable throwable) {
-            fail("Should not fail" + throwable);
+	    fail("Should not throw exception: " + throwable.getMessage());
         }
 
         mContentResolver = getActivity().getContentResolver();
