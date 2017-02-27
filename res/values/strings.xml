@@ -185,6 +185,8 @@
     </string>
     <!-- The description of the remove an emergency contact, for talkback. [CHAR_LIMIT=NONE] -->
     <string name="remove_contact_icon_text">Remove contact</string>
+    <!-- The text shown in a Toast when a contact couldn't be added [CHAR_LIMIT=NONE] -->
+    <string name="fail_add_contact">Unable to read contact information properly</string>
     <!-- Button text for removing a contact. [CHAR_LIMIT=15] -->
     <string name="remove">Remove</string>
     <!-- Button text for canceling an operation. [CHAR_LIMIT=15] -->

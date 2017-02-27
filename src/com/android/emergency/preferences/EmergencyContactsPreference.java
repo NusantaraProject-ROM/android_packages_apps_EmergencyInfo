@@ -23,8 +23,10 @@ import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
+import android.widget.Toast;
 
 import com.android.emergency.EmergencyContactManager;
+import com.android.emergency.R;
 import com.android.emergency.ReloadablePreferenceInterface;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.MetricsLogger;
@@ -98,12 +100,18 @@ public class EmergencyContactsPreference extends PreferenceCategory
      * contact's selected phone number.
      */
     public void addNewEmergencyContact(Uri contactUri) {
-        if (!mEmergencyContacts.contains(contactUri)) {
-            List<Uri> updatedContacts = new ArrayList<Uri>(mEmergencyContacts);
-            if (updatedContacts.add(contactUri) && callChangeListener(updatedContacts)) {
-                MetricsLogger.action(getContext(), MetricsEvent.ACTION_ADD_EMERGENCY_CONTACT);
-                setEmergencyContacts(updatedContacts);
-            }
+        if (mEmergencyContacts.contains(contactUri)) {
+            return;
+        }
+        if (!EmergencyContactManager.isValidEmergencyContact(getContext(), contactUri)) {
+            Toast.makeText(getContext(), getContext().getString(R.string.fail_add_contact),
+                Toast.LENGTH_LONG).show();
+            return;
+        }
+        List<Uri> updatedContacts = new ArrayList<Uri>(mEmergencyContacts);
+        if (updatedContacts.add(contactUri) && callChangeListener(updatedContacts)) {
+            MetricsLogger.action(getContext(), MetricsEvent.ACTION_ADD_EMERGENCY_CONTACT);
+            setEmergencyContacts(updatedContacts);
         }
     }
 
