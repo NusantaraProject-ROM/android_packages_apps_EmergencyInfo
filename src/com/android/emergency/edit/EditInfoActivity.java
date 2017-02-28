@@ -144,7 +144,7 @@ public class EditInfoActivity extends EmergencyTabActivity {
 
         // Refresh the UI.
         ViewPagerAdapter adapter = getTabsAdapter();
-        if (adapter != null){
+        if (adapter != null) {
             adapter.notifyDataSetChanged();
         }
     }
