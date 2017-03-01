@@ -175,8 +175,10 @@
     <string name="emergency_contacts_title">Emergency contacts</string>
     <!-- The title of the add emergency contacts preference. [CHAR_LIMIT=40] -->
     <string name="add_emergency_contact">Add contact</string>
-    <!-- The text shown in a Toast when a the contact picker activity couldn't be loaded [CHAR_LIMIT=NONE] -->
+    <!-- The text shown in a Toast when no contact picker activity could be loaded [CHAR_LIMIT=NONE] -->
     <string name="fail_load_contact_picker">Couldn\'t find a contact picker</string>
+    <!-- The text shown in a Toast when the contact can't be displayed [CHAR_LIMIT=NONE] -->
+    <string name="fail_display_contact">Can\'t display the contact</string>
     <!-- The message of the dialog shown when removing a contact. [CHAR_LIMIT=140] -->
     <string name="remove_contact">
         Remove <xliff:g id="contact_name" example="John Doe">%1$s</xliff:g> from emergency contacts?
