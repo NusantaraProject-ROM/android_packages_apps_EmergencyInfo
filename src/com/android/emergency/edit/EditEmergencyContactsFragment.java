@@ -18,15 +18,19 @@ package com.android.emergency.edit;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.provider.ContactsContract;
+import android.widget.Toast;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.preferences.EmergencyContactsPreference;
+
+import java.util.List;
 
 /**
  * Fragment that displays emergency contacts. These contacts can be added or removed.
@@ -56,9 +60,19 @@ public class EditEmergencyContactsFragment extends PreferenceFragment {
                 // The selected contact is guaranteed to have a name and phone number.
                 Intent contactPickerIntent = new Intent(Intent.ACTION_PICK,
                         ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
-                startActivityForResult(contactPickerIntent,
-                        CONTACT_PICKER_RESULT);
-                return true;
+                List<ResolveInfo> infos =
+                    getContext().getPackageManager().queryIntentActivities(contactPickerIntent, 0);
+                if (infos != null && !infos.isEmpty()) {
+                    startActivityForResult(contactPickerIntent, CONTACT_PICKER_RESULT);
+                    return true;
+                } else {
+                    // TODO: Consider trying to load the regular contact picker using:
+                    // ContactsContract.Contacts.CONTENT_URI
+                    Toast.makeText(getContext(),
+                                   getContext().getString(R.string.fail_load_contact_picker),
+                                   Toast.LENGTH_LONG).show();
+                    return false;
+                }
             }
         });
 
