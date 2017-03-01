@@ -19,7 +19,7 @@ LOCAL_MODULE_TAGS := tests
 
 LOCAL_JAVA_LIBRARIES := android.test.runner
 
-LOCAL_STATIC_JAVA_LIBRARIES := truth-prebuilt
+LOCAL_STATIC_JAVA_LIBRARIES := truth-prebuilt legacy-android-test junit
 
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
