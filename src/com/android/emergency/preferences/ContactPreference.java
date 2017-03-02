@@ -16,6 +16,7 @@
 package com.android.emergency.preferences;
 
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -32,7 +33,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.BidiFormatter;
 import android.text.TextDirectionHeuristics;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.android.emergency.EmergencyContactManager;
 import com.android.emergency.R;
@@ -48,6 +51,8 @@ import java.util.List;
  * A {@link Preference} to display or call a contact using the specified URI string.
  */
 public class ContactPreference extends Preference {
+
+    private static final String TAG = "ContactPreference";
 
     private EmergencyContactManager.Contact mContact;
     @Nullable private RemoveContactPreferenceListener mRemoveContactPreferenceListener;
@@ -198,9 +203,18 @@ public class ContactPreference extends Preference {
      * Displays a contact card for the contact.
      */
     public void displayContact() {
-        Intent contactIntent = new Intent(Intent.ACTION_VIEW);
-        contactIntent.setData(mContact.getContactLookupUri());
-        getContext().startActivity(contactIntent);
+        Intent displayIntent = new Intent(Intent.ACTION_VIEW);
+        displayIntent.setData(mContact.getContactLookupUri());
+        try {
+            getContext().startActivity(displayIntent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(getContext(),
+                           getContext().getString(R.string.fail_display_contact),
+                           Toast.LENGTH_LONG).show();
+            Log.w(TAG, "No contact app available to display the contact", e);
+            return;
+        }
+
     }
 
     /** Shows the dialog to remove the contact, restoring it from {@code state} if it's not null. */
