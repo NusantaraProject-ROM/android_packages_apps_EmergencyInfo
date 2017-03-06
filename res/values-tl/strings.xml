@@ -87,6 +87,10 @@
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
     <string name="emergency_contacts_title" msgid="5462202017417821030">"Mga pang-emergency na contact"</string>
     <string name="add_emergency_contact" msgid="4063577069613981029">"Magdagdag ng contact"</string>
+    <!-- no translation found for fail_load_contact_picker (817205483833876726) -->
+    <skip />
+    <!-- no translation found for fail_display_contact (4128854688897045879) -->
+    <skip />
     <string name="remove_contact" msgid="6934983445723096759">"Alisin si <xliff:g id="CONTACT_NAME">%1$s</xliff:g> sa mga pang-emergency na contact?"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"Alisin ang contact"</string>
     <string name="remove" msgid="1243949503772376064">"Alisin"</string>
