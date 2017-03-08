@@ -72,26 +72,25 @@ public class ContactPreference extends Preference {
      * Instantiates a ContactPreference that displays an emergency contact, taking in a Context and
      * the Uri.
      */
-    public ContactPreference(Context context, @NonNull Uri contactUri) {
+    public ContactPreference(Context context, @NonNull Uri phoneUri) {
         super(context);
         setOrder(DEFAULT_ORDER);
 
-        setUri(contactUri);
+        setPhoneUri(phoneUri);
 
         setWidgetLayoutResource(R.layout.preference_user_delete_widget);
         setPersistent(false);
     }
 
-    public void setUri(@NonNull Uri contactUri) {
-        if (mContact != null && !contactUri.equals(mContact.getContactUri()) &&
+    public void setPhoneUri(@NonNull Uri phoneUri) {
+        if (mContact != null && !phoneUri.equals(mContact.getPhoneUri()) &&
                 mRemoveContactDialog != null) {
             mRemoveContactDialog.dismiss();
         }
-
-        mContact = EmergencyContactManager.getContact(getContext(), contactUri);
+        mContact = EmergencyContactManager.getContact(getContext(), phoneUri);
 
         setTitle(mContact.getName());
-        setKey(mContact.getContactUri().toString());
+        setKey(mContact.getPhoneUri().toString());
         String summary = mContact.getPhoneType() == null ?
                 mContact.getPhoneNumber() :
                 String.format(
@@ -166,8 +165,8 @@ public class ContactPreference extends Preference {
         }
     }
 
-    public Uri getContactUri() {
-        return mContact.getContactUri();
+    public Uri getPhoneUri() {
+        return mContact.getPhoneUri();
     }
 
     @VisibleForTesting
