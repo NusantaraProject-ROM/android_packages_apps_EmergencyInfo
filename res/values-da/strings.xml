@@ -87,10 +87,8 @@
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
     <string name="emergency_contacts_title" msgid="5462202017417821030">"Kontaktpersoner til nødsituationer"</string>
     <string name="add_emergency_contact" msgid="4063577069613981029">"Tilføj kontaktperson"</string>
-    <!-- no translation found for fail_load_contact_picker (817205483833876726) -->
-    <skip />
-    <!-- no translation found for fail_display_contact (4128854688897045879) -->
-    <skip />
+    <string name="fail_load_contact_picker" msgid="817205483833876726">"Der kunne ikke findes en kontaktpersonvælger"</string>
+    <string name="fail_display_contact" msgid="4128854688897045879">"Kontaktpersonen kan ikke vises"</string>
     <string name="remove_contact" msgid="6934983445723096759">"Vil du fjerne <xliff:g id="CONTACT_NAME">%1$s</xliff:g> fra kontaktpersoner til nødsituationer?"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"Fjern kontaktperson"</string>
     <string name="remove" msgid="1243949503772376064">"Fjern"</string>

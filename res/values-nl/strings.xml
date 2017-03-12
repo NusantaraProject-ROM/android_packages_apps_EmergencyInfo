@@ -87,10 +87,8 @@
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
     <string name="emergency_contacts_title" msgid="5462202017417821030">"Contacten voor noodgevallen"</string>
     <string name="add_emergency_contact" msgid="4063577069613981029">"Contact toevoegen"</string>
-    <!-- no translation found for fail_load_contact_picker (817205483833876726) -->
-    <skip />
-    <!-- no translation found for fail_display_contact (4128854688897045879) -->
-    <skip />
+    <string name="fail_load_contact_picker" msgid="817205483833876726">"Kan geen contactkiezer vinden"</string>
+    <string name="fail_display_contact" msgid="4128854688897045879">"Het contact kan niet worden weergegeven"</string>
     <string name="remove_contact" msgid="6934983445723096759">"<xliff:g id="CONTACT_NAME">%1$s</xliff:g> verwijderen uit contacten voor noodgevallen?"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"Contact verwijderen"</string>
     <string name="remove" msgid="1243949503772376064">"Verwijderen"</string>
