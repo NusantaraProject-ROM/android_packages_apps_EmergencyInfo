@@ -152,12 +152,12 @@ public class EmergencyContactsPreference extends PreferenceCategory
                 if (i < getPreferenceCount()) {
                     contactPreference = (ContactPreference) getPreference(i);
                     contactPreference.setPhoneUri(phoneUri);
-                    i++;
                 } else {
                     contactPreference = new ContactPreference(getContext(), phoneUri);
                     onBindContactView(contactPreference);
                     addPreference(contactPreference);
                 }
+                i++;
                 MetricsLogger.action(getContext(), MetricsEvent.ACTION_GET_CONTACT, 0);
             } catch (IllegalArgumentException e) {
                 Log.w(TAG, "Caught IllegalArgumentException for phoneUri:"
