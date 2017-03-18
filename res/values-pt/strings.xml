@@ -91,8 +91,7 @@
     <string name="fail_display_contact" msgid="4128854688897045879">"Não é possível exibir o contato"</string>
     <string name="remove_contact" msgid="6934983445723096759">"Remover <xliff:g id="CONTACT_NAME">%1$s</xliff:g> dos contatos de emergência?"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"Remover contato"</string>
-    <!-- no translation found for fail_add_contact (6511490846952942291) -->
-    <skip />
+    <string name="fail_add_contact" msgid="6511490846952942291">"Não foi possível ler os dados de contato corretamente"</string>
     <string name="remove" msgid="1243949503772376064">"Remover"</string>
     <string name="cancel" msgid="7401575239009060939">"Cancelar"</string>
     <string name="ok" msgid="163967937451981024">"Ok"</string>

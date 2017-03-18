@@ -91,8 +91,7 @@
     <string name="fail_display_contact" msgid="4128854688897045879">"தொடர்பைக் காட்ட முடியவில்லை"</string>
     <string name="remove_contact" msgid="6934983445723096759">"<xliff:g id="CONTACT_NAME">%1$s</xliff:g>ஐ அவசரகாலத் தொடர்புகளிலிருந்து அகற்றவா?"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"தொடர்பை அகற்று"</string>
-    <!-- no translation found for fail_add_contact (6511490846952942291) -->
-    <skip />
+    <string name="fail_add_contact" msgid="6511490846952942291">"தொடர்புத் தகவலைச் சரியாகப் படிக்க முடியவில்லை"</string>
     <string name="remove" msgid="1243949503772376064">"அகற்று"</string>
     <string name="cancel" msgid="7401575239009060939">"ரத்துசெய்"</string>
     <string name="ok" msgid="163967937451981024">"சரி"</string>
