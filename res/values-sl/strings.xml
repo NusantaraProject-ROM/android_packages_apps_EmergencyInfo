@@ -91,8 +91,7 @@
     <string name="fail_display_contact" msgid="4128854688897045879">"Stika ni mogoče prikazati"</string>
     <string name="remove_contact" msgid="6934983445723096759">"Ali želite osebo <xliff:g id="CONTACT_NAME">%1$s</xliff:g> odstraniti iz stikov za nujne primere?"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"Odstranitev stika"</string>
-    <!-- no translation found for fail_add_contact (6511490846952942291) -->
-    <skip />
+    <string name="fail_add_contact" msgid="6511490846952942291">"Podatkov za stik ni mogoče pravilno prebrati."</string>
     <string name="remove" msgid="1243949503772376064">"Odstrani"</string>
     <string name="cancel" msgid="7401575239009060939">"Prekliči"</string>
     <string name="ok" msgid="163967937451981024">"V REDU"</string>

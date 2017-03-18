@@ -91,8 +91,7 @@
     <string name="fail_display_contact" msgid="4128854688897045879">"Kontakti nuk mund të shfaqet"</string>
     <string name="remove_contact" msgid="6934983445723096759">"Të hiqet <xliff:g id="CONTACT_NAME">%1$s</xliff:g> nga kontaktet e urgjencës?"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"Hiq kontaktin"</string>
-    <!-- no translation found for fail_add_contact (6511490846952942291) -->
-    <skip />
+    <string name="fail_add_contact" msgid="6511490846952942291">"Nuk mund të lexojë informacionin e kontaktit siç duhet"</string>
     <string name="remove" msgid="1243949503772376064">"Hiqe"</string>
     <string name="cancel" msgid="7401575239009060939">"Anulo"</string>
     <string name="ok" msgid="163967937451981024">"Në rregull"</string>

@@ -91,8 +91,7 @@
     <string name="fail_display_contact" msgid="4128854688897045879">"Kontakt nelze zobrazit"</string>
     <string name="remove_contact" msgid="6934983445723096759">"Odstranit uživatele <xliff:g id="CONTACT_NAME">%1$s</xliff:g> z nouzových kontaktů?"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"Odstranit kontakt"</string>
-    <!-- no translation found for fail_add_contact (6511490846952942291) -->
-    <skip />
+    <string name="fail_add_contact" msgid="6511490846952942291">"Kontaktní informace nelze správně přečíst"</string>
     <string name="remove" msgid="1243949503772376064">"Odstranit"</string>
     <string name="cancel" msgid="7401575239009060939">"Zrušit"</string>
     <string name="ok" msgid="163967937451981024">"OK"</string>

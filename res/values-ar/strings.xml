@@ -91,8 +91,7 @@
     <string name="fail_display_contact" msgid="4128854688897045879">"يتعذر عرض جهة الاتصال"</string>
     <string name="remove_contact" msgid="6934983445723096759">"هل تريد إزالة <xliff:g id="CONTACT_NAME">%1$s</xliff:g> من جهات الاتصال لحالات الطوارئ؟"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"إزالة جهة الاتصال"</string>
-    <!-- no translation found for fail_add_contact (6511490846952942291) -->
-    <skip />
+    <string name="fail_add_contact" msgid="6511490846952942291">"يتعذر قراءة معلومات الاتصال على نحو سليم"</string>
     <string name="remove" msgid="1243949503772376064">"إزالة"</string>
     <string name="cancel" msgid="7401575239009060939">"إلغاء"</string>
     <string name="ok" msgid="163967937451981024">"موافق"</string>
