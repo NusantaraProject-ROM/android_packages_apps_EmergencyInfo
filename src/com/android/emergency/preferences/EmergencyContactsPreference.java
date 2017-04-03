@@ -174,6 +174,9 @@ public class EmergencyContactsPreference extends PreferenceCategory
             // stored phone Uris.
             setEmergencyContacts(updatedEmergencyContacts);
         }
+        MetricsLogger.histogram(getContext(),
+                                "num_emergency_contacts",
+                                Math.min(3, emergencyContacts.size()));
     }
 
     /**
