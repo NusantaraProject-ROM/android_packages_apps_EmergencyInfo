@@ -35,6 +35,7 @@ import android.view.MenuItem;
 import com.android.emergency.EmergencyTabActivity;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
+import com.android.emergency.overlay.FeatureFactory;
 import com.android.emergency.view.ViewInfoActivity;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -104,12 +105,14 @@ public class EditInfoActivity extends EmergencyTabActivity {
 
     @Override
     protected ArrayList<Pair<String, Fragment>> setUpFragments() {
+        FeatureFactory featureFactory = FeatureFactory.getFactory(this);
+
         // Always return the two fragments in edit mode.
         ArrayList<Pair<String, Fragment>> fragments = new ArrayList<>(2);
         fragments.add(Pair.create(getResources().getString(R.string.tab_title_info),
                 EditEmergencyInfoFragment.newInstance()));
         fragments.add(Pair.create(getResources().getString(R.string.tab_title_contacts),
-                EditEmergencyContactsFragment.newInstance()));
+                featureFactory.getEmergencyContactsFeatureProvider().createEditContactsFragment()));
         return fragments;
     }
 
