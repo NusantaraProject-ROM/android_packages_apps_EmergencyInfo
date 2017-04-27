@@ -1,0 +1,5 @@
+# Keep annotated classes or class members.
+-keep @android.support.annotation.Keep class *
+-keepclassmembers class * {
+    @android.support.annotation.Keep *;
+}

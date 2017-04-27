@@ -55,6 +55,8 @@ LOCAL_PRIVILEGED_MODULE := true
 
 LOCAL_JACK_COVERAGE_INCLUDE_FILTER := com.android.emergency.*
 
+LOCAL_PROGUARD_FLAG_FILES := proguard.flags
+
 include $(BUILD_PACKAGE)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
