@@ -15,6 +15,8 @@
  */
 package com.android.emergency.preferences;
 
+import static com.google.common.truth.Truth.assertThat;
+
 import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.LargeTest;
@@ -72,54 +74,54 @@ public class EmergencyListPreferenceTest
         String summary = (String) mOrganDonorPreference.getSummary();
         String summaryExp =
                 getActivity().getResources().getString(R.string.unknown_organ_donor);
-        assertEquals(summaryExp, summary);
+        assertThat(summary).isEqualTo(summaryExp);
     }
 
     public void testSummary_bloodType() {
         String summary = mBloodTypeListPreference.getSummary().toString();
         CharSequence summaryExp =
                 getActivity().getResources().getString(R.string.unknown_blood_type);
-        assertEquals(summaryExp, summary);
+        assertThat(summary).isEqualTo(summaryExp);
     }
 
     public void testTitle_organDonor() {
         String title = (String) mOrganDonorPreference.getTitle();
         String titleExp =
                 getActivity().getResources().getString(R.string.organ_donor);
-        assertEquals(titleExp, title);
+        assertThat(title).isEqualTo(titleExp);
     }
 
     public void testTitle_bloodType() {
         String title = (String) mBloodTypeListPreference.getTitle();
         String titleExp =
                 getActivity().getResources().getString(R.string.blood_type);
-        assertEquals(titleExp, title);
+        assertThat(title).isEqualTo(titleExp);
     }
 
     public void testProperties_organDonor() {
-        assertNotNull(mOrganDonorPreference);
-        assertEquals(PreferenceKeys.KEY_ORGAN_DONOR, mOrganDonorPreference.getKey());
-        assertTrue(mOrganDonorPreference.isEnabled());
-        assertTrue(mOrganDonorPreference.isPersistent());
-        assertTrue(mOrganDonorPreference.isSelectable());
-        assertTrue(mOrganDonorPreference.isNotSet());
-        assertEquals("", mOrganDonorPreference.getValue());
-        assertEquals(mOrganDonorPreference.getEntryValues().length,
-                mOrganDonorPreference.getEntries().length);
+        assertThat(mOrganDonorPreference).isNotNull();
+        assertThat(mOrganDonorPreference.getKey()).isEqualTo(PreferenceKeys.KEY_ORGAN_DONOR);
+        assertThat(mOrganDonorPreference.isEnabled()).isTrue();
+        assertThat(mOrganDonorPreference.isPersistent()).isTrue();
+        assertThat(mOrganDonorPreference.isSelectable()).isTrue();
+        assertThat(mOrganDonorPreference.isNotSet()).isTrue();
+        assertThat(mOrganDonorPreference.getValue()).isEqualTo("");
+        assertThat(mOrganDonorPreference.getEntries().length).isEqualTo(
+            mOrganDonorPreference.getEntryValues().length);
         assertNull(mOrganDonorPreference.getContentDescriptions());
     }
 
     public void testProperties_bloodType() {
-        assertNotNull(mBloodTypeListPreference);
-        assertEquals(PreferenceKeys.KEY_BLOOD_TYPE, mBloodTypeListPreference.getKey());
-        assertTrue(mBloodTypeListPreference.isEnabled());
-        assertTrue(mBloodTypeListPreference.isPersistent());
-        assertTrue(mBloodTypeListPreference.isSelectable());
-        assertTrue(mBloodTypeListPreference.isNotSet());
-        assertEquals("", mBloodTypeListPreference.getValue());
-        assertEquals(mBloodTypeListPreference.getEntryValues().length,
-                mBloodTypeListPreference.getEntries().length);
-        assertEquals(mBloodTypeListPreference.getContentDescriptions().length,
+        assertThat(mBloodTypeListPreference).isNotNull();
+        assertThat(mBloodTypeListPreference.getKey()).isEqualTo(PreferenceKeys.KEY_BLOOD_TYPE);
+        assertThat(mBloodTypeListPreference.isEnabled()).isTrue();
+        assertThat(mBloodTypeListPreference.isPersistent()).isTrue();
+        assertThat(mBloodTypeListPreference.isSelectable()).isTrue();
+        assertThat(mBloodTypeListPreference.isNotSet()).isTrue();
+        assertThat(mBloodTypeListPreference.getValue()).isEqualTo("");
+        assertThat(mBloodTypeListPreference.getEntries().length).isEqualTo(
+                mBloodTypeListPreference.getEntryValues().length);
+        assertThat(mBloodTypeListPreference.getContentDescriptions().length).isEqualTo(
                 mBloodTypeListPreference.getEntries().length);
     }
 
@@ -135,8 +137,9 @@ public class EmergencyListPreferenceTest
                 mOrganDonorPreference.reloadFromPreference();
             }
         });
-        assertEquals(mOrganDonorPreference.getEntryValues()[0], mOrganDonorPreference.getValue());
-        assertFalse(mOrganDonorPreference.isNotSet());
+        assertThat(mOrganDonorPreference.getValue()).isEqualTo(
+                mOrganDonorPreference.getEntryValues()[0]);
+        assertThat(mOrganDonorPreference.isNotSet()).isFalse();
     }
 
     public void testSetValue() throws Throwable {
@@ -150,14 +153,14 @@ public class EmergencyListPreferenceTest
                 }
             });
 
-            assertEquals(mOrganDonorPreference.getEntryValues()[index],
-                    mOrganDonorPreference.getValue());
+            assertThat(mOrganDonorPreference.getValue()).isEqualTo(
+                    mOrganDonorPreference.getEntryValues()[index]);
             if (!TextUtils.isEmpty(mOrganDonorPreference.getEntryValues()[index])) {
-                assertEquals(mOrganDonorPreference.getEntries()[index],
-                        mOrganDonorPreference.getSummary());
+                assertThat(mOrganDonorPreference.getSummary()).isEqualTo(
+                        mOrganDonorPreference.getEntries()[index]);
             } else {
-                assertEquals(getActivity().getResources().getString(R.string.unknown_organ_donor),
-                        mOrganDonorPreference.getSummary());
+                assertThat(mOrganDonorPreference.getSummary()).isEqualTo(
+                        getActivity().getResources().getString(R.string.unknown_organ_donor));
             }
         }
     }
@@ -167,9 +170,9 @@ public class EmergencyListPreferenceTest
             SpannableString entry = ((SpannableString) mBloodTypeListPreference.getEntries()[i]);
             TtsSpan[] span = entry.getSpans(0,
                     mBloodTypeListPreference.getContentDescriptions().length, TtsSpan.class);
-            assertEquals(1, span.length);
-            assertEquals(span[0].getArgs().get(TtsSpan.ARG_TEXT),
-                    mBloodTypeListPreference.getContentDescriptions()[i]);
+            assertThat(span.length).isEqualTo(1);
+            assertThat(mBloodTypeListPreference.getContentDescriptions()[i]).isEqualTo(
+                    span[0].getArgs().get(TtsSpan.ARG_TEXT));
         }
     }
 }
