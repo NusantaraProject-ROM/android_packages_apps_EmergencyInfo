@@ -15,7 +15,10 @@
  */
 package com.android.emergency.edit;
 
+import static com.google.common.truth.Truth.assertThat;
+
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -70,18 +73,18 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
     }
 
     public void testTwoFragments() {
-        assertEquals(2, mFragments.size());
+        assertThat(mFragments.size()).isEqualTo(2);
     }
 
     public void testInitialState() {
         for (String key : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
-            assertNotNull(mEditEmergencyInfoFragment.findPreference(key));
+            assertThat(mEditEmergencyInfoFragment.findPreference(key)).isNotNull();
         }
         EmergencyContactsPreference emergencyContactsPreference =
                 (EmergencyContactsPreference) mEditEmergencyContactsFragment
                         .findPreference(PreferenceKeys.KEY_EMERGENCY_CONTACTS);
-        assertNotNull(emergencyContactsPreference);
-        assertEquals(0, emergencyContactsPreference.getPreferenceCount());
+        assertThat(emergencyContactsPreference).isNotNull();
+        assertThat(emergencyContactsPreference.getPreferenceCount()).isEqualTo(0);
     }
 
     public void testClearAllPreferences () throws Throwable {
@@ -143,20 +146,20 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         String unknownOrganDonor =
                 editInfoActivity.getResources().getString(R.string.unknown_organ_donor);
 
-        assertNotSame(unknownName, namePreference.getSummary());
-        assertNotSame(unknownAddress, addressPreference.getSummary());
-        assertNotSame(unknownBloodType, bloodTypePreference.getSummary());
-        assertNotSame(unknownAllergies, allergiesPreference.getSummary());
-        assertNotSame(unknownMedications, medicationsPreference.getSummary());
-        assertNotSame(unknownMedicalConditions, medicalConditionsPreference.getSummary());
-        assertNotSame(unknownOrganDonor, organDonorPreference.getSummary());
-        assertEquals(1, emergencyContactsPreference.getEmergencyContacts().size());
-        assertEquals(1, emergencyContactsPreference.getPreferenceCount());
+        assertThat(namePreference.getSummary()).isNotEqualTo(unknownName);
+        assertThat(addressPreference.getSummary()).isNotEqualTo(unknownAddress);
+        assertThat(bloodTypePreference.getSummary()).isNotEqualTo(unknownBloodType);
+        assertThat(allergiesPreference.getSummary()).isNotEqualTo(unknownAllergies);
+        assertThat(medicationsPreference.getSummary()).isNotEqualTo(unknownMedications);
+        assertThat(medicalConditionsPreference.getSummary()).isNotEqualTo(unknownMedicalConditions);
+        assertThat(organDonorPreference.getSummary()).isNotEqualTo(unknownOrganDonor);
+        assertThat(emergencyContactsPreference.getEmergencyContacts().size()).isEqualTo(1);
+        assertThat(emergencyContactsPreference.getPreferenceCount()).isEqualTo(1);
 
         EditInfoActivity.ClearAllDialogFragment clearAllDialogFragment =
                 (EditInfoActivity.ClearAllDialogFragment) editInfoActivity.getFragmentManager()
                         .findFragmentByTag(EditInfoActivity.TAG_CLEAR_ALL_DIALOG);
-        assertNull(clearAllDialogFragment);
+        assertThat(clearAllDialogFragment).isNull();
         getInstrumentation().invokeMenuActionSync(editInfoActivity, R.id.action_clear_all,
                 0 /* flags */);
         getInstrumentation().waitForIdleSync();
@@ -164,7 +167,12 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
                 (EditInfoActivity.ClearAllDialogFragment) editInfoActivity.getFragmentManager()
                         .findFragmentByTag(EditInfoActivity.TAG_CLEAR_ALL_DIALOG);
 
-        assertTrue(clearAllDialogFragmentAfterwards.getDialog().isShowing());
+        // Temporarily convert a crashing test to a failing one by asserting some things aren't
+        // null that end up being null today. In the end, we want to fix the tests.
+        assertThat(clearAllDialogFragmentAfterwards).isNotNull();
+        Dialog clearAllDialog = clearAllDialogFragmentAfterwards.getDialog();
+        assertThat(clearAllDialog).isNotNull();
+        assertThat(clearAllDialog.isShowing()).isTrue();
 
         runTestOnUiThread(new Runnable() {
             @Override
@@ -176,7 +184,7 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         });
         getInstrumentation().waitForIdleSync();
 
-	assertEquals(mFragments, editInfoActivity.getFragments());
+        assertThat(editInfoActivity.getFragments()).isEqualTo(mFragments);
 
         // After clearing all the preferences, onCreate is called for both fragments.
         // This makes the preferences point to old ones. Here we load what the user
@@ -207,25 +215,27 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
                 (EmergencyContactsPreference) mEditEmergencyContactsFragment
                         .findPreference(PreferenceKeys.KEY_EMERGENCY_CONTACTS);
 
-        assertEquals(unknownName, namePreferenceAfterClear.getSummary());
-        assertEquals(unknownAddress, addressPreferenceAfterClear.getSummary());
-        assertEquals(unknownBloodType, bloodTypePreferenceAfterClear.getSummary().toString());
-        assertEquals(unknownAllergies, allergiesPreferenceAfterClear.getSummary());
-        assertEquals(unknownMedications, medicationsPreferenceAfterClear.getSummary());
-        assertEquals(unknownMedicalConditions, medicalConditionsPreferenceAfterClear.getSummary());
-        assertEquals(unknownOrganDonor, organDonorPreferenceAfterClear.getSummary());
-        assertEquals(0, emergencyContactsPreferenceAfterClear.getEmergencyContacts().size());
-        assertEquals(0, emergencyContactsPreferenceAfterClear.getPreferenceCount());
+        assertThat(namePreferenceAfterClear.getSummary()).isEqualTo(unknownName);
+        assertThat(addressPreferenceAfterClear.getSummary()).isEqualTo(unknownAddress);
+        assertThat(bloodTypePreferenceAfterClear.getSummary().toString())
+                .isEqualTo(unknownBloodType);
+        assertThat(allergiesPreferenceAfterClear.getSummary()).isEqualTo(unknownAllergies);
+        assertThat(medicationsPreferenceAfterClear.getSummary()).isEqualTo(unknownMedications);
+        assertThat(medicalConditionsPreferenceAfterClear.getSummary()).isEqualTo(
+                unknownMedicalConditions);
+        assertThat(organDonorPreferenceAfterClear.getSummary()).isEqualTo(unknownOrganDonor);
+        assertThat(emergencyContactsPreferenceAfterClear.getEmergencyContacts()).isEmpty();
+        assertThat(emergencyContactsPreferenceAfterClear.getPreferenceCount()).isEqualTo(0);
 
-        assertTrue(ContactTestUtils
-                .deleteContact(getActivity().getContentResolver(), "Michael", "789"));
+        assertThat(ContactTestUtils
+                .deleteContact(getActivity().getContentResolver(), "Michael", "789")).isTrue();
     }
 
     public void testWarningDialog_onPauseAndResume() throws Throwable {
         final EditInfoActivity.WarningDialogFragment dialog =
                 (EditInfoActivity.WarningDialogFragment) getActivity().getFragmentManager()
                         .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
-        assertTrue(dialog.getDialog().isShowing());
+        assertThat(dialog.getDialog().isShowing()).isTrue();
 
         onPause();
         onResume();
@@ -233,7 +243,7 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         final EditInfoActivity.WarningDialogFragment dialogAfterOnResume =
                 (EditInfoActivity.WarningDialogFragment) getActivity().getFragmentManager()
                         .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
-        assertTrue(dialogAfterOnResume.getDialog().isShowing());
+        assertThat(dialogAfterOnResume.getDialog().isShowing()).isTrue();
     }
 
     public void testWarningDialog_negativeButton() throws Throwable {
@@ -241,8 +251,8 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         final EditInfoActivity.WarningDialogFragment dialogFragment =
                 (EditInfoActivity.WarningDialogFragment) activity.getFragmentManager()
                         .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
-        assertNotNull(dialogFragment.getActivity());
-        assertTrue(dialogFragment.getDialog().isShowing());
+        assertThat(dialogFragment.getActivity()).isNotNull();
+        assertThat(dialogFragment.getDialog().isShowing()).isTrue();
         runTestOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -253,7 +263,7 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         });
         getInstrumentation().waitForIdleSync();
 
-        assertNull(dialogFragment.getDialog());
+        assertThat(dialogFragment.getDialog()).isNull();
     }
 
     public void testWarningDialog_positiveButton() throws Throwable {
@@ -261,7 +271,7 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         final EditInfoActivity.WarningDialogFragment dialogFragment =
                 (EditInfoActivity.WarningDialogFragment) activity.getFragmentManager()
                         .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
-        assertTrue(dialogFragment.getDialog().isShowing());
+        assertThat(dialogFragment.getDialog().isShowing()).isTrue();
 
         runTestOnUiThread(new Runnable() {
             @Override
@@ -272,7 +282,7 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
             }
         });
         getInstrumentation().waitForIdleSync();
-        assertNull(dialogFragment.getDialog());
+        assertThat(dialogFragment.getDialog()).isNull();
 
         onPause();
         onResume();
@@ -280,7 +290,7 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         EditInfoActivity.WarningDialogFragment dialogAfterOnResume =
                 (EditInfoActivity.WarningDialogFragment) getActivity().getFragmentManager()
                         .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
-        assertNull(dialogAfterOnResume);
+        assertThat(dialogAfterOnResume).isNull();
     }
 
     public void testWarningDialogTimer_overOneDayAgo() throws Throwable {
@@ -309,7 +319,7 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
         EditInfoActivity.WarningDialogFragment dialogAfterOnResume =
                 (EditInfoActivity.WarningDialogFragment) getActivity().getFragmentManager()
                         .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
-        assertTrue(dialogAfterOnResume.getDialog().isShowing());
+        assertThat(dialogAfterOnResume.getDialog().isShowing()).isTrue();
     }
 
     private void onPause() throws Throwable {
