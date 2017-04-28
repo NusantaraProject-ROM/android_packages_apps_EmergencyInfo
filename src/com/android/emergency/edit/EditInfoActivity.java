@@ -46,10 +46,7 @@ import java.util.ArrayList;
  * Activity for editing emergency information.
  */
 public class EditInfoActivity extends EmergencyTabActivity {
-    static final String TAG_WARNING_DIALOG = "warning_dialog";
     static final String TAG_CLEAR_ALL_DIALOG = "clear_all_dialog";
-    static final String KEY_LAST_CONSENT_TIME_MS = "last_consent_time_ms";
-    static final long ONE_DAY_MS = 24 * 60 * 60 * 1000;
     private static final String ACTION_EDIT_EMERGENCY_CONTACTS =
             "android.emergency.EDIT_EMERGENCY_CONTACTS";
 
@@ -71,19 +68,6 @@ public class EditInfoActivity extends EmergencyTabActivity {
 
         getWindow().addFlags(FLAG_DISMISS_KEYGUARD);
         MetricsLogger.visible(this, MetricsEvent.ACTION_EDIT_EMERGENCY_INFO);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        long lastConsentTimeMs = PreferenceManager.getDefaultSharedPreferences(this)
-                .getLong(KEY_LAST_CONSENT_TIME_MS, Long.MAX_VALUE);
-        long nowMs = System.currentTimeMillis();
-        // Check if at least one day has gone by since the user last gave his constant or if
-        // the last consent was in the future (e.g. if the user changed the date).
-        if (nowMs - lastConsentTimeMs > ONE_DAY_MS || lastConsentTimeMs > nowMs) {
-            showWarningDialog();
-        }
     }
 
     @Override
@@ -116,18 +100,6 @@ public class EditInfoActivity extends EmergencyTabActivity {
         return fragments;
     }
 
-    private void showWarningDialog() {
-        final WarningDialogFragment previousFragment =
-                (WarningDialogFragment) getFragmentManager()
-                        .findFragmentByTag(EditInfoActivity.TAG_WARNING_DIALOG);
-
-        if (previousFragment == null) {
-            DialogFragment newFragment = WarningDialogFragment.newInstance();
-            newFragment.setCancelable(false);
-            newFragment.show(getFragmentManager(), TAG_WARNING_DIALOG);
-        }
-    }
-
     private void showClearAllDialog() {
         final ClearAllDialogFragment previousFragment =
                 (ClearAllDialogFragment) getFragmentManager()
@@ -149,43 +121,6 @@ public class EditInfoActivity extends EmergencyTabActivity {
         ViewPagerAdapter adapter = getTabsAdapter();
         if (adapter != null) {
             adapter.notifyDataSetChanged();
-        }
-    }
-
-    /**
-     * Warning dialog shown to the user each time they go in to the edit info view. Using a {@link
-     * DialogFragment} takes care of screen rotation issues.
-     */
-    public static class WarningDialogFragment extends DialogFragment {
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            Dialog dialog = new AlertDialog.Builder(getActivity())
-                    .setTitle(R.string.user_emergency_info_title)
-                    .setMessage(R.string.user_emergency_info_consent)
-                    .setPositiveButton(R.string.emergency_info_continue,
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    PreferenceManager.getDefaultSharedPreferences(
-                                            getActivity()).edit()
-                                            .putLong(KEY_LAST_CONSENT_TIME_MS,
-                                                    System.currentTimeMillis()).apply();
-                                }
-                            })
-                    .setNegativeButton(android.R.string.cancel,
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    getActivity().finish();
-                                }
-                            })
-                    .create();
-            dialog.setCanceledOnTouchOutside(false);
-            return dialog;
-        }
-
-        public static DialogFragment newInstance() {
-            return new WarningDialogFragment();
         }
     }
 
