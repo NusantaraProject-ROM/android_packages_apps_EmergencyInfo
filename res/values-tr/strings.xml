@@ -103,5 +103,5 @@
     <string name="tap_pencil" msgid="2723698054265296934">"Bu telefon size aitse, acil durumda burada görüntülenecek bilgileri eklemek için kalem simgesine dokunun"</string>
     <string name="clear_all" msgid="8899013032870561633">"Tümünü temizle"</string>
     <string name="clear" msgid="3648880442502887163">"Temizle"</string>
-    <string name="clear_all_message" msgid="1548432000373861295">"Tüm veriler ve kişiler temizlensin mi?"</string>
+    <string name="clear_all_message" msgid="1548432000373861295">"Tüm bilgiler ve kişiler temizlensin mi?"</string>
 </resources>
