@@ -47,6 +47,10 @@
             android:taskAffinity="com.android.settings"
             android:launchMode="singleTask">
             <intent-filter>
+                <action android:name="android.settings.EDIT_EMERGENCY_INFO" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
                 <action android:name="android.settings.EDIT_EMERGENGY_INFO" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
