@@ -15,6 +15,8 @@
  */
 package com.android.emergency.preferences;
 
+import static com.google.common.truth.Truth.assertThat;
+
 import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
@@ -63,7 +65,7 @@ public class EmergencyContactsPreferenceTest
                 }
             });
         } catch (Throwable throwable) {
-	    fail("Should not throw exception: " + throwable.getMessage());
+            fail("Should not throw exception: " + throwable.getMessage());
         }
 
         mContentResolver = getActivity().getContentResolver();
@@ -76,11 +78,11 @@ public class EmergencyContactsPreferenceTest
     }
 
     public void testEmptyState() {
-        assertNotNull(mEmergencyContactsPreference);
-        assertTrue(mEmergencyContactsPreference.isPersistent());
-        assertTrue(mEmergencyContactsPreference.isNotSet());
-        assertTrue(mEmergencyContactsPreference.getEmergencyContacts().isEmpty());
-        assertEquals(0, mEmergencyContactsPreference.getPreferenceCount());
+        assertThat(mEmergencyContactsPreference).isNotNull();
+        assertThat(mEmergencyContactsPreference.isPersistent()).isTrue();
+        assertThat(mEmergencyContactsPreference.isNotSet()).isTrue();
+        assertThat(mEmergencyContactsPreference.getEmergencyContacts()).isEmpty();
+        assertThat(mEmergencyContactsPreference.getPreferenceCount()).isEqualTo(0);
     }
 
     public void testAddAndRemoveEmergencyContact() throws Throwable {
@@ -96,14 +98,14 @@ public class EmergencyContactsPreferenceTest
             }
         });
 
-        assertEquals(1, mEmergencyContactsPreference.getEmergencyContacts().size());
-        assertEquals(1, mEmergencyContactsPreference.getPreferenceCount());
+        assertThat(mEmergencyContactsPreference.getEmergencyContacts().size()).isEqualTo(1);
+        assertThat(mEmergencyContactsPreference.getPreferenceCount()).isEqualTo(1);
         ContactPreference contactPreference = (ContactPreference)
                 mEmergencyContactsPreference.getPreference(0);
 
-        assertEquals(phoneUri, contactPreference.getPhoneUri());
-        assertEquals(name, contactPreference.getTitle());
-        assertTrue(((String) contactPreference.getSummary()).contains(phoneNumber));
+        assertThat(contactPreference.getPhoneUri()).isEqualTo(phoneUri);
+        assertThat(contactPreference.getTitle()).isEqualTo(name);
+        assertThat((String) contactPreference.getSummary()).contains(phoneNumber);
 
         runTestOnUiThread(new Runnable() {
             @Override
@@ -113,11 +115,11 @@ public class EmergencyContactsPreferenceTest
             }
         });
 
-        assertEquals(0, mEmergencyContactsPreference.getEmergencyContacts().size());
-        assertEquals(0, mEmergencyContactsPreference.getPreferenceCount());
+        assertThat(mEmergencyContactsPreference.getEmergencyContacts()).isEmpty();
+        assertThat(mEmergencyContactsPreference.getPreferenceCount()).isEqualTo(0);
 
         // Clean up the inserted contact
-        assertTrue(ContactTestUtils.deleteContact(mContentResolver, name, phoneNumber));
+        assertThat(ContactTestUtils.deleteContact(mContentResolver, name, phoneNumber)).isTrue();
     }
 
     public void testReloadFromPreference() throws Throwable {
@@ -141,12 +143,12 @@ public class EmergencyContactsPreferenceTest
             }
         });
 
-        assertEquals(2, mEmergencyContactsPreference.getEmergencyContacts().size());
-        assertEquals(2, mEmergencyContactsPreference.getPreferenceCount());
+        assertThat(mEmergencyContactsPreference.getEmergencyContacts().size()).isEqualTo(2);
+        assertThat(mEmergencyContactsPreference.getPreferenceCount()).isEqualTo(2);
 
         // Delete Jane from another app (e.g. contacts)
-        assertTrue(ContactTestUtils
-                .deleteContact(mContentResolver, nameJane, phoneNumberJane));
+        assertThat(ContactTestUtils
+                .deleteContact(mContentResolver, nameJane, phoneNumberJane)).isTrue();
         getInstrumentation().waitForIdleSync();
 
         runTestOnUiThread(new Runnable() {
@@ -159,15 +161,15 @@ public class EmergencyContactsPreferenceTest
         getInstrumentation().waitForIdleSync();
 
         // Assert the only remaining contact is John
-        assertEquals(1, mEmergencyContactsPreference.getEmergencyContacts().size());
-        assertEquals(1, mEmergencyContactsPreference.getPreferenceCount());
+        assertThat(mEmergencyContactsPreference.getEmergencyContacts().size()).isEqualTo(1);
+        assertThat(mEmergencyContactsPreference.getPreferenceCount()).isEqualTo(1);
         ContactPreference contactPreference = (ContactPreference)
                 mEmergencyContactsPreference.getPreference(0);
-        assertEquals(emergencyContactJohn, contactPreference.getPhoneUri());
+        assertThat(contactPreference.getPhoneUri()).isEqualTo(emergencyContactJohn);
 
         // Clean up the inserted contact
-        assertTrue(ContactTestUtils
-                .deleteContact(mContentResolver, nameJohn, phoneNumberJohn));
+        assertThat(ContactTestUtils
+                .deleteContact(mContentResolver, nameJohn, phoneNumberJohn)).isTrue();
     }
 
     public void testWidgetClick_positiveButton() throws Throwable {
@@ -183,15 +185,15 @@ public class EmergencyContactsPreferenceTest
             }
         });
 
-        assertEquals(1, mEmergencyContactsPreference.getEmergencyContacts().size());
-        assertEquals(1, mEmergencyContactsPreference.getPreferenceCount());
+        assertThat(mEmergencyContactsPreference.getEmergencyContacts().size()).isEqualTo(1);
+        assertThat(mEmergencyContactsPreference.getPreferenceCount()).isEqualTo(1);
         ContactPreference contactPreference = (ContactPreference)
                 mEmergencyContactsPreference.getPreference(0);
 
         View contactPreferenceView = contactPreference.getView(null, null);
-        assertNotNull(contactPreferenceView);
+        assertThat(contactPreferenceView).isNotNull();
         final View deleteContactWidget = contactPreferenceView.findViewById(R.id.delete_contact);
-        assertEquals(View.VISIBLE, deleteContactWidget.getVisibility());
+        assertThat(deleteContactWidget.getVisibility()).isEqualTo(View.VISIBLE);
 
         runTestOnUiThread(new Runnable() {
             @Override
@@ -202,7 +204,7 @@ public class EmergencyContactsPreferenceTest
 
         getInstrumentation().waitForIdleSync();
         final AlertDialog removeContactDialog = contactPreference.getRemoveContactDialog();
-        assertTrue(removeContactDialog.isShowing());
+        assertThat(removeContactDialog.isShowing()).isTrue();
 
         runTestOnUiThread(new Runnable() {
             @Override
@@ -212,11 +214,11 @@ public class EmergencyContactsPreferenceTest
         });
         getInstrumentation().waitForIdleSync();
 
-        assertEquals(0, mEmergencyContactsPreference.getEmergencyContacts().size());
-        assertEquals(0, mEmergencyContactsPreference.getPreferenceCount());
+        assertThat(mEmergencyContactsPreference.getEmergencyContacts()).isEmpty();
+        assertThat(mEmergencyContactsPreference.getPreferenceCount()).isEqualTo(0);
 
         // Clean up the inserted contact
-        assertTrue(ContactTestUtils.deleteContact(mContentResolver, name, phoneNumber));
+        assertThat(ContactTestUtils.deleteContact(mContentResolver, name, phoneNumber)).isTrue();
     }
 
     public void testWidgetClick_negativeButton() throws Throwable {
@@ -232,15 +234,15 @@ public class EmergencyContactsPreferenceTest
             }
         });
 
-        assertEquals(1, mEmergencyContactsPreference.getEmergencyContacts().size());
-        assertEquals(1, mEmergencyContactsPreference.getPreferenceCount());
+        assertThat(mEmergencyContactsPreference.getEmergencyContacts().size()).isEqualTo(1);
+        assertThat(mEmergencyContactsPreference.getPreferenceCount()).isEqualTo(1);
         ContactPreference contactPreference = (ContactPreference)
                 mEmergencyContactsPreference.getPreference(0);
 
         View contactPreferenceView = contactPreference.getView(null, null);
-        assertNotNull(contactPreferenceView);
+        assertThat(contactPreferenceView).isNotNull();
         final View deleteContactWidget = contactPreferenceView.findViewById(R.id.delete_contact);
-        assertEquals(View.VISIBLE, deleteContactWidget.getVisibility());
+        assertThat(deleteContactWidget.getVisibility()).isEqualTo(View.VISIBLE);
 
         runTestOnUiThread(new Runnable() {
             @Override
@@ -252,7 +254,7 @@ public class EmergencyContactsPreferenceTest
 
         getInstrumentation().waitForIdleSync();
         final AlertDialog removeContactDialog = contactPreference.getRemoveContactDialog();
-        assertTrue(removeContactDialog.isShowing());
+        assertThat(removeContactDialog.isShowing()).isTrue();
 
         runTestOnUiThread(new Runnable() {
             @Override
@@ -261,10 +263,10 @@ public class EmergencyContactsPreferenceTest
             }
         });
 
-        assertEquals(1, mEmergencyContactsPreference.getEmergencyContacts().size());
-        assertEquals(1, mEmergencyContactsPreference.getPreferenceCount());
+        assertThat(mEmergencyContactsPreference.getEmergencyContacts().size()).isEqualTo(1);
+        assertThat(mEmergencyContactsPreference.getPreferenceCount()).isEqualTo(1);
 
         // Clean up the inserted contact
-        assertTrue(ContactTestUtils.deleteContact(mContentResolver, name, phoneNumber));
+        assertThat(ContactTestUtils.deleteContact(mContentResolver, name, phoneNumber)).isTrue();
     }
 }

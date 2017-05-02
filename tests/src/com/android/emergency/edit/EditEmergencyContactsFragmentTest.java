@@ -15,6 +15,8 @@
  */
 package com.android.emergency.edit;
 
+import static com.google.common.truth.Truth.assertThat;
+
 import android.app.Instrumentation;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -48,7 +50,7 @@ public class EditEmergencyContactsFragmentTest
     }
 
     public void testAddContactPreference() throws Throwable {
-        assertNotNull(mAddContactPreference);
+        assertThat(mAddContactPreference).isNotNull();
 
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PICK);
         intentFilter.addDataType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
@@ -64,6 +66,6 @@ public class EditEmergencyContactsFragmentTest
             }
         });
 
-        assertEquals(true, getInstrumentation().checkMonitorHit(activityMonitor, 1 /* minHits */));
+        assertThat(getInstrumentation().checkMonitorHit(activityMonitor, 1 /* minHits */)).isTrue();
     }
 }

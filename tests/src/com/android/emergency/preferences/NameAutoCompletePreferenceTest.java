@@ -15,6 +15,8 @@
  */
 package com.android.emergency.preferences;
 
+import static com.google.common.truth.Truth.assertThat;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.preference.PreferenceManager;
@@ -68,24 +70,24 @@ public class NameAutoCompletePreferenceTest
         String summary = (String) mNameAutoCompletePreference.getSummary();
         String summaryExp =
                 getActivity().getResources().getString(R.string.unknown_name);
-        assertEquals(summaryExp, summary);
+        assertThat(summary).isEqualTo(summaryExp);
     }
 
     public void testTitle() {
         String title = (String) mNameAutoCompletePreference.getTitle();
         String titleExp =
                 getActivity().getResources().getString(R.string.name);
-        assertEquals(titleExp, title);
+        assertThat(title).isEqualTo(titleExp);
     }
 
     public void testProperties() {
-        assertNotNull(mNameAutoCompletePreference);
-        assertEquals(PreferenceKeys.KEY_NAME, mNameAutoCompletePreference.getKey());
-        assertTrue(mNameAutoCompletePreference.isEnabled());
-        assertTrue(mNameAutoCompletePreference.isPersistent());
-        assertTrue(mNameAutoCompletePreference.isSelectable());
-        assertTrue(mNameAutoCompletePreference.isNotSet());
-        assertEquals("", mNameAutoCompletePreference.getText());
+        assertThat(mNameAutoCompletePreference).isNotNull();
+        assertThat(mNameAutoCompletePreference.getKey()).isEqualTo(PreferenceKeys.KEY_NAME);
+        assertThat(mNameAutoCompletePreference.isEnabled()).isTrue();
+        assertThat(mNameAutoCompletePreference.isPersistent()).isTrue();
+        assertThat(mNameAutoCompletePreference.isSelectable()).isTrue();
+        assertThat(mNameAutoCompletePreference.isNotSet()).isTrue();
+        assertThat(mNameAutoCompletePreference.getText()).isEqualTo("");
     }
 
     public void testReloadFromPreference() throws Throwable {
@@ -99,8 +101,8 @@ public class NameAutoCompletePreferenceTest
                 mNameAutoCompletePreference.reloadFromPreference();
             }
         });
-        assertEquals(name, mNameAutoCompletePreference.getText());
-        assertFalse(mNameAutoCompletePreference.isNotSet());
+        assertThat(mNameAutoCompletePreference.getText()).isEqualTo(name);
+        assertThat(mNameAutoCompletePreference.isNotSet()).isFalse();
     }
 
     public void testSetText() throws Throwable {
@@ -112,19 +114,19 @@ public class NameAutoCompletePreferenceTest
             }
         });
 
-        assertEquals(name, mNameAutoCompletePreference.getText());
-        assertEquals(name, mNameAutoCompletePreference.getSummary());
+        assertThat(mNameAutoCompletePreference.getText()).isEqualTo(name);
+        assertThat(mNameAutoCompletePreference.getSummary()).isEqualTo(name);
     }
 
     public void testGetAutoCompleteTextView() {
         AutoCompleteTextView autoCompleteTextView =
                 mNameAutoCompletePreference.getAutoCompleteTextView();
-        assertNotNull(autoCompleteTextView);
+        assertThat(autoCompleteTextView).isNotNull();
     }
 
     public void testDialogShowAndDismiss_positiveButton() throws Throwable {
-        assertNull(mNameAutoCompletePreference.getDialog());
-        assertNotNull(mNameAutoCompletePreference);
+        assertThat(mNameAutoCompletePreference.getDialog()).isNull();
+        assertThat(mNameAutoCompletePreference).isNotNull();
         runTestOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -132,7 +134,7 @@ public class NameAutoCompletePreferenceTest
             }
         });
         final AlertDialog dialog = (AlertDialog) mNameAutoCompletePreference.getDialog();
-        assertTrue(dialog.isShowing());
+        assertThat(dialog.isShowing()).isTrue();
         runTestOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -140,11 +142,11 @@ public class NameAutoCompletePreferenceTest
             }
         });
         getInstrumentation().waitForIdleSync();
-        assertFalse(dialog.isShowing());
+        assertThat(dialog.isShowing()).isFalse();
     }
 
     public void testDialogShowAndDismiss_negativeButton() throws Throwable {
-        assertNull(mNameAutoCompletePreference.getDialog());
+        assertThat(mNameAutoCompletePreference.getDialog()).isNull();
         runTestOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -152,7 +154,7 @@ public class NameAutoCompletePreferenceTest
             }
         });
         final AlertDialog dialog = (AlertDialog) mNameAutoCompletePreference.getDialog();
-        assertTrue(dialog.isShowing());
+        assertThat(dialog.isShowing()).isTrue();
         runTestOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -160,6 +162,6 @@ public class NameAutoCompletePreferenceTest
             }
         });
         getInstrumentation().waitForIdleSync();
-        assertFalse(dialog.isShowing());
+        assertThat(dialog.isShowing()).isFalse();
     }
 }

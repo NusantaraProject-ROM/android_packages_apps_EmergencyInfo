@@ -15,6 +15,8 @@
  */
 package com.android.emergency.view;
 
+import static com.google.common.truth.Truth.assertThat;
+
 import android.app.Fragment;
 import android.app.Instrumentation;
 import android.content.ComponentName;
@@ -79,10 +81,10 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
         onResume();
 
         mFragments = getActivity().getFragments();
-        assertEquals(0, mFragments.size());
-        assertEquals(View.GONE, mPersonalCard.getVisibility());
-        assertEquals(View.GONE, getActivity().getTabLayout().getVisibility());
-        assertEquals(mNoInfoIndex, mViewFlipper.getDisplayedChild());
+        assertThat(mFragments).isEmpty();
+        assertThat(mPersonalCard.getVisibility()).isEqualTo(View.GONE);
+        assertThat(getActivity().getTabLayout().getVisibility()).isEqualTo(View.GONE);
+        assertThat(mViewFlipper.getDisplayedChild()).isEqualTo(mNoInfoIndex);
     }
 
     public void testNameSet() throws Throwable {
@@ -95,13 +97,13 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
         onResume();
 
         mFragments = getActivity().getFragments();
-        assertEquals(0, mFragments.size());
-        assertEquals(View.GONE, getActivity().getTabLayout().getVisibility());
-        assertEquals(View.VISIBLE,
-                getActivity().findViewById(R.id.no_info).getVisibility());
-        assertEquals(mNoInfoIndex, mViewFlipper.getDisplayedChild());
-        assertEquals(View.VISIBLE, mPersonalCardLargeItem.getVisibility());
-        assertEquals(name, mPersonalCardLargeItem.getText());
+        assertThat(mFragments).isEmpty();
+        assertThat(getActivity().getTabLayout().getVisibility()).isEqualTo(View.GONE);
+        assertThat(getActivity().findViewById(R.id.no_info).getVisibility())
+                .isEqualTo(View.VISIBLE);
+        assertThat(mViewFlipper.getDisplayedChild()).isEqualTo(mNoInfoIndex);
+        assertThat(mPersonalCardLargeItem.getVisibility()).isEqualTo(View.VISIBLE);
+        assertThat(mPersonalCardLargeItem.getText()).isEqualTo(name);
     }
 
     public void testEmergencyInfoSet() throws Throwable {
@@ -114,12 +116,12 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
         onResume();
 
         mFragments = getActivity().getFragments();
-        assertEquals(View.GONE, getActivity().getTabLayout().getVisibility());
-        assertEquals(mTabsIndex, mViewFlipper.getDisplayedChild());
-        assertEquals(1, mFragments.size());
+        assertThat(getActivity().getTabLayout().getVisibility()).isEqualTo(View.GONE);
+        assertThat(mViewFlipper.getDisplayedChild()).isEqualTo(mTabsIndex);
+        assertThat(mFragments.size()).isEqualTo(1);
         ViewEmergencyInfoFragment viewEmergencyInfoFragment =
                 (ViewEmergencyInfoFragment) mFragments.get(0).second;
-        assertNotNull(viewEmergencyInfoFragment);
+        assertThat(viewEmergencyInfoFragment).isNotNull();
     }
 
     public void testEmergencyContactSet() throws Throwable {
@@ -134,15 +136,16 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
         onResume();
 
         mFragments = getActivity().getFragments();
-        assertEquals(mTabsIndex, mViewFlipper.getDisplayedChild());
-        assertEquals(1, mFragments.size());
-        assertEquals(View.GONE, getActivity().getTabLayout().getVisibility());
+        assertThat(mViewFlipper.getDisplayedChild()).isEqualTo(mTabsIndex);
+        assertThat(mFragments.size()).isEqualTo(1);
+        assertThat(getActivity().getTabLayout().getVisibility()).isEqualTo(View.GONE);
         ViewEmergencyContactsFragment viewEmergencyContactsFragment =
                 (ViewEmergencyContactsFragment) mFragments.get(0).second;
-        assertNotNull(viewEmergencyContactsFragment);
+        assertThat(viewEmergencyContactsFragment).isNotNull();
 
-        assertTrue(ContactTestUtils.deleteContact(getActivity().getContentResolver(),
-                "John", "123"));
+        assertThat(
+                ContactTestUtils.deleteContact(getActivity().getContentResolver(), "John", "123"))
+                .isTrue();
     }
 
     public void testInfoAndEmergencyContactsSet() throws Throwable {
@@ -161,18 +164,19 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
         onResume();
 
         mFragments = getActivity().getFragments();
-        assertEquals(mTabsIndex, mViewFlipper.getDisplayedChild());
-        assertEquals(2, mFragments.size());
-        assertEquals(View.VISIBLE, getActivity().getTabLayout().getVisibility());
+        assertThat(mViewFlipper.getDisplayedChild()).isEqualTo(mTabsIndex);
+        assertThat(mFragments.size()).isEqualTo(2);
+        assertThat(getActivity().getTabLayout().getVisibility()).isEqualTo(View.VISIBLE);
         ViewEmergencyInfoFragment viewEmergencyInfoFragment =
                 (ViewEmergencyInfoFragment) mFragments.get(0).second;
-        assertNotNull(viewEmergencyInfoFragment);
+        assertThat(viewEmergencyInfoFragment).isNotNull();
         ViewEmergencyContactsFragment viewEmergencyContactsFragment =
                 (ViewEmergencyContactsFragment) mFragments.get(1).second;
-        assertNotNull(viewEmergencyContactsFragment);
+        assertThat(viewEmergencyContactsFragment).isNotNull();
 
-        assertTrue(ContactTestUtils.deleteContact(getActivity().getContentResolver(),
-                "John", "123"));
+        assertThat(
+                ContactTestUtils.deleteContact(getActivity().getContentResolver(), "John", "123"))
+                .isTrue();
     }
 
     public void testCanGoToEditInfoActivityFromMenu() {
@@ -187,8 +191,8 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
 
         EditInfoActivity editInfoActivity = (EditInfoActivity)
                 getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 1000 /* timeOut */);
-        assertNotNull(editInfoActivity);
-        assertEquals(true, getInstrumentation().checkMonitorHit(activityMonitor, 1 /* minHits */));
+        assertThat(editInfoActivity).isNotNull();
+        assertThat(getInstrumentation().checkMonitorHit(activityMonitor, 1 /* minHits */)).isTrue();
         editInfoActivity.finish();
     }
 
@@ -200,13 +204,13 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
         getActivity().startActivity(new Intent(action));
 
         getInstrumentation().waitForIdleSync();
-        assertEquals(true, getInstrumentation().checkMonitorHit(activityMonitor, 1 /* minHits */));
+        assertThat(getInstrumentation().checkMonitorHit(activityMonitor, 1 /* minHits */)).isTrue();
 
         EditInfoActivity editInfoActivity = (EditInfoActivity)
                 getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 1000 /* timeOut */);
-        assertNotNull(editInfoActivity);
+        assertThat(editInfoActivity).isNotNull();
         // The contacts tab index is 1
-        assertEquals(1, editInfoActivity.getSelectedTabPosition());
+        assertThat(editInfoActivity.getSelectedTabPosition()).isEqualTo(1);
         editInfoActivity.finish();
     }
 

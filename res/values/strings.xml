@@ -197,12 +197,6 @@
     <string name="phone_type_and_phone_number">
         <xliff:g id="phone_type" example="Mobile">%1$s</xliff:g> • <xliff:g id="phone_number" example="333-444-5566">%2$s</xliff:g>
     </string>
-    <!-- Title of dialog shown to the user to confirm that he understands that emergency information is shown in emergency dialer [CHAR LIMIT=30] -->
-    <string name="user_emergency_info_title">Emergency information</string>
-    <!-- Message of dialog shown to user to confirm that he understands that emergency information is shown in emergency dialer [CHAR LIMIT=none] -->
-    <string name="user_emergency_info_consent">Information you enter here can help first responders in an emergency. It is stored on your device only, and anyone can read it from the emergency dialer without unlocking your phone.</string>
-    <!-- Label for button in confirmation dialog when the user clicks on emergency information [CHAR LIMIT=15] -->
-    <string name="emergency_info_continue">Continue</string>
     <!-- Message shown when no emergency information has been provided by the user [CHAR LIMIT=NONE] -->
     <string name="no_info_provided">No information about the phone\'s owner</string>
     <!-- Extra message to indicate to the user that they can add emergency information [CHAR LIMIT=NONE] -->

@@ -15,6 +15,8 @@
  */
 package com.android.emergency.preferences;
 
+import static com.google.common.truth.Truth.assertThat;
+
 import android.app.Instrumentation;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -51,18 +53,18 @@ public class ContactPreferenceTest extends ActivityInstrumentationTestCase2<Edit
 
     @Override
     protected void tearDown() throws Exception {
-        assertTrue(ContactTestUtils.deleteContact(getActivity().getContentResolver(),
+        assertThat(ContactTestUtils.deleteContact(getActivity().getContentResolver(),
                 NAME,
-                PHONE_NUMBER));
+                PHONE_NUMBER)).isTrue();
         super.tearDown();
     }
 
     public void testContactPreference() {
-        assertEquals(mPhoneUri, mContactPreference.getPhoneUri());
-        assertEquals(NAME, mContactPreference.getContact().getName());
-        assertEquals(PHONE_NUMBER, mContactPreference.getContact().getPhoneNumber());
+        assertThat(mContactPreference.getPhoneUri()).isEqualTo(mPhoneUri);
+        assertThat(mContactPreference.getContact().getName()).isEqualTo(NAME);
+        assertThat(mContactPreference.getContact().getPhoneNumber()).isEqualTo(PHONE_NUMBER);
 
-        assertNull(mContactPreference.getRemoveContactDialog());
+        assertThat(mContactPreference.getRemoveContactDialog()).isNull();
         mContactPreference.setRemoveContactPreferenceListener(
                 new ContactPreference.RemoveContactPreferenceListener() {
                     @Override
@@ -70,9 +72,8 @@ public class ContactPreferenceTest extends ActivityInstrumentationTestCase2<Edit
                         // Do nothing
                     }
                 });
-        assertNotNull(mContactPreference.getRemoveContactDialog());
+        assertThat(mContactPreference.getRemoveContactDialog()).isNotNull();
     }
-
 
     public void testDisplayContact() throws Throwable {
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_VIEW);
@@ -81,7 +82,7 @@ public class ContactPreferenceTest extends ActivityInstrumentationTestCase2<Edit
                 getInstrumentation().addMonitor(intentFilter, null, true /* block */);
         mContactPreference.displayContact();
 
-        assertEquals(true, getInstrumentation().checkMonitorHit(activityMonitor, 1 /* minHits */));
+        assertThat(getInstrumentation().checkMonitorHit(activityMonitor, 1 /* minHits */)).isTrue();
     }
 
     public void testCallContact() throws Throwable {
@@ -91,6 +92,6 @@ public class ContactPreferenceTest extends ActivityInstrumentationTestCase2<Edit
                 getInstrumentation().addMonitor(intentFilter, null, true /* block */);
         mContactPreference.callContact();
 
-        assertEquals(true, getInstrumentation().checkMonitorHit(activityMonitor, 1 /* minHits */));
+        assertThat(getInstrumentation().checkMonitorHit(activityMonitor, 1 /* minHits */)).isTrue();
     }
 }
