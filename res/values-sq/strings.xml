@@ -96,9 +96,6 @@
     <string name="cancel" msgid="7401575239009060939">"Anulo"</string>
     <string name="ok" msgid="163967937451981024">"Në rregull"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="user_emergency_info_title" msgid="7827058167207376581">"Informacioni i urgjencës"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Informacionet që fut këtu mund t\'i ndihmojnë personat e parë që përgjigjen në rast urgjence. Ato ruhen vetëm në pajisjen tënde dhe çdo person mund t\'i lexojë nga formuesi i numrit i urgjencës pa e shkyçur telefonin."</string>
-    <string name="emergency_info_continue" msgid="5453201508537906087">"Vazhdo"</string>
     <string name="no_info_provided" msgid="716200382010821001">"Nuk ka informacione mbi zotëruesin e telefonit"</string>
     <string name="tap_pencil" msgid="2723698054265296934">"Nëse ky është telefoni yt, trokit tek ikona e lapsit për të shtuar informacione që do të shfaqen këtu në rast urgjence"</string>
     <string name="clear_all" msgid="8899013032870561633">"Pastroji të gjitha"</string>

@@ -70,13 +70,13 @@
     <string name="ab_negative" msgid="2064555613093591729">"AB negativo"</string>
     <string name="h_h" msgid="2183333409760379720">"HH"</string>
     <string name="allergies" msgid="2789200777539258165">"Alergias"</string>
-    <string name="unknown_allergies" msgid="4383115953418061237">"Desconocida"</string>
+    <string name="unknown_allergies" msgid="4383115953418061237">"Desconocidas"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"Por ejemplo, a las nueces"</string>
     <string name="medications" msgid="644428945685557183">"Medicamentos"</string>
-    <string name="unknown_medications" msgid="2764171064510423734">"Desconocido"</string>
+    <string name="unknown_medications" msgid="2764171064510423734">"Desconocidos"</string>
     <string name="medications_hint" msgid="3221620025945593723">"Por ejemplo, a la penicilina"</string>
     <string name="medical_conditions" msgid="3555690011498283592">"Notas médicas"</string>
-    <string name="unknown_medical_conditions" msgid="8051364895172053770">"Desconocida"</string>
+    <string name="unknown_medical_conditions" msgid="8051364895172053770">"Desconocidas"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"Por ejemplo, tengo asma"</string>
     <string name="organ_donor" msgid="5953509460007124827">"Donante de órganos"</string>
     <string name="unknown_organ_donor" msgid="2780515342875494225">"Desconocido"</string>
@@ -96,9 +96,6 @@
     <string name="cancel" msgid="7401575239009060939">"Cancelar"</string>
     <string name="ok" msgid="163967937451981024">"Aceptar"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="user_emergency_info_title" msgid="7827058167207376581">"Información de emergencia"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"La información que ingreses aquí puede ayudar a los rescatistas en caso de emergencia. Se almacena solo en tu dispositivo, y cualquiera puede leerla desde el marcador de emergencia sin necesidad de desbloquear el teléfono."</string>
-    <string name="emergency_info_continue" msgid="5453201508537906087">"Continuar"</string>
     <string name="no_info_provided" msgid="716200382010821001">"No hay información sobre el propietario del teléfono"</string>
     <string name="tap_pencil" msgid="2723698054265296934">"Si este teléfono es tuyo, presiona el ícono del lápiz para agregar información que se mostrará aquí en caso de emergencia"</string>
     <string name="clear_all" msgid="8899013032870561633">"Borrar todo"</string>
