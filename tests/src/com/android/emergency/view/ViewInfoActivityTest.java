@@ -196,24 +196,6 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
         editInfoActivity.finish();
     }
 
-    public void testCanGoToEditInfoActivityFromBroadcast() {
-        String action = "android.emergency.EDIT_EMERGENCY_CONTACTS";
-        Instrumentation.ActivityMonitor activityMonitor =
-                getInstrumentation().addMonitor(new IntentFilter(action),
-                        null /* result */, false /* block */);
-        getActivity().startActivity(new Intent(action));
-
-        getInstrumentation().waitForIdleSync();
-        assertThat(getInstrumentation().checkMonitorHit(activityMonitor, 1 /* minHits */)).isTrue();
-
-        EditInfoActivity editInfoActivity = (EditInfoActivity)
-                getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 1000 /* timeOut */);
-        assertThat(editInfoActivity).isNotNull();
-        // The contacts tab index is 1
-        assertThat(editInfoActivity.getSelectedTabPosition()).isEqualTo(1);
-        editInfoActivity.finish();
-    }
-
     private void onPause() throws Throwable {
         runTestOnUiThread(new Runnable() {
             @Override

@@ -47,8 +47,6 @@ import java.util.ArrayList;
  */
 public class EditInfoActivity extends EmergencyTabActivity {
     static final String TAG_CLEAR_ALL_DIALOG = "clear_all_dialog";
-    private static final String ACTION_EDIT_EMERGENCY_CONTACTS =
-            "android.emergency.EDIT_EMERGENCY_CONTACTS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +59,6 @@ public class EditInfoActivity extends EmergencyTabActivity {
                 PackageManager.COMPONENT_ENABLED_STATE_DEFAULT, PackageManager.DONT_KILL_APP);
 
         setContentView(R.layout.edit_activity_layout);
-        if (ACTION_EDIT_EMERGENCY_CONTACTS.equals(getIntent().getAction())) {
-            // Select emergency contacts tab
-            selectTab(1);
-        }
 
         getWindow().addFlags(FLAG_DISMISS_KEYGUARD);
         MetricsLogger.visible(this, MetricsEvent.ACTION_EDIT_EMERGENCY_INFO);
