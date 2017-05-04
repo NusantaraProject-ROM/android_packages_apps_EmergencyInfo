@@ -19,8 +19,4 @@ import android.app.Fragment;
 
 /** AOSP implementation of Emergency Contacts data source. */
 public class EmergencyContactsFeatureProviderImpl implements EmergencyContactsFeatureProvider {
-    @Override
-    public Fragment createEditContactsFragment() {
-        return EditEmergencyContactsFragment.newInstance();
-    }
 }

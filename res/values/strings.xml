@@ -16,6 +16,10 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- The name of the app. [CHAR_LIMIT=30] -->
     <string name="app_label">Emergency information</string>
+    <!-- The title of the medical information preferences category -->
+    <string name="medical_info_title">Medical information</string>
+    <!-- The title of the action to edit the medical information preferences -->
+    <string name="edit_medical_info">Edit information</string>
     <!-- The description of the pencil icon, for talkback. [CHAR_LIMIT=NONE] -->
     <string name="edit_info">Edit emergency information</string>
     <!-- The title of the emergency info tab. [CHAR_LIMIT=15] -->

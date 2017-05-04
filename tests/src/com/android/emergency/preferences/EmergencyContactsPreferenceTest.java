@@ -21,6 +21,7 @@ import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.net.Uri;
+import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.LargeTest;
@@ -29,7 +30,6 @@ import android.view.View;
 import com.android.emergency.ContactTestUtils;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
-import com.android.emergency.edit.EditEmergencyContactsFragment;
 import com.android.emergency.edit.EditInfoActivity;
 
 import java.util.ArrayList;
@@ -41,8 +41,8 @@ import java.util.List;
 @LargeTest
 public class EmergencyContactsPreferenceTest
         extends ActivityInstrumentationTestCase2<EditInfoActivity> {
+    private PreferenceFragment mEditInfoFragment;
     private EmergencyContactsPreference mEmergencyContactsPreference;
-    private EditEmergencyContactsFragment mEditEmergencyContactsFragment;
     private ContentResolver mContentResolver;
 
     public EmergencyContactsPreferenceTest() {
@@ -52,10 +52,10 @@ public class EmergencyContactsPreferenceTest
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        mEditEmergencyContactsFragment =
-                (EditEmergencyContactsFragment) getActivity().getFragments().get(1).second;
+        mEditInfoFragment = getActivity().getFragment();
+
         mEmergencyContactsPreference =
-                (EmergencyContactsPreference) mEditEmergencyContactsFragment
+                (EmergencyContactsPreference) mEditInfoFragment
                         .findPreference(PreferenceKeys.KEY_EMERGENCY_CONTACTS);
         try {
             runTestOnUiThread(new Runnable() {

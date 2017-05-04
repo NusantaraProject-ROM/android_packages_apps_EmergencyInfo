@@ -23,26 +23,26 @@ import android.test.suitebuilder.annotation.MediumTest;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
-import com.android.emergency.edit.EditEmergencyInfoFragment;
-import com.android.emergency.edit.EditInfoActivity;
+import com.android.emergency.edit.EditMedicalInfoActivity;
+import com.android.emergency.edit.EditMedicalInfoFragment;
 
 /**
  * Tests for {@link EmergencyEditTextPreference}.
  */
 @MediumTest
 public class EmergencyEditTextPreferenceTest
-        extends ActivityInstrumentationTestCase2<EditInfoActivity> {
+        extends ActivityInstrumentationTestCase2<EditMedicalInfoActivity> {
     private EmergencyEditTextPreference mPreference;
-    private EditEmergencyInfoFragment mEditInfoFragment;
+    private EditMedicalInfoFragment mEditInfoFragment;
 
     public EmergencyEditTextPreferenceTest() {
-        super(EditInfoActivity.class);
+        super(EditMedicalInfoActivity.class);
     }
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        mEditInfoFragment = (EditEmergencyInfoFragment) getActivity().getFragments().get(0).second;
+        mEditInfoFragment = getActivity().getFragment();
         mPreference = (EmergencyEditTextPreference)
                 mEditInfoFragment.findPreference(PreferenceKeys.KEY_MEDICAL_CONDITIONS);
         try {

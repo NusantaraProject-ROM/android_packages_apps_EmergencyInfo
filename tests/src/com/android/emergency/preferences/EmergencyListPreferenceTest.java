@@ -26,27 +26,27 @@ import android.text.style.TtsSpan;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
-import com.android.emergency.edit.EditEmergencyInfoFragment;
-import com.android.emergency.edit.EditInfoActivity;
+import com.android.emergency.edit.EditMedicalInfoActivity;
+import com.android.emergency.edit.EditMedicalInfoFragment;
 
 /**
  * Tests for {@link EmergencyListPreference}.
  */
 @LargeTest
 public class EmergencyListPreferenceTest
-        extends ActivityInstrumentationTestCase2<EditInfoActivity> {
+        extends ActivityInstrumentationTestCase2<EditMedicalInfoActivity> {
     private EmergencyListPreference mOrganDonorPreference;
     private EmergencyListPreference mBloodTypeListPreference;
-    private EditEmergencyInfoFragment mEditInfoFragment;
+    private EditMedicalInfoFragment mEditInfoFragment;
 
     public EmergencyListPreferenceTest() {
-        super(EditInfoActivity.class);
+        super(EditMedicalInfoActivity.class);
     }
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        mEditInfoFragment = (EditEmergencyInfoFragment) getActivity().getFragments().get(0).second;
+        mEditInfoFragment = getActivity().getFragment();
         mOrganDonorPreference = (EmergencyListPreference)
                 mEditInfoFragment.findPreference(PreferenceKeys.KEY_ORGAN_DONOR);
         mBloodTypeListPreference = (EmergencyListPreference)

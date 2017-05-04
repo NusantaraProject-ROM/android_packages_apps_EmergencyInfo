@@ -19,6 +19,4 @@ import android.app.Fragment;
 
 /** Feature provider for Emergency Contacts. */
 public interface EmergencyContactsFeatureProvider {
-    /** @return a fragment to edit emergency contacts. */
-    Fragment createEditContactsFragment();
 }
