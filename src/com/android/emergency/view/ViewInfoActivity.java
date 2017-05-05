@@ -15,12 +15,19 @@
  */
 package com.android.emergency.view;
 
+import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.LayoutRes;
 import android.support.design.widget.TabLayout;
+import android.support.design.widget.TabLayout.TabLayoutOnPageChangeListener;
+import android.support.design.widget.TabLayout.ViewPagerOnTabSelectedListener;
+import android.support.v13.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.view.Menu;
@@ -30,12 +37,13 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toolbar;
 import android.widget.ViewFlipper;
 
-import com.android.emergency.EmergencyTabActivity;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.edit.EditInfoActivity;
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
@@ -44,12 +52,23 @@ import java.util.ArrayList;
 /**
  * Activity for viewing emergency information.
  */
-public class ViewInfoActivity extends EmergencyTabActivity {
+public class ViewInfoActivity extends Activity {
     private TextView mPersonalCardLargeItem;
     private SharedPreferences mSharedPreferences;
     private LinearLayout mPersonalCard;
     private ViewFlipper mViewFlipper;
+    private ViewPagerAdapter mTabsAdapter;
+    private TabLayout mTabLayout;
+    private ArrayList<Pair<String, Fragment>> mFragments;
 
+    @Override
+    public void setContentView(@LayoutRes int layoutResID) {
+        super.setContentView(layoutResID);
+        setupTabs();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.action_bar);
+        setActionBar(toolbar);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,15 +105,15 @@ public class ViewInfoActivity extends EmergencyTabActivity {
 
     private void maybeHideTabs() {
         // Show a TextView with "No information provided" if there are no fragments.
-        if (getNumberFragments() == 0) {
+        if (mFragments.size() == 0) {
             mViewFlipper.setDisplayedChild(
                     mViewFlipper.indexOfChild(findViewById(R.id.no_info)));
         } else {
             mViewFlipper.setDisplayedChild(mViewFlipper.indexOfChild(findViewById(R.id.tabs)));
         }
 
-        TabLayout tabLayout = getTabLayout();
-        if (getNumberFragments() <= 1) {
+        TabLayout tabLayout = mTabLayout;
+        if (mFragments.size() <= 1) {
             tabLayout.setVisibility(View.GONE);
         } else {
             tabLayout.setVisibility(View.VISIBLE);
@@ -120,8 +139,19 @@ public class ViewInfoActivity extends EmergencyTabActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected ArrayList<Pair<String, Fragment>> setUpFragments() {
+    /** Return the tab layout. */
+    @VisibleForTesting
+    public TabLayout getTabLayout() {
+        return mTabLayout;
+    }
+
+    /** Return the fragments. */
+    @VisibleForTesting
+    public ArrayList<Pair<String, Fragment>> getFragments() {
+        return mFragments;
+    }
+
+    private ArrayList<Pair<String, Fragment>> setUpFragments() {
         // Return only the fragments that have at least one piece of information set:
         ArrayList<Pair<String, Fragment>> fragments = new ArrayList<>(2);
 
@@ -134,5 +164,58 @@ public class ViewInfoActivity extends EmergencyTabActivity {
                     ViewEmergencyContactsFragment.newInstance()));
         }
         return fragments;
+    }
+
+    private void setupTabs() {
+        mFragments = setUpFragments();
+        mTabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        if (mTabsAdapter == null) {
+            // The viewpager that will host the section contents.
+            ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
+            mTabsAdapter = new ViewPagerAdapter(getFragmentManager());
+            viewPager.setAdapter(mTabsAdapter);
+            mTabLayout.setTabsFromPagerAdapter(mTabsAdapter);
+
+            // Set a listener via setOnTabSelectedListener(OnTabSelectedListener) to be notified
+            // when any tab's selection state has been changed.
+            mTabLayout.setOnTabSelectedListener(
+                    new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
+
+            // Use a TabLayout.TabLayoutOnPageChangeListener to forward the scroll and selection
+            // changes to this layout
+            viewPager.addOnPageChangeListener(new TabLayoutOnPageChangeListener(mTabLayout));
+        } else {
+            mTabsAdapter.notifyDataSetChanged();
+            mTabLayout.setTabsFromPagerAdapter(mTabsAdapter);
+        }
+    }
+
+    /** The adapter used to handle the two fragments. */
+    protected class ViewPagerAdapter extends FragmentStatePagerAdapter {
+        public ViewPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragments.get(position).second;
+        }
+
+        @Override
+        public int getCount() {
+            return mFragments.size();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragments.get(position).first;
+        }
+
+        @Override
+        public int getItemPosition(Object object) {
+            // The default implementation assumes that items will never change position and always
+            // returns POSITION_UNCHANGED. This is how you can specify that the positions can change
+            return FragmentStatePagerAdapter.POSITION_NONE;
+        }
     }
 }
