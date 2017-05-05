@@ -96,9 +96,6 @@
     <string name="cancel" msgid="7401575239009060939">"रद्द करें"</string>
     <string name="ok" msgid="163967937451981024">"ठीक"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="user_emergency_info_title" msgid="7827058167207376581">"आपातकालीन जानकारी"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"आप यहां जो जानकारी डालते हैं वह आपातकाल में सबसे पहले प्रतिसाद देने वाले लोगों की सहायता कर सकती है. उसे केवल आपके डिवाइस पर संग्रहित किया जाता है और कोई भी व्यक्ति आपके फ़ोन को अनलॉक किए बिना उसे आपातकालीन डायलर से पढ़ सकता है."</string>
-    <string name="emergency_info_continue" msgid="5453201508537906087">"जारी रखें"</string>
     <string name="no_info_provided" msgid="716200382010821001">"फ़ोन के स्वामी के बारे में कोई जानकारी नहीं है"</string>
     <string name="tap_pencil" msgid="2723698054265296934">"यदि यह आपका फ़ोन है, तो आपात स्थिति में यहां दिखाई जाने वाली जानकारी जोड़ने के लिए पेंसिल आइकन टैप करें"</string>
     <string name="clear_all" msgid="8899013032870561633">"सभी साफ़ करें"</string>

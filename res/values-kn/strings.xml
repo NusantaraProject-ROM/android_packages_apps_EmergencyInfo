@@ -96,9 +96,6 @@
     <string name="cancel" msgid="7401575239009060939">"ರದ್ದುಗೊಳಿಸು"</string>
     <string name="ok" msgid="163967937451981024">"ಸರಿ"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="user_emergency_info_title" msgid="7827058167207376581">"ತುರ್ತು ಮಾಹಿತಿ"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"ಇಲ್ಲಿ ನಮೂದಿಸುವ ಮಾಹಿತಿಯು ತುರ್ತುಪರಿಸ್ಥಿತಿಯಲ್ಲಿ ಮೊದಲು ಸಹಾಯಕ್ಕೆ ಬರುವವರಿಗೆ ಪ್ರಯೋಜನಕಾರಿಯಾಗಿರುತ್ತದೆ. ಇದು ನಿಮ್ಮ ಸಾಧನದಲ್ಲಿ ಮಾತ್ರ ಸಂಗ್ರಹವಾಗಿರುತ್ತದೆ. ಇದನ್ನು ತುರ್ತು ಡಯಲರ್‌ನಲ್ಲಿ, ನಿಮ್ಮ ಫೋನ್‌ ಅನ್‌ಲಾಕ್ ಮಾಡದೆಯೇ, ಯಾರು ಬೇಕಾದರೂ ಓದಬಹುದು."</string>
-    <string name="emergency_info_continue" msgid="5453201508537906087">"ಮುಂದುವರಿಸು"</string>
     <string name="no_info_provided" msgid="716200382010821001">"ಫೋನ್‌ನ ಮಾಲೀಕರ ಕುರಿತು ಯಾವುದೇ ಮಾಹಿತಿ ಇಲ್ಲ"</string>
     <string name="tap_pencil" msgid="2723698054265296934">"ಇದು ನಿಮ್ಮ ಫೋನ್ ಆಗಿದ್ದಲ್ಲಿ, ತುರ್ತು ಸಂದರ್ಭದಲ್ಲಿ ಇಲ್ಲಿ ಪ್ರದರ್ಶಿಸಲಾಗುವ ಮಾಹಿತಿಯನ್ನು ಸೇರಿಸಲು ಪೆನ್ಸಿಲ್ ಐಕಾನ್ ಅನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ"</string>
     <string name="clear_all" msgid="8899013032870561633">"ತೆರವುಗೊಳಿಸಿ"</string>

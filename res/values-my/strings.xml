@@ -96,9 +96,6 @@
     <string name="cancel" msgid="7401575239009060939">"မလုပ်တော့"</string>
     <string name="ok" msgid="163967937451981024">"အိုကေ"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="user_emergency_info_title" msgid="7827058167207376581">"အရေးပေါ်အချက်အလက်"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"ဤနေရာတွင် သင်ထည့်သွင်းထားသည့် အချက်အလက်များသည် အရေးပေါ်အခြေအနေတွင် ပထမတုံ့ပြန်သူကို အကူအညီပေးနိုင်ပါမည်။ ၎င်းကို သင့်စက်ပစ္စည်းထဲတွင်သာ သိမ်းဆည်းထားခြင်းဖြစ်ပြီး၊ သင့်ဖုန်းကို လော့ခ်ဖွင့်စရာမလိုဘဲ မည်သူမဆို အရေးပေါ်ခလုတ်မှ ဖတ်နိုင်ပါသည်။"</string>
-    <string name="emergency_info_continue" msgid="5453201508537906087">"ဆက်လုပ်ရန်"</string>
     <string name="no_info_provided" msgid="716200382010821001">"ဖုန်းပိုင်ရှင်နှင့် ပတ်သက်သည့် အချက်အလက်များ မရှိပါ"</string>
     <string name="tap_pencil" msgid="2723698054265296934">"ဤအရာသည် သင့်ဖုန်းဖြစ်ပါက အရေးပေါ်ကိစ္စကြုံလာလျှင် ပြသမည့် အချက်အလက်များထည့်ရန် ခဲတံသင်္ကေတကို တို့ပါ"</string>
     <string name="clear_all" msgid="8899013032870561633">"အားလုံး ရှင်းပါ"</string>

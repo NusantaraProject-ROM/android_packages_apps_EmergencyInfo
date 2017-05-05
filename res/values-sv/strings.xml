@@ -96,9 +96,6 @@
     <string name="cancel" msgid="7401575239009060939">"Avbryt"</string>
     <string name="ok" msgid="163967937451981024">"Ok"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="user_emergency_info_title" msgid="7827058167207376581">"Krisinformation"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Den information som du anger här kan hjälpa räddningspersonal vid en nödsituation. Den finns bara lagrad på enheten och vem som helst kan läsa den från skärmen för nödsamtal utan att låsa upp mobilen."</string>
-    <string name="emergency_info_continue" msgid="5453201508537906087">"Fortsätt"</string>
     <string name="no_info_provided" msgid="716200382010821001">"Det finns inga uppgifter om mobilens ägare"</string>
     <string name="tap_pencil" msgid="2723698054265296934">"Om det här är din mobil trycker du på pennikonen för att lägga till uppgifter som visas här i nödsituationer"</string>
     <string name="clear_all" msgid="8899013032870561633">"Rensa alla"</string>

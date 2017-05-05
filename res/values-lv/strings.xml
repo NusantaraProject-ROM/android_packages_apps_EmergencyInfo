@@ -96,9 +96,6 @@
     <string name="cancel" msgid="7401575239009060939">"Atcelt"</string>
     <string name="ok" msgid="163967937451981024">"Labi"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="user_emergency_info_title" msgid="7827058167207376581">"Ārkārtas informācija"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Šeit ievadītā informācija var palīdzēt tiem, kas pirmie rīkosies ārkārtas situācijā. Tā tiks saglabāta tikai jūsu ierīcē, un ikviens varēs to izlasīt ārkārtas numuru sastādītāja ekrānā, neatbloķējot jūsu tālruni."</string>
-    <string name="emergency_info_continue" msgid="5453201508537906087">"Turpināt"</string>
     <string name="no_info_provided" msgid="716200382010821001">"Nav informācijas par tālruņa īpašnieku."</string>
     <string name="tap_pencil" msgid="2723698054265296934">"Ja šis ir jūsu tālrunis, pieskarieties zīmuļa ikonai, lai pievienotu informāciju, kas tiks parādīta šeit ārkārtas gadījumā."</string>
     <string name="clear_all" msgid="8899013032870561633">"Notīrīt visu"</string>

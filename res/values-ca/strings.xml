@@ -96,9 +96,6 @@
     <string name="cancel" msgid="7401575239009060939">"Cancel·la"</string>
     <string name="ok" msgid="163967937451981024">"D\'acord"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="user_emergency_info_title" msgid="7827058167207376581">"Informació d\'emergència"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"La informació que introdueixis aquí pot ser útil per als serveis d\'emergència. Aquesta informació només es desa al dispositiu, i tothom pot consultar-la al marcador d\'emergència sense desbloquejar el telèfon."</string>
-    <string name="emergency_info_continue" msgid="5453201508537906087">"Continua"</string>
     <string name="no_info_provided" msgid="716200382010821001">"No hi ha informació sobre el propietari del telèfon"</string>
     <string name="tap_pencil" msgid="2723698054265296934">"Si el telèfon és teu, toca la icona de llapis per afegir la informació que es mostrarà aquí en cas d\'emergència"</string>
     <string name="clear_all" msgid="8899013032870561633">"Esborra-ho tot"</string>

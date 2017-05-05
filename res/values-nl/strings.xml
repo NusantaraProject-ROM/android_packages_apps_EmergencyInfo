@@ -96,9 +96,6 @@
     <string name="cancel" msgid="7401575239009060939">"Annuleren"</string>
     <string name="ok" msgid="163967937451981024">"OK"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
-    <string name="user_emergency_info_title" msgid="7827058167207376581">"Informatie bij nood"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Informatie die je hier opgeeft, kan worden gebruikt om in een noodgeval contact op te nemen met je naasten. De informatie wordt alleen opgeslagen op je apparaat en iedereen kan deze bekijken via de kiezer voor noodoproepen zonder je telefoon te ontgrendelen."</string>
-    <string name="emergency_info_continue" msgid="5453201508537906087">"Doorgaan"</string>
     <string name="no_info_provided" msgid="716200382010821001">"Geen informatie over de eigenaar van de telefoon"</string>
     <string name="tap_pencil" msgid="2723698054265296934">"Als dit je telefoon is, tik je op het potloodpictogram om informatie toe te voegen die hier wordt weergegeven in geval van nood"</string>
     <string name="clear_all" msgid="8899013032870561633">"Alles wissen"</string>
