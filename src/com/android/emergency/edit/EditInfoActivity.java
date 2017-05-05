@@ -17,6 +17,7 @@ package com.android.emergency.edit;
 
 import static android.view.WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -26,17 +27,18 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.android.emergency.EmergencyTabActivity;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.overlay.FeatureFactory;
 import com.android.emergency.view.ViewInfoActivity;
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
@@ -45,8 +47,10 @@ import java.util.ArrayList;
 /**
  * Activity for editing emergency information.
  */
-public class EditInfoActivity extends EmergencyTabActivity {
+public class EditInfoActivity extends Activity {
     static final String TAG_CLEAR_ALL_DIALOG = "clear_all_dialog";
+
+    private EditInfoFragment mEditInfoFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +62,10 @@ public class EditInfoActivity extends EmergencyTabActivity {
         pm.setComponentEnabledSetting(new ComponentName(this, ViewInfoActivity.class),
                 PackageManager.COMPONENT_ENABLED_STATE_DEFAULT, PackageManager.DONT_KILL_APP);
 
-        setContentView(R.layout.edit_activity_layout);
+        mEditInfoFragment = new EditInfoFragment();
+        getFragmentManager().beginTransaction()
+            .replace(android.R.id.content, mEditInfoFragment)
+            .commit();
 
         getWindow().addFlags(FLAG_DISMISS_KEYGUARD);
         MetricsLogger.visible(this, MetricsEvent.ACTION_EDIT_EMERGENCY_INFO);
@@ -81,17 +88,10 @@ public class EditInfoActivity extends EmergencyTabActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected ArrayList<Pair<String, Fragment>> setUpFragments() {
-        FeatureFactory featureFactory = FeatureFactory.getFactory(this);
-
-        // Always return the two fragments in edit mode.
-        ArrayList<Pair<String, Fragment>> fragments = new ArrayList<>(2);
-        fragments.add(Pair.create(getResources().getString(R.string.tab_title_info),
-                EditEmergencyInfoFragment.newInstance()));
-        fragments.add(Pair.create(getResources().getString(R.string.tab_title_contacts),
-                featureFactory.getEmergencyContactsFeatureProvider().createEditContactsFragment()));
-        return fragments;
+    /** @return The single fragment managed by this activity. */
+    @VisibleForTesting
+    public PreferenceFragment getFragment() {
+        return mEditInfoFragment;
     }
 
     private void showClearAllDialog() {
@@ -112,10 +112,7 @@ public class EditInfoActivity extends EmergencyTabActivity {
         sharedPreferences.edit().remove(PreferenceKeys.KEY_EMERGENCY_CONTACTS).commit();
 
         // Refresh the UI.
-        ViewPagerAdapter adapter = getTabsAdapter();
-        if (adapter != null) {
-            adapter.notifyDataSetChanged();
-        }
+        mEditInfoFragment.reloadFromPreference();
     }
 
     /**

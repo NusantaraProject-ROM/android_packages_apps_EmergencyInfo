@@ -30,12 +30,12 @@ import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 /**
  * Fragment that displays personal and medical information.
  */
-public class EditEmergencyInfoFragment extends PreferenceFragment {
+public class EditMedicalInfoFragment extends PreferenceFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.edit_emergency_info);
+        addPreferencesFromResource(R.xml.edit_medical_info);
 
         for (int i = 0; i < PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO.length; i++) {
             final int index = i;
@@ -75,6 +75,6 @@ public class EditEmergencyInfoFragment extends PreferenceFragment {
     }
 
     public static Fragment newInstance() {
-        return new EditEmergencyInfoFragment();
+        return new EditMedicalInfoFragment();
     }
 }

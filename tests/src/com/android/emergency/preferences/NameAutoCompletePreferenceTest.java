@@ -26,26 +26,26 @@ import android.widget.AutoCompleteTextView;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
-import com.android.emergency.edit.EditEmergencyInfoFragment;
-import com.android.emergency.edit.EditInfoActivity;
+import com.android.emergency.edit.EditMedicalInfoActivity;
+import com.android.emergency.edit.EditMedicalInfoFragment;
 
 /**
  * Tests for {@link NameAutoCompletePreference}.
  */
 @LargeTest
 public class NameAutoCompletePreferenceTest
-        extends ActivityInstrumentationTestCase2<EditInfoActivity> {
+        extends ActivityInstrumentationTestCase2<EditMedicalInfoActivity> {
     private NameAutoCompletePreference mNameAutoCompletePreference;
-    private EditEmergencyInfoFragment mEditInfoFragment;
+    private EditMedicalInfoFragment mEditInfoFragment;
 
     public NameAutoCompletePreferenceTest() {
-        super(EditInfoActivity.class);
+        super(EditMedicalInfoActivity.class);
     }
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        mEditInfoFragment = (EditEmergencyInfoFragment) getActivity().getFragments().get(0).second;
+        mEditInfoFragment = getActivity().getFragment();
         mNameAutoCompletePreference = (NameAutoCompletePreference)
                 mEditInfoFragment.findPreference(PreferenceKeys.KEY_NAME);
         try {

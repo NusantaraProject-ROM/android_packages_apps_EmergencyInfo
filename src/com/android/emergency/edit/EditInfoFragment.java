@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2017 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,31 +16,37 @@
 package com.android.emergency.edit;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceGroup;
+import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
+import com.android.emergency.ReloadablePreferenceInterface;
 import com.android.emergency.preferences.EmergencyContactsPreference;
+import com.android.internal.annotations.VisibleForTesting;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-/**
- * Fragment that displays emergency contacts. These contacts can be added or removed.
- */
-public class EditEmergencyContactsFragment extends PreferenceFragment {
-    private static final String TAG = "EditEmergencyContactsFragment";
+/** Fragment for editing emergency info, including medical info and emergency contacts. */
+public class EditInfoFragment extends PreferenceFragment {
+    private static final String TAG = "EditInfoFragment";
 
     /** Result code for contact picker */
     private static final int CONTACT_PICKER_RESULT = 1001;
+
+    private final Map<String, Preference> mMedicalInfoPreferences =
+            new HashMap<String, Preference>();
 
     /** The category that holds the emergency contacts. */
     private EmergencyContactsPreference mEmergencyContactsPreferenceCategory;
@@ -48,11 +54,18 @@ public class EditEmergencyContactsFragment extends PreferenceFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.edit_emergency_contacts);
+        addPreferencesFromResource(R.xml.edit_emergency_info);
+
+        for (String preferenceKey : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
+            Preference preference = findPreference(preferenceKey);
+            mMedicalInfoPreferences.put(preferenceKey, preference);
+        }
+
+        // Fill in emergency contacts.
         mEmergencyContactsPreferenceCategory = (EmergencyContactsPreference)
                 findPreference(PreferenceKeys.KEY_EMERGENCY_CONTACTS);
 
-        Preference addEmergencyContact = findPreference(PreferenceKeys.KEY_ADD_CONTACT);
+        Preference addEmergencyContact = findPreference(PreferenceKeys.KEY_ADD_EMERGENCY_CONTACT);
         addEmergencyContact.setOnPreferenceClickListener(new Preference
                 .OnPreferenceClickListener() {
             @Override
@@ -74,7 +87,6 @@ public class EditEmergencyContactsFragment extends PreferenceFragment {
                 }
             }
         });
-
     }
 
     @Override
@@ -85,9 +97,18 @@ public class EditEmergencyContactsFragment extends PreferenceFragment {
 
     /** Reloads the contacts by reading the value from the shared preferences. */
     public void reloadFromPreference() {
-        if (mEmergencyContactsPreferenceCategory != null) {
-            mEmergencyContactsPreferenceCategory.reloadFromPreference();
+        for (Preference preference : mMedicalInfoPreferences.values()) {
+            ReloadablePreferenceInterface reloadablePreference =
+                    (ReloadablePreferenceInterface) preference;
+            reloadablePreference.reloadFromPreference();
+            if (reloadablePreference.isNotSet()) {
+                getMedicalInfoParent().removePreference(preference);
+            } else {
+                // Note: this preference won't be added it if it already exists.
+                getMedicalInfoParent().addPreference(preference);
+            }
         }
+        mEmergencyContactsPreferenceCategory.reloadFromPreference();
     }
 
     @Override
@@ -98,7 +119,13 @@ public class EditEmergencyContactsFragment extends PreferenceFragment {
         }
     }
 
-    public static Fragment newInstance() {
-        return new EditEmergencyContactsFragment();
+    @VisibleForTesting
+    public PreferenceGroup getMedicalInfoParent() {
+        return (PreferenceGroup) findPreference(PreferenceKeys.KEY_MEDICAL_INFO);
+    }
+
+    @VisibleForTesting
+    public Preference getMedicalInfoPreference(String key) {
+        return mMedicalInfoPreferences.get(key);
     }
 }
