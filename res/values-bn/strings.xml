@@ -17,6 +17,10 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_label" msgid="1090682794607161063">"জরুরি তথ্য"</string>
+    <!-- no translation found for medical_info_title (3000192781136934887) -->
+    <skip />
+    <!-- no translation found for edit_medical_info (6733720353375319476) -->
+    <skip />
     <string name="edit_info" msgid="5973929805855224805">"জরুরি তথ্য সম্পাদনা করুন"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"তথ্য"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"পরিচিতিগুলি"</string>

@@ -17,9 +17,13 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_label" msgid="1090682794607161063">"긴급 상황 정보"</string>
+    <!-- no translation found for medical_info_title (3000192781136934887) -->
+    <skip />
+    <!-- no translation found for edit_medical_info (6733720353375319476) -->
+    <skip />
     <string name="edit_info" msgid="5973929805855224805">"긴급 상황 정보 수정"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"정보"</string>
-    <string name="tab_title_contacts" msgid="4298341166404791209">"주소록"</string>
+    <string name="tab_title_contacts" msgid="4298341166404791209">"연락처"</string>
     <string name="name" msgid="4286267457738861977">"이름"</string>
     <string name="unknown_name" msgid="2834802479170495056">"알 수 없음"</string>
     <string name="address" msgid="6449303483151189969">"주소"</string>
