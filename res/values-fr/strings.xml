@@ -79,7 +79,7 @@
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"Inconnues"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"Par exemple, asthme"</string>
     <string name="organ_donor" msgid="5953509460007124827">"Donneur d\'organes"</string>
-    <string name="unknown_organ_donor" msgid="2780515342875494225">"Ne sais pas"</string>
+    <string name="unknown_organ_donor" msgid="2780515342875494225">"Non précisé"</string>
     <string name="yes" msgid="5829765567799916128">"Oui"</string>
     <string name="no" msgid="1681689233660683509">"Non"</string>
     <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->

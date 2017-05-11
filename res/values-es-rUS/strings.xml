@@ -70,13 +70,13 @@
     <string name="ab_negative" msgid="2064555613093591729">"AB negativo"</string>
     <string name="h_h" msgid="2183333409760379720">"HH"</string>
     <string name="allergies" msgid="2789200777539258165">"Alergias"</string>
-    <string name="unknown_allergies" msgid="4383115953418061237">"Desconocida"</string>
+    <string name="unknown_allergies" msgid="4383115953418061237">"Desconocidas"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"Por ejemplo, a las nueces"</string>
     <string name="medications" msgid="644428945685557183">"Medicamentos"</string>
-    <string name="unknown_medications" msgid="2764171064510423734">"Desconocido"</string>
+    <string name="unknown_medications" msgid="2764171064510423734">"Desconocidos"</string>
     <string name="medications_hint" msgid="3221620025945593723">"Por ejemplo, a la penicilina"</string>
     <string name="medical_conditions" msgid="3555690011498283592">"Notas médicas"</string>
-    <string name="unknown_medical_conditions" msgid="8051364895172053770">"Desconocida"</string>
+    <string name="unknown_medical_conditions" msgid="8051364895172053770">"Desconocidas"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"Por ejemplo, tengo asma"</string>
     <string name="organ_donor" msgid="5953509460007124827">"Donante de órganos"</string>
     <string name="unknown_organ_donor" msgid="2780515342875494225">"Desconocido"</string>
