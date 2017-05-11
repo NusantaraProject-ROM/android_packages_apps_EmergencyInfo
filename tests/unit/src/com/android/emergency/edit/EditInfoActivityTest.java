@@ -28,12 +28,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
-import android.preference.Preference;
-import android.preference.PreferenceGroup;
-import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
-import android.support.test.runner.AndroidJUnit4;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.runner.AndroidJUnit4;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceGroup;
+import android.support.v7.preference.PreferenceManager;
 
 import com.android.emergency.ContactTestUtils;
 import com.android.emergency.PreferenceKeys;

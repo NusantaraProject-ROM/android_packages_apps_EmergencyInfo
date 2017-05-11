@@ -19,6 +19,7 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="tabIndicatorColor">@color/accent_color_dark</item>
         <item name="textColorActionBar">?android:attr/textColorPrimary</item>
+        <item name="preferenceTheme">@style/PreferenceTheme</item>
     </style>
 
     <!-- Base emergency theme. -->
@@ -26,9 +27,9 @@
         <item name="android:preferenceCategoryStyle">@style/AppTheme.PreferenceCategoryStyle</item>
         <item name="colorPrimaryDark">@color/emergency_primary_dark</item>
         <item name="colorPrimary">@color/emergency_primary</item>
-        <item name="colorAccent">@color/emergency_accent</item>
         <item name="textColorActionBar">@color/tab_text_color</item>
         <item name="tabIndicatorColor">@color/emergency_accent</item>
+        <item name="preferenceTheme">@style/PreferenceTheme</item>
     </style>
 
     <!-- ActionBar -->
@@ -56,5 +57,8 @@
     <!-- Preferences -->
     <style name="AppTheme.PreferenceCategoryStyle" parent="Preference.Category">
         <item name="android:layout">@layout/custom_preference_category_layout</item>
+    </style>
+
+    <style name="PreferenceTheme" parent="@style/PreferenceThemeOverlay.v14.Material">
     </style>
 </resources>
