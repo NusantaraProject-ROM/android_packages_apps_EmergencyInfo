@@ -17,10 +17,8 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_label" msgid="1090682794607161063">"ਸੰਕਟਕਾਲ ਜਾਣਕਾਰੀ"</string>
-    <!-- no translation found for medical_info_title (3000192781136934887) -->
-    <skip />
-    <!-- no translation found for edit_medical_info (6733720353375319476) -->
-    <skip />
+    <string name="medical_info_title" msgid="3000192781136934887">"ਡਾਕਟਰੀ ਜਾਣਕਾਰੀ"</string>
+    <string name="edit_medical_info" msgid="6733720353375319476">"ਜਾਣਕਾਰੀ ਦਾ ਸੰਪਾਦਨ ਕਰੋ"</string>
     <string name="edit_info" msgid="5973929805855224805">"ਐਮਰਜੈਂਸੀ ਜਾਣਕਾਰੀ ਦਾ ਸੰਪਾਦਨ ਕਰੋ"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"ਜਾਣਕਾਰੀ"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"ਸੰਪਰਕ"</string>
@@ -102,7 +100,7 @@
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="no_info_provided" msgid="716200382010821001">"ਫ਼ੋਨ ਦੇ ਮਾਲਕ ਬਾਰੇ ਕੋਈ ਜਾਣਕਾਰੀ ਨਹੀਂ"</string>
     <string name="tap_pencil" msgid="2723698054265296934">"ਜੇਕਰ ਇਹ ਤੁਹਾਡਾ ਫ਼ੋਨ ਹੈ, ਤਾਂ ਉਹ ਜਾਣਕਾਰੀ ਸ਼ਾਮਲ ਕਰਨ ਲਈ ਪੈਂਸਿਲ ਚਿੰਨ੍ਹ \'ਤੇ ਟੈਪ ਕਰੋ ਜੋ ਕਿ ਐਮਰਜੈਂਸੀ ਦੀ ਸਥਿਤੀ ਵਿੱਚ ਇੱਥੇ ਵਿਖਾਈ ਦੇਵੇਗੀ"</string>
-    <string name="clear_all" msgid="8899013032870561633">"ਸਭ ਸਾਫ਼ ਕਰੋ"</string>
-    <string name="clear" msgid="3648880442502887163">"ਸਾਫ਼ ਕਰੋ"</string>
+    <string name="clear_all" msgid="8899013032870561633">"ਸਭ ਕਲੀਅਰ ਕਰੋ"</string>
+    <string name="clear" msgid="3648880442502887163">"ਕਲੀਅਰ ਕਰੋ"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"ਕੀ ਸਾਰੀ ਜਾਣਕਾਰੀ ਅਤੇ ਸੰਪਰਕਾਂ ਨੂੰ ਮਿਟਾਉਣਾ ਹੈ?"</string>
 </resources>
