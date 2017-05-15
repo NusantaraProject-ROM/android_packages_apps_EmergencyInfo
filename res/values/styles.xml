@@ -18,10 +18,8 @@
         <item name="android:preferenceCategoryStyle">@style/AppTheme.PreferenceCategoryStyle</item>
         <item name="colorPrimaryDark">@color/primary_dark_color</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:statusBarColor">@color/primary_dark_color</item>
         <item name="tabIndicatorColor">@color/accent_color_dark</item>
         <item name="textColorActionBar">?android:attr/textColorPrimary</item>
-        <item name="android:datePickerStyle">@style/AppTheme.DatePickerStyle</item>
     </style>
 
     <!-- Base emergency theme. -->
@@ -59,10 +57,5 @@
     <!-- Preferences -->
     <style name="AppTheme.PreferenceCategoryStyle" parent="Preference.Category">
         <item name="android:layout">@layout/custom_preference_category_layout</item>
-    </style>
-
-    <!-- DatePicker -->
-    <style name="AppTheme.DatePickerStyle" parent="android:Widget.Material.DatePicker">
-        <item name="android:datePickerMode">spinner</item>
     </style>
 </resources>
