@@ -157,8 +157,7 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
                 (EditInfoActivity.ClearAllDialogFragment) editInfoActivity.getFragmentManager()
                         .findFragmentByTag(EditInfoActivity.TAG_CLEAR_ALL_DIALOG);
         assertNull(clearAllDialogFragment);
-        getInstrumentation().invokeMenuActionSync(editInfoActivity, R.id.action_clear_all,
-                0 /* flags */);
+        editInfoActivity.getMenu().performIdentifierAction(R.id.action_clear_all, 0 /* flags */);
         getInstrumentation().waitForIdleSync();
         final EditInfoActivity.ClearAllDialogFragment clearAllDialogFragmentAfterwards =
                 (EditInfoActivity.ClearAllDialogFragment) editInfoActivity.getFragmentManager()
