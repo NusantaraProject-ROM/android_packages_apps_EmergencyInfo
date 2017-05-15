@@ -186,8 +186,7 @@ public class ViewInfoActivityTest extends ActivityInstrumentationTestCase2<ViewI
                 getInstrumentation().addMonitor(EditInfoActivity.class.getName(),
                         null /* result */, false /* block */);
 
-        getInstrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_MENU);
-        getInstrumentation().invokeMenuActionSync(activity, R.id.action_edit, 0 /* flags */);
+        activity.getMenu().performIdentifierAction(R.id.action_edit, 0 /* flags */);
 
         EditInfoActivity editInfoActivity = (EditInfoActivity)
                 getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 1000 /* timeOut */);

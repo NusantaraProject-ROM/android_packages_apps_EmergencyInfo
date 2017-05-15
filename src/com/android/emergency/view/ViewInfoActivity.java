@@ -60,6 +60,7 @@ public class ViewInfoActivity extends Activity {
     private ViewPagerAdapter mTabsAdapter;
     private TabLayout mTabLayout;
     private ArrayList<Pair<String, Fragment>> mFragments;
+    private Menu mMenu;
 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
@@ -124,7 +125,8 @@ public class ViewInfoActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.view_info_menu, menu);
-        return true;
+        mMenu = menu;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -143,6 +145,11 @@ public class ViewInfoActivity extends Activity {
     @VisibleForTesting
     public TabLayout getTabLayout() {
         return mTabLayout;
+    }
+
+    @VisibleForTesting
+    public Menu getMenu() {
+        return mMenu;
     }
 
     /** Return the fragments. */
