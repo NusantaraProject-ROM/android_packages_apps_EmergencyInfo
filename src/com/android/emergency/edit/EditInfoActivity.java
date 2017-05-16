@@ -62,6 +62,8 @@ public class EditInfoActivity extends Activity {
         pm.setComponentEnabledSetting(new ComponentName(this, ViewInfoActivity.class),
                 PackageManager.COMPONENT_ENABLED_STATE_DEFAULT, PackageManager.DONT_KILL_APP);
 
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         mEditInfoFragment = new EditInfoFragment();
         getFragmentManager().beginTransaction()
             .replace(android.R.id.content, mEditInfoFragment)
@@ -81,6 +83,12 @@ public class EditInfoActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case android.R.id.home:
+                // The user asked to navigate up, which, in this case, can easily be accomplished
+                // by finishing the activity.
+                finish();
+                return true;
+
             case R.id.action_clear_all:
                 showClearAllDialog();
                 return true;

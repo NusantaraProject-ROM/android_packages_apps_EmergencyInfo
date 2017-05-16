@@ -56,6 +56,7 @@
             android:name=".edit.EditMedicalInfoActivity"
             android:icon="@mipmap/ic_launcher_settings"
             android:label="@string/medical_info_title"
+            android:parentActivityName="com.android.emergency.edit.EditInfoActivity"
             android:theme="@style/AppTheme"
             android:taskAffinity="com.android.settings"
             android:launchMode="singleTask">
