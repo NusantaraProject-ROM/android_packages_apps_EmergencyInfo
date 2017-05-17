@@ -170,8 +170,6 @@ public class EditInfoActivityTest extends ActivityInstrumentationTestCase2<EditI
                 (EditInfoActivity.ClearAllDialogFragment) getActivity().getFragmentManager()
                         .findFragmentByTag(EditInfoActivity.TAG_CLEAR_ALL_DIALOG);
 
-        // Temporarily convert a crashing test to a failing one by asserting some things aren't
-        // null that end up being null today. In the end, we want to fix the tests.
         assertThat(clearAllDialogFragmentAfterwards).isNotNull();
         Dialog clearAllDialog = clearAllDialogFragmentAfterwards.getDialog();
         assertThat(clearAllDialog).isNotNull();
