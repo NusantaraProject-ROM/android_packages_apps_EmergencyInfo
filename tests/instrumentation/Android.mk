@@ -1,4 +1,4 @@
-# Copyright (C) 2017 The Android Open Source Project
+# Copyright (C) 2016 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,5 +15,20 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
-# Include all makefiles in subdirectories
-include $(call all-makefiles-under,$(LOCAL_PATH))
+LOCAL_MODULE_TAGS := tests
+
+LOCAL_JAVA_LIBRARIES := android.test.runner
+
+LOCAL_STATIC_JAVA_LIBRARIES := truth-prebuilt legacy-android-test junit
+
+LOCAL_SRC_FILES := $(call all-java-files-under, src)
+
+LOCAL_PACKAGE_NAME := EmergencyInfoTests
+LOCAL_COMPATIBILITY_SUITE := device-tests
+LOCAL_CERTIFICATE := platform
+
+LOCAL_INSTRUMENTATION_FOR := EmergencyInfo
+
+LOCAL_SDK_VERSION := current
+
+include $(BUILD_PACKAGE)
