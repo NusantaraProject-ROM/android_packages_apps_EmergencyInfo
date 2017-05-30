@@ -54,6 +54,7 @@ public class ContactPreference extends Preference {
 
     private static final String TAG = "ContactPreference";
 
+    private final ContactFactory mContactFactory;
     private EmergencyContactManager.Contact mContact;
     @Nullable private RemoveContactPreferenceListener mRemoveContactPreferenceListener;
     @Nullable private AlertDialog mRemoveContactDialog;
@@ -69,11 +70,37 @@ public class ContactPreference extends Preference {
     }
 
     /**
+     * Interface for getting a contact for a phone number Uri.
+     */
+    public interface ContactFactory {
+        /**
+         * Gets a {@link EmergencyContactManager.Contact} for a phone {@link Uri}.
+         *
+         * @param context The context to use.
+         * @param phoneUri The phone uri.
+         * @return a contact for the given phone uri.
+         */
+        EmergencyContactManager.Contact getContact(Context context, Uri phoneUri);
+    }
+
+    /**
      * Instantiates a ContactPreference that displays an emergency contact, taking in a Context and
      * the Uri.
      */
     public ContactPreference(Context context, @NonNull Uri phoneUri) {
+        this(context, phoneUri, new ContactFactory() {
+            @Override
+            public EmergencyContactManager.Contact getContact(Context context, Uri phoneUri) {
+                return EmergencyContactManager.getContact(context, phoneUri);
+            }
+        });
+    }
+
+    @VisibleForTesting
+    public ContactPreference(Context context, @NonNull Uri phoneUri,
+            @NonNull ContactFactory contactFactory) {
         super(context);
+        mContactFactory = contactFactory;
         setOrder(DEFAULT_ORDER);
 
         setPhoneUri(phoneUri);
@@ -87,7 +114,7 @@ public class ContactPreference extends Preference {
                 mRemoveContactDialog != null) {
             mRemoveContactDialog.dismiss();
         }
-        mContact = EmergencyContactManager.getContact(getContext(), phoneUri);
+        mContact = mContactFactory.getContact(getContext(), phoneUri);
 
         setTitle(mContact.getName());
         setKey(mContact.getPhoneUri().toString());
