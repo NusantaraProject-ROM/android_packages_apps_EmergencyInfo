@@ -22,7 +22,6 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.MediumTest;
 
 import com.android.emergency.PreferenceKeys;
-import com.android.emergency.R;
 import com.android.emergency.edit.EditMedicalInfoActivity;
 import com.android.emergency.edit.EditMedicalInfoFragment;
 
@@ -63,30 +62,6 @@ public class EmergencyEditTextPreferenceTest
         super.tearDown();
     }
 
-    public void testSummary() {
-        String summary = (String) mPreference.getSummary();
-        String summaryExp =
-                getActivity().getResources().getString(R.string.unknown_medical_conditions);
-        assertThat(summary).isEqualTo(summaryExp);
-    }
-
-    public void testTitle() {
-        String title = (String) mPreference.getTitle();
-        String titleExp =
-                getActivity().getResources().getString(R.string.medical_conditions);
-        assertThat(title).isEqualTo(titleExp);
-    }
-
-    public void testProperties() {
-        assertThat(mPreference).isNotNull();
-        assertThat(mPreference.getKey()).isEqualTo(PreferenceKeys.KEY_MEDICAL_CONDITIONS);
-        assertThat(mPreference.isEnabled()).isTrue();
-        assertThat(mPreference.isPersistent()).isTrue();
-        assertThat(mPreference.isSelectable()).isTrue();
-        assertThat(mPreference.isNotSet()).isTrue();
-        assertThat(mPreference.getText()).isEqualTo("");
-    }
-
     public void testReloadFromPreference() throws Throwable {
         String medicalConditions = "Asthma";
         mEditInfoFragment.getPreferenceManager().getSharedPreferences().edit()
@@ -99,18 +74,5 @@ public class EmergencyEditTextPreferenceTest
         });
         assertThat(mPreference.getText()).isEqualTo(medicalConditions);
         assertThat(mPreference.isNotSet()).isFalse();
-    }
-
-    public void testSetText() throws Throwable {
-        final String medicalConditions = "Asthma";
-        runTestOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mPreference.setText(medicalConditions);
-            }
-        });
-
-        assertThat(mPreference.getText()).isEqualTo(medicalConditions);
-        assertThat(mPreference.getSummary()).isEqualTo(medicalConditions);
     }
 }
