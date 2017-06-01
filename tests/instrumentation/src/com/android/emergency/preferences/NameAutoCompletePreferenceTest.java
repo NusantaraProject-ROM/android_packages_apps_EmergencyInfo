@@ -22,7 +22,6 @@ import android.content.DialogInterface;
 import android.preference.PreferenceManager;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.LargeTest;
-import android.widget.AutoCompleteTextView;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
@@ -66,30 +65,6 @@ public class NameAutoCompletePreferenceTest
         super.tearDown();
     }
 
-    public void testSummary() {
-        String summary = (String) mNameAutoCompletePreference.getSummary();
-        String summaryExp =
-                getActivity().getResources().getString(R.string.unknown_name);
-        assertThat(summary).isEqualTo(summaryExp);
-    }
-
-    public void testTitle() {
-        String title = (String) mNameAutoCompletePreference.getTitle();
-        String titleExp =
-                getActivity().getResources().getString(R.string.name);
-        assertThat(title).isEqualTo(titleExp);
-    }
-
-    public void testProperties() {
-        assertThat(mNameAutoCompletePreference).isNotNull();
-        assertThat(mNameAutoCompletePreference.getKey()).isEqualTo(PreferenceKeys.KEY_NAME);
-        assertThat(mNameAutoCompletePreference.isEnabled()).isTrue();
-        assertThat(mNameAutoCompletePreference.isPersistent()).isTrue();
-        assertThat(mNameAutoCompletePreference.isSelectable()).isTrue();
-        assertThat(mNameAutoCompletePreference.isNotSet()).isTrue();
-        assertThat(mNameAutoCompletePreference.getText()).isEqualTo("");
-    }
-
     public void testReloadFromPreference() throws Throwable {
         String name = "John";
         mEditInfoFragment.getPreferenceManager().getSharedPreferences().edit()
@@ -103,25 +78,6 @@ public class NameAutoCompletePreferenceTest
         });
         assertThat(mNameAutoCompletePreference.getText()).isEqualTo(name);
         assertThat(mNameAutoCompletePreference.isNotSet()).isFalse();
-    }
-
-    public void testSetText() throws Throwable {
-        final String name = "John";
-        runTestOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mNameAutoCompletePreference.setText(name);
-            }
-        });
-
-        assertThat(mNameAutoCompletePreference.getText()).isEqualTo(name);
-        assertThat(mNameAutoCompletePreference.getSummary()).isEqualTo(name);
-    }
-
-    public void testGetAutoCompleteTextView() {
-        AutoCompleteTextView autoCompleteTextView =
-                mNameAutoCompletePreference.getAutoCompleteTextView();
-        assertThat(autoCompleteTextView).isNotNull();
     }
 
     public void testDialogShowAndDismiss_positiveButton() throws Throwable {
