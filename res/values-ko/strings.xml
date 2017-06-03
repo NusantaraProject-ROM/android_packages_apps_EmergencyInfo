@@ -103,4 +103,10 @@
     <string name="clear_all" msgid="8899013032870561633">"모두 삭제"</string>
     <string name="clear" msgid="3648880442502887163">"삭제"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"모든 정보 및 연락처를 삭제하시겠습니까?"</string>
+    <!-- no translation found for emergency_info_footer (4694516011247606250) -->
+    <skip />
+    <!-- no translation found for settings_suggestion_title (2503369576806243476) -->
+    <skip />
+    <!-- no translation found for settings_suggestion_body (6623265155762787567) -->
+    <skip />
 </resources>

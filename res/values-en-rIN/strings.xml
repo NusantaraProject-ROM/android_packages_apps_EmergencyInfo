@@ -103,4 +103,10 @@
     <string name="clear_all" msgid="8899013032870561633">"Clear all"</string>
     <string name="clear" msgid="3648880442502887163">"Clear"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Clear all information and contacts?"</string>
+    <!-- no translation found for emergency_info_footer (4694516011247606250) -->
+    <skip />
+    <!-- no translation found for settings_suggestion_title (2503369576806243476) -->
+    <skip />
+    <!-- no translation found for settings_suggestion_body (6623265155762787567) -->
+    <skip />
 </resources>
