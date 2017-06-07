@@ -16,9 +16,16 @@
 package com.android.emergency.preferences;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.mockito.Mockito.anyString;
+import static org.mockito.Mockito.eq;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
-import android.util.Xml;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceGroup;
+import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.AutoCompleteTextView;
 
@@ -34,13 +41,14 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
-import org.xmlpull.v1.XmlPullParser;
 
 /** Unit tests for {@link NameAutoCompletePreference}. */
 @SmallTest
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest = TestConfig.MANIFEST_PATH, sdk = TestConfig.SDK_VERSION)
 public class NameAutoCompletePreferenceTest {
+    @Mock private PreferenceManager mPreferenceManager;
+    @Mock private SharedPreferences mSharedPreferences;
     @Mock private NameAutoCompletePreference.SuggestionProvider mAutoCompleteSuggestionProvider;
     private NameAutoCompletePreference mPreference;
 
@@ -48,10 +56,16 @@ public class NameAutoCompletePreferenceTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        XmlPullParser parser = RuntimeEnvironment.application.getResources().getXml(
-                R.xml.edit_medical_info);
-        mPreference = new NameAutoCompletePreference(RuntimeEnvironment.application,
-                Xml.asAttributeSet(parser), mAutoCompleteSuggestionProvider);
+        when(mPreferenceManager.getSharedPreferences()).thenReturn(mSharedPreferences);
+
+        Context context = RuntimeEnvironment.application;
+
+        mPreference =
+            spy(new NameAutoCompletePreference(context, null, mAutoCompleteSuggestionProvider));
+
+        PreferenceGroup prefRoot = spy(new PreferenceScreen(context, null));
+        when(prefRoot.getPreferenceManager()).thenReturn(mPreferenceManager);
+        prefRoot.addPreference(mPreference);
     }
 
     @Test
@@ -61,6 +75,18 @@ public class NameAutoCompletePreferenceTest {
         assertThat(mPreference.isPersistent()).isTrue();
         assertThat(mPreference.isSelectable()).isTrue();
         assertThat(mPreference.isNotSet()).isTrue();
+    }
+
+    @Test
+    public void testReloadFromPreference() throws Throwable {
+        mPreference.setKey(PreferenceKeys.KEY_NAME);
+
+        String name = "John";
+        when(mSharedPreferences.getString(eq(mPreference.getKey()), anyString())).thenReturn(name);
+
+        mPreference.reloadFromPreference();
+        assertThat(mPreference.getText()).isEqualTo(name);
+        assertThat(mPreference.isNotSet()).isFalse();
     }
 
     @Test
