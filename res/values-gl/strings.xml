@@ -103,10 +103,7 @@
     <string name="clear_all" msgid="8899013032870561633">"Borrar todo"</string>
     <string name="clear" msgid="3648880442502887163">"Borrar"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Queres borrar toda a información e os contactos?"</string>
-    <!-- no translation found for emergency_info_footer (4694516011247606250) -->
-    <skip />
-    <!-- no translation found for settings_suggestion_title (2503369576806243476) -->
-    <skip />
-    <!-- no translation found for settings_suggestion_body (6623265155762787567) -->
-    <skip />
+    <string name="emergency_info_footer" msgid="4694516011247606250">"Engadir información médica e contactos de emerxencia pode axudar aos servizos de emerxencia.\n\nCalquera pode ler esta información na pantalla de bloqueo sen necesidade de desbloquear o teléfono."</string>
+    <string name="settings_suggestion_title" msgid="2503369576806243476">"Engade información de emerxencia"</string>
+    <string name="settings_suggestion_body" msgid="6623265155762787567">"Axuda aos servizos de emerxencia a atopar información importante"</string>
 </resources>
