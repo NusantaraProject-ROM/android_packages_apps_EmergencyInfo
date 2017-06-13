@@ -60,5 +60,13 @@
     </style>
 
     <style name="PreferenceTheme" parent="@style/PreferenceThemeOverlay.v14.Material">
+        <!-- Parent path frameworks/support/v14/preference/res/values/themes.xml -->
+        <item name="android:scrollbars">vertical</item>
+        <item name="footerPreferenceStyle">@style/FooterPreference</item>
+    </style>
+
+    <style name="FooterPreference" parent="PreferenceTheme">
+        <item name="android:layout">@layout/preference_footer</item>
+        <item name="allowDividerAbove">true</item>
     </style>
 </resources>
