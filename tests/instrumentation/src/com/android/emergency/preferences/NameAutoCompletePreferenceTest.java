@@ -65,21 +65,6 @@ public class NameAutoCompletePreferenceTest
         super.tearDown();
     }
 
-    public void testReloadFromPreference() throws Throwable {
-        String name = "John";
-        mEditInfoFragment.getPreferenceManager().getSharedPreferences().edit()
-                .putString(mNameAutoCompletePreference.getKey(), name).commit();
-
-        runTestOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mNameAutoCompletePreference.reloadFromPreference();
-            }
-        });
-        assertThat(mNameAutoCompletePreference.getText()).isEqualTo(name);
-        assertThat(mNameAutoCompletePreference.isNotSet()).isFalse();
-    }
-
     public void testDialogShowAndDismiss_positiveButton() throws Throwable {
         assertThat(mNameAutoCompletePreference.getDialog()).isNull();
         assertThat(mNameAutoCompletePreference).isNotNull();

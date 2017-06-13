@@ -16,10 +16,17 @@
 package com.android.emergency.preferences;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.mockito.Mockito.anyString;
+import static org.mockito.Mockito.eq;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.when;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceGroup;
+import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
 import android.test.suitebuilder.annotation.SmallTest;
-import android.util.AttributeSet;
-import android.util.Xml;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
@@ -28,24 +35,34 @@ import com.android.emergency.TestConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
-import org.xmlpull.v1.XmlPullParser;
 
 /** Unit tests for {@link EmergencyEditTextPreference}. */
 @SmallTest
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest = TestConfig.MANIFEST_PATH, sdk = TestConfig.SDK_VERSION)
 public class EmergencyEditTextPreferenceTest {
+    @Mock private PreferenceManager mPreferenceManager;
+    @Mock private SharedPreferences mSharedPreferences;
     private EmergencyEditTextPreference mPreference;
 
     @Before
     public void setUp() {
-        XmlPullParser parser = RuntimeEnvironment.application.getResources().getXml(
-                R.xml.edit_medical_info);
-        mPreference = new EmergencyEditTextPreference(
-                RuntimeEnvironment.application, Xml.asAttributeSet(parser));
+        MockitoAnnotations.initMocks(this);
+
+        when(mPreferenceManager.getSharedPreferences()).thenReturn(mSharedPreferences);
+
+        Context context = RuntimeEnvironment.application;
+
+        mPreference = spy(new EmergencyEditTextPreference(context, null));
+
+        PreferenceGroup prefRoot = spy(new PreferenceScreen(context, null));
+        when(prefRoot.getPreferenceManager()).thenReturn(mPreferenceManager);
+        prefRoot.addPreference(mPreference);
     }
 
     @Test
@@ -54,6 +71,19 @@ public class EmergencyEditTextPreferenceTest {
         assertThat(mPreference.isPersistent()).isTrue();
         assertThat(mPreference.isSelectable()).isTrue();
         assertThat(mPreference.isNotSet()).isTrue();
+    }
+
+    @Test
+    public void testReloadFromPreference() throws Throwable {
+        mPreference.setKey(PreferenceKeys.KEY_MEDICAL_CONDITIONS);
+
+        String medicalConditions = "Asthma";
+        when(mSharedPreferences.getString(eq(mPreference.getKey()), anyString()))
+                .thenReturn(medicalConditions);
+
+        mPreference.reloadFromPreference();
+        assertThat(mPreference.getText()).isEqualTo(medicalConditions);
+        assertThat(mPreference.isNotSet()).isFalse();
     }
 
     @Test
