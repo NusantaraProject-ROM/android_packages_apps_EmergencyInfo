@@ -54,6 +54,13 @@ public class ContactPreference extends Preference {
 
     private static final String TAG = "ContactPreference";
 
+    static final ContactFactory DEFAULT_CONTACT_FACTORY = new ContactFactory() {
+        @Override
+        public EmergencyContactManager.Contact getContact(Context context, Uri phoneUri) {
+            return EmergencyContactManager.getContact(context, phoneUri);
+        }
+    };
+
     private final ContactFactory mContactFactory;
     private EmergencyContactManager.Contact mContact;
     @Nullable private RemoveContactPreferenceListener mRemoveContactPreferenceListener;
@@ -88,16 +95,11 @@ public class ContactPreference extends Preference {
      * the Uri.
      */
     public ContactPreference(Context context, @NonNull Uri phoneUri) {
-        this(context, phoneUri, new ContactFactory() {
-            @Override
-            public EmergencyContactManager.Contact getContact(Context context, Uri phoneUri) {
-                return EmergencyContactManager.getContact(context, phoneUri);
-            }
-        });
+        this(context, phoneUri, DEFAULT_CONTACT_FACTORY);
     }
 
     @VisibleForTesting
-    public ContactPreference(Context context, @NonNull Uri phoneUri,
+    ContactPreference(Context context, @NonNull Uri phoneUri,
             @NonNull ContactFactory contactFactory) {
         super(context);
         mContactFactory = contactFactory;
