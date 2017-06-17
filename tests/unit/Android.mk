@@ -22,6 +22,7 @@ LOCAL_JAVA_LIBRARIES := android.test.runner
 LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-test \
     emergencyinfo-test-common \
+    espresso-core \
     legacy-android-test \
     truth-prebuilt
 
