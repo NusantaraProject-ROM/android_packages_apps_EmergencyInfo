@@ -105,5 +105,5 @@
     <string name="clear_all_message" msgid="1548432000373861295">"האם לנקות את כל המידע ואנשי הקשר?"</string>
     <string name="emergency_info_footer" msgid="4694516011247606250">"הוספה של מידע רפואי ואנשי קשר לשעת חירום יכולה לעזור למגישי עזרה ראשונה במקרה חירום.\n\nכל אחד יוכל לקרוא את המידע הזה ממסך הנעילה בלי לבטל את הנעילה של הטלפון."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"הוספת מידע למקרה חירום"</string>
-    <string name="settings_suggestion_body" msgid="6623265155762787567">"מאפשר לעזור למגישי עזרה ראשונה למצוא מידע חשוב"</string>
+    <string name="settings_suggestion_body" msgid="6623265155762787567">"כדי שמגישי עזרה ראשונה יוכלו למצוא מידע חשוב"</string>
 </resources>
