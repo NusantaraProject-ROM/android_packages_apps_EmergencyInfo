@@ -30,7 +30,6 @@ import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.AutoCompleteTextView;
 
 import com.android.emergency.PreferenceKeys;
-import com.android.emergency.R;
 import com.android.emergency.TestConfig;
 
 import org.junit.Before;
