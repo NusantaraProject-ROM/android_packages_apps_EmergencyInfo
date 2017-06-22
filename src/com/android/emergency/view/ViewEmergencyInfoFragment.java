@@ -19,9 +19,9 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
+import android.support.v14.preference.PreferenceFragment;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceManager;
 import android.text.TextUtils;
 
 import com.android.emergency.PreferenceKeys;
@@ -39,9 +39,8 @@ public class ViewEmergencyInfoFragment extends PreferenceFragment {
     private final List<Preference> mPreferences = new ArrayList<Preference>();
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.view_emergency_info);
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        setPreferencesFromResource(R.xml.view_emergency_info, rootKey);
 
         for (String preferenceKey : PreferenceKeys.KEYS_VIEW_EMERGENCY_INFO) {
             Preference preference = findPreference(preferenceKey);

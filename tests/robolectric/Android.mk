@@ -23,6 +23,7 @@ LOCAL_JAVA_LIBRARIES := \
     sdk_vcurrent
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
+    android-support-v7-preference \
     platform-system-robolectric \
     truth-prebuilt \
     emergencyinfo-test-common

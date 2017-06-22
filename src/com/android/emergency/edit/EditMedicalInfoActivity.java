@@ -16,6 +16,7 @@
 package com.android.emergency.edit;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
 
 import com.android.internal.annotations.VisibleForTesting;
@@ -27,10 +28,16 @@ public class EditMedicalInfoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mEditInfoFragment = new EditMedicalInfoFragment();
-        getFragmentManager().beginTransaction()
-            .replace(android.R.id.content, mEditInfoFragment)
-            .commit();
+        // We only add a new EditInfoFragment if no fragment is restored.
+        Fragment fragment = getFragmentManager().findFragmentById(android.R.id.content);
+        if (fragment == null) {
+            mEditInfoFragment = new EditMedicalInfoFragment();
+            getFragmentManager().beginTransaction()
+                .add(android.R.id.content, mEditInfoFragment)
+                .commit();
+        } else {
+            mEditInfoFragment = (EditMedicalInfoFragment) fragment;
+        }
     }
 
     @VisibleForTesting

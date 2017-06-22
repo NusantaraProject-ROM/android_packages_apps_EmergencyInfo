@@ -19,8 +19,8 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
+import android.support.v14.preference.PreferenceFragment;
+import android.support.v7.preference.PreferenceManager;
 import android.widget.ListView;
 
 import com.android.emergency.PreferenceKeys;
@@ -37,21 +37,11 @@ public class ViewEmergencyContactsFragment extends PreferenceFragment {
     private EmergencyContactsPreference mEmergencyContactsPreference;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.view_emergency_contacts);
         mEmergencyContactsPreference = (EmergencyContactsPreference)
                 findPreference(PreferenceKeys.KEY_EMERGENCY_CONTACTS);
     }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        // Set custom dividers
-        ListView list = (ListView) getView().findViewById(android.R.id.list);
-        list.setDivider(getResources().getDrawable(R.drawable.view_contact_divider));
-    }
-
 
     @Override
     public void onResume() {

@@ -21,11 +21,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceGroup;
-import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
+import android.support.v14.preference.PreferenceFragment;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceGroup;
+import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -52,9 +52,8 @@ public class EditInfoFragment extends PreferenceFragment {
     private EmergencyContactsPreference mEmergencyContactsPreferenceCategory;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.edit_emergency_info);
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        setPreferencesFromResource(R.xml.edit_emergency_info, rootKey);
 
         for (String preferenceKey : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
             Preference preference = findPreference(preferenceKey);

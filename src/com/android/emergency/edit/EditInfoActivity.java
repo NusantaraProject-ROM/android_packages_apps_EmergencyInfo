@@ -27,8 +27,8 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
+import android.support.v14.preference.PreferenceFragment;
+import android.support.v7.preference.PreferenceManager;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -64,10 +64,16 @@ public class EditInfoActivity extends Activity {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mEditInfoFragment = new EditInfoFragment();
-        getFragmentManager().beginTransaction()
-            .replace(android.R.id.content, mEditInfoFragment)
-            .commit();
+        // We only add a new EditInfoFragment if no fragment is restored.
+        Fragment fragment = getFragmentManager().findFragmentById(android.R.id.content);
+        if (fragment == null) {
+            mEditInfoFragment = new EditInfoFragment();
+            getFragmentManager().beginTransaction()
+                .add(android.R.id.content, mEditInfoFragment)
+                .commit();
+        } else {
+            mEditInfoFragment = (EditInfoFragment) fragment;
+        }
 
         getWindow().addFlags(FLAG_DISMISS_KEYGUARD);
         MetricsLogger.visible(this, MetricsEvent.ACTION_EDIT_EMERGENCY_INFO);
