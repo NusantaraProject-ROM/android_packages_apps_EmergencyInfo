@@ -105,4 +105,8 @@
         android:key="add_emergency_contact"
         android:icon="@drawable/ic_add_24dp"
         android:title="@string/add_emergency_contact"/>
+
+    <com.android.settingslib.widget.FooterPreference
+        android:title="@string/emergency_info_footer"
+        android:selectable="false"/>
 </PreferenceScreen>
