@@ -24,7 +24,8 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     emergencyinfo-test-common \
     espresso-core \
     legacy-android-test \
-    truth-prebuilt
+    truth-prebuilt \
+    ub-uiautomator
 
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 

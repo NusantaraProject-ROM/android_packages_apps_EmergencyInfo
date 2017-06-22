@@ -21,10 +21,12 @@ import android.app.Fragment;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
-import android.preference.PreferenceManager;
+import android.support.v7.preference.PreferenceManager;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
+import android.support.test.uiautomator.UiDevice;
 import android.util.Pair;
+import android.view.Surface;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -46,16 +48,36 @@ import org.junit.runner.RunWith;
 public class ViewInfoActivityTest {
     private Instrumentation mInstrumentation;
     private Context mTargetContext;
+    private UiDevice mDevice;
+    private int mInitialRotation;
     private ViewInfoActivity mActivity;
 
     @Before
     public void setUp() {
         mInstrumentation = InstrumentationRegistry.getInstrumentation();
         mTargetContext = mInstrumentation.getTargetContext();
+        mDevice = UiDevice.getInstance(mInstrumentation);
+        mInitialRotation = mDevice.getDisplayRotation();
     }
 
     @After
     public void tearDown() {
+        // Restore orientation prior to starting test.
+        try {
+            switch (mInitialRotation) {
+                case Surface.ROTATION_90:
+                    mDevice.setOrientationRight();
+                    break;
+                case Surface.ROTATION_270:
+                    mDevice.setOrientationLeft();
+                    break;
+                default:
+                    mDevice.setOrientationNatural();
+                    break;
+            }
+        } catch (Exception e) {
+            // Squelch and move along.
+        }
         PreferenceManager.getDefaultSharedPreferences(mTargetContext).edit().clear().commit();
     }
 
@@ -186,6 +208,16 @@ public class ViewInfoActivityTest {
         assertThat(editInfoActivity).isNotNull();
         assertThat(mInstrumentation.checkMonitorHit(activityMonitor, 1 /* minHits */)).isTrue();
         editInfoActivity.finish();
+    }
+
+    @Test
+    public void testRotate_shouldNotCrash() throws Exception {
+        ViewInfoActivity activity = startViewInfoActivity();
+
+        // Rotate the device.
+        mDevice.setOrientationLeft();
+        mDevice.setOrientationNatural();
+        mDevice.setOrientationRight();
     }
 
     private ViewInfoActivity startViewInfoActivity() {
