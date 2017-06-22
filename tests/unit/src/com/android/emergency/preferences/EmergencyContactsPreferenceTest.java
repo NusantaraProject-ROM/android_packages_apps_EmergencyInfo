@@ -17,6 +17,7 @@ package com.android.emergency.preferences;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.google.common.truth.Truth.assertThat;
@@ -26,9 +27,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Looper;
-import android.preference.PreferenceManager;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.UiController;
+import android.support.test.espresso.ViewAction;
 import android.support.test.runner.AndroidJUnit4;
+import android.support.v7.preference.PreferenceManager;
 import android.view.View;
 
 import com.android.emergency.ContactTestUtils;
@@ -37,6 +40,7 @@ import com.android.emergency.R;
 import com.android.emergency.edit.EditInfoActivity;
 import com.android.emergency.edit.EditInfoFragment;
 
+import org.hamcrest.Matcher;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -92,7 +96,7 @@ public final class EmergencyContactsPreferenceTest {
         assertThat(mPreference.getEmergencyContacts()).hasSize(1);
         assertThat(mPreference.getPreferenceCount()).isEqualTo(1);
 
-        onView(withId(R.id.delete_contact)).perform(click());
+        onView(withId(R.id.delete_contact)).perform(new RelaxedClick());
         onView(withText(R.string.remove)).perform(click());
 
         assertThat(mPreference.getEmergencyContacts()).isEmpty();
@@ -104,7 +108,7 @@ public final class EmergencyContactsPreferenceTest {
         assertThat(mPreference.getEmergencyContacts()).hasSize(1);
         assertThat(mPreference.getPreferenceCount()).isEqualTo(1);
 
-        onView(withId(R.id.delete_contact)).perform(click());
+        onView(withId(R.id.delete_contact)).perform(new RelaxedClick());
         onView(withText(android.R.string.cancel)).perform(click());
 
         assertThat(mPreference.getEmergencyContacts()).hasSize(1);
@@ -119,5 +123,24 @@ public final class EmergencyContactsPreferenceTest {
 
         return (EmergencyContactsPreference) fragment.findPreference(
                 PreferenceKeys.KEY_EMERGENCY_CONTACTS);
+    }
+
+    /** ViewAction that allows a click even when the UI is partially obscured. */
+    private static class RelaxedClick implements ViewAction {
+        @Override
+        public Matcher<View> getConstraints() {
+            // No constraints, the caller ensures them.
+            return isEnabled();
+        }
+
+        @Override
+        public String getDescription() {
+            return "single click, no constraints!";
+        }
+
+        @Override
+        public void perform(UiController uiController, View view) {
+            view.performClick();
+        }
     }
 }

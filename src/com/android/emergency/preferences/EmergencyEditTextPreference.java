@@ -16,18 +16,19 @@
 package com.android.emergency.preferences;
 
 import android.content.Context;
-import android.preference.EditTextPreference;
+import android.support.v7.preference.PreferenceViewHolder;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
 import com.android.emergency.ReloadablePreferenceInterface;
+import com.android.settingslib.CustomEditTextPreference;
 
 /**
  * Custom {@link EditTextPreference} that allows us to refresh and update the summary.
  */
-public class EmergencyEditTextPreference extends EditTextPreference
+public class EmergencyEditTextPreference extends CustomEditTextPreference
         implements ReloadablePreferenceInterface {
 
     private static final int MAX_LINES = 50;
@@ -53,9 +54,9 @@ public class EmergencyEditTextPreference extends EditTextPreference
     }
 
     @Override
-    protected void onBindView(View view) {
-        super.onBindView(view);
-        final TextView summaryView = (TextView) view.findViewById(
+    public void onBindViewHolder(PreferenceViewHolder holder) {
+        super.onBindViewHolder(holder);
+        final TextView summaryView = (TextView) holder.findViewById(
                 com.android.internal.R.id.summary);
         summaryView.setMaxLines(MAX_LINES);
     }
@@ -63,6 +64,6 @@ public class EmergencyEditTextPreference extends EditTextPreference
     @Override
     protected void onBindDialogView(View view) {
         super.onBindDialogView(view);
-	getEditText().setSelection(getEditText().getText().length());
+        getEditText().setSelection(getEditText().getText().length());
     }
 }

@@ -15,15 +15,17 @@
  */
 package com.android.emergency.edit;
 
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
+import android.support.v14.preference.PreferenceFragment;
+import android.support.v7.preference.Preference;
 import android.text.TextUtils;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.ReloadablePreferenceInterface;
+import com.android.emergency.preferences.AutoCompleteEditTextPreference;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
@@ -32,10 +34,8 @@ import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
  */
 public class EditMedicalInfoFragment extends PreferenceFragment {
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        addPreferencesFromResource(R.xml.edit_medical_info);
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        setPreferencesFromResource(R.xml.edit_medical_info, rootKey);
 
         for (int i = 0; i < PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO.length; i++) {
             final int index = i;
@@ -61,6 +61,19 @@ public class EditMedicalInfoFragment extends PreferenceFragment {
     public void onResume() {
         super.onResume();
         reloadFromPreference();
+    }
+
+    @Override
+    public void onDisplayPreferenceDialog(Preference preference) {
+        if (!(preference instanceof AutoCompleteEditTextPreference)) {
+            super.onDisplayPreferenceDialog(preference);
+            return;
+        }
+        DialogFragment fragment =
+                AutoCompleteEditTextPreference.AutoCompleteEditTextPreferenceDialogFragment
+                        .newInstance(preference.getKey());
+        fragment.setTargetFragment(this, 0);
+        fragment.show(getFragmentManager(), "dialog_preference");
     }
 
     /** Reloads all the preferences by reading the value from the shared preferences. */

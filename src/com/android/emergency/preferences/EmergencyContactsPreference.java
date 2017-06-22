@@ -19,10 +19,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.net.Uri;
-import android.preference.Preference;
-import android.preference.PreferenceCategory;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.Toast;
@@ -242,9 +242,10 @@ public class EmergencyContactsPreference extends PreferenceCategory
             return super.getPersistedString(defaultReturnValue);
         } catch (ClassCastException e) {
             // Protect against b/28194605: We used to store the contacts using a string set.
-            // If it is a string set, ignore its value. If it is not a string set it will throw
-            // a ClassCastException
-            getPersistedStringSet(Collections.<String>emptySet());
+            // If it was a string set, a ClassCastException would have been thrown, and we can
+            // ignore its value. If it is stored as a value of another type, we are potentially
+            // squelching an exception here, but returning the default return value seems reasonable
+            // in either case.
             return defaultReturnValue;
         }
     }
