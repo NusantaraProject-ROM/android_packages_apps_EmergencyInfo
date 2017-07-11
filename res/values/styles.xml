@@ -63,10 +63,16 @@
         <!-- Parent path frameworks/support/v14/preference/res/values/themes.xml -->
         <item name="android:scrollbars">vertical</item>
         <item name="footerPreferenceStyle">@style/FooterPreference</item>
+        <item name="preferenceCategoryStyle">@style/PreferenceCategory</item>
     </style>
 
     <style name="FooterPreference" parent="PreferenceTheme">
         <item name="android:layout">@layout/preference_footer</item>
         <item name="allowDividerAbove">true</item>
+    </style>
+
+    <style name="PreferenceCategory" parent="@style/Preference.Category.Material">
+        <item name="allowDividerAbove">true</item>
+        <item name="android:layout">@layout/preference_category_material_settings</item>
     </style>
 </resources>
