@@ -40,10 +40,12 @@ public class EditMedicalInfoFragment extends PreferenceFragment {
         for (int i = 0; i < PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO.length; i++) {
             final int index = i;
             String preferenceKey = PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO[i];
+
             Preference preference = findPreference(preferenceKey);
             preference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object value) {
+                    // Log settings changes.
                     boolean notSet = TextUtils.isEmpty((String) value);
                     // 0 is the default subtype. In DP1 and DP2 we had no explicit subtype.
                     // Start at 30 to differentiate between before and after.
@@ -51,6 +53,12 @@ public class EditMedicalInfoFragment extends PreferenceFragment {
                             preference.getContext(),
                             MetricsEvent.ACTION_EDIT_EMERGENCY_INFO_FIELD,
                             30 + index * 2 + (notSet ? 0 : 1));
+                    // If the preference implements OnPreferenceChangeListener, notify it of the
+                    // change as well.
+                    if (Preference.OnPreferenceChangeListener.class.isInstance(preference)) {
+                        return ((Preference.OnPreferenceChangeListener) preference)
+                                .onPreferenceChange(preference, value);
+                    }
                     return true;
                 }
             });
