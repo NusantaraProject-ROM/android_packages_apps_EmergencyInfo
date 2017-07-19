@@ -86,6 +86,14 @@ public class EmergencyEditTextPreferenceTest {
     }
 
     @Test
+    public void testOnPreferenceChange() throws Throwable {
+        final String medicalConditions = "Asthma";
+        mPreference.onPreferenceChange(mPreference, medicalConditions);
+
+        assertThat(mPreference.getSummary()).isEqualTo(medicalConditions);
+    }
+
+    @Test
     public void testSetText() throws Throwable {
         final String medicalConditions = "Asthma";
         mPreference.setText(medicalConditions);

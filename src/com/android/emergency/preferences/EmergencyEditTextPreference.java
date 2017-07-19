@@ -16,6 +16,7 @@
 package com.android.emergency.preferences;
 
 import android.content.Context;
+import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceViewHolder;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -29,7 +30,7 @@ import com.android.settingslib.CustomEditTextPreference;
  * Custom {@link EditTextPreference} that allows us to refresh and update the summary.
  */
 public class EmergencyEditTextPreference extends CustomEditTextPreference
-        implements ReloadablePreferenceInterface {
+        implements Preference.OnPreferenceChangeListener, ReloadablePreferenceInterface {
 
     private static final int MAX_LINES = 50;
 
@@ -59,6 +60,13 @@ public class EmergencyEditTextPreference extends CustomEditTextPreference
         final TextView summaryView = (TextView) holder.findViewById(
                 com.android.internal.R.id.summary);
         summaryView.setMaxLines(MAX_LINES);
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        String text = (String) newValue;
+        setSummary(text);
+        return true;
     }
 
     @Override
