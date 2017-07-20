@@ -45,6 +45,10 @@ public class ViewEmergencyInfoFragment extends PreferenceFragment {
         for (String preferenceKey : PreferenceKeys.KEYS_VIEW_EMERGENCY_INFO) {
             Preference preference = findPreference(preferenceKey);
             mPreferences.add(preference);
+
+            if (((ReloadablePreferenceInterface) preference).isNotSet()) {
+                getPreferenceScreen().removePreference(preference);
+            }
         }
     }
 
