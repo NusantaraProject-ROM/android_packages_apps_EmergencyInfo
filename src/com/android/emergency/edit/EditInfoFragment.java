@@ -58,6 +58,10 @@ public class EditInfoFragment extends PreferenceFragment {
         for (String preferenceKey : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
             Preference preference = findPreference(preferenceKey);
             mMedicalInfoPreferences.put(preferenceKey, preference);
+
+            if (((ReloadablePreferenceInterface) preference).isNotSet()) {
+                getMedicalInfoParent().removePreference(preference);
+            }
         }
 
         // Fill in emergency contacts.
