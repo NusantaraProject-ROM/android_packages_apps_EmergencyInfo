@@ -37,6 +37,7 @@ import android.view.MenuItem;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.overlay.FeatureFactory;
+import com.android.emergency.util.PreferenceUtils;
 import com.android.emergency.view.ViewInfoActivity;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.MetricsLogger;
@@ -74,6 +75,9 @@ public class EditInfoActivity extends Activity {
         } else {
             mEditInfoFragment = (EditInfoFragment) fragment;
         }
+
+        // Show or hide the settings suggestion, depending on whether any emergency settings exist.
+        PreferenceUtils.updateSettingsSuggestionState(this);
 
         getWindow().addFlags(FLAG_DISMISS_KEYGUARD);
         MetricsLogger.visible(this, MetricsEvent.ACTION_EDIT_EMERGENCY_INFO);
@@ -124,6 +128,8 @@ public class EditInfoActivity extends Activity {
             sharedPreferences.edit().remove(key).commit();
         }
         sharedPreferences.edit().remove(PreferenceKeys.KEY_EMERGENCY_CONTACTS).commit();
+        // Show the settings suggestion again, since no emergency info is set.
+        PreferenceUtils.enableSettingsSuggestion(this);
 
         // Refresh the UI.
         mEditInfoFragment.reloadFromPreference();
