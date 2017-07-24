@@ -50,6 +50,14 @@
                 <action android:name="android.settings.EDIT_EMERGENCY_INFO" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+
+        <!-- Alias for edit activity, to allow settings suggestion to be independent from main activity -->
+        <activity-alias
+            android:name=".edit.EditInfoSuggestion"
+            android:label="@string/app_label"
+            android:targetActivity=".edit.EditInfoActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.android.settings.suggested.category.FIRST_IMPRESSION" />
@@ -61,7 +69,7 @@
                        android:resource="@string/settings_suggestion_body" />
             <meta-data android:name="com.android.settings.icon"
                        android:resource="@drawable/ic_local_hospital_24dp" />
-        </activity>
+        </activity-alias>
 
         <activity
             android:name=".edit.EditMedicalInfoActivity"

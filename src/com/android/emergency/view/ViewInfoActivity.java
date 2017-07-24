@@ -43,6 +43,7 @@ import android.widget.ViewFlipper;
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.edit.EditInfoActivity;
+import com.android.emergency.util.PreferenceUtils;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -166,11 +167,11 @@ public class ViewInfoActivity extends Activity {
         // Return only the fragments that have at least one piece of information set:
         ArrayList<Pair<String, Fragment>> fragments = new ArrayList<>(2);
 
-        if (ViewEmergencyInfoFragment.hasAtLeastOnePreferenceSet(this)) {
+        if (PreferenceUtils.hasAtLeastOnePreferenceSet(this)) {
             fragments.add(Pair.create(getResources().getString(R.string.tab_title_info),
                     ViewEmergencyInfoFragment.newInstance()));
         }
-        if (ViewEmergencyContactsFragment.hasAtLeastOneEmergencyContact(this)) {
+        if (PreferenceUtils.hasAtLeastOneEmergencyContact(this)) {
             fragments.add(Pair.create(getResources().getString(R.string.tab_title_contacts),
                     ViewEmergencyContactsFragment.newInstance()));
         }

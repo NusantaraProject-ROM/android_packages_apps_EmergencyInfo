@@ -30,6 +30,7 @@ import android.widget.Toast;
 import com.android.emergency.EmergencyContactManager;
 import com.android.emergency.R;
 import com.android.emergency.ReloadablePreferenceInterface;
+import com.android.emergency.util.PreferenceUtils;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -208,6 +209,8 @@ public class EmergencyContactsPreference extends PreferenceCategory
             // stored phone Uris.
             setEmergencyContacts(updatedEmergencyContacts);
         }
+        // Enable or disable the settings suggestion, as appropriate.
+        PreferenceUtils.updateSettingsSuggestionState(getContext());
         MetricsLogger.histogram(getContext(),
                                 "num_emergency_contacts",
                                 Math.min(3, emergencyContacts.size()));
