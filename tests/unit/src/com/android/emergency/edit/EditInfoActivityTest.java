@@ -24,9 +24,11 @@ import static com.google.common.truth.Truth.assertWithMessage;
 
 import android.app.Dialog;
 import android.app.Instrumentation;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.test.InstrumentationRegistry;
@@ -42,6 +44,7 @@ import com.android.emergency.preferences.EmergencyContactsPreference;
 import com.android.emergency.preferences.EmergencyEditTextPreference;
 import com.android.emergency.preferences.EmergencyListPreference;
 import com.android.emergency.preferences.NameAutoCompletePreference;
+import com.android.emergency.util.PreferenceUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,6 +89,14 @@ public final class EditInfoActivityTest {
                         PreferenceKeys.KEY_EMERGENCY_CONTACTS);
         assertThat(emergencyContactsPreference).isNotNull();
         assertThat(emergencyContactsPreference.getPreferenceCount()).isEqualTo(0);
+
+        final PackageManager packageManager = mTargetContext.getPackageManager();
+        final String packageName = mTargetContext.getPackageName();
+        final ComponentName componentName = new ComponentName(
+                packageName,
+                packageName + PreferenceUtils.SETTINGS_SUGGESTION_ACTIVITY_ALIAS);
+        assertThat(packageManager.getComponentEnabledSetting(componentName))
+                .isEqualTo(PackageManager.COMPONENT_ENABLED_STATE_ENABLED);
     }
 
     @Test
@@ -110,6 +121,15 @@ public final class EditInfoActivityTest {
         PreferenceManager.getDefaultSharedPreferences(mTargetContext)
                 .edit().putString(PreferenceKeys.KEY_EMERGENCY_CONTACTS, contactUri.toString())
                 .commit();
+
+        final PackageManager packageManager = mTargetContext.getPackageManager();
+        final String packageName = mTargetContext.getPackageName();
+        final ComponentName componentName = new ComponentName(
+                packageName,
+                packageName + PreferenceUtils.SETTINGS_SUGGESTION_ACTIVITY_ALIAS);
+        // With emergency info settings present, the settings suggestion should be disabled.
+        assertThat(packageManager.getComponentEnabledSetting(componentName))
+                .isEqualTo(PackageManager.COMPONENT_ENABLED_STATE_DISABLED);
 
         EditInfoActivity activity = startEditInfoActivity();
         EditInfoFragment fragment = (EditInfoFragment) activity.getFragment();
@@ -194,6 +214,10 @@ public final class EditInfoActivityTest {
         for (String key : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
             assertWithMessage(key).that(medicalInfoParent.findPreference(key)).isNull();
         }
+
+        // Now that the settings have been cleared, the settings suggestion should reappear.
+        assertThat(packageManager.getComponentEnabledSetting(componentName))
+                .isEqualTo(PackageManager.COMPONENT_ENABLED_STATE_ENABLED);
 
         assertThat(ContactTestUtils
                 .deleteContact(activity.getContentResolver(), "Michael", "789")).isTrue();

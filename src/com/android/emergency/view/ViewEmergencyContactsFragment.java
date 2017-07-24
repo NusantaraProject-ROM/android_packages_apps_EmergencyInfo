@@ -27,8 +27,6 @@ import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.preferences.EmergencyContactsPreference;
 
-import java.util.Collections;
-
 /**
  * Fragment that displays emergency contacts.
  */
@@ -51,26 +49,5 @@ public class ViewEmergencyContactsFragment extends PreferenceFragment {
 
     public static Fragment newInstance() {
         return new ViewEmergencyContactsFragment();
-    }
-
-    /** Returns true if there is at least one valid (still existing) emergency contact. */
-    public static boolean hasAtLeastOneEmergencyContact(Context context) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String emergencyContactsString = "";
-        try {
-            emergencyContactsString = prefs.getString(PreferenceKeys.KEY_EMERGENCY_CONTACTS, "");
-        } catch (ClassCastException e) {
-            // Protect against b/28194605: We used to store the contacts using a string set.
-            // If it is a string set, ignore its value. If it is not a string set it will throw
-            // a ClassCastException
-            prefs.getStringSet(
-                    PreferenceKeys.KEY_EMERGENCY_CONTACTS,
-                    Collections.<String>emptySet());
-        }
-
-        return !EmergencyContactsPreference.deserializeAndFilter(
-                PreferenceKeys.KEY_EMERGENCY_CONTACTS,
-                context,
-                emergencyContactsString).isEmpty();
     }
 }

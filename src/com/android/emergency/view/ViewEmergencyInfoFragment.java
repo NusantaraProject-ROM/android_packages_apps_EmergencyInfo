@@ -16,13 +16,10 @@
 package com.android.emergency.view;
 
 import android.app.Fragment;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v14.preference.PreferenceFragment;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceManager;
-import android.text.TextUtils;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
@@ -70,17 +67,5 @@ public class ViewEmergencyInfoFragment extends PreferenceFragment {
 
     public static Fragment newInstance() {
         return new ViewEmergencyInfoFragment();
-    }
-
-    /** Returns true if there is at least one preference set. */
-    public static boolean hasAtLeastOnePreferenceSet(Context context) {
-        SharedPreferences sharedPreferences =
-                PreferenceManager.getDefaultSharedPreferences(context);
-        for (String key : PreferenceKeys.KEYS_VIEW_EMERGENCY_INFO) {
-            if (!TextUtils.isEmpty(sharedPreferences.getString(key, ""))) {
-                return true;
-            }
-        }
-        return false;
     }
 }
