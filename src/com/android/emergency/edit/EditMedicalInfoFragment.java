@@ -26,6 +26,7 @@ import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.ReloadablePreferenceInterface;
 import com.android.emergency.preferences.AutoCompleteEditTextPreference;
+import com.android.emergency.util.PreferenceUtils;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
@@ -53,6 +54,8 @@ public class EditMedicalInfoFragment extends PreferenceFragment {
                             preference.getContext(),
                             MetricsEvent.ACTION_EDIT_EMERGENCY_INFO_FIELD,
                             30 + index * 2 + (notSet ? 0 : 1));
+                    // Enable or disable settings suggestion, as appropriate.
+                    PreferenceUtils.updateSettingsSuggestionState(getActivity());
                     // If the preference implements OnPreferenceChangeListener, notify it of the
                     // change as well.
                     if (Preference.OnPreferenceChangeListener.class.isInstance(preference)) {
