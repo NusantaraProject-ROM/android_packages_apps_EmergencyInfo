@@ -97,7 +97,7 @@
     <string name="ok" msgid="163967937451981024">"確定"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"緊急資訊"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"您在這裡輸入的資訊可協助第一線處理人員在發生緊急事件時提供相關協助。這項資訊只會儲存在您的裝置上；任何人都能透過緊急撥號器讀取這項資訊，而不需將手機解鎖。"</string>
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"你在這裡輸入的資訊可協助第一線處理人員在發生緊急事件時提供相關協助。這項資訊只會儲存在你的裝置上；任何人都能透過緊急撥號器讀取這項資訊，而不需將手機解鎖。"</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"繼續"</string>
     <string name="no_info_provided" msgid="716200382010821001">"沒有任何關於手機擁有者的資訊"</string>
     <string name="tap_pencil" msgid="2723698054265296934">"如果這是你的手機，輕觸鉛筆圖示就能新增緊急救援資訊並顯示在這裡，以備不時之需"</string>

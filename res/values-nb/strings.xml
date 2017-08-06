@@ -69,7 +69,7 @@
     <string name="ab_positive" msgid="1931300033534642005">"A B positiv"</string>
     <string name="ab_negative" msgid="2064555613093591729">"A B negativ"</string>
     <string name="h_h" msgid="2183333409760379720">"H H"</string>
-    <string name="allergies" msgid="2789200777539258165">"Allergi"</string>
+    <string name="allergies" msgid="2789200777539258165">"Allergier"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"Ukjent"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"For eksempel peanøtter"</string>
     <string name="medications" msgid="644428945685557183">"Medisiner"</string>
@@ -97,7 +97,7 @@
     <string name="ok" msgid="163967937451981024">"OK"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"Informasjon for nødstilfeller"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Informasjonen du skriver inn her, kan hjelpe dem som ankommer ulykkesstedet først ved eventuelle ulykker. Opplysningene er bare lagret på enheten din, og hvem som helst kan lese dem via alternativet for nødanrop uten å låse opp enheten."</string>
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"Informasjonen du skriver inn her, kan hjelpe dem som ankommer ulykkesstedet først ved eventuelle ulykker. Opplysningene er bare lagret på enheten din, og hvem som helst kan lese dem via alternativet for nødanrop, uten å låse opp enheten."</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"Fortsett"</string>
     <string name="no_info_provided" msgid="716200382010821001">"Ingen informasjon om telefonens eier"</string>
     <string name="tap_pencil" msgid="2723698054265296934">"Hvis dette er din telefon, kan du trykke på blyantikonet for å legge til informasjon som skal vises her i nødstilfeller"</string>

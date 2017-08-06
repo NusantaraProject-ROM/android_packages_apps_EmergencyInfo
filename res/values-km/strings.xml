@@ -77,7 +77,7 @@
     <string name="medications_hint" msgid="3221620025945593723">"ឧទាហរណ៍៖ ថ្នាំអាស្ពីរីន"</string>
     <string name="medical_conditions" msgid="3555690011498283592">"កំណត់ហេតុវេជ្ជសាស្ត្រ"</string>
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"មិនស្គាល់"</string>
-    <string name="medical_conditions_hint" msgid="6959152183029062882">"ឧទាហរណ៍៖ ជម្ងឺហឺត"</string>
+    <string name="medical_conditions_hint" msgid="6959152183029062882">"ឧទាហរណ៍៖ ជំងឺហឺត"</string>
     <string name="organ_donor" msgid="5953509460007124827">"អ្នកបរិច្ចាគសរីរាង្គ"</string>
     <string name="unknown_organ_donor" msgid="2780515342875494225">"មិនស្គាល់"</string>
     <string name="yes" msgid="5829765567799916128">"បាទ/ចាស"</string>
@@ -86,7 +86,7 @@
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
     <string name="emergency_contacts_title" msgid="5462202017417821030">"ទំនាក់ទំនងសង្គ្រោះបន្ទាន់"</string>
-    <string name="add_emergency_contact" msgid="4063577069613981029">"បន្ថែម​ទំនាក់ទំនង"</string>
+    <string name="add_emergency_contact" msgid="4063577069613981029">"បញ្ចូលទំនាក់ទំនង"</string>
     <string name="fail_load_contact_picker" msgid="817205483833876726">"រក​មិន​ឃើញ​កម្មវិធី​ជ្រើសរើស​ទំនាក់ទំនង​ទេ"</string>
     <string name="fail_display_contact" msgid="4128854688897045879">"មិន​អាច​បង្ហាញ​ទំនាក់ទំនង​នេះ​បានទេ"</string>
     <string name="remove_contact" msgid="6934983445723096759">"យក <xliff:g id="CONTACT_NAME">%1$s</xliff:g> ចេញពីទំនាក់ទំនងសង្គ្រោះបន្ទាន់ឬ?"</string>
@@ -97,10 +97,10 @@
     <string name="ok" msgid="163967937451981024">"យល់ព្រម"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="user_emergency_info_title" msgid="7827058167207376581">"ព័ត៌មានបន្ទាន់"</string>
-    <string name="user_emergency_info_consent" msgid="5636028073450797246">"ព័ត៌មានដែលអ្នកបញ្ចូលនៅទីនេះអាចជួយដល់អ្នកសង្គ្រោះបន្ទាន់ នៅពេលដែល​មានអាសន្នកើតឡើង។ ព័ត៌មាន​នេះ​ត្រូវបាន​ផ្ទុកនៅក្នុងឧបករណ៍របស់អ្នកតែមួយគត់ ហើយអ្នកណាក៏អាចអានព័ត៌មាននេះបាននៅលើអេក្រង់ហៅទូរស័ព្ទសង្គ្រោះបន្ទាន់ដោយមិនចាំបាច់ដោះសោទូរស័ព្ទរបស់អ្នកឡើយ។"</string>
+    <string name="user_emergency_info_consent" msgid="5636028073450797246">"ព័ត៌មានដែលអ្នកបញ្ចូលនៅទីនេះអាចជួយដល់អ្នកសង្គ្រោះបន្ទាន់ នៅពេលដែល​មានអាសន្នកើតឡើង។ ព័ត៌មាន​នេះ​ត្រូវបាន​ផ្ទុកនៅក្នុងឧបករណ៍របស់អ្នកតែមួយគត់ ហើយអ្នកណាក៏អាចអានព័ត៌មាននេះបាននៅលើអេក្រង់ហៅទូរសព្ទសង្គ្រោះបន្ទាន់ដោយមិនចាំបាច់ដោះសោទូរសព្ទរបស់អ្នកឡើយ។"</string>
     <string name="emergency_info_continue" msgid="5453201508537906087">"បន្ត"</string>
     <string name="no_info_provided" msgid="716200382010821001">"គ្មានព័ត៌មានអំពីម្ចាស់ទូរសព្ទនេះទេ"</string>
-    <string name="tap_pencil" msgid="2723698054265296934">"ប្រសិនបើទូរសព្ទនេះជារបស់អ្នក សូមប៉ះរូបតំណាងខ្មៅដៃដើម្បីបន្ថែមព័ត៌មានដែលនឹងត្រូវបង្ហាញនៅទីនេះក្នុងករណីសង្គ្រោះបន្ទាន់"</string>
+    <string name="tap_pencil" msgid="2723698054265296934">"ប្រសិនបើទូរសព្ទនេះជារបស់អ្នក សូមប៉ះរូបតំណាងខ្មៅដៃដើម្បីបញ្ចូលព័ត៌មានដែលនឹងត្រូវបង្ហាញនៅទីនេះក្នុងករណីសង្គ្រោះបន្ទាន់"</string>
     <string name="clear_all" msgid="8899013032870561633">"ជម្រះទាំងអស់"</string>
     <string name="clear" msgid="3648880442502887163">"ជម្រះ"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"លុបព័ត៌មាន និងទំនាក់ទំនងទាំងអស់ឬ?"</string>

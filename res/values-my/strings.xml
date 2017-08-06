@@ -101,7 +101,7 @@
     <string name="emergency_info_continue" msgid="5453201508537906087">"ဆက်လုပ်ရန်"</string>
     <string name="no_info_provided" msgid="716200382010821001">"ဖုန်းပိုင်ရှင်နှင့် ပတ်သက်သည့် အချက်အလက်များ မရှိပါ"</string>
     <string name="tap_pencil" msgid="2723698054265296934">"ဤအရာသည် သင့်ဖုန်းဖြစ်ပါက အရေးပေါ်ကိစ္စကြုံလာလျှင် ပြသမည့် အချက်အလက်များထည့်ရန် ခဲတံသင်္ကေတကို တို့ပါ"</string>
-    <string name="clear_all" msgid="8899013032870561633">"အားလုံး ဖယ်ပါ"</string>
+    <string name="clear_all" msgid="8899013032870561633">"အားလုံး ရှင်းပါ"</string>
     <string name="clear" msgid="3648880442502887163">"ရှင်းရန်"</string>
-    <string name="clear_all_message" msgid="1548432000373861295">"အချက်အလက်များနှင့် အဆက်အသွယ်များအားလုံးကို ဖယ်ရှားမလား။"</string>
+    <string name="clear_all_message" msgid="1548432000373861295">"အချက်အလက်နှင့် အဆက်အသွယ်အားလုံးကို ရှင်းမလား။"</string>
 </resources>

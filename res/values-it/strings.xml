@@ -18,7 +18,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_label" msgid="1090682794607161063">"Informazioni per le emergenze"</string>
     <string name="edit_info" msgid="5973929805855224805">"Modifica informazioni per le emergenze"</string>
-    <string name="tab_title_info" msgid="1402033103294855812">"Informazioni"</string>
+    <string name="tab_title_info" msgid="1402033103294855812">"Dati"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"Contatti"</string>
     <string name="name" msgid="4286267457738861977">"Nome"</string>
     <string name="unknown_name" msgid="2834802479170495056">"Sconosciuto"</string>
