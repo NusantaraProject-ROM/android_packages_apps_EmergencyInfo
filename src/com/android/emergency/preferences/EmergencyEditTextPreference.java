@@ -16,6 +16,7 @@
 package com.android.emergency.preferences;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceViewHolder;
 import android.text.TextUtils;
@@ -23,6 +24,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.emergency.R;
 import com.android.emergency.ReloadablePreferenceInterface;
 import com.android.settingslib.CustomEditTextPreference;
 
@@ -36,6 +38,12 @@ public class EmergencyEditTextPreference extends CustomEditTextPreference
 
     public EmergencyEditTextPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
+        TypedArray a = context.obtainStyledAttributes(
+                attrs, R.styleable.EmergencyEditTextPreference, 0, 0);
+        if (a.hasValue(R.styleable.EmergencyEditTextPreference_summary)) {
+            setSummary(a.getString(R.styleable.EmergencyEditTextPreference_summary));
+        }
+        a.recycle();
     }
 
     @Override
