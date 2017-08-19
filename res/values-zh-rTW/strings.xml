@@ -103,7 +103,8 @@
     <string name="clear_all" msgid="8899013032870561633">"全部清除"</string>
     <string name="clear" msgid="3648880442502887163">"清除"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"要清除所有資訊和聯絡人嗎？"</string>
-    <string name="emergency_info_footer" msgid="4694516011247606250">"新增醫療資訊和緊急聯絡人，為緊急情況中的第一線處理人員提供協助。\n\n任何人都能在鎖定畫面上查看這項資訊，不必先將手機解鎖。"</string>
+    <!-- no translation found for emergency_info_footer (8751758742506410146) -->
+    <skip />
     <string name="settings_suggestion_title" msgid="2503369576806243476">"新增緊急救援資訊"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"協助第一線處理人員找到重要資訊"</string>
 </resources>

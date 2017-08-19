@@ -103,7 +103,8 @@
     <string name="clear_all" msgid="8899013032870561633">"ತೆರವುಗೊಳಿಸಿ"</string>
     <string name="clear" msgid="3648880442502887163">"ತೆರವುಗೊಳಿಸು"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"ಎಲ್ಲ ಮಾಹಿತಿ ಮತ್ತು ಸಂಪರ್ಕಗಳನ್ನು ತೆರವುಗೊಳಿಸುವುದೇ?"</string>
-    <string name="emergency_info_footer" msgid="4694516011247606250">"ವೈದ್ಯಕೀಯ ಮಾಹಿತಿ ಮತ್ತು ತುರ್ತು ಸಂಪರ್ಕಗಳನ್ನು ಸೇರಿಸುವುದರಿಂದ ತುರ್ತುಪರಿಸ್ಥಿತಿಯಲ್ಲಿ ಮೊದಲು ಪ್ರತಿಕ್ರಿಯಿಸುವವರಿಗೆ ಸಹಾಯ ಮಾಡಬಹುದು. \n\nನಿಮ್ಮ ಫೋನ್‌ ಅನ್‌ಲಾಕ್ ಮಾಡದೆಯೇ, ನಿಮ್ಮ ಲಾಕ್‌ ಪರದೆಯಿಂದ ಯಾರು ಬೇಕಾದರೂ ಈ ಮಾಹಿತಿಯನ್ನು ಓದಬಹುದು."</string>
+    <!-- no translation found for emergency_info_footer (8751758742506410146) -->
+    <skip />
     <string name="settings_suggestion_title" msgid="2503369576806243476">"ತುರ್ತು ಮಾಹಿತಿಯನ್ನು ಸೇರಿಸಿ"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"ಮೊದಲು ಪ್ರತಿಕ್ರಿಯಿಸುವವರಿಗೆ ಪ್ರಮುಖ ಮಾಹಿತಿಯನ್ನು ಹುಡುಕಲು ಸಹಾಯ ಮಾಡಿ"</string>
 </resources>

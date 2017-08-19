@@ -103,7 +103,8 @@
     <string name="clear_all" msgid="8899013032870561633">"ជម្រះទាំងអស់"</string>
     <string name="clear" msgid="3648880442502887163">"ជម្រះ"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"លុបព័ត៌មាន និងទំនាក់ទំនងទាំងអស់ឬ?"</string>
-    <string name="emergency_info_footer" msgid="4694516011247606250">"ការបញ្ចូល​ទំនាក់ទំនង​វេជ្ជសាស្ត្រ និងសង្គ្រោះបន្ទាន់ អាចជួយអ្នកដែល​ធ្វើការសង្រ្គោះដំបូង​ក្នុងករណីបន្ទាន់។\n\nអ្នករាល់​គ្នា​អាច​អាន​ព័ត៌មាននេះ​ពីអេក្រង់​ចាក់សោរបស់អ្នក ដោយ​មិនចាំ​បាច់​ដោះសោ​ទូរសព្ទរបស់អ្នកទេ។"</string>
+    <!-- no translation found for emergency_info_footer (8751758742506410146) -->
+    <skip />
     <string name="settings_suggestion_title" msgid="2503369576806243476">"បញ្ចូល​ព័ត៌មាន​បន្ទាន់"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"ជួយឲ្យ​អ្នកសង្គ្រោះដំបូងៗ​រក​ឃើញ​ព័ត៌មានសំខាន់"</string>
 </resources>

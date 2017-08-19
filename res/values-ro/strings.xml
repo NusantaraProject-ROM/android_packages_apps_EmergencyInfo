@@ -103,7 +103,8 @@
     <string name="clear_all" msgid="8899013032870561633">"Ștergeți tot"</string>
     <string name="clear" msgid="3648880442502887163">"Ștergeți"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Ștergeți toate informațiile și persoanele de contact?"</string>
-    <string name="emergency_info_footer" msgid="4694516011247606250">"Adăugând informații medicale și persoane de contact pentru urgențe, îi puteți ajuta pe cei care acordă primul ajutor în caz de urgență.\n\n Oricine poate citi aceste informații de pe ecranul de blocare fără a vă debloca telefonul."</string>
+    <!-- no translation found for emergency_info_footer (8751758742506410146) -->
+    <skip />
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Adăugați informații în caz de urgență"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"Ajutați-i pe cei care acordă primul ajutor să găsească informații importante"</string>
 </resources>
