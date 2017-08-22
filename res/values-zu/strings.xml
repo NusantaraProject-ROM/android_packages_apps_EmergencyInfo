@@ -103,7 +103,8 @@
     <string name="clear_all" msgid="8899013032870561633">"Sula konke"</string>
     <string name="clear" msgid="3648880442502887163">"Sula"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Sula lonke ulwazi noxhumana nabo?"</string>
-    <string name="emergency_info_footer" msgid="4694516011247606250">"Ukungeza ulwazi lokwelashwa noxhumana nabo abaphuthumayo kungasiza abaphenduli bokuqala esimweni esiphuthumayo.\n\nNoma ubani angafunda lolu lwazi kusuka esikrinini sakho sokukhiya ngaphandle kokuvula ifoni yakho."</string>
+    <!-- no translation found for emergency_info_footer (8751758742506410146) -->
+    <skip />
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Engeza ulwazi lesimo esiphuthumayo"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"Siza abaphenduli bukuqala ukuthola ulwazi olubalulekile"</string>
 </resources>

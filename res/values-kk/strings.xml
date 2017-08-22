@@ -103,7 +103,8 @@
     <string name="clear_all" msgid="8899013032870561633">"Барлығын тазалау"</string>
     <string name="clear" msgid="3648880442502887163">"Тазалау"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Бүкіл ақпаратты және контактілерді тазалау керек пе?"</string>
-    <string name="emergency_info_footer" msgid="4694516011247606250">"Медициналық ақпаратты және шұғыл контактілерді енгізіп қойсаңыз, бұл жедел жәрдем қызметкеріне төтенше жағдайда хабарласуға көмектеседі.\n\nКез келген адам бұл ақпаратты телефоныңыздың құлпын ашпай, құлып экранынан оқи алады."</string>
+    <!-- no translation found for emergency_info_footer (8751758742506410146) -->
+    <skip />
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Төтенше жағдайға арналған ақпаратты енгізу"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"Жедел жәрдем қызметкеріне маңызды ақпаратты табуға көмектесу"</string>
 </resources>

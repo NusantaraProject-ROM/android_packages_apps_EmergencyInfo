@@ -103,7 +103,8 @@
     <string name="clear_all" msgid="8899013032870561633">"ਸਭ ਕਲੀਅਰ ਕਰੋ"</string>
     <string name="clear" msgid="3648880442502887163">"ਕਲੀਅਰ ਕਰੋ"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"ਕੀ ਸਾਰੀ ਜਾਣਕਾਰੀ ਅਤੇ ਸੰਪਰਕਾਂ ਨੂੰ ਮਿਟਾਉਣਾ ਹੈ?"</string>
-    <string name="emergency_info_footer" msgid="4694516011247606250">"ਡਾਕਟਰੀ ਜਾਣਕਾਰੀ ਅਤੇ ਸੰਕਟਕਾਲੀਨ ਸੰਪਰਕ ਸ਼ਾਮਲ ਕਰਨ ਨਾਲ ਕਿਸੇ ਸੰਕਟਕਾਲ ਵਿੱਚ ਸਭ ਤੋਂ ਪਹਿਲਾਂ ਪਹੁੰਚਣ ਵਾਲੇ ਮਦਦਗਾਰਾਂ ਨੂੰ ਮਦਦ ਮਿਲ ਸਕਦੀ ਹੈ।\n\nਕੋਈ ਵੀ ਵਿਅਕਤੀ ਤੁਹਾਡੇ ਫ਼ੋਨ ਨੂੰ ਅਨਲੌਕ ਕੀਤੇ ਬਿਨਾਂ ਤੁਹਾਡੀ ਲੌਕ ਸਕ੍ਰੀਨ ਤੋਂ ਇਹ ਜਾਣਕਾਰੀ ਪੜ੍ਹ ਸਕਦਾ ਹੈ।"</string>
+    <!-- no translation found for emergency_info_footer (8751758742506410146) -->
+    <skip />
     <string name="settings_suggestion_title" msgid="2503369576806243476">"ਸੰਕਟਕਾਲੀਨ ਜਾਣਕਾਰੀ ਸ਼ਾਮਲ ਕਰੋ"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"ਮਹੱਤਵਪੂਰਨ ਜਾਣਕਾਰੀ ਲੱਭਣ ਵਿੱਚ ਸਭ ਤੋਂ ਪਹਿਲਾਂ ਪਹੁੰਚਣ ਵਾਲੇ ਮਦਦਗਾਰਾਂ ਦੀ ਮਦਦ ਕਰੋ"</string>
 </resources>

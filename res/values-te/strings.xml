@@ -103,7 +103,8 @@
     <string name="clear_all" msgid="8899013032870561633">"అన్నీ తీసివేయి"</string>
     <string name="clear" msgid="3648880442502887163">"తీసివేయి"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"మొత్తం సమాచారం మరియు పరిచయాలను తీసివేయాలా?"</string>
-    <string name="emergency_info_footer" msgid="4694516011247606250">"వైద్య సమాచారం మరియు అత్యవసర పరిచయాలను జోడిస్తే, అత్యవసర పరిస్థితిలో ముందుగా ప్రతిస్పందించే వారికి సహాయకరంగా ఉంటాయి.\n\nఎవరైనా సరే, మీ ఫోన్‌ని అన్‌లాక్ చేయకుండానే మీ లాక్ స్క్రీన్ నుండి ఈ సమాచారాన్ని చదవగలరు."</string>
+    <!-- no translation found for emergency_info_footer (8751758742506410146) -->
+    <skip />
     <string name="settings_suggestion_title" msgid="2503369576806243476">"అత్యవసర సమాచారాన్ని జోడించండి"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"ముఖ్యమైన సమాచారాన్ని కనుగొనడంలో ముందుగా ప్రతిస్పందించే వారికి సహాయపడండి"</string>
 </resources>

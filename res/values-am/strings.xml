@@ -103,7 +103,8 @@
     <string name="clear_all" msgid="8899013032870561633">"ሁሉንም አጽዳ"</string>
     <string name="clear" msgid="3648880442502887163">"አጽዳ"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"ሁሉንም መረጃ እና እውቂያዎች ይጸዱ?"</string>
-    <string name="emergency_info_footer" msgid="4694516011247606250">"የሕክምና መረጃ እና የድንገተኛ አደጋ ጊዜ ተጠሪን ማከል በድንገተኛ አደጋ ጊዜ ውስጥ በመጀመሪያ ለሚደርሱ ሰዎች ሊያግዛቸው ይችላል።\n\nየእርስዎን ስልክ ሳይከፍት ማንም ሰው ይህን መረጃ ለማንበብ ይችላል።"</string>
+    <!-- no translation found for emergency_info_footer (8751758742506410146) -->
+    <skip />
     <string name="settings_suggestion_title" msgid="2503369576806243476">"የድንገተኛ አደጋ ጊዜ ተጠሪ መረጃን ያክሉ"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"በመጀመሪያ ለሚደርሱ ሰዎች አስፈላጊ መረጃ እንዲያገኙ ያግዙ"</string>
 </resources>
