@@ -103,8 +103,7 @@
     <string name="clear_all" msgid="8899013032870561633">"Ryd alle"</string>
     <string name="clear" msgid="3648880442502887163">"Ryd"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Vil du rydde alle oplysninger og kontaktpersoner?"</string>
-    <!-- no translation found for emergency_info_footer (8751758742506410146) -->
-    <skip />
+    <string name="emergency_info_footer" msgid="8751758742506410146">"Hvis du tilføjer lægeoplysninger og kontaktpersoner til nødsituationer, kan det hjælpe førstehjælpsydere i en nødsituation.\n\nDet er ikke nødvendigt at låse telefonen op for at få adgang til disse oplysninger på din låseskærm eller ringe til dine kontaktpersoner ved at trykke på deres navne."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Tilføj info til nødsituationer"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"Hjælp førstehjælpsydere med at finde vigtige oplysninger"</string>
 </resources>
