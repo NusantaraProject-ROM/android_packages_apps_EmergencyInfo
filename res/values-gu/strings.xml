@@ -103,8 +103,7 @@
     <string name="clear_all" msgid="8899013032870561633">"બધું સાફ કરો"</string>
     <string name="clear" msgid="3648880442502887163">"સાફ કરો"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"તમામ માહિતી અને સંપર્કો સાફ કરીએ?"</string>
-    <!-- no translation found for emergency_info_footer (8751758742506410146) -->
-    <skip />
+    <string name="emergency_info_footer" msgid="8751758742506410146">"તબીબી માહિતી તથા કટોકટીના સંપર્કો ઉમેરવાથી કટોકટીમાં પ્રથમ પ્રતિભાવ આપનારને સહાય મળી શકે છે.\n\nકોઈ પણ વ્યક્તિ તમારો ફોન અનલૉક કર્યા વિના તમારી લૉક સ્ક્રીન પરની આ માહિતી વાંચીને, તમારા સંપર્કના નામ પર ટૅપ કરીને તેમનો નંબર ડાયલ કરી શકે છે."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"કટોકટીની માહિતી ઉમેરો"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"પ્રથમ પ્રતિભાવ આપનારને મહત્ત્વની માહિતી મેળવવામાં સહાય કરો"</string>
 </resources>

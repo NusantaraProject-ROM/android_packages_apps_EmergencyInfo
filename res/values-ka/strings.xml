@@ -70,7 +70,7 @@
     <string name="b_negative" msgid="4110646487598488955">"მესამე ჯგუფის რეზუსუარყოფითი"</string>
     <string name="ab_positive" msgid="1931300033534642005">"მეოთხე ჯგუფის რეზუსდადებითი"</string>
     <string name="ab_negative" msgid="2064555613093591729">"მეოთხე ჯგუფის რეზუსუარყოფითი"</string>
-    <string name="h_h" msgid="2183333409760379720">"ბომბეის ფენომენი"</string>
+    <string name="h_h" msgid="2183333409760379720">"H H ბომბეის ტიპი"</string>
     <string name="allergies" msgid="2789200777539258165">"ალერგია"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"უცნობია"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"მაგალითად, მიწის თხილი"</string>
@@ -103,8 +103,7 @@
     <string name="clear_all" msgid="8899013032870561633">"ყველაფრის გასუფთავება"</string>
     <string name="clear" msgid="3648880442502887163">"გასუფთავება"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"გსურთ ინფორმაციისა და კონტაქტების მთლიანად გასუფთავება?"</string>
-    <!-- no translation found for emergency_info_footer (8751758742506410146) -->
-    <skip />
+    <string name="emergency_info_footer" msgid="8751758742506410146">"სამედიცინო ინფორმაციისა და გადაუდებელი შემთხვევისას საკონტაქტო პირების დამატება საგანგებო ვითარებაში სწრაფი რეაგირების სამსახურებს შეუწყობს ხელს.\n\nამ ინფორმაციის წაკითხვას ნებისმიერი პირი შეძლებს თქვენი ჩაკეტილი ეკრანიდან, ტელეფონის განბლოკვის საჭიროების გარეშე."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"დაამატეთ საგანგებო ვითარებაში გამოსაყენებელი ინფორმაცია"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"დაეხმარეთ საგანგებო ვითარებაში სწრაფი რეაგირების სამსახურებს მნიშვნელოვანი ინფორმაციის პოვნაში"</string>
 </resources>

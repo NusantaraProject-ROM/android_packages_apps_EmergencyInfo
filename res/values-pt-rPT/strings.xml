@@ -103,8 +103,7 @@
     <string name="clear_all" msgid="8899013032870561633">"Limpar tudo"</string>
     <string name="clear" msgid="3648880442502887163">"Limpar"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Pretende limpar todas as informações e contactos?"</string>
-    <!-- no translation found for emergency_info_footer (8751758742506410146) -->
-    <skip />
+    <string name="emergency_info_footer" msgid="8751758742506410146">"Adicionar informações médicas e contactos de emergência pode ajudar os socorristas numa situação de emergência.\n\nQualquer pessoa pode ler estas informações no ecrã de bloqueio e marcar os números dos seus contactos ao tocar nos respetivos nomes sem desbloquear o telemóvel."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Adicionar informações de emergência"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"Ajudar os socorristas a encontrar informações importantes"</string>
 </resources>
