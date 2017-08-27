@@ -88,7 +88,7 @@
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
     <string name="emergency_contacts_title" msgid="5462202017417821030">"Kontaktpersonas ārkārtas situācijām"</string>
-    <string name="add_emergency_contact" msgid="4063577069613981029">"Kontaktpersonas pievienošana"</string>
+    <string name="add_emergency_contact" msgid="4063577069613981029">"Pievienot kontaktpersonu"</string>
     <string name="fail_load_contact_picker" msgid="817205483833876726">"Nevarēja atrast kontaktpersonu atlasītāju."</string>
     <string name="fail_display_contact" msgid="4128854688897045879">"Nevar parādīt kontaktpersonu."</string>
     <string name="remove_contact" msgid="6934983445723096759">"Vai noņemt kontaktpersonu <xliff:g id="CONTACT_NAME">%1$s</xliff:g> no ārkārtas situāciju kontaktpersonām?"</string>
