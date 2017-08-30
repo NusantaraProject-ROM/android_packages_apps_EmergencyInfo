@@ -17,7 +17,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_label" msgid="1090682794607161063">"Larrialdietarako informazioa"</string>
-    <string name="medical_info_title" msgid="3000192781136934887">"Mediku-informazioa"</string>
+    <string name="medical_info_title" msgid="3000192781136934887">"Osasun-informazioa"</string>
     <string name="edit_medical_info" msgid="6733720353375319476">"Editatu informazioa"</string>
     <string name="edit_info" msgid="5973929805855224805">"Editatu larrialdietarako informazioa"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"Informazioa"</string>
@@ -77,7 +77,7 @@
     <string name="medications" msgid="644428945685557183">"Sendagaiak"</string>
     <string name="unknown_medications" msgid="2764171064510423734">"Ezezaguna"</string>
     <string name="medications_hint" msgid="3221620025945593723">"Adibidez, aspirina"</string>
-    <string name="medical_conditions" msgid="3555690011498283592">"Ohar medikoak"</string>
+    <string name="medical_conditions" msgid="3555690011498283592">"Osasun-oharrak"</string>
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"Ezezaguna"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"Adibidez, asma"</string>
     <string name="organ_donor" msgid="5953509460007124827">"Organo-emailea"</string>
