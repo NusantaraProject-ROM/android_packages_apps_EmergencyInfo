@@ -16,8 +16,8 @@
 package com.android.emergency.preferences;
 
 import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Mockito.anyString;
 import static org.mockito.Mockito.eq;
+import static org.mockito.Mockito.nullable;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
@@ -76,7 +76,8 @@ public final class EmergencyListPreferenceTest {
         CharSequence[] organDonorValues =
                 RuntimeEnvironment.application.getResources().getStringArray(
                         R.array.organ_donor_entries);
-        when(mSharedPreferences.getString(eq(PreferenceKeys.KEY_ORGAN_DONOR), anyString()))
+        when(mSharedPreferences.getString(
+                eq(PreferenceKeys.KEY_ORGAN_DONOR), nullable(String.class)))
                 .thenReturn((String) organDonorValues[0]);
 
         mPreference.setKey(PreferenceKeys.KEY_ORGAN_DONOR);
@@ -98,7 +99,8 @@ public final class EmergencyListPreferenceTest {
         mPreference.setKey(PreferenceKeys.KEY_ORGAN_DONOR);
         mPreference.setEntries(organDonorEntries);
         mPreference.setEntryValues(organDonorValues);
-        when(mSharedPreferences.getString(eq(PreferenceKeys.KEY_ORGAN_DONOR), anyString()))
+        when(mSharedPreferences.getString(
+                eq(PreferenceKeys.KEY_ORGAN_DONOR), nullable(String.class)))
                 .thenAnswer(new CyclingStringArrayAnswer(organDonorValues));
 
         for (int i = 0; i < mPreference.getEntryValues().length; i++) {

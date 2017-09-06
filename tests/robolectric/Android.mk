@@ -24,7 +24,7 @@ LOCAL_JAVA_LIBRARIES := \
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-v7-preference \
-    platform-system-robolectric \
+    mockito-robolectric-prebuilt \
     truth-prebuilt \
     emergencyinfo-test-common
 
