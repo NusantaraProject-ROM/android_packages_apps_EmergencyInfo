@@ -83,7 +83,7 @@
     <string name="organ_donor" msgid="5953509460007124827">"உறுப்பு தானம் செய்பவர்"</string>
     <string name="unknown_organ_donor" msgid="2780515342875494225">"தெரியவில்லை"</string>
     <string name="yes" msgid="5829765567799916128">"ஆம்"</string>
-    <string name="no" msgid="1681689233660683509">"வேண்டாம்"</string>
+    <string name="no" msgid="1681689233660683509">"இல்லை"</string>
     <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
