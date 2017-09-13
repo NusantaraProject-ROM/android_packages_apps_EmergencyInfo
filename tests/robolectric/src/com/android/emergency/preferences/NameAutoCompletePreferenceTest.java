@@ -16,8 +16,8 @@
 package com.android.emergency.preferences;
 
 import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Mockito.anyString;
 import static org.mockito.Mockito.eq;
+import static org.mockito.Mockito.nullable;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
@@ -81,7 +81,8 @@ public class NameAutoCompletePreferenceTest {
         mPreference.setKey(PreferenceKeys.KEY_NAME);
 
         String name = "John";
-        when(mSharedPreferences.getString(eq(mPreference.getKey()), anyString())).thenReturn(name);
+        when(mSharedPreferences.getString(eq(mPreference.getKey()), nullable(String.class)))
+                .thenReturn(name);
 
         mPreference.reloadFromPreference();
         assertThat(mPreference.getText()).isEqualTo(name);
