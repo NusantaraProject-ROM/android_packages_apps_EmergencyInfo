@@ -96,7 +96,7 @@
     <string name="fail_add_contact" msgid="6511490846952942291">"संपर्क की जानकारी ठीक से नहीं पढ़ी जा सकी"</string>
     <string name="remove" msgid="1243949503772376064">"निकालें"</string>
     <string name="cancel" msgid="7401575239009060939">"रद्द करें"</string>
-    <string name="ok" msgid="163967937451981024">"ठीक"</string>
+    <string name="ok" msgid="163967937451981024">"ठीक है"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="no_info_provided" msgid="716200382010821001">"ये जिसका फ़ोन है उसके बारे में कोई जानकारी नहीं है"</string>
     <string name="tap_pencil" msgid="2723698054265296934">"अगर यह आपका फ़ोन है, तो आपात स्थिति में यहां दिखाई जाने वाली जानकारी जोड़ने के लिए पेंसिल आइकॉन को छूएं"</string>
