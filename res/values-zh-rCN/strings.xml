@@ -103,7 +103,7 @@
     <string name="clear_all" msgid="8899013032870561633">"全部清除"</string>
     <string name="clear" msgid="3648880442502887163">"清除"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"要清除所有信息和联系人吗？"</string>
-    <string name="emergency_info_footer" msgid="4694516011247606250">"添加医疗信息和紧急情况联系人，有助于第一线救援人员在发生紧急事件时提供相关援助。\n\n任何人都能在您的手机未解锁的情况下在锁定屏幕上看到此类信息。"</string>
+    <string name="emergency_info_footer" msgid="4694516011247606250">"添加医疗信息和紧急情况联系人，有助于第一线救援人员在发生紧急事件时提供相关援助。\n\n任何人都无需将您的手机解锁，即可在锁定屏幕上看到此类信息。"</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"添加紧急信息"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"协助第一线救援人员找到重要信息"</string>
 </resources>

@@ -74,7 +74,7 @@
     <string name="allergies" msgid="2789200777539258165">"Dị ứng"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"Không xác định"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"Ví dụ: đậu phộng"</string>
-    <string name="medications" msgid="644428945685557183">"Dược phẩm"</string>
+    <string name="medications" msgid="644428945685557183">"Thuốc"</string>
     <string name="unknown_medications" msgid="2764171064510423734">"Không xác định"</string>
     <string name="medications_hint" msgid="3221620025945593723">"Ví dụ: aspirin"</string>
     <string name="medical_conditions" msgid="3555690011498283592">"Ghi chú y tế"</string>

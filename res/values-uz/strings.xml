@@ -100,7 +100,7 @@
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="no_info_provided" msgid="716200382010821001">"Telefon egasi haqida ma’lumot yo‘q"</string>
     <string name="tap_pencil" msgid="2723698054265296934">"Agar bu sizning telefoningiz bo‘lsa, bu yerda favqulodda holatlarda ko‘rsatiladigan ma’lumotlarni qo‘shish uchun qalam belgisini bosing"</string>
-    <string name="clear_all" msgid="8899013032870561633">"Hammasini o‘chirish"</string>
+    <string name="clear_all" msgid="8899013032870561633">"Hammasini tozalash"</string>
     <string name="clear" msgid="3648880442502887163">"O‘chirish"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Barcha kontaktlar va ma’lumotlar o‘chirib tashlansinmi?"</string>
     <string name="emergency_info_footer" msgid="4694516011247606250">"Tibbiy axborot va favqulodda kontaktlar kiritish favqulodda holatlarda birinchi javob beruvchi uchun yordam beradi.\n\nIstalgan kishi bu ma’lumotlarni telefonni qulfdan chiqarmasdan ekran qulfidan o‘qiy oladi."</string>
