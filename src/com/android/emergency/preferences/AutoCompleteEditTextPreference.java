@@ -142,6 +142,7 @@ public class AutoCompleteEditTextPreference extends CustomDialogPreference {
 
         AutoCompleteTextView editText = mAutoCompleteTextView;
         editText.setText(getText());
+        editText.requestFocus();
 
         ViewParent oldParent = editText.getParent();
         if (oldParent != view) {
