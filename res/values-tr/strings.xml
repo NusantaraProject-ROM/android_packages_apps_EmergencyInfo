@@ -17,7 +17,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_label" msgid="1090682794607161063">"Acil durum bilgileri"</string>
-    <string name="medical_info_title" msgid="3000192781136934887">"Tıbbi bilgi"</string>
+    <string name="medical_info_title" msgid="3000192781136934887">"Tıbbi bilgiler"</string>
     <string name="edit_medical_info" msgid="6733720353375319476">"Bilgileri düzenle"</string>
     <string name="edit_info" msgid="5973929805855224805">"Acil durum bilgilerini güncelle"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"Bilgi"</string>
@@ -103,10 +103,7 @@
     <string name="clear_all" msgid="8899013032870561633">"Tümünü temizle"</string>
     <string name="clear" msgid="3648880442502887163">"Temizle"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Tüm bilgiler ve kişiler temizlensin mi?"</string>
-    <!-- no translation found for emergency_info_footer (4694516011247606250) -->
-    <skip />
-    <!-- no translation found for settings_suggestion_title (2503369576806243476) -->
-    <skip />
-    <!-- no translation found for settings_suggestion_body (6623265155762787567) -->
-    <skip />
+    <string name="emergency_info_footer" msgid="4694516011247606250">"Sağlıkla ilgili bilgileri ve acil durumda aranacak kişileri eklemek acil bir durumda ilk müdahaleyi yapan kişilere yardımcı olabilir.\n\nBu bilgileri herkes telefonunuzun kilidini açmadan kilit ekranınızdan okuyabilir."</string>
+    <string name="settings_suggestion_title" msgid="2503369576806243476">"Acil durum bilgisi ekleyin"</string>
+    <string name="settings_suggestion_body" msgid="6623265155762787567">"İlk müdahalede bulunanların önemli bilgileri bulmasına yardımcı olun"</string>
 </resources>

@@ -73,13 +73,13 @@
     <string name="h_h" msgid="2183333409760379720">"H H"</string>
     <string name="allergies" msgid="2789200777539258165">"การแพ้"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"ไม่ทราบ"</string>
-    <string name="allergies_hint" msgid="5488918780522184147">"ตัวอย่างเช่น ถั่วลิสง"</string>
+    <string name="allergies_hint" msgid="5488918780522184147">"เช่น ถั่วลิสง"</string>
     <string name="medications" msgid="644428945685557183">"ยารักษาโรค"</string>
     <string name="unknown_medications" msgid="2764171064510423734">"ไม่ทราบ"</string>
-    <string name="medications_hint" msgid="3221620025945593723">"ตัวอย่างเช่น แอสไพริน"</string>
+    <string name="medications_hint" msgid="3221620025945593723">"เช่น แอสไพริน"</string>
     <string name="medical_conditions" msgid="3555690011498283592">"หมายเหตุทางการแพทย์"</string>
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"ไม่ทราบ"</string>
-    <string name="medical_conditions_hint" msgid="6959152183029062882">"ตัวอย่างเช่น หอบหืด"</string>
+    <string name="medical_conditions_hint" msgid="6959152183029062882">"เช่น หอบหืด"</string>
     <string name="organ_donor" msgid="5953509460007124827">"ผู้บริจาคอวัยวะ"</string>
     <string name="unknown_organ_donor" msgid="2780515342875494225">"ไม่ทราบ"</string>
     <string name="yes" msgid="5829765567799916128">"ใช่"</string>
@@ -103,10 +103,7 @@
     <string name="clear_all" msgid="8899013032870561633">"ล้างทั้งหมด"</string>
     <string name="clear" msgid="3648880442502887163">"ล้าง"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"ล้างข้อมูลและรายชื่อติดต่อทั้งหมดไหม"</string>
-    <!-- no translation found for emergency_info_footer (4694516011247606250) -->
-    <skip />
-    <!-- no translation found for settings_suggestion_title (2503369576806243476) -->
-    <skip />
-    <!-- no translation found for settings_suggestion_body (6623265155762787567) -->
-    <skip />
+    <string name="emergency_info_footer" msgid="4694516011247606250">"การเพิ่มข้อมูลทางการแพทย์และผู้ติดต่อกรณีฉุกเฉินจะเป็นประโยชน์ต่อผู้ปฏิบัติการแพทย์ฉุกเฉินเบื้องต้นในกรณีฉุกเฉิน\n\nผู้อื่นสามารถอ่านข้อมูลนี้จากหน้าจอล็อกโดยไม่ต้องปลดล็อกโทรศัพท์ของคุณ"</string>
+    <string name="settings_suggestion_title" msgid="2503369576806243476">"เพิ่มข้อมูลสำหรับกรณีฉุกเฉิน"</string>
+    <string name="settings_suggestion_body" msgid="6623265155762787567">"ช่วยให้ผู้ปฏิบัติการแพทย์ฉุกเฉินเบื้องต้นทราบข้อมูลสำคัญ"</string>
 </resources>
