@@ -13,22 +13,25 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <com.android.emergency.preferences.NameAutoCompletePreference
         android:icon="@drawable/ic_account_circle"
         android:inputType="textCapWords|textPersonName"
         android:key="name"
         android:singleLine="true"
-        android:summary="@string/unknown_name"
-        android:title="@string/name" />
+        android:title="@string/name"
+        app:summary="@string/unknown_name" />
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:icon="@drawable/ic_address_black_24dp"
         android:inputType="textCapWords|textPostalAddress|textMultiLine"
         android:key="address"
         android:singleLine="false"
-        android:summary="@string/unknown_address"
-        android:title="@string/address" />
+        android:title="@string/address"
+        app:summary="@string/unknown_address" />
 
     <com.android.emergency.preferences.EmergencyListPreference
         xmlns:app="http://schemas.android.com/apk/res/com.android.emergency"
@@ -39,9 +42,9 @@
         android:key="blood_type"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
-        android:summary="@string/unknown_blood_type"
         android:title="@string/blood_type"
-        app:entryContentDescriptions="@array/blood_type_content_description" />
+        app:entryContentDescriptions="@array/blood_type_content_description"
+        app:summary="@string/unknown_blood_type" />
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:capitalize="sentences"
@@ -51,8 +54,8 @@
         android:inputType="textMultiLine"
         android:key="allergies"
         android:singleLine="false"
-        android:summary="@string/unknown_allergies"
-        android:title="@string/allergies" />
+        android:title="@string/allergies"
+        app:summary="@string/unknown_allergies" />
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:capitalize="sentences"
@@ -62,8 +65,8 @@
         android:inputType="textMultiLine"
         android:key="medications"
         android:singleLine="false"
-        android:summary="@string/unknown_medications"
-        android:title="@string/medications" />
+        android:title="@string/medications"
+        app:summary="@string/unknown_medications" />
 
     <com.android.emergency.preferences.EmergencyListPreference
         android:entries="@array/organ_donor_entries"
@@ -73,8 +76,8 @@
         android:defaultValue=""
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
-        android:summary="@string/unknown_organ_donor"
-        android:title="@string/organ_donor" />
+        android:title="@string/organ_donor"
+        app:summary="@string/unknown_organ_donor" />
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:capitalize="sentences"
@@ -84,6 +87,6 @@
         android:inputType="textMultiLine"
         android:key="medical_conditions"
         android:singleLine="false"
-        android:summary="@string/unknown_medical_conditions"
-        android:title="@string/medical_conditions" />
+        android:title="@string/medical_conditions"
+        app:summary="@string/unknown_medical_conditions" />
 </PreferenceScreen>

@@ -83,7 +83,7 @@
     <string name="organ_donor" msgid="5953509460007124827">"உறுப்பு தானம் செய்பவர்"</string>
     <string name="unknown_organ_donor" msgid="2780515342875494225">"தெரியவில்லை"</string>
     <string name="yes" msgid="5829765567799916128">"ஆம்"</string>
-    <string name="no" msgid="1681689233660683509">"இல்லை"</string>
+    <string name="no" msgid="1681689233660683509">"வேண்டாம்"</string>
     <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
@@ -103,7 +103,7 @@
     <string name="clear_all" msgid="8899013032870561633">"அனைத்தையும் அழி"</string>
     <string name="clear" msgid="3648880442502887163">"அழி"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"எல்லா தகவலையும் தொடர்புகளையும் அழிக்கவா?"</string>
-    <string name="emergency_info_footer" msgid="4694516011247606250">"அவசரகாலத்தில் முதலில் வந்து உதவுபவர்களுக்குக் கிடைக்கும்படி உங்கள் உடல்நிலை குறித்த மருத்துவத் தகவலையும் அவசரகாலத் தொடர்புகளையும் சேக்கவும்.\n\nஉங்கள் மொபைலைத் திறக்காமலேயே, பூட்டிய திரையிலிருந்து இந்தத் தகவலை எவரும் பார்க்க முடியும்."</string>
+    <string name="emergency_info_footer" msgid="4694516011247606250">"மருத்துவத் தகவலையும் அவசரகாலத் தொடர்புகளையும் சேர்த்தால், அவசரகாலத்தில் முதலில் உதவுபவர்களுக்கு உதவலாம்.\n\nஉங்கள் மொபைலைத் திறக்காமலேயே, பூட்டுத் திரையிலிருந்து இந்தத் தகவலை எவரும் பார்க்க முடியும்."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"அவசரத் தகவலைச் சேர்க்கவும்"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"முதலில் உதவுபவர்கள் முக்கியமான தகவலைப் பெற உதவவும்"</string>
 </resources>
