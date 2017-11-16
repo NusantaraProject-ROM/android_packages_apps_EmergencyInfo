@@ -15,7 +15,8 @@
 -->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:key="edit_medical_info_settings">
 
     <com.android.emergency.preferences.NameAutoCompletePreference
         android:icon="@drawable/ic_account_circle"
