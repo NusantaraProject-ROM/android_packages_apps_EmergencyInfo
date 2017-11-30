@@ -103,7 +103,7 @@
     <string name="clear_all" msgid="8899013032870561633">"Kosongkan semua"</string>
     <string name="clear" msgid="3648880442502887163">"Kosongkan"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Kosongkan semua maklumat dan kenalan?"</string>
-    <string name="emergency_info_footer" msgid="4694516011247606250">"Penambahan maklumat perubatan dan nombor untuk dihubungi dalam kes kecemasan dapat membantu pasukan bantuan pertama dalam kes kecemasan.\n\nSesiapa sahaja dapat membaca maklumat ini daripada skrin kunci anda tanpa membuka kunci telefon."</string>
+    <string name="emergency_info_footer" msgid="8751758742506410146">"Penambahan maklumat perubatan dan butiran hubungan kecemasan dapat membantu pasukan bantuan dalam kes kecemasan.\n\nSesiapa sahaja dapat membaca maklumat ini daripada skrin kunci anda dan mendail orang hubungan anda dengan mengetik namanya tanpa membuka kunci telefon anda."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Tambahkan maklumat kecemasan"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"Bantu pasukan bantuan pertama mencari maklumat penting"</string>
 </resources>
