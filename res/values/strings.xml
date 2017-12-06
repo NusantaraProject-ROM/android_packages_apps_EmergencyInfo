@@ -212,7 +212,7 @@
     <!-- Message of dialog shown to clear all information and contacts [CHAR LIMIT=NONE] -->
     <string name="clear_all_message">Clear all information and contacts?</string>
     <!-- Information footer describing the use of emergency information. [CHAR LIMIT=NONE] -->
-    <string name="emergency_info_footer">Adding medical information and emergency contacts can help first responders in an emergency.\n\nAnyone can read this information from your lock screen without unlocking your phone.</string>
+    <string name="emergency_info_footer">Adding medical information and emergency contacts can help first responders in an emergency.\n\nAnyone can read this information from your lock screen, and dial your contacts by tapping their names, without unlocking your phone.</string>
     <!-- Title for a suggestion to a user to set up their emergency information [CHAR_LIMIT=60] -->
     <string name="settings_suggestion_title">Add emergency information</string>
     <!-- Explanatory text for a suggestion to a user to set up their emergency information [CHAR_LIMIT=NONE] -->

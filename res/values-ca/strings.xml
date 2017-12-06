@@ -103,7 +103,7 @@
     <string name="clear_all" msgid="8899013032870561633">"Esborra-ho tot"</string>
     <string name="clear" msgid="3648880442502887163">"Esborra"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Vols esborrar tota la informació i tots els contactes?"</string>
-    <string name="emergency_info_footer" msgid="4694516011247606250">"Afegir informació mèdica i contactes d\'emergència pot ajudar els serveis d\'emergència en cas d\'urgència.\n\nQualsevol persona pot consultar aquesta informació a la pantalla de bloqueig sense desbloquejar el telèfon."</string>
+    <string name="emergency_info_footer" msgid="8751758742506410146">"Afegir informació mèdica i contactes d\'emergència pot ser útil per als serveis d\'emergència.\n\nTothom pot veure aquesta informació des de la pantalla de bloqueig i tocar els noms dels teus contactes per trucar-los sense desbloquejar el telèfon."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Afegeix la informació d\'emergència"</string>
     <string name="settings_suggestion_body" msgid="6623265155762787567">"Ajuda els serveis d\'emergència a trobar la informació important"</string>
 </resources>
