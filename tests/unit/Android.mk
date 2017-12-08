@@ -23,7 +23,6 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-test \
     emergencyinfo-test-common \
     espresso-core \
-    legacy-android-test \
     truth-prebuilt \
     ub-uiautomator
 
