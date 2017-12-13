@@ -26,7 +26,6 @@ import android.content.SharedPreferences;
 import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.preference.PreferenceScreen;
-import android.test.suitebuilder.annotation.SmallTest;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.TestConfig;
@@ -41,7 +40,6 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 /** Unit tests for {@link EmergencyEditTextPreference}. */
-@SmallTest
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest = TestConfig.MANIFEST_PATH, sdk = TestConfig.SDK_VERSION)
 public class EmergencyEditTextPreferenceTest {
