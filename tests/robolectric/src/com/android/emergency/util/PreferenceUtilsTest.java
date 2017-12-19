@@ -30,7 +30,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
-import android.test.suitebuilder.annotation.SmallTest;
 
 import com.android.emergency.ContactTestUtils;
 import com.android.emergency.PreferenceKeys;
@@ -46,16 +45,12 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 /** Unit tests for {@link PreferenceUtils}. */
-@SmallTest
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest = TestConfig.MANIFEST_PATH, sdk = TestConfig.SDK_VERSION)
 public final class PreferenceUtilsTest {
     private static final String PACKAGE_NAME = "com.android.emergency";
     private static final String NAME = "Jane";
     private static final String PHONE_NUMBER = "5150";
-    private static final ComponentName COMPONENT_NAME = new ComponentName(
-                PACKAGE_NAME,
-                PACKAGE_NAME + PreferenceUtils.SETTINGS_SUGGESTION_ACTIVITY_ALIAS);
 
     @Mock ContentResolver mContentResolver;
     @Mock Context mContext;
@@ -64,9 +59,15 @@ public final class PreferenceUtilsTest {
     @Mock SharedPreferences mSharedPreferences;
     @Mock SharedPreferences.Editor mSharedPreferencesEditor;
 
+    private ComponentName mComponentName;
+
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
+
+        mComponentName = new ComponentName(
+            PACKAGE_NAME,
+            PACKAGE_NAME + PreferenceUtils.SETTINGS_SUGGESTION_ACTIVITY_ALIAS);
 
         when(mContext.getContentResolver()).thenReturn(mContentResolver);
         when(mContext.getPackageManager()).thenReturn(mPackageManager);
@@ -117,7 +118,7 @@ public final class PreferenceUtilsTest {
         PreferenceUtils.enableSettingsSuggestion(mContext);
 
         verify(mPackageManager).setComponentEnabledSetting(
-                eq(COMPONENT_NAME),
+                eq(mComponentName),
                 eq(PackageManager.COMPONENT_ENABLED_STATE_ENABLED),
                 eq(PackageManager.DONT_KILL_APP));
     }
@@ -135,7 +136,7 @@ public final class PreferenceUtilsTest {
         PreferenceUtils.updateSettingsSuggestionState(mContext);
 
         verify(mPackageManager).setComponentEnabledSetting(
-                eq(COMPONENT_NAME),
+                eq(mComponentName),
                 eq(PackageManager.COMPONENT_ENABLED_STATE_DISABLED),
                 eq(PackageManager.DONT_KILL_APP));
     }
@@ -147,7 +148,7 @@ public final class PreferenceUtilsTest {
         PreferenceUtils.updateSettingsSuggestionState(mContext);
 
         verify(mPackageManager).setComponentEnabledSetting(
-                eq(COMPONENT_NAME),
+                eq(mComponentName),
                 eq(PackageManager.COMPONENT_ENABLED_STATE_ENABLED),
                 eq(PackageManager.DONT_KILL_APP));
     }
@@ -160,7 +161,7 @@ public final class PreferenceUtilsTest {
         PreferenceUtils.updateSettingsSuggestionState(mContext);
 
         verify(mPackageManager).setComponentEnabledSetting(
-                eq(COMPONENT_NAME),
+                eq(mComponentName),
                 eq(PackageManager.COMPONENT_ENABLED_STATE_DISABLED),
                 eq(PackageManager.DONT_KILL_APP));
     }
