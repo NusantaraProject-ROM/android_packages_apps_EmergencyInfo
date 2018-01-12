@@ -56,7 +56,7 @@ public class AutoCompleteEditTextPreference extends CustomDialogPreference {
     private boolean mTextSet;
 
     public AutoCompleteEditTextPreference(Context context, AttributeSet attrs, int defStyleAttr,
-                                          int defStyleRes) {
+            int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
 
         mAutoCompleteTextView = new InstantAutoCompleteTextView(context, attrs);
@@ -91,7 +91,7 @@ public class AutoCompleteEditTextPreference extends CustomDialogPreference {
     }
 
     public AutoCompleteEditTextPreference(Context context, AttributeSet attrs) {
-        this(context, attrs, android.R.attr.dialogPreferenceStyle);
+        this(context, attrs, R.attr.dialogPreferenceStyle);
     }
 
     public AutoCompleteEditTextPreference(Context context) {
