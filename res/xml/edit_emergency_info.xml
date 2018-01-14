@@ -93,7 +93,7 @@
 
         <Preference
             android:key="edit_medical_info"
-            android:icon="@drawable/ic_mode_edit_googblue_24dp"
+            android:icon="@drawable/ic_mode_edit_24dp"
             android:title="@string/edit_medical_info">
             <intent android:action="android.emergency.EDIT_MEDICAL_INFO"/>
         </Preference>
