@@ -24,7 +24,8 @@
         android:key="name"
         android:singleLine="true"
         android:title="@string/name"
-        app:summary="@string/unknown_name" />
+        app:summary="@string/unknown_name"
+        style="@style/NameAutoCompletePreference" />
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:icon="@drawable/ic_address_black_24dp"
