@@ -29,7 +29,7 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
     android-support-v7-preference \
     android-support-v7-recyclerview \
     android-support-v4 \
-    android-support-design \
+    $(ANDROID_SUPPORT_DESIGN_TARGETS) \
     android-support-transition
 
 LOCAL_USE_AAPT2 := true
