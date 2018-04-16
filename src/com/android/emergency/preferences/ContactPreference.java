@@ -32,6 +32,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceViewHolder;
+import android.telecom.TelecomManager;
 import android.text.BidiFormatter;
 import android.text.TextDirectionHeuristics;
 import android.util.AttributeSet;
@@ -219,19 +220,11 @@ public class ContactPreference extends Preference {
      * Calls the contact.
      */
     public void callContact() {
-        Intent callIntent =
-                new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + mContact.getPhoneNumber()));
-        PackageManager packageManager = getContext().getPackageManager();
-        List<ResolveInfo> infos =
-                packageManager.queryIntentActivities(callIntent, PackageManager.MATCH_SYSTEM_ONLY);
-        if (infos == null || infos.isEmpty()) {
-            return;
-        }
-        callIntent.setComponent(new ComponentName(infos.get(0).activityInfo.packageName,
-                infos.get(0).activityInfo.name));
-
+        // Use TelecomManager to place the call; this APK has CALL_PRIVILEGED permission so it will
+        // be able to call emergency numbers.
+        TelecomManager tm = (TelecomManager) getContext().getSystemService(Context.TELECOM_SERVICE);
+        tm.placeCall(Uri.parse("tel:" + mContact.getPhoneNumber()), null);
         MetricsLogger.action(getContext(), MetricsEvent.ACTION_CALL_EMERGENCY_CONTACT);
-        getContext().startActivity(callIntent);
     }
 
     /**
