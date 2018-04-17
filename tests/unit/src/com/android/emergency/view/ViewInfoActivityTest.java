@@ -21,7 +21,7 @@ import android.app.Fragment;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.test.uiautomator.UiDevice;
