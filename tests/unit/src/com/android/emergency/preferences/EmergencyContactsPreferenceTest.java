@@ -31,7 +31,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
 import android.support.test.runner.AndroidJUnit4;
-import android.support.v7.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 import android.view.View;
 
 import com.android.emergency.ContactTestUtils;
