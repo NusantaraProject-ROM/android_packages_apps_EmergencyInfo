@@ -23,7 +23,7 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.v14.preference.PreferenceDialogFragment;
+import androidx.preference.PreferenceDialogFragment;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.KeyEvent;

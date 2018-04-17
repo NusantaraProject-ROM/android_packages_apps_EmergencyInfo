@@ -17,9 +17,9 @@ package com.android.emergency.view;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v14.preference.PreferenceFragment;
-import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceManager;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceManager;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;

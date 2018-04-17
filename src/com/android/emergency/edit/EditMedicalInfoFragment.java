@@ -18,8 +18,8 @@ package com.android.emergency.edit;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v14.preference.PreferenceFragment;
-import android.support.v7.preference.Preference;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.Preference;
 import android.text.TextUtils;
 
 import com.android.emergency.PreferenceKeys;
