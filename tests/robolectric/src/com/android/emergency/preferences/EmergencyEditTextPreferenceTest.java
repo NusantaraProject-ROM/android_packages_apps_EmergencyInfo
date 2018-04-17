@@ -23,9 +23,9 @@ import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v7.preference.PreferenceGroup;
-import android.support.v7.preference.PreferenceManager;
-import android.support.v7.preference.PreferenceScreen;
+import androidx.preference.PreferenceGroup;
+import androidx.preference.PreferenceManager;
+import androidx.preference.PreferenceScreen;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.TestConfig;
