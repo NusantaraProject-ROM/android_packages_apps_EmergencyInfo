@@ -19,8 +19,7 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_JAVA_LIBRARIES := \
     junit \
-    platform-robolectric-prebuilt \
-    sdk_vcurrent
+    platform-robolectric-prebuilt
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
     android-support-v7-preference \
