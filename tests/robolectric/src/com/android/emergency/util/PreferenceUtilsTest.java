@@ -31,7 +31,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
-import android.test.suitebuilder.annotation.SmallTest;
 
 import com.android.emergency.ContactTestUtils;
 import com.android.emergency.PreferenceKeys;
@@ -47,7 +46,6 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 /** Unit tests for {@link PreferenceUtils}. */
-@SmallTest
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest = TestConfig.MANIFEST_PATH, sdk = TestConfig.SDK_VERSION)
 public final class PreferenceUtilsTest {
