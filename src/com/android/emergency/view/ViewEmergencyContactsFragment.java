@@ -19,8 +19,8 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v14.preference.PreferenceFragment;
-import android.support.v7.preference.PreferenceManager;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceManager;
 import android.widget.ListView;
 
 import com.android.emergency.PreferenceKeys;

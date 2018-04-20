@@ -24,14 +24,14 @@ LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 LOCAL_PRIVILEGED_MODULE := true
 
 LOCAL_STATIC_ANDROID_LIBRARIES := \
-    android-support-v14-preference \
-    android-support-v13 \
-    android-support-v7-appcompat \
-    android-support-v7-preference \
-    android-support-v7-recyclerview \
-    android-support-v4 \
-    $(ANDROID_SUPPORT_DESIGN_TARGETS) \
-    android-support-transition
+    androidx.legacy_legacy-preference-v14 \
+    androidx.legacy_legacy-support-v13 \
+    androidx.appcompat_appcompat \
+    androidx.preference_preference \
+    androidx.recyclerview_recyclerview \
+    androidx.legacy_legacy-support-v4 \
+    androidx.design_design \
+    androidx.transition_transition
 
 LOCAL_USE_AAPT2 := true
 
