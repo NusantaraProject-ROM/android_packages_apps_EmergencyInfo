@@ -74,7 +74,7 @@
     <string name="allergies" msgid="2789200777539258165">"過敏"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"不明"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"例如花生"</string>
-    <string name="medications" msgid="644428945685557183">"服用中藥物"</string>
+    <string name="medications" msgid="644428945685557183">"服用中的藥物"</string>
     <string name="unknown_medications" msgid="2764171064510423734">"不明"</string>
     <string name="medications_hint" msgid="3221620025945593723">"例如阿士匹靈"</string>
     <string name="medical_conditions" msgid="3555690011498283592">"醫療注意事項"</string>
