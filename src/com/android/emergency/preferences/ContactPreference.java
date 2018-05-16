@@ -150,7 +150,7 @@ public class ContactPreference extends Preference {
             icon = new CircleFramedDrawable(mContact.getPhoto(),
                     (int) getContext().getResources().getDimension(R.dimen.circle_avatar_size));
         } else {
-            icon = getContext().getResources().getDrawable(R.drawable.ic_account_circle);
+            icon = getContext().getDrawable(R.drawable.ic_account_circle_filled_24dp);
         }
         setIcon(icon);
     }
