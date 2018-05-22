@@ -100,6 +100,14 @@
             </intent-filter>
         </provider>
 
+        <provider
+            android:name=".EmergencyInfoNameProvider"
+            android:authorities="com.android.emergency.info.name"
+            android:directBootAware="true"
+            android:exported="true"
+            android:readPermission="com.android.emergency.permission.READ_EMERGENCY_INFO_NAME">
+        </provider>
+
     </application>
 
 </manifest>
