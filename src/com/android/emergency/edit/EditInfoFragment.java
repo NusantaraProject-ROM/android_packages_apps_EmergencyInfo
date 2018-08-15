@@ -17,11 +17,13 @@ package com.android.emergency.edit;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceGroup;
@@ -33,6 +35,7 @@ import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.ReloadablePreferenceInterface;
 import com.android.emergency.preferences.EmergencyContactsPreference;
+import com.android.emergency.util.PreferenceUtils;
 import com.android.internal.annotations.VisibleForTesting;
 
 import java.util.HashMap;
@@ -58,6 +61,8 @@ public class EditInfoFragment extends PreferenceFragment {
         for (String preferenceKey : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
             Preference preference = findPreference(preferenceKey);
             mMedicalInfoPreferences.put(preferenceKey, preference);
+
+            preference.setOnPreferenceChangeListener(new PreferenceChangeListener(getActivity()));
 
             if (((ReloadablePreferenceInterface) preference).isNotSet()) {
                 getMedicalInfoParent().removePreference(preference);
@@ -130,5 +135,27 @@ public class EditInfoFragment extends PreferenceFragment {
     @VisibleForTesting
     public Preference getMedicalInfoPreference(String key) {
         return mMedicalInfoPreferences.get(key);
+    }
+
+    @VisibleForTesting
+    static class PreferenceChangeListener implements OnPreferenceChangeListener {
+        private final Context mContext;
+
+        public PreferenceChangeListener(Context context) {
+            mContext = context;
+        }
+
+        @Override
+        public boolean onPreferenceChange(Preference preferenceItem, Object value) {
+            // Enable or disable settings suggestion, as appropriate.
+            PreferenceUtils.updateSettingsSuggestionState(mContext);
+            // If the preference implements OnPreferenceChangeListener, notify it of the
+            // change as well.
+            if (Preference.OnPreferenceChangeListener.class.isInstance(preferenceItem)) {
+                return ((Preference.OnPreferenceChangeListener) preferenceItem)
+                    .onPreferenceChange(preferenceItem, value);
+            }
+            return true;
+        }
     }
 }
