@@ -16,10 +16,10 @@
 package com.android.emergency.edit;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -27,7 +27,6 @@ import android.support.v14.preference.PreferenceFragment;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.PreferenceGroup;
-import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -35,8 +34,11 @@ import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.ReloadablePreferenceInterface;
 import com.android.emergency.preferences.EmergencyContactsPreference;
+import com.android.emergency.preferences.EmergencyNamePreference;
 import com.android.emergency.util.PreferenceUtils;
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.settingslib.CustomDialogPreference;
+import com.android.settingslib.CustomEditTextPreference;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,11 +50,15 @@ public class EditInfoFragment extends PreferenceFragment {
     /** Result code for contact picker */
     private static final int CONTACT_PICKER_RESULT = 1001;
 
+    private static final String DIALOG_PREFERENCE_TAG = "dialog_preference";
+
     private final Map<String, Preference> mMedicalInfoPreferences =
             new HashMap<String, Preference>();
 
     /** The category that holds the emergency contacts. */
     private EmergencyContactsPreference mEmergencyContactsPreferenceCategory;
+
+    private EmergencyNamePreference mEmergencyNamePreference;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -68,6 +74,9 @@ public class EditInfoFragment extends PreferenceFragment {
                 getMedicalInfoParent().removePreference(preference);
             }
         }
+
+        mEmergencyNamePreference = (EmergencyNamePreference) findPreference(
+                PreferenceKeys.KEY_NAME);
 
         // Fill in emergency contacts.
         mEmergencyContactsPreferenceCategory = (EmergencyContactsPreference)
@@ -101,6 +110,7 @@ public class EditInfoFragment extends PreferenceFragment {
     public void onResume() {
         super.onResume();
         reloadFromPreference();
+        mEmergencyNamePreference.reloadFromUserManager();
     }
 
     /** Reloads the contacts by reading the value from the shared preferences. */
@@ -117,6 +127,24 @@ public class EditInfoFragment extends PreferenceFragment {
             }
         }
         mEmergencyContactsPreferenceCategory.reloadFromPreference();
+    }
+
+    @Override
+    public void onDisplayPreferenceDialog(Preference preference) {
+        DialogFragment fragment = null;
+        if (preference instanceof CustomEditTextPreference) {
+            fragment = CustomEditTextPreference.CustomPreferenceDialogFragment
+                    .newInstance(preference.getKey());
+        } else if (preference instanceof CustomDialogPreference) {
+            fragment = EmergencyNamePreference.EmergencyNamePreferenceDialogFragment
+                    .newInstance(preference.getKey());
+        }
+        if (fragment != null) {
+            fragment.setTargetFragment(this, 0);
+            fragment.show(getFragmentManager(), DIALOG_PREFERENCE_TAG);
+        } else {
+            super.onDisplayPreferenceDialog(preference);
+        }
     }
 
     @Override
