@@ -20,16 +20,11 @@
     <PreferenceCategory
             android:key="medical_info"
             android:title="@string/medical_info_title">
-        <com.android.emergency.preferences.NameAutoCompletePreference
-            android:enabled="false"
-            android:focusable="true"
+        <com.android.emergency.preferences.EmergencyNamePreference
             android:icon="@drawable/ic_account_circle_filled_24dp"
-            android:inputType="textCapWords|textPersonName"
             android:key="name"
-            android:selectable="false"
-            android:shouldDisableView="false"
-            android:singleLine="true"
-            android:title="@string/name" />
+            android:title="@string/name"
+            android:summary="@string/unknown_name" />
 
         <com.android.emergency.preferences.EmergencyEditTextPreference
             android:icon="@drawable/ic_home_24dp"
