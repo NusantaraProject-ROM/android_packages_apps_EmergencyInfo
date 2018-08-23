@@ -34,7 +34,7 @@
             android:name=".view.ViewInfoActivity"
             android:theme="@style/AppThemeEmergency"
             android:taskAffinity="com.android.settings"
-            android:showOnLockScreen="true"
+            android:showWhenLocked="true"
             android:icon="@drawable/ic_launcher_settings"
             android:launchMode="singleTask">
             <intent-filter>
