@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-package com.android.settings.users;
+package com.android.emergency.preferences;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.ClipData;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -32,7 +33,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.StrictMode;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.ContactsContract.DisplayPhoto;
@@ -49,12 +49,10 @@ import android.widget.ListPopupWindow;
 import android.widget.TextView;
 
 import androidx.core.content.FileProvider;
-import androidx.fragment.app.Fragment;
 
-import com.android.settings.R;
-import com.android.settingslib.RestrictedLockUtils;
+import com.android.emergency.CircleFramedDrawable;
+import com.android.emergency.R;
 import com.android.settingslib.RestrictedLockUtilsInternal;
-import com.android.settingslib.drawable.CircleFramedDrawable;
 
 import libcore.io.Streams;
 
@@ -72,13 +70,15 @@ public class EditUserPhotoController {
 
     // It seems that this class generates custom request codes and they may
     // collide with ours, these values are very unlikely to have a conflict.
-    private static final int REQUEST_CODE_CHOOSE_PHOTO = 1001;
-    private static final int REQUEST_CODE_TAKE_PHOTO   = 1002;
-    private static final int REQUEST_CODE_CROP_PHOTO   = 1003;
+    private static final int REQUEST_CODE_CHOOSE_PHOTO = 10001;
+    private static final int REQUEST_CODE_TAKE_PHOTO = 10002;
+    private static final int REQUEST_CODE_CROP_PHOTO = 10003;
 
     private static final String CROP_PICTURE_FILE_NAME = "CropEditUserPhoto.jpg";
     private static final String TAKE_PICTURE_FILE_NAME = "TakeEditUserPhoto2.jpg";
     private static final String NEW_USER_PHOTO_FILE_NAME = "NewUserPhoto.png";
+    private static final String ACTION_CROP = "com.android.camera.action.CROP";
+    private static final String FILE_PATH = "com.android.emergency.files";
 
     private final int mPhotoSize;
 
@@ -92,8 +92,8 @@ public class EditUserPhotoController {
     private Bitmap mNewUserPhotoBitmap;
     private Drawable mNewUserPhotoDrawable;
 
-    public EditUserPhotoController(Fragment fragment, ImageView view,
-            Bitmap bitmap, Drawable drawable, boolean waiting) {
+    public EditUserPhotoController(Fragment fragment, ImageView view, Bitmap bitmap,
+            Drawable drawable, boolean waiting) {
         mContext = view.getContext();
         mFragment = fragment;
         mImageView = view;
@@ -249,18 +249,12 @@ public class EditUserPhotoController {
     }
 
     private void cropPhoto() {
-        // TODO: Use a public intent, when there is one.
-        Intent intent = new Intent("com.android.camera.action.CROP");
+        Intent intent = new Intent(ACTION_CROP);
         intent.setDataAndType(mTakePictureUri, "image/*");
         appendOutputExtra(intent, mCropPictureUri);
         appendCropExtras(intent);
         if (intent.resolveActivity(mContext.getPackageManager()) != null) {
-            try {
-                StrictMode.disableDeathOnFileUriExposure();
-                mFragment.startActivityForResult(intent, REQUEST_CODE_CROP_PHOTO);
-            } finally {
-                StrictMode.enableDeathOnFileUriExposure();
-            }
+            mFragment.startActivityForResult(intent, REQUEST_CODE_CROP_PHOTO);
         } else {
             onPhotoCropped(mTakePictureUri, false);
         }
@@ -292,7 +286,7 @@ public class EditUserPhotoController {
                     try {
                         imageStream = mContext.getContentResolver()
                                 .openInputStream(data);
-                        return BitmapFactory.decodeStream(imageStream);
+                        return imageStream != null ? BitmapFactory.decodeStream(imageStream) : null;
                     } catch (FileNotFoundException fe) {
                         Log.w(TAG, "Cannot find image file", fe);
                         return null;
@@ -307,18 +301,20 @@ public class EditUserPhotoController {
                     }
                 } else {
                     // Scale and crop to a square aspect ratio
-                    Bitmap croppedImage = Bitmap.createBitmap(mPhotoSize, mPhotoSize,
-                            Config.ARGB_8888);
-                    Canvas canvas = new Canvas(croppedImage);
                     Bitmap fullImage = null;
                     try {
                         InputStream imageStream = mContext.getContentResolver()
                                 .openInputStream(data);
-                        fullImage = BitmapFactory.decodeStream(imageStream);
+                        fullImage = imageStream != null ? BitmapFactory.decodeStream(imageStream)
+                                : null;
                     } catch (FileNotFoundException fe) {
+                        Log.w(TAG, "Cannot find image file", fe);
                         return null;
                     }
                     if (fullImage != null) {
+                        Bitmap croppedImage = Bitmap.createBitmap(mPhotoSize, mPhotoSize,
+                                Config.ARGB_8888);
+                        Canvas canvas = new Canvas(croppedImage);
                         final int squareSize = Math.min(fullImage.getWidth(),
                                 fullImage.getHeight());
                         final int left = (fullImage.getWidth() - squareSize) / 2;
@@ -330,7 +326,6 @@ public class EditUserPhotoController {
                         canvas.drawBitmap(fullImage, rectSource, rectDest, paint);
                         return croppedImage;
                     } else {
-                        // Bah! Got nothin.
                         return null;
                     }
                 }
@@ -369,8 +364,7 @@ public class EditUserPhotoController {
         if (purge) {
             fullPath.delete();
         }
-        return FileProvider.getUriForFile(context,
-                RestrictedProfileSettings.FILE_PROVIDER_AUTHORITY, fullPath);
+        return FileProvider.getUriForFile(context, FILE_PATH, fullPath);
     }
 
     File saveNewUserPhotoBitmap() {
@@ -402,16 +396,17 @@ public class EditUserPhotoController {
         private final Context mContext;
         private final String mTitle;
         private final Runnable mAction;
-        private final RestrictedLockUtils.EnforcedAdmin mAdmin;
+        private final RestrictedLockUtilsInternal.EnforcedAdmin mAdmin;
         // Restriction may be set by system or something else via UserManager.setUserRestriction().
         private final boolean mIsRestrictedByBase;
 
         /**
          * The menu item, used for popup menu. Any element of such a menu can be disabled by admin.
-         * @param context A context.
-         * @param title The title of the menu item.
+         *
+         * @param context     A context.
+         * @param title       The title of the menu item.
          * @param restriction The restriction, that if is set, blocks the menu item.
-         * @param action The action on menu item click.
+         * @param action      The action on menu item click.
          */
         public RestrictedMenuItem(Context context, String title, String restriction,
                 Runnable action) {
@@ -437,7 +432,7 @@ public class EditUserPhotoController {
             }
 
             if (isRestrictedByAdmin()) {
-                RestrictedLockUtils.sendShowAdminSupportDetailsIntent(mContext, mAdmin);
+                RestrictedLockUtilsInternal.sendShowAdminSupportDetailsIntent(mContext, mAdmin);
                 return;
             }
 
