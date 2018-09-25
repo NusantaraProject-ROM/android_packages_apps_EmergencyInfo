@@ -43,7 +43,6 @@ import com.android.emergency.R;
 import com.android.emergency.preferences.EmergencyContactsPreference;
 import com.android.emergency.preferences.EmergencyEditTextPreference;
 import com.android.emergency.preferences.EmergencyListPreference;
-import com.android.emergency.preferences.NameAutoCompletePreference;
 import com.android.emergency.util.PreferenceUtils;
 
 import java.util.ArrayList;
@@ -102,8 +101,6 @@ public final class EditInfoActivityTest {
     @Test
     public void testClearAllPreferences() {
         PreferenceManager.getDefaultSharedPreferences(mTargetContext).edit().putString(
-                PreferenceKeys.KEY_NAME, "John").commit();
-        PreferenceManager.getDefaultSharedPreferences(mTargetContext).edit().putString(
                 PreferenceKeys.KEY_ADDRESS, "Home").commit();
         PreferenceManager.getDefaultSharedPreferences(mTargetContext).edit().putString(
                 PreferenceKeys.KEY_BLOOD_TYPE, "A+").commit();
@@ -134,9 +131,6 @@ public final class EditInfoActivityTest {
         EditInfoActivity activity = startEditInfoActivity();
         EditInfoFragment fragment = (EditInfoFragment) activity.getFragment();
 
-        final NameAutoCompletePreference namePreference =
-                (NameAutoCompletePreference) fragment.getMedicalInfoPreference(
-                        PreferenceKeys.KEY_NAME);
         final EmergencyEditTextPreference addressPreference =
                 (EmergencyEditTextPreference) fragment.getMedicalInfoPreference(
                         PreferenceKeys.KEY_ADDRESS);
@@ -159,7 +153,6 @@ public final class EditInfoActivityTest {
                 (EmergencyContactsPreference) fragment.findPreference(
                         PreferenceKeys.KEY_EMERGENCY_CONTACTS);
 
-        String unknownName = activity.getResources().getString(R.string.unknown_name);
         String unknownAddress = activity.getResources().getString(R.string.unknown_address);
         String unknownBloodType = activity.getResources().getString(R.string.unknown_blood_type);
         String unknownAllergies = activity.getResources().getString(R.string.unknown_allergies);
@@ -168,7 +161,6 @@ public final class EditInfoActivityTest {
                 activity.getResources().getString(R.string.unknown_medical_conditions);
         String unknownOrganDonor = activity.getResources().getString(R.string.unknown_organ_donor);
 
-        assertThat(namePreference.getSummary()).isNotEqualTo(unknownName);
         assertThat(addressPreference.getSummary()).isNotEqualTo(unknownAddress);
         assertThat(bloodTypePreference.getSummary()).isNotEqualTo(unknownBloodType);
         assertThat(allergiesPreference.getSummary()).isNotEqualTo(unknownAllergies);
@@ -199,7 +191,6 @@ public final class EditInfoActivityTest {
 
         // After the clear all the preferences dialog is confirmed, the preferences values are
         // reloaded, and the existing object references are updated in-place.
-        assertThat(namePreference.getSummary()).isNull();
         assertThat(addressPreference.getSummary()).isNull();
         assertThat(bloodTypePreference.getSummary().toString()).isEqualTo(unknownBloodType);
         assertThat(allergiesPreference.getSummary()).isNull();
