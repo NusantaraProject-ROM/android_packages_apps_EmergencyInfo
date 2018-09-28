@@ -20,4 +20,7 @@
     <dimen name="tab_elevation">4dp</dimen>
     <dimen name="action_bar_size">56dp</dimen>
     <dimen name="tab_height">48dp</dimen>
+
+    <!-- Minimum width for the popup for updating a user's photo. -->
+    <dimen name="update_user_photo_popup_min_width">300dip</dimen>
 </resources>
