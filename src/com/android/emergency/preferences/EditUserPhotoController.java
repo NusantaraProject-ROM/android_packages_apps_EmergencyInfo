@@ -37,7 +37,6 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.ContactsContract.DisplayPhoto;
 import android.provider.MediaStore;
-import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -48,6 +47,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListPopupWindow;
 import android.widget.TextView;
+
+import androidx.core.content.FileProvider;
 
 import com.android.emergency.CircleFramedDrawable;
 import com.android.emergency.R;
