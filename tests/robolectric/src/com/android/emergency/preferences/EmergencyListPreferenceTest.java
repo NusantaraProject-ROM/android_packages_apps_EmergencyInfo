@@ -30,7 +30,6 @@ import android.text.TextUtils;
 
 import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
-import com.android.emergency.TestConfig;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -41,11 +40,9 @@ import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
 
 /** Unit tests for {@link EmergencyListPreference}. */
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest = TestConfig.MANIFEST_PATH, sdk = TestConfig.SDK_VERSION)
 public final class EmergencyListPreferenceTest {
     @Mock private PreferenceManager mPreferenceManager;
     @Mock private SharedPreferences mSharedPreferences;
