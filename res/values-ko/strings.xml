@@ -18,7 +18,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_label" msgid="1090682794607161063">"긴급 상황 정보"</string>
     <string name="medical_info_title" msgid="3000192781136934887">"의료 정보"</string>
-    <string name="edit_medical_info" msgid="6733720353375319476">"정보 수정"</string>
+    <string name="add_medical_info" msgid="483921612415907139">"정보 추가"</string>
     <string name="edit_info" msgid="5973929805855224805">"긴급 상황 정보 수정"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"정보"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"연락처"</string>
@@ -106,4 +106,12 @@
     <string name="emergency_info_footer" msgid="8751758742506410146">"의료 정보와 비상 연락처를 추가하면 응급 상황에서 초기 대처에 도움이 될 수 있습니다.\n\n누구나 잠금 화면에서 이 정보를 읽을 수 있으며, 휴대전화를 잠금 해제하지 않고도 연락처 이름을 탭하여 전화를 걸 수 있습니다."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"긴급 상황 정보 추가"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"긴급 구조 대원이 내 정보를 볼 수 있도록 입력합니다."</string>
+    <!-- no translation found for user_image_take_photo (21997578349584645) -->
+    <skip />
+    <!-- no translation found for user_image_choose_photo (2739785560734553126) -->
+    <skip />
+    <!-- no translation found for user_image_photo_selector (8941966433899876760) -->
+    <skip />
+    <!-- no translation found for user_nickname (7956055372443961161) -->
+    <skip />
 </resources>
