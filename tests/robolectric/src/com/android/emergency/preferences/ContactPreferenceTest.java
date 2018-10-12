@@ -17,47 +17,34 @@ package com.android.emergency.preferences;
 
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.anyInt;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
-import android.content.ComponentName;
-import android.content.ContextWrapper;
+import android.app.Activity;
+import android.app.Application;
+import android.content.ContentResolver;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.net.Uri;
-import android.os.Looper;
-import android.provider.ContactsContract;
-
 import com.android.emergency.ContactTestUtils;
 import com.android.emergency.EmergencyContactManager;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.Shadows;
 
-/** Unit tests for {@link ContactPreferences}. */
+/** Unit tests for {@link ContactPreference}. */
 @RunWith(RobolectricTestRunner.class)
-public class ContactPreferencesTest {
+public class ContactPreferenceTest {
+
     private static final String NAME = "Jake";
     private static final String PHONE_NUMBER = "123456";
-    @Mock private PackageManager mPackageManager;
+
     @Mock private ContactPreference.ContactFactory mContactFactory;
     @Mock private EmergencyContactManager.Contact mContact;
-    private ContextWrapper mContext;
     private ContactPreference mPreference;
     private Uri mPhoneUri;
 
@@ -65,11 +52,8 @@ public class ContactPreferencesTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        mContext = spy(RuntimeEnvironment.application);
-        doReturn(mPackageManager).when(mContext).getPackageManager();
-
-        mPhoneUri = ContactTestUtils.createContact(
-                mContext.getContentResolver(), NAME, PHONE_NUMBER);
+        final ContentResolver contentResolver = RuntimeEnvironment.application.getContentResolver();
+        mPhoneUri = ContactTestUtils.createContact(contentResolver, NAME, PHONE_NUMBER);
 
         when(mContactFactory.getContact(any(), any())).thenReturn(mContact);
         when(mContact.getName()).thenReturn(NAME);
@@ -77,7 +61,8 @@ public class ContactPreferencesTest {
         when(mContact.getPhoneNumber()).thenReturn(PHONE_NUMBER);
         when(mContact.getContactLookupUri()).thenReturn(mPhoneUri);
 
-        mPreference = new ContactPreference(mContext, mPhoneUri, mContactFactory);
+        final Activity activity = Robolectric.setupActivity(Activity.class);
+        mPreference = new ContactPreference(activity, mPhoneUri, mContactFactory);
     }
 
     @Test
@@ -88,45 +73,19 @@ public class ContactPreferencesTest {
 
         assertThat(mPreference.getRemoveContactDialog()).isNull();
         mPreference.setRemoveContactPreferenceListener(
-                new ContactPreference.RemoveContactPreferenceListener() {
-                    @Override
-                    public void onRemoveContactPreference(ContactPreference preference) {
-                        // Do nothing
-                    }
-                });
+            preference -> {
+                // Do nothing
+            });
         assertThat(mPreference.getRemoveContactDialog()).isNotNull();
     }
 
     @Test
-    public void testDisplayContact() throws Throwable {
+    public void testDisplayContact() {
         mPreference.displayContact();
 
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(mPhoneUri);
-        assertThat(Shadows.shadowOf(mContext).getNextStartedActivity().filterEquals(intent))
-                .isTrue();
-    }
-
-    @Test
-    public void testCallContact() throws Throwable {
-        final String name = "a name";
-        final String packageName = "a package name";
-
-        List<ResolveInfo> resolveInfos = new ArrayList<>();
-        ResolveInfo resolveInfo = new ResolveInfo();
-        resolveInfo.activityInfo = new ActivityInfo();
-        resolveInfo.activityInfo.name = name;
-        resolveInfo.activityInfo.packageName = packageName;
-        resolveInfos.add(resolveInfo);
-        when(mPackageManager.queryIntentActivities(any(Intent.class), anyInt()))
-                .thenReturn(resolveInfos);
-
-        mPreference.callContact();
-
-        Intent intent = new Intent(Intent.ACTION_CALL);
-        intent.setData(Uri.parse("tel:" + PHONE_NUMBER));
-        intent.setComponent(new ComponentName(packageName, name));
-        assertThat(Shadows.shadowOf(mContext).getNextStartedActivity().filterEquals(intent))
-                .isTrue();
+        final Intent expected = new Intent(Intent.ACTION_VIEW).setData(mPhoneUri);
+        final Application application = RuntimeEnvironment.application;
+        final Intent actual = Shadows.shadowOf(application).getNextStartedActivity();
+        assertThat(actual.filterEquals(expected)).isTrue();
     }
 }
