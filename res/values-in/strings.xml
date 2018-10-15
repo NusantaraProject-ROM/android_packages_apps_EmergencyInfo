@@ -106,12 +106,8 @@
     <string name="emergency_info_footer" msgid="8751758742506410146">"Menambahkan informasi medis dan kontak darurat dapat membantu penolong pertama dalam situasi darurat.\n\nSemua orang dapat membaca informasi ini dari layar kunci dan menelepon kontak dengan menge-tap nama, tanpa harus membuka kunci ponsel."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Menambahkan informasi darurat"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"Biarkan petugas pertolongan pertama melihat informasi"</string>
-    <!-- no translation found for user_image_take_photo (21997578349584645) -->
-    <skip />
-    <!-- no translation found for user_image_choose_photo (2739785560734553126) -->
-    <skip />
-    <!-- no translation found for user_image_photo_selector (8941966433899876760) -->
-    <skip />
-    <!-- no translation found for user_nickname (7956055372443961161) -->
-    <skip />
+    <string name="user_image_take_photo" msgid="21997578349584645">"Ambil foto"</string>
+    <string name="user_image_choose_photo" msgid="2739785560734553126">"Pilih foto dari Galeri"</string>
+    <string name="user_image_photo_selector" msgid="8941966433899876760">"Pilih foto"</string>
+    <string name="user_nickname" msgid="7956055372443961161">"Nama"</string>
 </resources>

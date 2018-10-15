@@ -106,12 +106,8 @@
     <string name="emergency_info_footer" msgid="8751758742506410146">"Adicionar informações médicas e contactos de emergência pode ajudar os socorristas numa situação de emergência.\n\nQualquer pessoa pode ler estas informações no ecrã de bloqueio e marcar os números dos seus contactos ao tocar nos respetivos nomes sem desbloquear o telemóvel."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Adicionar informações de emergência"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"Permita que os socorristas vejam as suas informações."</string>
-    <!-- no translation found for user_image_take_photo (21997578349584645) -->
-    <skip />
-    <!-- no translation found for user_image_choose_photo (2739785560734553126) -->
-    <skip />
-    <!-- no translation found for user_image_photo_selector (8941966433899876760) -->
-    <skip />
-    <!-- no translation found for user_nickname (7956055372443961161) -->
-    <skip />
+    <string name="user_image_take_photo" msgid="21997578349584645">"Tirar foto"</string>
+    <string name="user_image_choose_photo" msgid="2739785560734553126">"Escolher foto da galeria"</string>
+    <string name="user_image_photo_selector" msgid="8941966433899876760">"Selecionar foto"</string>
+    <string name="user_nickname" msgid="7956055372443961161">"Pseudónimo"</string>
 </resources>
