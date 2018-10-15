@@ -25,7 +25,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 
 LOCAL_JAVA_LIBRARIES := \
     junit \
-    platform-robolectric-3.6.1-prebuilt
+    platform-robolectric-3.6.2-prebuilt
 
 LOCAL_INSTRUMENTATION_FOR := EmergencyInfo
 LOCAL_MODULE := EmergencyInfoRoboTests
@@ -48,4 +48,4 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 
 LOCAL_TEST_PACKAGE := EmergencyInfo
 
-include prebuilts/misc/common/robolectric/3.6.1/run_robotests.mk
+include prebuilts/misc/common/robolectric/3.6.2/run_robotests.mk
