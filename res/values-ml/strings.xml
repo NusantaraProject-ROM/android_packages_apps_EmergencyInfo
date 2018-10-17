@@ -106,12 +106,8 @@
     <string name="emergency_info_footer" msgid="8751758742506410146">"മെഡിക്കൽ വിവരങ്ങളും അടിയന്തിര ഘട്ടത്തിൽ ബന്ധപ്പെടാനുള്ള വിവരങ്ങളും ചേർക്കുന്നത്, അടിയന്തിര ഘട്ടത്തിൽ ആദ്യം പ്രതികരിക്കുന്നവരെ സഹായിക്കും.\n\nനിങ്ങളുടെ ഫോൺ അൺലോക്കുചെയ്യാതെ ലോക്ക് സ്‌ക്രീനിൽ വിവരങ്ങൾ ആർക്കും വായിക്കാനാകുകയും ടാപ്പ് ചെയ്ത് കോൾ ചെയ്യാനും കഴിയുന്നു"</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"അടിയന്തിര ഘട്ടത്തിൽ ബന്ധപ്പെടാനുള്ളവരുടെ വിവരങ്ങൾ ചേർക്കുക"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"ആദ്യം പ്രതികരിക്കുന്നവരെ നിങ്ങളുടെ വിവരങ്ങൾ കാണാൻ അനുവദിക്കുക"</string>
-    <!-- no translation found for user_image_take_photo (21997578349584645) -->
-    <skip />
-    <!-- no translation found for user_image_choose_photo (2739785560734553126) -->
-    <skip />
-    <!-- no translation found for user_image_photo_selector (8941966433899876760) -->
-    <skip />
-    <!-- no translation found for user_nickname (7956055372443961161) -->
-    <skip />
+    <string name="user_image_take_photo" msgid="21997578349584645">"ഫോട്ടോ എടുക്കുക"</string>
+    <string name="user_image_choose_photo" msgid="2739785560734553126">"ഗാലറിയിൽ നിന്നും ഫോട്ടോ തിരഞ്ഞെടുക്കുക"</string>
+    <string name="user_image_photo_selector" msgid="8941966433899876760">"ഫോട്ടോ തിരഞ്ഞെടുക്കുക"</string>
+    <string name="user_nickname" msgid="7956055372443961161">"വിളിപ്പേര്"</string>
 </resources>
