@@ -106,12 +106,8 @@
     <string name="emergency_info_footer" msgid="8751758742506410146">"의료 정보와 비상 연락처를 추가하면 응급 상황에서 초기 대처에 도움이 될 수 있습니다.\n\n누구나 잠금 화면에서 이 정보를 읽을 수 있으며, 휴대전화를 잠금 해제하지 않고도 연락처 이름을 탭하여 전화를 걸 수 있습니다."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"긴급 상황 정보 추가"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"긴급 구조 대원이 내 정보를 볼 수 있도록 입력합니다."</string>
-    <!-- no translation found for user_image_take_photo (21997578349584645) -->
-    <skip />
-    <!-- no translation found for user_image_choose_photo (2739785560734553126) -->
-    <skip />
-    <!-- no translation found for user_image_photo_selector (8941966433899876760) -->
-    <skip />
-    <!-- no translation found for user_nickname (7956055372443961161) -->
-    <skip />
+    <string name="user_image_take_photo" msgid="21997578349584645">"사진 찍기"</string>
+    <string name="user_image_choose_photo" msgid="2739785560734553126">"갤러리에서 사진 선택"</string>
+    <string name="user_image_photo_selector" msgid="8941966433899876760">"사진 선택"</string>
+    <string name="user_nickname" msgid="7956055372443961161">"닉네임"</string>
 </resources>
