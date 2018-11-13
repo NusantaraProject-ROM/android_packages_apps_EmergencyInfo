@@ -15,9 +15,9 @@
  */
 package com.android.emergency.view;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -30,7 +30,7 @@ import android.os.UserManager;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.TabLayout.TabLayoutOnPageChangeListener;
 import android.support.design.widget.TabLayout.ViewPagerOnTabSelectedListener;
-import androidx.legacy.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.preference.PreferenceManager;
 import android.text.TextUtils;
@@ -59,7 +59,7 @@ import java.util.ArrayList;
 /**
  * Activity for viewing emergency information.
  */
-public class ViewInfoActivity extends Activity {
+public class ViewInfoActivity extends FragmentActivity {
     private ImageView mPersonalCardLargeIcon;
     private TextView mPersonalCardLargeItem;
     private SharedPreferences mSharedPreferences;
@@ -206,7 +206,7 @@ public class ViewInfoActivity extends Activity {
         if (mTabsAdapter == null) {
             // The viewpager that will host the section contents.
             ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
-            mTabsAdapter = new ViewPagerAdapter(getFragmentManager());
+            mTabsAdapter = new ViewPagerAdapter(getSupportFragmentManager());
             viewPager.setAdapter(mTabsAdapter);
             mTabLayout.setTabsFromPagerAdapter(mTabsAdapter);
 
