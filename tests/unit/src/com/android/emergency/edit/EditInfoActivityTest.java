@@ -81,7 +81,8 @@ public final class EditInfoActivityTest {
         // Because the initial state of each preference is empty, the edit activity removes the
         // preference. As a result, we expect them all to be null.
         for (String key : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
-            assertWithMessage(key).that(medicalInfoParent.findPreference(key)).isNull();
+            assertWithMessage(key).that((Preference) medicalInfoParent.findPreference(key))
+                    .isNull();
         }
         EmergencyContactsPreference emergencyContactsPreference =
                 (EmergencyContactsPreference) fragment.findPreference(
@@ -203,7 +204,8 @@ public final class EditInfoActivityTest {
         // The preference values are not displayed, being empty.
         PreferenceGroup medicalInfoParent = fragment.getMedicalInfoParent();
         for (String key : PreferenceKeys.KEYS_EDIT_EMERGENCY_INFO) {
-            assertWithMessage(key).that(medicalInfoParent.findPreference(key)).isNull();
+            assertWithMessage(key).that((Preference) medicalInfoParent.findPreference(key))
+                    .isNull();
         }
 
         // Now that the settings have been cleared, the settings suggestion should reappear.
