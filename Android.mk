@@ -30,7 +30,7 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
     androidx.preference_preference \
     androidx.recyclerview_recyclerview \
     androidx.legacy_legacy-support-v4 \
-    androidx.design_design \
+    com.google.android.material_material \
     androidx.transition_transition
 
 LOCAL_USE_AAPT2 := true
