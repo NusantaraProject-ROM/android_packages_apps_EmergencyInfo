@@ -92,16 +92,15 @@ public class EditInfoActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // The user asked to navigate up, which, in this case, can easily be accomplished
-                // by finishing the activity.
-                finish();
-                return true;
-
-            case R.id.action_clear_all:
-                showClearAllDialog();
-                return true;
+        int itemId = item.getItemId();
+        if (itemId == android.R.id.home) {
+            // The user asked to navigate up, which, in this case, can easily be accomplished
+            // by finishing the activity.
+            finish();
+            return true;
+        } else if (itemId == R.id.action_clear_all) {
+            showClearAllDialog();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

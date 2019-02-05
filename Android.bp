@@ -20,6 +20,17 @@ android_app {
     },
     privileged: true,
     static_libs: [
+        "EmergencyInfo-lib"
+    ],
+    certificate: "platform",
+}
+
+android_library {
+    name: "EmergencyInfo-lib",
+    platform_apis: true,
+    resource_dirs: ["res"],
+    srcs: ["src/**/*.java"],
+    static_libs: [
         "androidx.legacy_legacy-preference-v14",
         "androidx.legacy_legacy-support-v13",
         "androidx.appcompat_appcompat",
@@ -29,8 +40,5 @@ android_app {
         "com.google.android.material_material",
         "androidx.transition_transition",
     ],
-    resource_dirs: ["res"],
-    srcs: ["src/**/*.java"],
-    certificate: "platform",
     defaults: ["SettingsLibDefaults"],
 }
