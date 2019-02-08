@@ -15,6 +15,7 @@
 android_app {
     name: "EmergencyInfo",
     platform_apis: true,
+    resource_dirs: [],
     optimize: {
         proguard_flags_files: ["proguard.flags"],
     },
