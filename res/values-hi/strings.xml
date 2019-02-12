@@ -18,7 +18,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_label" msgid="1090682794607161063">"आपातकालीन जानकारी"</string>
     <string name="medical_info_title" msgid="3000192781136934887">"इलाज से जुड़ी जानकारी"</string>
-    <string name="edit_medical_info" msgid="6733720353375319476">"जानकारी में बदलाव करें"</string>
+    <string name="add_medical_info" msgid="483921612415907139">"जानकारी जोड़ें"</string>
     <string name="edit_info" msgid="5973929805855224805">"आपातकालीन जानकारी में बदलाव करें"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"जानकारी"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"संपर्क"</string>
@@ -106,4 +106,8 @@
     <string name="emergency_info_footer" msgid="8751758742506410146">"इलाज (मेडिकल) से जुड़ी जानकारी और संपर्क जोड़ने से कोई भी इमरजेंसी होने पर आपके पास पहले पहुंचे लोगों को मदद मिल सकती है.\n\nवे आपकी लॉक स्क्रीन से यह जानकारी पढ़ सकते हैं और आपके फ़ोन को अनलॉक किए बिना, आपके संपर्कों के नाम पर टैप करके उन्हें कॉल कर सकते हैं."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"आपातकालीन जानकारी जोड़ें"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"सबसे पहले प्रतिक्रिया देने वाले आपकी जानकारी देख पाएं"</string>
+    <string name="user_image_take_photo" msgid="21997578349584645">"फ़ोटो लें"</string>
+    <string name="user_image_choose_photo" msgid="2739785560734553126">"गैलरी से फ़ोटो चुनें"</string>
+    <string name="user_image_photo_selector" msgid="8941966433899876760">"फ़ोटो चुनें"</string>
+    <string name="user_nickname" msgid="7956055372443961161">"प्रचलित नाम"</string>
 </resources>
