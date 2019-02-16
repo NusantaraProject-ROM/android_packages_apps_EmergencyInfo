@@ -106,8 +106,10 @@
     <string name="emergency_info_footer" msgid="8751758742506410146">"వైద్య సమాచారం మరియు అత్యవసర పరిచయాలను జోడిస్తే, అత్యవసర పరిస్థితిలో ముందుగా ప్రతిస్పందించే వారికి సహాయకరంగా ఉంటాయి.\n\nఎవరైనా సరే, మీ ఫోన్‌ని అన్‌లాక్ చేయకుండానే మీ లాక్ స్క్రీన్ నుండి ఈ సమాచారాన్ని చదవగలరు మరియు మీ పరిచయాల పేర్లు నొక్కడం ద్వారా వారికి కాల్ చేయగలరు."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"అత్యవసర సమాచారాన్ని జోడించండి"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"మీ సమాచారాన్ని మొదటగా ప్రతిస్పందించే వారిని చూడనివ్వండి"</string>
-    <string name="user_image_take_photo" msgid="21997578349584645">"ఫోటోను తీస్తుంది"</string>
-    <string name="user_image_choose_photo" msgid="2739785560734553126">"గ్యాలరీ నుండి ఫోటోను ఎంచుకోండి"</string>
+    <!-- no translation found for user_image_take_photo (2779924488370750102) -->
+    <skip />
+    <!-- no translation found for user_image_choose_photo (2442095378052415700) -->
+    <skip />
     <string name="user_image_photo_selector" msgid="8941966433899876760">"ఫోటోను ఎంచుకోండి"</string>
     <string name="user_nickname" msgid="7956055372443961161">"మారుపేరు"</string>
 </resources>

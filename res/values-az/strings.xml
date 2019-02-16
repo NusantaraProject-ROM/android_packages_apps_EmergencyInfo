@@ -106,8 +106,10 @@
     <string name="emergency_info_footer" msgid="8751758742506410146">"Tibbi məlumat və mühüm kontaktları əlavə etmək fövqəladə hallarda ilk cavab verənlərə kömək edə bilər.\n\nHər kəs telefonunuzu kiliddən çıxarmadan kilid ekranından bu məlumatı oxuya və kontakt adlarına klikləməklə onları yığa bilər."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Mühüm məlumat əlavə edin"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"Əvvəlcə respondetlərin məlumatı görməsinə icazə verin"</string>
-    <string name="user_image_take_photo" msgid="21997578349584645">"Foto çəkin"</string>
-    <string name="user_image_choose_photo" msgid="2739785560734553126">"Qalereyadan foto seçin"</string>
+    <!-- no translation found for user_image_take_photo (2779924488370750102) -->
+    <skip />
+    <!-- no translation found for user_image_choose_photo (2442095378052415700) -->
+    <skip />
     <string name="user_image_photo_selector" msgid="8941966433899876760">"Foto seçin"</string>
     <string name="user_nickname" msgid="7956055372443961161">"Ləqəb"</string>
 </resources>

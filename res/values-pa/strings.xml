@@ -106,8 +106,10 @@
     <string name="emergency_info_footer" msgid="8751758742506410146">"ਡਾਕਟਰੀ ਜਾਣਕਾਰੀ ਅਤੇ ਸੰਕਟਕਾਲੀਨ ਸੰਪਰਕ ਸ਼ਾਮਲ ਕਰਨ ਨਾਲ ਕਿਸੇ ਸੰਕਟਕਾਲ ਵਿੱਚ ਸਭ ਤੋਂ ਪਹਿਲਾਂ ਪਹੁੰਚਣ ਵਾਲੇ ਮਦਦਗਾਰਾਂ ਨੂੰ ਮਦਦ ਮਿਲ ਸਕਦੀ ਹੈ।\n\nਕੋਈ ਵੀ ਵਿਅਕਤੀ ਤੁਹਾਡੀ ਲਾਕ ਸਕ੍ਰੀਨ ਤੋਂ ਇਹ ਜਾਣਕਾਰੀ ਪੜ੍ਹ ਸਕਦਾ ਹੈ, ਅਤੇ ਤੁਹਾਡੇ ਫ਼ੋਨ ਨੂੰ ਅਣਲਾਕ ਕੀਤੇ ਬਿਨਾਂ ਤੁਹਾਡੇ ਸੰਪਰਕਾਂ ਨੂੰ ਉਹਨਾਂ ਦੇ ਨਾਮਾਂ \'ਤੇ ਟੈਪ ਕਰਕੇ ਕਾਲ ਕਰ ਸਕਦਾ ਹੈ।"</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"ਸੰਕਟਕਾਲੀਨ ਜਾਣਕਾਰੀ ਸ਼ਾਮਲ ਕਰੋ"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"ਪਹਿਲੇ ਮਦਦਗਾਰਾਂ ਨੂੰ ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ ਦੇਖਣ ਦਿਓ"</string>
-    <string name="user_image_take_photo" msgid="21997578349584645">"ਫ਼ੋਟੋ ਖਿੱਚੋ"</string>
-    <string name="user_image_choose_photo" msgid="2739785560734553126">"ਗੈਲਰੀ ਵਿੱਚੋਂ ਫ਼ੋਟੋ ਚੁਣੋ"</string>
+    <!-- no translation found for user_image_take_photo (2779924488370750102) -->
+    <skip />
+    <!-- no translation found for user_image_choose_photo (2442095378052415700) -->
+    <skip />
     <string name="user_image_photo_selector" msgid="8941966433899876760">"ਫ਼ੋਟੋ ਚੁਣੋ"</string>
     <string name="user_nickname" msgid="7956055372443961161">"ਉਪਨਾਮ"</string>
 </resources>

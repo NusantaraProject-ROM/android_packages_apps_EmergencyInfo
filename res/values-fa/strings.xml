@@ -106,8 +106,10 @@
     <string name="emergency_info_footer" msgid="8751758742506410146">"افزودن اطلاعات پزشکی و شماره‌های تماس اضطراری می‌تواند به اولین افرادی که در شرایط اضطراری در صحنه حاضر می‌شوند کمک کنند.\n \nهر کسی می‌تواند این اطلاعات را از صفحه در حالت قفل بخواند و بدون باز کردن قفل تلفن و فقط با ضربه زدن روی نام مخاطبین شما با آن‌ها تماس بگیرد."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"افزودن اطلاعات اضطراری"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"بگذارید اولین پاسخ‌دهندگان، اطلاعات شما را ببینند"</string>
-    <string name="user_image_take_photo" msgid="21997578349584645">"عکس گرفتن"</string>
-    <string name="user_image_choose_photo" msgid="2739785560734553126">"انتخاب عکس از گالری"</string>
+    <!-- no translation found for user_image_take_photo (2779924488370750102) -->
+    <skip />
+    <!-- no translation found for user_image_choose_photo (2442095378052415700) -->
+    <skip />
     <string name="user_image_photo_selector" msgid="8941966433899876760">"انتخاب عکس"</string>
     <string name="user_nickname" msgid="7956055372443961161">"نام مستعار"</string>
 </resources>

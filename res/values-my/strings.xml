@@ -106,8 +106,10 @@
     <string name="emergency_info_footer" msgid="8751758742506410146">"ကျန်းမာရေးအချက်အလက်များနှင့် အရေးပေါ် အဆက်အသွယ်များကို ထည့်သွင်းခြင်းအားဖြင့် အရေးပေါ်အခြေအနေတစ်ခုတွင် ဦးဆုံးတုံ့ပြန်သူများက ၎င်းအချက်အလက်များကို တွေ့မြင်နိုင်ရန် ကူညီပေးပါသည်။\n\nသင့်ဖုန်းကို လော့ခ်ဖွင့်စရာမလိုဘဲ သင့်အဆက်အသွယ်များကို လော့ခ်ချထားချိန်မျက်နှာပြင်တွင် ဤအချက်အလက်များကို မည်သူမဆိုဖတ်နိုင်ပြီး သင့်အဆက်အသွယ်များ၏ အမည်ကို တို့၍ ၎င်းတို့ကို ဖုန်းဆက်နိုင်ပါသည်။"</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"အရေးပေါ်အချက်အလက်များကို ထည့်သွင်းရန်"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"ပထမဆုံးတုံ့ပြန်သူက သင့်အချက်အလက်များကို မြင်အောင်လုပ်ပါ"</string>
-    <string name="user_image_take_photo" msgid="21997578349584645">"ဓာတ်ပုံ ရိုက်ရန်"</string>
-    <string name="user_image_choose_photo" msgid="2739785560734553126">"ပြခန်းမှ ဓာတ်ပုံရွေးရန်"</string>
+    <!-- no translation found for user_image_take_photo (2779924488370750102) -->
+    <skip />
+    <!-- no translation found for user_image_choose_photo (2442095378052415700) -->
+    <skip />
     <string name="user_image_photo_selector" msgid="8941966433899876760">"ဓာတ်ပုံ ရွေးရန်"</string>
     <string name="user_nickname" msgid="7956055372443961161">"အမည်ပြောင်"</string>
 </resources>

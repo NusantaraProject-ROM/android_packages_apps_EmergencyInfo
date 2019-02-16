@@ -106,8 +106,10 @@
     <string name="emergency_info_footer" msgid="8751758742506410146">"ការបញ្ចូលព័ត៌មានវេជ្ជសាស្ត្រ និងទំនាក់ទំនងសង្គ្រោះបន្ទាន់អាចជួយអ្នកសង្គ្រោះបឋមក្នុងប្រតិបត្តិការសង្គ្រោះបន្ទាន់បាន។\n\nអ្នករាល់គ្នាអាចអានព័ត៌មាននេះពីអេក្រង់ចាក់សោរបស់អ្នក និងហៅទូរសព្ទទៅលេខក្នុងទំនាក់ទំនងរបស់អ្នកដោយចុចឈ្មោះរបស់ពួកគេ ដោយមិនចាំបាច់ដោះសោអេក្រង់ទូរសព្ទរបស់អ្នកនោះទេ។"</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"បញ្ចូលព័ត៌មានសង្គ្រោះបន្ទាន់"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"អនុញ្ញាត​ឱ្យអ្នកសង្គ្រោះ​បឋម​មើលឃើញ​ព័ត៌មាន​របស់អ្នក"</string>
-    <string name="user_image_take_photo" msgid="21997578349584645">"ថតរូប"</string>
-    <string name="user_image_choose_photo" msgid="2739785560734553126">"ជ្រើស​រូបថត​ពី​សាលរូបថត"</string>
+    <!-- no translation found for user_image_take_photo (2779924488370750102) -->
+    <skip />
+    <!-- no translation found for user_image_choose_photo (2442095378052415700) -->
+    <skip />
     <string name="user_image_photo_selector" msgid="8941966433899876760">"ជ្រើសរើស​​រូបថត"</string>
     <string name="user_nickname" msgid="7956055372443961161">"ឈ្មោះ​ហៅក្រៅ"</string>
 </resources>
