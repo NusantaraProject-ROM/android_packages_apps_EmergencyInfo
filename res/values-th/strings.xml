@@ -18,7 +18,7 @@
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_label" msgid="1090682794607161063">"ข้อมูลสำหรับกรณีฉุกเฉิน"</string>
     <string name="medical_info_title" msgid="3000192781136934887">"ข้อมูลทางการแพทย์"</string>
-    <string name="edit_medical_info" msgid="6733720353375319476">"แก้ไขข้อมูล"</string>
+    <string name="add_medical_info" msgid="483921612415907139">"เพิ่มข้อมูล"</string>
     <string name="edit_info" msgid="5973929805855224805">"แก้ไขข้อมูลสำหรับกรณีฉุกเฉิน"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"ข้อมูล"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"รายชื่อติดต่อ"</string>
@@ -106,4 +106,8 @@
     <string name="emergency_info_footer" msgid="8751758742506410146">"การเพิ่มข้อมูลทางการแพทย์และรายชื่อติดต่อกรณีฉุกเฉินจะเป็นประโยชน์ต่อผู้ปฏิบัติการแพทย์ฉุกเฉินเบื้องต้นในกรณีฉุกเฉิน\n\nผู้อื่นสามารถอ่านข้อมูลนี้จากหน้าจอล็อกและโทรหารายชื่อติดต่อดังกล่าวด้วยการแตะที่ชื่ีอ โดยไม่ต้องปลดล็อกโทรศัพท์ของคุณ"</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"เพิ่มข้อมูลสำหรับกรณีฉุกเฉิน"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"ให้ผู้ช่วยเหลือเบื้องต้นเห็นข้อมูลของคุณ"</string>
+    <string name="user_image_take_photo" msgid="21997578349584645">"ถ่ายภาพ"</string>
+    <string name="user_image_choose_photo" msgid="2739785560734553126">"เลือกรูปภาพจากแกลเลอรี"</string>
+    <string name="user_image_photo_selector" msgid="8941966433899876760">"เลือกรูปภาพ"</string>
+    <string name="user_nickname" msgid="7956055372443961161">"ชื่อเล่น"</string>
 </resources>
