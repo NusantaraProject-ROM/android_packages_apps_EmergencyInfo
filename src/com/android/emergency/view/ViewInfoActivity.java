@@ -18,15 +18,10 @@ package com.android.emergency.view;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import androidx.annotation.LayoutRes;
-import android.os.UserHandle;
-import android.os.UserManager;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.TabLayout.TabLayoutOnPageChangeListener;
 import android.support.design.widget.TabLayout.ViewPagerOnTabSelectedListener;
@@ -40,20 +35,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 import android.widget.ViewFlipper;
 
-import com.android.emergency.CircleFramedDrawable;
+import com.android.emergency.PreferenceKeys;
 import com.android.emergency.R;
 import com.android.emergency.edit.EditInfoActivity;
 import com.android.emergency.util.PreferenceUtils;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
-import com.android.internal.util.UserIcons;
 
 import java.util.ArrayList;
 
@@ -61,7 +54,6 @@ import java.util.ArrayList;
  * Activity for viewing emergency information.
  */
 public class ViewInfoActivity extends Activity {
-    private ImageView mPersonalCardLargeIcon;
     private TextView mPersonalCardLargeItem;
     private SharedPreferences mSharedPreferences;
     private LinearLayout mPersonalCard;
@@ -86,7 +78,6 @@ public class ViewInfoActivity extends Activity {
         setContentView(R.layout.view_activity_layout);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mPersonalCard = (LinearLayout) findViewById(R.id.name_and_dob_linear_layout);
-        mPersonalCardLargeIcon = (ImageView) findViewById(R.id.personal_card_icon);
         mPersonalCardLargeItem = (TextView) findViewById(R.id.personal_card_large);
         mViewFlipper = (ViewFlipper) findViewById(R.id.view_flipper);
 
@@ -96,35 +87,20 @@ public class ViewInfoActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        loadUserInfo();
+        loadName();
         // Update the tabs: new info might have been added/deleted from the edit screen that
         // could lead to adding/removing a fragment
         setupTabs();
         maybeHideTabs();
     }
 
-    private void loadUserInfo() {
-        UserManager userManager = getSystemService(UserManager.class);
-        if (TextUtils.isEmpty(userManager.getUserName())) {
+    private void loadName() {
+        String name = mSharedPreferences.getString(PreferenceKeys.KEY_NAME, "");
+        if (TextUtils.isEmpty(name)) {
             mPersonalCard.setVisibility(View.GONE);
         } else {
             mPersonalCard.setVisibility(View.VISIBLE);
-            mPersonalCardLargeItem.setText(userManager.getUserName());
-
-            Bitmap bitmapUserIcon = userManager.getUserIcon(UserHandle.myUserId());
-
-            if (bitmapUserIcon == null) {
-                // Get default user icon.
-                Drawable defaultUserIcon = UserIcons.getDefaultUserIcon(
-                        getApplicationContext().getResources(), UserHandle.myUserId(),
-                        false /* light icon */);
-                bitmapUserIcon = UserIcons.convertToBitmap(defaultUserIcon);
-            }
-
-            Drawable drawableUserIcon = new CircleFramedDrawable(bitmapUserIcon,
-                    (int) getResources().getDimension(R.dimen.action_bar_size));
-
-            mPersonalCardLargeIcon.setImageDrawable(drawableUserIcon);
+            mPersonalCardLargeItem.setText(name);
         }
     }
 
