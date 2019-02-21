@@ -106,10 +106,8 @@
     <string name="emergency_info_footer" msgid="8751758742506410146">"Ukungeza ulwazi lwemithi noxhumana nabo abasheshayo kungasiza abaphenduli bokuqala esimweni esiphuthumayo.\n\nNoma ubani angafuna lolu lwazi kusuka kusikrini sakho sokukhiya, futhi adayele oxhumana nabo ngokuthepha amagama abo, ngaphandle kokuvula ifoni yakho."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Engeza ulwazi lesimo esiphuthumayo"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"Vumela abaphenduli bokuqala babone ulwazi lwakho"</string>
-    <!-- no translation found for user_image_take_photo (2779924488370750102) -->
-    <skip />
-    <!-- no translation found for user_image_choose_photo (2442095378052415700) -->
-    <skip />
+    <string name="user_image_take_photo" msgid="2779924488370750102">"Thatha isithombe"</string>
+    <string name="user_image_choose_photo" msgid="2442095378052415700">"Khetha isithombe"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"Khetha isithombe"</string>
     <string name="user_nickname" msgid="7956055372443961161">"Isiteketiso"</string>
 </resources>
