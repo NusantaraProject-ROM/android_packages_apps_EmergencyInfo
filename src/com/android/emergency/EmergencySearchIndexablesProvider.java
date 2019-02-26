@@ -21,6 +21,7 @@ import android.database.MatrixCursor;
 import android.provider.SearchIndexablesContract.XmlResource;
 import android.provider.SearchIndexableResource;
 import android.provider.SearchIndexablesProvider;
+import android.util.FeatureFlagUtils;
 
 import com.android.emergency.edit.EditInfoActivity;
 import com.android.emergency.edit.EditMedicalInfoActivity;
@@ -50,6 +51,11 @@ public class EmergencySearchIndexablesProvider extends SearchIndexablesProvider 
 
     @Override
     public Cursor queryXmlResources(String[] projection) {
+        if (FeatureFlagUtils.isEnabled(getContext(), FeatureFlagUtils.SAFETY_HUB)
+                && getContext().getResources().getBoolean(R.bool.config_search_index_disabled)) {
+            return null;
+        }
+
         MatrixCursor cursor = new MatrixCursor(INDEXABLES_XML_RES_COLUMNS);
         for (int i = 0, length = INDEXABLE_RES.length; i < length; i++) {
             cursor.newRow()
@@ -66,13 +72,11 @@ public class EmergencySearchIndexablesProvider extends SearchIndexablesProvider 
 
     @Override
     public Cursor queryRawData(String[] projection) {
-        MatrixCursor cursor = new MatrixCursor(INDEXABLES_RAW_COLUMNS);
-        return cursor;
+        return null;
     }
 
     @Override
     public Cursor queryNonIndexableKeys(String[] projection) {
-        MatrixCursor cursor = new MatrixCursor(NON_INDEXABLES_KEYS_COLUMNS);
-        return cursor;
+        return null;
     }
 }
