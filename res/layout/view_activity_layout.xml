@@ -77,18 +77,18 @@
                 android:lineHeight="24sp"
                 android:text="@string/no_info_provided"
                 android:fontFamily="google-sans-medium"
-                android:textColor="@color/emergency_no_info_text_color"
+                android:textColor="?android:textColorPrimary"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tap"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:gravity="start"
                 android:lineHeight="20sp"
                 android:text="@string/tap_pencil"
-                android:textColor="@color/emergency_no_info_text_color"
+                android:textColor="?android:textColorSecondary"
                 android:textSize="14sp" />
         </LinearLayout>
 
