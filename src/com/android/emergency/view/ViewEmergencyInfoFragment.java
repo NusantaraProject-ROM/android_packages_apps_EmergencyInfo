@@ -15,8 +15,12 @@
  */
 package com.android.emergency.view;
 
-import androidx.fragment.app.Fragment;
+import android.view.View;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
@@ -48,6 +52,16 @@ public class ViewEmergencyInfoFragment extends PreferenceFragmentCompat {
             }
         }
     }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+      super.onViewCreated(view, savedInstanceState);
+
+      // Set a top padding for the EmergencyInfo View.
+      int topPadding = (int) getResources().getDimension(R.dimen.view_emergency_info_top_padding);
+      view.setPadding(view.getPaddingLeft(), view.getPaddingTop() + topPadding,
+          view.getPaddingRight(), view.getPaddingBottom());
+  }
 
     @Override
     public void onResume() {
