@@ -18,6 +18,8 @@ android_app {
     optimize: {
         proguard_flags_files: ["proguard.flags"],
     },
+    product_specific: true,
+    required: ["privapp_whitelist_com.android.emergency"],
     privileged: true,
     static_libs: [
         "androidx.legacy_legacy-preference-v14",
