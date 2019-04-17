@@ -16,10 +16,10 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label" msgid="1090682794607161063">"ଆପାତକାଳୀନ ସୂଚନା"</string>
+    <string name="app_label" msgid="1090682794607161063">"ଜରୁରୀକାଳୀନ ସୂଚନା"</string>
     <string name="medical_info_title" msgid="3000192781136934887">"ଡାକ୍ତରୀ ସୂଚନା"</string>
     <string name="add_medical_info" msgid="483921612415907139">"ସୂଚନା ଯୋଗ କରନ୍ତୁ"</string>
-    <string name="edit_info" msgid="5973929805855224805">"ଆପାତକାଳୀନ ସୂଚନାକୁ ଏଡିଟ୍ କରନ୍ତୁ"</string>
+    <string name="edit_info" msgid="5973929805855224805">"ଜରୁରୀକାଳୀନ ସୂଚନାକୁ ଏଡିଟ୍ କରନ୍ତୁ"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"ସୂଚନା"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"ଯୋଗାଯୋଗ"</string>
     <string name="name" msgid="4286267457738861977">"ନାମ"</string>
@@ -99,7 +99,7 @@
     <string name="ok" msgid="163967937451981024">"ଠିକ୍ ଅଛି"</string>
     <string name="phone_type_and_phone_number" msgid="5034188169563878371">"<xliff:g id="PHONE_TYPE">%1$s</xliff:g> • <xliff:g id="PHONE_NUMBER">%2$s</xliff:g>"</string>
     <string name="no_info_provided" msgid="716200382010821001">"ଫୋନ୍ ମାଲିକଙ୍କର କିଛି ସୂଚନା ନାହିଁ"</string>
-    <string name="tap_pencil" msgid="2723698054265296934">"ଯଦି ଏହା ଆପଣଙ୍କର ଫୋନ୍, ତେବେ ସୂଚନାକୁ ଯୋଡ଼ିବା ପାଇଁ ପେନସିଲ୍ ଆଇକନ୍ ଉପରେ ଟାପ୍ କରନ୍ତୁ, ଯାହା ଆପାତକାଳୀନ ସମୟରେ ଏଠାରେ ଦେଖାଦେବ"</string>
+    <string name="tap_pencil" msgid="2723698054265296934">"ଯଦି ଏହା ଆପଣଙ୍କର ଫୋନ୍, ତେବେ ସୂଚନାକୁ ଯୋଡ଼ିବା ପାଇଁ ପେନସିଲ୍ ଆଇକନ୍ ଉପରେ ଟାପ୍ କରନ୍ତୁ, ଯାହା ଜରୁରୀକାଳୀନ ସମୟରେ ଏଠାରେ ଦେଖାଦେବ"</string>
     <string name="clear_all" msgid="8899013032870561633">"ସମସ୍ତ ଖାଲି କରନ୍ତୁ"</string>
     <string name="clear" msgid="3648880442502887163">"ଖାଲି କରନ୍ତୁ"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"ସମସ୍ତ ସୂଚନା ଓ ଯୋଗାଯୋଗଗୁଡ଼ିକୁ ଖାଲି କରନ୍ତୁ?"</string>
