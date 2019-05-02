@@ -21,7 +21,6 @@ import android.database.MatrixCursor;
 import android.provider.SearchIndexablesContract.XmlResource;
 import android.provider.SearchIndexableResource;
 import android.provider.SearchIndexablesProvider;
-import android.util.FeatureFlagUtils;
 
 import com.android.emergency.edit.EditInfoActivity;
 import com.android.emergency.edit.EditMedicalInfoActivity;
@@ -51,8 +50,7 @@ public class EmergencySearchIndexablesProvider extends SearchIndexablesProvider 
 
     @Override
     public Cursor queryXmlResources(String[] projection) {
-        if (FeatureFlagUtils.isEnabled(getContext(), FeatureFlagUtils.SAFETY_HUB)
-                && getContext().getResources().getBoolean(R.bool.config_search_index_disabled)) {
+        if (getContext().getResources().getBoolean(R.bool.config_search_index_disabled)) {
             return null;
         }
 
