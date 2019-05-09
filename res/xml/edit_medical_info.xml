@@ -18,11 +18,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:key="edit_medical_info_settings">
 
-    <com.android.emergency.preferences.EmergencyNamePreference
+    <com.android.emergency.preferences.NameAutoCompletePreference
         android:icon="@drawable/ic_account_circle_filled_24dp"
+        android:inputType="textCapWords|textPersonName"
         android:key="name"
+        android:singleLine="true"
         android:title="@string/name"
-        app:summary="@string/unknown_name" />
+        app:summary="@string/unknown_name"
+        style="@style/NameAutoCompletePreference" />
 
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:icon="@drawable/ic_home_24dp"

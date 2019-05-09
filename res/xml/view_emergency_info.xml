@@ -16,12 +16,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res/com.android.emergency">
 
-    <Preference
-        android:enabled="false"
-        android:focusable="false"
-        android:selectable="false"
-        android:layout="@layout/view_emergency_preference_margin"/>
-
     <com.android.emergency.preferences.EmergencyEditTextPreference
         android:enabled="false"
         android:focusable="true"
