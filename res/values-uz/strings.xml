@@ -101,7 +101,7 @@
     <string name="no_info_provided" msgid="716200382010821001">"Telefon egasi haqida hech qanday axborot kiritilmagan"</string>
     <string name="tap_pencil" msgid="2723698054265296934">"Agar bu sizning telefoningiz bo‘lsa, bu yerda favqulodda holatlarda ko‘rsatiladigan ma’lumotlarni qo‘shish uchun qalam belgisini bosing"</string>
     <string name="clear_all" msgid="8899013032870561633">"Hammasini tozalash"</string>
-    <string name="clear" msgid="3648880442502887163">"O‘chirish"</string>
+    <string name="clear" msgid="3648880442502887163">"Tozalash"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Barcha kontaktlar va ma’lumotlar o‘chirib tashlansinmi?"</string>
     <string name="emergency_info_footer" msgid="8751758742506410146">"Favqulodda holatlar uchun tibbiy axborotlaringizni hamda favqulodda kontaktingizni kiritishni tavsiya qilamiz.\n\nBu axborotlar qulflangan ekran ustida hamma koʻrinadi. Telefon qilish uchun favqulodda kontakt ustiga bosish kifoya."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Favqulodda vaziyatlar uchun axborot kiriting"</string>
