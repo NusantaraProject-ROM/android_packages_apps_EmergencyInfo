@@ -80,7 +80,7 @@
     <string name="medical_conditions" msgid="3555690011498283592">"वैद्यकीय टिपा"</string>
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"अज्ञात"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"उदाहरणार्थ, दमा"</string>
-    <string name="organ_donor" msgid="5953509460007124827">"शरीराचा अवयव दान करणारा"</string>
+    <string name="organ_donor" msgid="5953509460007124827">"अवयव दाता"</string>
     <string name="unknown_organ_donor" msgid="2780515342875494225">"अज्ञात"</string>
     <string name="yes" msgid="5829765567799916128">"होय"</string>
     <string name="no" msgid="1681689233660683509">"नाही"</string>
