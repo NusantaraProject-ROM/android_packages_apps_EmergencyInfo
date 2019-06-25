@@ -103,7 +103,7 @@
     <string name="clear_all" msgid="8899013032870561633">"Hapus semua"</string>
     <string name="clear" msgid="3648880442502887163">"Hapus"</string>
     <string name="clear_all_message" msgid="1548432000373861295">"Hapus semua informasi dan kontak?"</string>
-    <string name="emergency_info_footer" msgid="8751758742506410146">"Menambahkan informasi medis dan kontak darurat dapat membantu penolong pertama dalam situasi darurat.\n\nSemua orang dapat membaca informasi ini dari layar kunci dan menelepon kontak dengan menge-tap nama, tanpa harus membuka kunci ponsel."</string>
+    <string name="emergency_info_footer" msgid="8751758742506410146">"Menambahkan informasi medis dan kontak darurat dapat membantu penolong pertama dalam situasi darurat.\n\nSemua orang dapat membaca informasi ini dari layar kunci dan menelepon kontak dengan mengetuk nama, tanpa harus membuka kunci ponsel."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Menambahkan informasi darurat"</string>
     <string name="settings_suggestion_body" msgid="5559349261345837716">"Biarkan petugas pertolongan pertama melihat informasi"</string>
     <string name="user_image_take_photo" msgid="2779924488370750102">"Ambil foto"</string>
