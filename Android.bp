@@ -15,6 +15,7 @@
 android_app {
     name: "EmergencyInfo",
     platform_apis: true,
+    resource_dirs: [],
     optimize: {
         proguard_flags_files: ["proguard.flags"],
     },
@@ -22,17 +23,25 @@ android_app {
     required: ["privapp_whitelist_com.android.emergency"],
     privileged: true,
     static_libs: [
+        "EmergencyInfo-lib"
+    ],
+    certificate: "platform",
+}
+
+android_library {
+    name: "EmergencyInfo-lib",
+    platform_apis: true,
+    resource_dirs: ["res"],
+    srcs: ["src/**/*.java"],
+    static_libs: [
         "androidx.legacy_legacy-preference-v14",
         "androidx.legacy_legacy-support-v13",
         "androidx.appcompat_appcompat",
         "androidx.preference_preference",
         "androidx.recyclerview_recyclerview",
         "androidx.legacy_legacy-support-v4",
-        "androidx.design_design",
+        "com.google.android.material_material",
         "androidx.transition_transition",
     ],
-    resource_dirs: ["res"],
-    srcs: ["src/**/*.java"],
-    certificate: "platform",
     defaults: ["SettingsLibDefaults"],
 }

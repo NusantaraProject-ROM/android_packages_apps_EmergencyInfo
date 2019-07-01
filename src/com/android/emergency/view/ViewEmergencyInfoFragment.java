@@ -15,9 +15,13 @@
  */
 package com.android.emergency.view;
 
-import android.app.Fragment;
+import android.view.View;
 import android.os.Bundle;
-import androidx.preference.PreferenceFragment;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
 
@@ -31,7 +35,7 @@ import java.util.List;
 /**
  * Fragment that displays personal and medical information.
  */
-public class ViewEmergencyInfoFragment extends PreferenceFragment {
+public class ViewEmergencyInfoFragment extends PreferenceFragmentCompat {
     /** A list with all the preferences. */
     private final List<Preference> mPreferences = new ArrayList<Preference>();
 
@@ -48,6 +52,16 @@ public class ViewEmergencyInfoFragment extends PreferenceFragment {
             }
         }
     }
+
+  @Override
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+      super.onViewCreated(view, savedInstanceState);
+
+      // Set a top padding for the EmergencyInfo View.
+      int topPadding = (int) getResources().getDimension(R.dimen.view_emergency_info_top_padding);
+      view.setPadding(view.getPaddingLeft(), view.getPaddingTop() + topPadding,
+          view.getPaddingRight(), view.getPaddingBottom());
+  }
 
     @Override
     public void onResume() {

@@ -52,7 +52,7 @@ import androidx.core.content.FileProvider;
 
 import com.android.emergency.CircleFramedDrawable;
 import com.android.emergency.R;
-import com.android.settingslib.RestrictedLockUtils;
+import com.android.settingslib.RestrictedLockUtilsInternal;
 
 import libcore.io.Streams;
 
@@ -396,7 +396,7 @@ public class EditUserPhotoController {
         private final Context mContext;
         private final String mTitle;
         private final Runnable mAction;
-        private final RestrictedLockUtils.EnforcedAdmin mAdmin;
+        private final RestrictedLockUtilsInternal.EnforcedAdmin mAdmin;
         // Restriction may be set by system or something else via UserManager.setUserRestriction().
         private final boolean mIsRestrictedByBase;
 
@@ -415,9 +415,9 @@ public class EditUserPhotoController {
             mAction = action;
 
             final int myUserId = UserHandle.myUserId();
-            mAdmin = RestrictedLockUtils.checkIfRestrictionEnforced(context,
+            mAdmin = RestrictedLockUtilsInternal.checkIfRestrictionEnforced(context,
                     restriction, myUserId);
-            mIsRestrictedByBase = RestrictedLockUtils.hasBaseUserRestriction(mContext,
+            mIsRestrictedByBase = RestrictedLockUtilsInternal.hasBaseUserRestriction(mContext,
                     restriction, myUserId);
         }
 
@@ -432,7 +432,7 @@ public class EditUserPhotoController {
             }
 
             if (isRestrictedByAdmin()) {
-                RestrictedLockUtils.sendShowAdminSupportDetailsIntent(mContext, mAdmin);
+                RestrictedLockUtilsInternal.sendShowAdminSupportDetailsIntent(mContext, mAdmin);
                 return;
             }
 
