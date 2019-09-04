@@ -16,9 +16,9 @@ android_test {
     name: "EmergencyInfoUnitTests",
     libs: ["android.test.runner"],
     static_libs: [
-        "android-support-test",
+        "androidx.test.rules",
         "emergencyinfo-test-common",
-        "espresso-core",
+        "androidx.test.espresso.core",
         "truth-prebuilt",
         "ub-uiautomator",
     ],
