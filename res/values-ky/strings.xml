@@ -91,7 +91,7 @@
     <string name="add_emergency_contact" msgid="4063577069613981029">"Байланыш кошуу"</string>
     <string name="fail_load_contact_picker" msgid="817205483833876726">"Байланышты тандагыч табылбай койду"</string>
     <string name="fail_display_contact" msgid="4128854688897045879">"Байланышты көрсөтүү мүмкүн эмес"</string>
-    <string name="remove_contact" msgid="6934983445723096759">"Өзгөчө кырдаал байланыштарынан <xliff:g id="CONTACT_NAME">%1$s</xliff:g> алынып салынсынбы?"</string>
+    <string name="remove_contact" msgid="6934983445723096759">"Өзгөчө кырдаал байланыштарынан <xliff:g id="CONTACT_NAME">%1$s</xliff:g> өчүрөсүзбү?"</string>
     <string name="remove_contact_icon_text" msgid="4576641386490101363">"Байланышты алып салуу"</string>
     <string name="fail_add_contact" msgid="6511490846952942291">"Байланыш маалыматы туура окулбай жатат"</string>
     <string name="remove" msgid="1243949503772376064">"Алып салуу"</string>
