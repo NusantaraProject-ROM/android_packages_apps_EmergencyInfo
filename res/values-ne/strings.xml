@@ -77,7 +77,7 @@
     <string name="medications" msgid="644428945685557183">"उपचारहरू"</string>
     <string name="unknown_medications" msgid="2764171064510423734">"अज्ञात"</string>
     <string name="medications_hint" msgid="3221620025945593723">"उदाहरणका लागि एस्पिरिन"</string>
-    <string name="medical_conditions" msgid="3555690011498283592">"चिकित्सासम्बन्धी टिप्पणीहरू"</string>
+    <string name="medical_conditions" msgid="3555690011498283592">"चिकित्सा सम्बन्धी टिप्पणीहरू"</string>
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"अज्ञात"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"उदाहरणका लागि दम"</string>
     <string name="organ_donor" msgid="5953509460007124827">"अंग दाता"</string>
