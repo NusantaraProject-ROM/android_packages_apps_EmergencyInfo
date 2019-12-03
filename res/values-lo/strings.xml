@@ -87,7 +87,7 @@
     <!-- no translation found for organ_donor_entries:0 (4680498266537823362) -->
     <!-- no translation found for organ_donor_entries:1 (4906312680266515592) -->
     <!-- no translation found for organ_donor_entries:2 (9037713957399818892) -->
-    <string name="emergency_contacts_title" msgid="5462202017417821030">"ລາຍຊື່ຜູ້ຕິດຕໍ່ສຸກ​ເສີນ"</string>
+    <string name="emergency_contacts_title" msgid="5462202017417821030">"ລາຍຊື່ຂໍ້ມູນຕິດຕໍ່"</string>
     <string name="add_emergency_contact" msgid="4063577069613981029">"ເພີ່ມລາຍຊື່ຜູ້ຕິດຕໍ່"</string>
     <string name="fail_load_contact_picker" msgid="817205483833876726">"ບໍ່ສາມາດຊອກຫາຕົວເລືອກລາຍຊື່ຜູ້ຕິດຕໍ່ໄດ້"</string>
     <string name="fail_display_contact" msgid="4128854688897045879">"ບໍ່ສາມາດສະແດງລາຍຊື່ຜູ້ຕິດຕໍ່ໄດ້"</string>

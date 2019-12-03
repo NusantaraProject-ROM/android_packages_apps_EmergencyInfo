@@ -74,10 +74,10 @@
     <string name="allergies" msgid="2789200777539258165">"알레르기"</string>
     <string name="unknown_allergies" msgid="4383115953418061237">"알 수 없음"</string>
     <string name="allergies_hint" msgid="5488918780522184147">"예: 땅콩"</string>
-    <string name="medications" msgid="644428945685557183">"약"</string>
+    <string name="medications" msgid="644428945685557183">"약물"</string>
     <string name="unknown_medications" msgid="2764171064510423734">"알 수 없음"</string>
     <string name="medications_hint" msgid="3221620025945593723">"예: 아스피린"</string>
-    <string name="medical_conditions" msgid="3555690011498283592">"질병"</string>
+    <string name="medical_conditions" msgid="3555690011498283592">"의료 기록"</string>
     <string name="unknown_medical_conditions" msgid="8051364895172053770">"알 수 없음"</string>
     <string name="medical_conditions_hint" msgid="6959152183029062882">"예: 천식"</string>
     <string name="organ_donor" msgid="5953509460007124827">"장기 기증자"</string>
