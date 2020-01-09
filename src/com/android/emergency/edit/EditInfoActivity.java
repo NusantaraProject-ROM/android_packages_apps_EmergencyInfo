@@ -142,7 +142,7 @@ public class EditInfoActivity extends Activity {
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            Dialog dialog = new AlertDialog.Builder(getActivity())
+            Dialog dialog = new AlertDialog.Builder(getActivity(), R.style.ClearAllDialogTheme)
                     .setMessage(R.string.clear_all_message)
                     .setPositiveButton(R.string.clear, new DialogInterface.OnClickListener() {
                         @Override
