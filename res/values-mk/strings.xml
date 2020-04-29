@@ -105,7 +105,7 @@
     <string name="clear_all_message" msgid="1548432000373861295">"Да се исчистат сите информации и контакти?"</string>
     <string name="emergency_info_footer" msgid="8751758742506410146">"Додавањето медицински податоци и контакти за итни случаи може да им помогне на првите лица што ќе реагираат при итен случај.\n\nСекој ќе може да ги прочита податоциве од заклучениот екран и да ги повика контактите со допирање на нивните имиња, без да го отклучи телефонот."</string>
     <string name="settings_suggestion_title" msgid="2503369576806243476">"Додајте податоци за итни случаи"</string>
-    <string name="settings_suggestion_body" msgid="5559349261345837716">"Дозволете првите спасувачи да ги видат информациите"</string>
+    <string name="settings_suggestion_body" msgid="5559349261345837716">"Дозволете првите спасувачи да ги видат податоците"</string>
     <string name="user_image_take_photo" msgid="2779924488370750102">"Фотографирај"</string>
     <string name="user_image_choose_photo" msgid="2442095378052415700">"Изберете слика"</string>
     <string name="user_image_photo_selector" msgid="8941966433899876760">"Изберете ја фотографијата"</string>
