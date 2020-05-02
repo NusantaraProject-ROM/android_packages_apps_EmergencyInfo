@@ -22,7 +22,7 @@
     <string name="edit_info" msgid="5973929805855224805">"Edytuj informacje alarmowe"</string>
     <string name="tab_title_info" msgid="1402033103294855812">"Informacje"</string>
     <string name="tab_title_contacts" msgid="4298341166404791209">"Kontakty"</string>
-    <string name="name" msgid="4286267457738861977">"Imię i nazwisko"</string>
+    <string name="name" msgid="4286267457738861977">"Imię (lub pseudonim)"</string>
     <string name="unknown_name" msgid="2834802479170495056">"Brak informacji"</string>
     <string name="address" msgid="6449303483151189969">"Adres"</string>
     <string name="unknown_address" msgid="4212576729941786121">"Brak informacji"</string>
